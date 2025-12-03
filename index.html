@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemora Studios</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 3D model viewer -->
+    <script type="module"
+        src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+    </script>
+</head>
+
+<body>
+    <div class="background-container-image">
+        <div>
+            <header class="header">
+                <h1 class="CinemoraStudios">
+                    <a href="Home.html">Cinemora Studios</a>
+                </h1>
+
+                <nav>
+                    <ul class="list1container">
+                        <li><a class="Home" href="Home.html">Home</a></li>
+                        <li><a class="About" href="About.html">About Us</a></li>
+                        <li><a class="Services" href="Services.html">Services</a></li>
+                        <li class="contact-item">
+                            <a class="Contact" href="Contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+
+                <!-- HERO -------------------------------------------------->
+                <section class="hero">
+                    <section class="content-box">
+                        <h2 class="Welcome-to">CINEMATIC MARKETING</h2>
+                        <h2 class="Mono">FOR MODERN BRANDS.</h2>
+
+                        <p class="supporting-text">
+                            From visuals to strategy, we build brands that stand out and
+                            dominate their market. One studio, Infinite Creative Horsepower.
+                        </p>
+
+                        <div class="hero-buttons">
+                            <button class="View-P">View Portfolio</button>
+                            <button class="Contact-P">Contact Us</button>
+                        </div>
+                    </section>
+
+                    <!-- 3D ROBOT ----------------------------------------->
+                    <div class="hero-3d">
+                        <model-viewer
+                            src="/mnt/data/nexbot_robot_character_concept.gltf"
+                            camera-controls
+                            auto-rotate
+                            autoplay
+                            shadow-intensity="1"
+                            exposure="1.1"
+                            ar
+                            ar-modes="webxr scene-viewer quick-look">
+                        </model-viewer>
+                    </div>
+                </section>
+
+                <!-- LOGO CAROUSEL UNDER HERO --------------------------->
+                <section class="carousel-section">
+                    <div class="carousel">
+                        <div class="group">
+                            <div class="card"><img src="Logos/nasdaq.png" alt="Logo" class="img"></div>
+                            <div class="card"><img src="Logos/client accelarators.png" alt="Logo" class="img"></div>
+                            <div class="card"><img src="Logos/successschool.png" alt="Logo" class="img"></div>
+                            <div class="card"><img src="Logos/hodderborg.png" alt="Logo" class="img"></div>
+                            <div class="card"><img src="Logos/spokenwine.png" alt="Logo" class="img"></div>
+                            <div class="card"><img src="Logos/sfive.png" alt="Logo" class="img"></div>
+                            <div class="card"><img src="Logos/nasdaq.png" alt="Logo" class="img"></div>
+                            <div class="card"><img src="Logos/client accelarators.png" alt="Logo" class="img"></div>
+                            <div class="card"><img src="Logos/successschool.png" alt="Logo" class="img"></div>
+                            <div class="card"><img src="Logos/hodderborg.png" alt="Logo" class="img"></div>
+                            <div class="card"><img src="Logos/spokenwine.png" alt="Logo" class="img"></div>
+                            <div class="card"><img src="Logos/sfive.png" alt="Logo" class="img"></div>
+                            <div class="card"><img src="Logos/nasdaq.png" alt="Logo" class="img"></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- PORTFOLIO -->
+            <section>
+                <h3 class="Our-Portfolio">Our Portfolio</h3>
+                <ul>
+                    <li class="Real-Estate">Real Estate</li>
+                    <li class="Coaches">Coaches</li>
+                    <li class="Resturants">Resturants</li>
+                </ul>
+            </section>
+
+            <!-- TESTIMONIALS -->
+            <section>
+                <h3 class="Testimonials">Testimonials</h3>
+                <blockquote class="review1">
+                    "Cinemora Studios transformed our vision into reality!" - Tim Frey
+                </blockquote>
+                <blockquote class="review2">
+                    "Professional and creative team, highly recommended!" - Alycia Champna
+                </blockquote>
+            </section>
+
+            <footer>
+                <p class="All-Rights">All rights reserved.</p>
+                <p class="Follow-us">Follow us on:
+                    <a class="YouTube" href="https://www.youtube.com/@cinemorastudios">YouTube</a>,
+                    <a class="Instagram" href="https://www.instagram.com/cinemorastudios">Instagram</a>,
+                    <a class="LinkedIn" href="https://www.linkedin.com/in/cinemorastudios">LinkedIn</a>
+                </p>
+            </footer>
+
+        </div>
+    </div>
+</body>
+</html>
