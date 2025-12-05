@@ -5,18 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinemora Studios</title>
     <link rel="stylesheet" href="style.css">
-
-    <!-- 3D model viewer -->
-    <script type="module"
-        src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
-    </script>
 </head>
 
 <body>
-    <div class="background-container-image">
-        <div>
-            <header class="header">
-                <h1 class="CinemoraStudios">
+    <div class="background-container-image"></div>
+            <header>
+                <div class="header">
+                <!-- <h1 class="CinemoraStudios">
                     <a href="Home.html">Cinemora Studios</a>
                 </h1>
 
@@ -26,10 +21,19 @@
                         <li><a class="About" href="About.html">About Us</a></li>
                         <li><a class="Services" href="Services.html">Services</a></li>
                         <li class="contact-item">
-                            <a class="Contact" href="Contact.html">Contact</a>
+                            <a class="Contact" href="Contact.html"></a>
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
+
+                <div class="items" id="itemsdad">Cinemora Studios</div>
+                <div class="items" id="specialitemchild">
+                    <a class="itemchild" href="Home.html">Home</a>
+                    <a class="itemchild" href="About.html">About Us</a>
+                    <a class="itemchild" href="Services.html">Services</a>
+                </div>
+                <a class="items" id="specialitemchildbaby">Contact Us</a>
+                </div>
             </header>
 
             <main>
@@ -67,7 +71,6 @@
                 </section>
 
                 <!-- LOGO CAROUSEL UNDER HERO --------------------------->
-                <section class="carousel-section">
                     <div class="carousel">
                         <div class="group">
                             <div class="card"><img src="Logos/nasdaq.png" alt="Logo" class="img"></div>
@@ -85,27 +88,62 @@
                             <div class="card"><img src="Logos/nasdaq.png" alt="Logo" class="img"></div>
                         </div>
                     </div>
-                </section>
             </main>
 
-            <!-- PORTFOLIO -->
-            <section>
-                <h3 class="Our-Portfolio">Our Portfolio</h3>
-                <ul>
-                    <li class="Real-Estate">Real Estate</li>
-                    <li class="Coaches">Coaches</li>
-                    <li class="Resturants">Resturants</li>
-                </ul>
-            </section>
+ 
+<section class="section-2">
+    <h1 class="Services">OUR SERVICES</h1>
+
+    <div class="Services-Child-2">
+
+        <div class="service-card">
+            <div class="service-card-inner">
+                <div class="service-image">
+                    <img src="Our Services/content-creation-1-68e3e5e5b4495.jpeg">
+                </div>
+                <h3 class="service-title">Content Creation</h3>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-card-inner">
+                <div class="service-image">
+                    <img src="Our Services/Social-Media-Management.png">
+                </div>
+                <h3 class="service-title">Social Media Management</h3>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-card-inner">
+                <div class="service-image">
+                    <img src="Our Services/paid-advertising-campaigns-68877e7ebafa2-1536x487.png">
+                </div>
+                <h3 class="service-title">Paid Advertising Campaigns</h3>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-card-inner">
+                <div class="service-image">
+                    <img src="Our Services/AI-Agents-Automations.png">
+                </div>
+                <h3 class="service-title">AI Agents & Automations</h3>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 
             <!-- TESTIMONIALS -->
-            <section>
+            <section class="description">
                 <h3 class="Testimonials">Testimonials</h3>
                 <blockquote class="review1">
                     "Cinemora Studios transformed our vision into reality!" - Tim Frey
                 </blockquote>
                 <blockquote class="review2">
-                    "Professional and creative team, highly recommended!" - Alycia Champna
+                    "Professional and creative team, highly recommended!" - Alycia Champan
                 </blockquote>
             </section>
 
@@ -118,7 +156,5 @@
                 </p>
             </footer>
 
-        </div>
-    </div>
 </body>
 </html>

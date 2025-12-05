@@ -2,119 +2,216 @@
    BASE PAGE STYLES
 -------------------------------------------------- */
 body {
+    position: relative;
+    width: 100%;              /* instead of 100vw */
+    height: auto;
     margin: 0;
     padding: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow-x: hidden;       /* no horizontal scrollbar */
+    background-color: #f4f4f4;/* matches services section */
 }
+
+
 
 /* Background section */
 .background-container-image {
     position: absolute;
-    min-height: 100vh;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100vh;            /* covers header + hero area */
+    margin: 0;
+    padding: 0;
     background-image: url(/Images/bg6.jpg);
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
     background-color: #000;
+    z-index: -1;              /* stays behind content */
 }
+
+
 
 /* --------------------------------------------------
    HEADER (FULLY RESPONSIVE)
 -------------------------------------------------- */
-.header {
+header{
+    position: relative;
+    width: 100%;
+    /* background-color: rgba(0, 0, 255, 0.438); */
+    padding-top: 40px;
     display: flex;
+    justify-content: center;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 60px;
+    border-radius: 25px;
+    background-color: rgba(194, 194, 194, 0.575);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.281);
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    max-width: 1100px;
-    margin: 8px auto 0;
-    padding: 5px 24px;          /* equal left/right padding */
-    box-sizing: border-box;
-
-    background-color: #333333;
-    border-radius: 999px;
-    box-shadow: 0 0 0 2px #111;
-    overflow: hidden;           /* ⬅ clips any overflow so edge is clean */
+    color: white;
+    font-size: 22px;
+    text-align: center;
 }
 
-
-/* Logo text */
-.CinemoraStudios {
-    margin: 0 40px 0 0;
-    font-size: 20px;
-    color: #f5f5f5;
-    font-weight: 600;
-    white-space: nowrap;
-    flex-shrink: 0;        /* prevents logo from shrinking */
-}
-
-.CinemoraStudios a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* NAVIGATION */
-.header nav {
-    flex: 1;                /* makes nav stretch across the header */
-}
-
-.list1container {
+.header .items{
+    position: relative;
+    height: 100%;
+    min-width: 80px;
+    width: 15%;
+    /* background: rgba(150, 148, 148, 0.425); */
     display: flex;
     align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0px 20px;
-    gap: 70px;
+    justify-content: center;
 }
 
-.list1container li {
-    white-space: nowrap;
+.header #specialitemchild{
+    display: flex;
+    width: 40%;
+    justify-content: space-between; 
 }
 
-/* Standard links */
-.list1container li a {
-    font-size: 16px;
-    color: #f5f5f5;
+.header .items .itemchild{
+    position: relative;
     text-decoration: none;
-    font-weight: 500;
-    padding-bottom: 2px;
+    color: rgb(255, 255, 255);
+    width: 120px;
+    height: 100%;
+    display: flex;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+
+    /* background-color: rgb(136, 105, 110); */
 }
 
-/* CONTACT BUTTON - right aligned */
-.contact-item {
-    margin-left: auto;
-    margin-right: -40px;        /* ⬅ pulls the Contact pill into the rounded edge */
-}
-
-
-.list1container li .Contact {
-    display: block;
-    border: 1px solid #f5f5f5;
-    padding: 10px 32px;
+.header #specialitemchildbaby
+{
+    display: flex;
+    border: 1px solid white;
+    width: 20%;
     border-radius: 999px;
     background: linear-gradient(90deg, #2a3cff 0%, #3456ff 40%, #1a22ff 100%);
     color: #000;
     font-weight: 600;
 }
 
-.list1container li .Contact:hover {
+.header #specialitemchildbaby:hover
+{
     color: white;
     filter: brightness(1.1);
 }
 
-/* Hide logo on narrow screens */
-@media (max-width: 700px) {
-    .CinemoraStudios {
-        display: none;
+.header #itemsdad
+{
+    position: relative;
+    display: flex;
+    width: auto;
+    height: width;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 28px;
+    margin-left: 6px;
+    /* background-color: rgba(255, 255, 255, 0.329); */
+}
+
+
+
+/* ---------------------------------
+   HEADER RESPONSIVE (MOBILE)
+---------------------------------- */
+@media (max-width: 600px) {
+    header {
+        padding-top: 20px;
+    }
+
+    .header {
+        height: 45px;
+        margin: 0;
+        padding: 0;
+        max-width: 90%;
+        border-radius: 18px;
+        font-size: 16px;
+        background-color: #646464;
+    }
+
+    .header .items {
+        min-width: 50px;
+    }
+
+    .header .items .itemchild {
+        font-size: 12px;
+    }
+
+
+.header  #specialitemchildbaby {
+        position: relative;
+        font-size: 12px;
+    }
+
+.header #itemsdad
+    {
+        width: auto;
+        display: flex;
+        font-size: 14px;
+        font-weight: 600;
     }
 }
+
+@media (max-width: 1200px) {
+    header {
+        padding-top: 20px;
+    }
+
+    .header {
+        height: 45px;
+        margin: 0;
+        padding: 0;
+        max-width: 90%;
+        border-radius: 18px;
+        font-size: 16px;
+        background-color: #646464;
+    }
+
+    .header .items {
+        min-width: 50px;
+    }
+
+    .header .items .itemchild {
+        font-size: 12px;
+    }
+
+
+.header  #specialitemchildbaby {
+        position: relative;
+        font-size: 12px;
+    }
+
+.header #itemsdad
+    {
+        width: auto;
+        display: flex;
+        font-size: 14px;
+        font-weight: 600;
+    }
+}
+
+
 
 /* --------------------------------------------------
    HERO SECTION
 -------------------------------------------------- */
 .hero {
-    min-height: 80vh;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -125,8 +222,8 @@ body {
     padding-top: 18vh;
     max-width: 1100px;
     width: 100%;
-    margin: 0 auto;
-    padding-left: 24px;
+    margin: 0 40px;
+    padding-left: 20px;
     padding-right: 24px;
     box-sizing: border-box;
     color: #ffffff;
@@ -166,23 +263,6 @@ body {
     margin-top: 32px;
     display: flex;
     gap: 24px;
-}
-
-/* --------------------------------------------------
-   3D VIEWER AREA
--------------------------------------------------- */
-.hero-3d {
-    flex: 1;
-    min-height: 420px;
-    padding-right: 24px;
-    box-sizing: border-box;
-}
-
-.hero-3d model-viewer {
-    width: 100%;
-    height: 100%;
-    border-radius: 24px;
-    background: transparent;
 }
 
 /* --------------------------------------------------
@@ -243,15 +323,11 @@ body {
     opacity: 0.6;
 }
 
-/* --------------------------------------------------
-   CAROUSEL
--------------------------------------------------- */
-.carousel-section {
-    margin-top: 40px;
-}
-
+/* base carousel */
 .carousel {
     width: 100%;
+    margin: 22px 0 0;       /* small gap under hero / buttons */
+    background-color: rgba(0, 0, 0, 0.89);
     display: flex;
     overflow-x: auto;
     justify-content: center;
@@ -263,7 +339,7 @@ body {
 
 .group {
     position: relative;
-    width: 90%;
+    width: max-content;     /* let children decide width */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -275,7 +351,6 @@ body {
     width: 180px;
     height: 90px;
     padding: 1em;
-    background: transparent;
     font-size: 10px;
     text-align: center;
     align-content: center;
@@ -290,32 +365,26 @@ body {
     animation-play-state: paused;
 }
 
-/* --------------------------------------------------
-   PORTFOLIO + TESTIMONIALS
--------------------------------------------------- */
-.Our-Portfolio,
-.Testimonials {
-    margin: 60px 8vw 16px;
-    color: #000;
+/* small phones only */
+@media (max-width: 400px) {
+    .carousel {
+        margin-top: px;
+    }
+
+    .card {
+        width: 150px;
+        height: 80px;
+        font-size: 9px;
+    }
 }
 
-.Real-Estate,
-.Coaches,
-.Resturants {
-    margin-left: 9vw;
-}
-
-.review1,
-.review2 {
-    margin: 8px 8vw;
-}
 
 /* --------------------------------------------------
    FOOTER
 -------------------------------------------------- */
 footer {
     padding: 40px 8vw;
-    background: #f2f2f2;
+    background: #ff0000;
 }
 
 .All-Rights,
@@ -323,50 +392,116 @@ footer {
     margin: 4px 0;
 }
 
-/* --------------------------------------------------
-   RESPONSIVE FIXES
--------------------------------------------------- */
+/* =========================================
+   OUR SERVICES SECTION — FINAL VERSION
+========================================= */
+.section-2 {
+    width: 100%;
+    padding: 40px 24px 40px;   /* top, sides, bottom */
+    background: #f4f4f4;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+
+
+/* Title */
+.Services {
+    text-align: center;
+    font-family: "Coolvetica", sans-serif;
+    letter-spacing: 3px;
+    color: #111;
+    font-size: 40px;
+    margin: 0 0 40px;
+}
+
+/* 2×2 grid container */
+.Services-Child-2 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+}
+
+/* Single card outer layer */
+.service-card {
+    background-color: #f1f1f1;
+    border-radius: 32px;
+    padding: 18px;
+    width: calc(50% - 16px);       /* 2 per row */
+    box-sizing: border-box;
+
+    /* hover animation */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* Inner white box */
+.service-card-inner {
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 20px 20px 24px;
+    box-sizing: border-box;
+}
+
+/* Image */
+.service-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.service-image img {
+    width: 100%;
+    display: block;
+    border-radius: 18px;
+}
+
+/* Service name text */
+.service-title {
+    margin: 0;
+    font-size: 22px;
+    font-family: "Coolvetica", sans-serif;
+    letter-spacing: 0.5px;
+    color: #111;
+}
+
+/* MOBILE — Stack cards vertically */
 @media (max-width: 900px) {
-    .list1container { gap: 32px; }
-
-    .list1container li a { font-size: 14px; }
-
-    .content-box,
-    .hero-3d {
-        padding-left: 16px;
-        padding-right: 16px;
+    .service-card {
+        width: 100%;
     }
 }
 
-@media (max-width: 600px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-    }
 
-    .content-box {
-        padding-top: 12vh;
-        padding-left: 5vw;
-        padding-right: 5vw;
-    }
+/* ============================
+   TESTIMONIALS SECTION
+============================ */
 
-    .Welcome-to { font-size: 40px; justify-content: center; }
+.description {
+    width: 100%;
+    padding: 60px 8vw;        /* space around text */
+    box-sizing: border-box;
+    background-color: #ffffff;/* DIFFERENT from section-2 */
+    margin: 0;
+}
 
-    .Mono,
-    .supporting-text {
-        text-align: center;
-    }
+.Testimonials {
+    margin: 0 0 24px;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: "Coolvetica", sans-serif;
+}
 
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero-3d {
-        width: 100%;
-        min-height: 360px;
-        padding-left: 5vw;
-        padding-right: 5vw;
-    }
+.description blockquote {
+    margin: 8px 0 16px;
+    font-size: 18px;
 }
