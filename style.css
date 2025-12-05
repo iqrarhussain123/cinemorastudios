@@ -335,14 +335,15 @@ header{
 .carousel {
     width: 100%;
     margin: 22px 0 0;
-    background-color: rgba(0, 0, 0, 0.89);
     overflow: hidden;
     padding: 12px 0;
-
-    display: flex;
-    justify-content: center;      /* <-- centers the track inside carousel */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.95) 40%,
+        rgba(0, 0, 0, 1) 100%
+    );
 }
-
 /* Moving strip */
 .carousel-track {
     display: flex;
