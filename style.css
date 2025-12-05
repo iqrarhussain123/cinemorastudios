@@ -332,47 +332,64 @@ header{
    LOGO CAROUSEL – INFINITE + CENTERED
 ========================= */
 
+/* =========================
+   LOGO CAROUSEL – INFINITE
+========================= */
+
 .carousel {
+    position: relative;
     width: 100%;
     margin: 22px 0 0;
-    overflow: hidden;
     padding: 12px 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.85) 0%,
-        rgba(0, 0, 0, 0.95) 40%,
-        rgba(0, 0, 0, 1) 100%
-    );
-}
-/* Moving strip */
-.carousel-track {
-    display: flex;
-    align-items: center;
-    gap: 40px;                    /* equal spacing between logos */
-    animation: marquee 25s linear infinite;
-    width: max-content;
+    overflow: hidden;
+
+    /* use the same background as HERO */
+    background-image: url("Images/bg6.jpg");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
 }
 
-/* Each logo item */
+/* subtle dark overlay so logos pop a bit */
+.carousel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+}
+
+/* the moving strip */
+.carousel-track {
+    display: flex;
+    align-items: center;         /* vertically center logos */
+    justify-content: center;     /* start centered */
+    width: max-content;
+    margin: 0 auto;
+    animation: marquee 25s linear infinite;
+}
+
+/* logos */
 .carousel-item {
     flex: 0 0 auto;
-    width: 160px;                 /* slightly smaller so it's uniform */
-    height: 80px;
+    width: 180px;
+    height: 90px;
+    padding: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .carousel-item img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
 }
 
-/* Infinite loop animation */
+/* infinite looping animation */
 @keyframes marquee {
     0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-50%); }  /* move by width of first set */
 }
 
 
