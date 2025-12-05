@@ -594,15 +594,9 @@ footer {
     font-family: "Lust-Didone", serif;
 }
 
-/* Main headings + important text in Coolvetica */
 .Welcome-to,
 .Services,
-.service-title,
-.Testimonials,
-.supporting-text,
-.header .items .itemchild,
-.View-P,
-.Contact-P,
-.description blockquote {
-    font-family: 'Coolvetica', sans-serif;
+.service-title {
+    font-family: 'Coolvetica Regular', 'Coolvetica', sans-serif;
+    font-weight: 700;
 }
