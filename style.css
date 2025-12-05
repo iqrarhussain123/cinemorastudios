@@ -507,6 +507,8 @@ footer {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    box-sizing: border-box;
+    position: relative;
     position: relative;
 }
 
@@ -530,6 +532,7 @@ footer {
 
 .description blockquote {
     margin: 8px 0 16px;
-    font-size: 18px;
+     font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
     color: whitesmoke;
 }
