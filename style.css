@@ -259,11 +259,12 @@ header{
 }
 
 /* Buttons */
-.hero-buttons {
+.hero-buttons { 
     margin-top: 32px;
     display: flex;
-    gap: 24px;
+    gap: 24px; 
 }
+
 
 /* --------------------------------------------------
    CTA BUTTONS
@@ -279,6 +280,14 @@ header{
     cursor: pointer;
     position: relative;
     z-index: 1;
+
+}
+
+.View-P,
+.Contact-P {
+    max-width: 100%;
+    inset: -4px;
+    box-sizing: border-box;
 }
 
 /* Glow animation */
@@ -323,46 +332,46 @@ header{
     opacity: 0.6;
 }
 
-/* base carousel */
+/* =========================
+   LOGO CAROUSEL – INFINITE
+========================= */
+
 .carousel {
     width: 100%;
-    margin: 22px 0 0;       /* small gap under hero / buttons */
+    margin: 22px 0 0;
     background-color: rgba(0, 0, 0, 0.89);
+    overflow: hidden;              /* hide logos outside view */
+    padding: 12px 0;
+}
+
+/* the moving strip */
+.carousel-track {
     display: flex;
-    overflow-x: auto;
-    justify-content: center;
+    width: max-content;            /* shrink to fit content */
+    animation: marquee 25s linear infinite;
 }
 
-.carousel::-webkit-scrollbar {
-    display: none;
-}
-
-.group {
-    position: relative;
-    width: max-content;     /* let children decide width */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    animation: spin 25s infinite linear;
-}
-
-.card {
+/* logos */
+.carousel-item {
+    flex: 0 0 auto;
     width: 180px;
     height: 90px;
     padding: 1em;
-    font-size: 10px;
-    text-align: center;
-    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-@keyframes spin {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+.carousel-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
-.carousel:hover .group {
-    animation-play-state: paused;
+/* infinite looping animation */
+@keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }  /* move by width of first set */
 }
 
 /* small phones only */
