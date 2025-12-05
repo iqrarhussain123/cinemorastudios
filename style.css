@@ -598,9 +598,31 @@ footer {
     font-display: swap;
 }
 
-
 .Welcome-to,
 .Services,
 .service-title {
     font-family: "Coolvetica", sans-serif;
+}
+
+/* =========================================
+   GLOBAL FONT SETTINGS
+========================================= */
+
+/* Headings */
+.Welcome-to,
+.Services,
+.service-title,
+.Testimonials {
+    font-family: 'Coolvetica', sans-serif;
+}
+
+/* Optional: Add bold when needed */
+.bold {
+    font-weight: 700;
+}
+
+/* Mono section (you used Lust-Didone earlier; keeping it as fallback) */
+.Mono {
+    font-family: 'Coolvetica', serif;
+    font-weight: 300;
 }
