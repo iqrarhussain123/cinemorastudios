@@ -383,8 +383,9 @@ header{
    FOOTER
 -------------------------------------------------- */
 footer {
+    margin: 0;
     padding: 40px 8vw;
-    background: #5f5f5f91;
+    background: #3c3b3b8e;
 }
 
 .All-Rights,
@@ -502,37 +503,29 @@ footer {
 /* Testimonials background with gradient */
 .description {
     width: 100%;
-    padding: 60px 8vw;
+    padding: 60px 8vw 50px;  /* top, sides, bottom */
+    margin: 0;               /* remove default section margin */
     background-image: url("Images/bg6.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     box-sizing: border-box;
     position: relative;
-    position: relative;
 }
 
+/* dark overlay so text stays readable */
 .description::before {
     content: "";
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.40);
-    z-index: -1;
+    z-index: 0;
 }
 
-
-
-.Testimonials {
-    margin: 0 0 24px;
-    font-size: 28px;
-    font-weight: 700;
-    font-family: "Coolvetica", sans-serif;
-    color: white;
-}
-
+/* make sure text sits above overlay */
+.Testimonials,
 .description blockquote {
-    margin: 8px 0 16px;
-     font-size: 18px;
-    font-family: 'Times New Roman', Times, serif;
-    color: whitesmoke;
+    position: relative;
+    z-index: 1;
+    font-family: 'Times New Roman', Times, serif; color: whitesmoke;
 }
