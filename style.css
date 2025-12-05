@@ -461,7 +461,7 @@ footer {
 /* Title */
 .Services {
     text-align: center;
-    font-family: "Coolvetica", sans-serif;
+    font-family: "Coolvetica" url("Coolvetica\ Hv\ Comp.otf"), sans-serif;
     letter-spacing: 3px;
     color: #ffffff;
     font-size: 40px;
