@@ -339,13 +339,11 @@ header{
 .carousel {
     position: relative;
     width: 100%;
+    height: 120px;
     margin: 22px 0 0;
     padding: 12px 0;
     overflow: hidden;
-
-    /* use the same background as HERO */
-    background-image: url("Images/bg6.jpg");
-    background-size: cover;
+    background-color: #000000de;
     background-position: center top;
     background-repeat: no-repeat;
 }
