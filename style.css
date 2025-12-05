@@ -222,12 +222,14 @@ header{
     padding-top: 18vh;
     max-width: 1100px;
     width: 100%;
-    margin: 0 40px;
+    /* margin: 0 40px;   <-- remove this */
+    margin: 0 auto;       /* center on large screens without overflow */
     padding-left: 20px;
     padding-right: 24px;
     box-sizing: border-box;
     color: #ffffff;
 }
+
 
 .supporting-text {
     font-family: System Bold;
@@ -283,12 +285,6 @@ header{
 
 }
 
-.View-P,
-.Contact-P {
-    max-width: 100%;
-    inset: -4px;
-    box-sizing: border-box;
-}
 
 /* Glow animation */
 .View-P::before,
@@ -384,6 +380,32 @@ header{
         width: 150px;
         height: 80px;
         font-size: 9px;
+    }
+}
+
+@media (max-width: 700px) {
+    .hero {
+        flex-direction: column;        /* stack text and robot */
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .content-box {
+        margin: 0;                     /* no extra margin on tiny screens */
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;        /* stack buttons vertically */
+        width: 100%;
+        max-width: 320px;              /* keeps them a nice size */
+    }
+
+    .View-P,
+    .Contact-P {
+        width: 100%;
+        text-align: center;
     }
 }
 
