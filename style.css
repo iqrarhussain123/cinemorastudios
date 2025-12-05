@@ -329,10 +329,6 @@ header{
 }
 
 /* =========================
-   LOGO CAROUSEL – INFINITE + CENTERED
-========================= */
-
-/* =========================
    LOGO CAROUSEL – INFINITE
 ========================= */
 
@@ -476,7 +472,7 @@ footer {
 /* Title */
 .Services {
     text-align: center;
-    font-family: "Coolvetica" url("Coolvetica\ Hv\ Comp.otf"), sans-serif;
+    font-family: 'Coolvetica', sans-serif;
     letter-spacing: 3px;
     color: #ffffff;
     font-size: 40px;
@@ -582,47 +578,31 @@ footer {
     font-family: 'Times New Roman', Times, serif; color: whitesmoke;
 }
 
-@font-face {
-    font-family: "Coolvetica";
-    src: url("Fonts/Coolvetica-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Coolvetica";
-    src: url("Fonts/Coolvetica-Bold.ttf") format("truetype");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-.Welcome-to,
-.Services,
-.service-title {
-    font-family: "Coolvetica", sans-serif;
-}
-
 /* =========================================
-   GLOBAL FONT SETTINGS
+   FINAL FONT OVERRIDES
+   (Put this at the VERY BOTTOM of style.css)
 ========================================= */
 
-/* Headings */
+
+/* Keep Cinemora Studios in header using system font */
+#itemsdad {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Keep Mono text as you like (do NOT change this if you already use Lust-Didone) */
+.Mono {
+    font-family: "Lust-Didone", serif;
+}
+
+/* Main headings + important text in Coolvetica */
 .Welcome-to,
 .Services,
 .service-title,
-.Testimonials {
+.Testimonials,
+.supporting-text,
+.header .items .itemchild,
+.View-P,
+.Contact-P,
+.description blockquote {
     font-family: 'Coolvetica', sans-serif;
-}
-
-/* Optional: Add bold when needed */
-.bold {
-    font-weight: 700;
-}
-
-/* Mono section (you used Lust-Didone earlier; keeping it as fallback) */
-.Mono {
-    font-family: 'Coolvetica', serif;
-    font-weight: 300;
 }
