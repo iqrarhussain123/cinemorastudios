@@ -339,9 +339,9 @@ header{
 .carousel {
     position: relative;
     width: 100%;
-    height: 120px;
+    height: auto;
     margin: 22px 0 0;
-    padding: 12px 0;
+    padding: 2px 0;
     overflow: hidden;
     background-color: #000000de;
     background-position: center top;
@@ -580,4 +580,33 @@ footer {
     position: relative;
     z-index: 1;
     font-family: 'Times New Roman', Times, serif; color: whitesmoke;
+}
+
+/* COOLVETICA */
+@font-face {
+    font-family: "Coolvetica";
+    src: url("Fonts/Coolvetica-Regular.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Coolvetica";
+    src: url("Fonts/Coolvetica-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+.Services {
+    font-family: "Coolvetica", sans-serif;
+}
+
+.Welcome-to {
+    font-family: "Coolvetica", sans-serif;
+}
+
+.Mono {
+    font-family: "Lust-Didone", serif;
+}
+
+body {
+    font-family: "Coolvetica", sans-serif;
 }
