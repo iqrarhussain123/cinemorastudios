@@ -1,18 +1,16 @@
 /* --------------------------------------------------
    BASE PAGE STYLES
 -------------------------------------------------- */
-body {
+    body {
     position: relative;
-    width: 100%;              /* instead of 100vw */
+    width: 100%;
     height: auto;
     margin: 0;
     padding: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    overflow-x: hidden;       /* no horizontal scrollbar */
-    background-color: #f4f4f4;/* matches services section */
+    overflow-x: hidden;
+    background-color: #000;   /* matches your dark sections */
 }
-
-
 
 /* Background section */
 .background-container-image {
@@ -31,15 +29,12 @@ body {
     z-index: -1;              /* stays behind content */
 }
 
-
-
 /* --------------------------------------------------
    HEADER (FULLY RESPONSIVE)
 -------------------------------------------------- */
-header{
+header {
     position: relative;
     width: 100%;
-    /* background-color: rgba(0, 0, 255, 0.438); */
     padding-top: 40px;
     display: flex;
     justify-content: center;
@@ -62,39 +57,34 @@ header{
     text-align: center;
 }
 
-.header .items{
+.header .items {
     position: relative;
     height: 100%;
     min-width: 80px;
     width: 15%;
-    /* background: rgba(150, 148, 148, 0.425); */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.header #specialitemchild{
+.header #specialitemchild {
     display: flex;
     width: 40%;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
-.header .items .itemchild{
+.header .items .itemchild {
     position: relative;
     text-decoration: none;
     color: rgb(255, 255, 255);
-    width: 120px;
+    width: auto;
     height: 100%;
     display: flex;
-    width: auto;
     align-items: center;
     justify-content: center;
-
-    /* background-color: rgb(136, 105, 110); */
 }
 
-.header #specialitemchildbaby
-{
+.header #specialitemchildbaby {
     display: flex;
     border: 1px solid white;
     width: 20%;
@@ -104,124 +94,34 @@ header{
     font-weight: 600;
 }
 
-.header #specialitemchildbaby:hover
-{
+.header #specialitemchildbaby:hover {
     color: white;
     filter: brightness(1.1);
 }
 
-.header #itemsdad
-{
+.header #itemsdad {
     position: relative;
     display: flex;
     width: auto;
-    height: width;
     justify-content: center;
     align-items: center;
     font-weight: 600;
     font-size: 28px;
     margin-left: 6px;
-    /* background-color: rgba(255, 255, 255, 0.329); */
 }
-
-
-
-/* ---------------------------------
-   HEADER RESPONSIVE (MOBILE)
----------------------------------- */
-@media (max-width: 600px) {
-    header {
-        padding-top: 20px;
-    }
-
-    .header {
-        height: 45px;
-        margin: 0;
-        padding: 0;
-        max-width: 90%;
-        border-radius: 18px;
-        font-size: 16px;
-        background-color: #646464;
-    }
-
-    .header .items {
-        min-width: 50px;
-    }
-
-    .header .items .itemchild {
-        font-size: 12px;
-    }
-
-
-.header  #specialitemchildbaby {
-        position: relative;
-        font-size: 12px;
-    }
-
-.header #itemsdad
-    {
-        width: auto;
-        display: flex;
-        font-size: 14px;
-        font-weight: 600;
-    }
-}
-
-@media (max-width: 1200px) {
-    header {
-        padding-top: 20px;
-    }
-
-    .header {
-        height: 45px;
-        margin: 0;
-        padding: 0;
-        max-width: 90%;
-        border-radius: 18px;
-        font-size: 16px;
-        background-color: #646464;
-    }
-
-    .header .items {
-        min-width: 50px;
-    }
-
-    .header .items .itemchild {
-        font-size: 12px;
-    }
-
-
-.header  #specialitemchildbaby {
-        position: relative;
-        font-size: 12px;
-    }
-
-.header #itemsdad
-    {
-        width: auto;
-        display: flex;
-        font-size: 14px;
-        font-weight: 600;
-    }
-}
-
-
 
 /* --------------------------------------------------
    HERO SECTION
 -------------------------------------------------- */
 .hero {
     position: relative;
-    /* background: rgba(255, 255, 255, 0.199); */
 }
 
 .content-box {
-    /* background: rgba(255, 255, 255, 0.295); */
     padding-top: 180px;
     max-width: 1100px;
     width: 100%;
-    /* margin: 0 40px;   <-- remove this */
-    margin: 0 auto;       /* center on large screens without overflow */
+    margin: 0 auto;
     padding-left: 20px;
     padding-right: 24px;
     box-sizing: border-box;
@@ -233,15 +133,6 @@ header{
     gap: 6px;
     margin-bottom: 80px;
 }
-
-@media (max-width: 600px){
-    .content-box{
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-    }
-}
-
 
 .supporting-text {
     font-family: System Bold;
@@ -274,12 +165,11 @@ header{
 }
 
 /* Buttons */
-.hero-buttons { 
+.hero-buttons {
     margin-top: 32px;
     display: flex;
-    gap: 24px; 
+    gap: 24px;
 }
-
 
 /* --------------------------------------------------
    CTA BUTTONS
@@ -295,9 +185,7 @@ header{
     cursor: pointer;
     position: relative;
     z-index: 1;
-
 }
-
 
 /* Glow animation */
 .View-P::before,
@@ -344,7 +232,6 @@ header{
 /* =========================
    LOGO CAROUSEL – INFINITE
 ========================= */
-
 .carousel {
     position: relative;
     width: 100%;
@@ -369,8 +256,8 @@ header{
 /* the moving strip */
 .carousel-track {
     display: flex;
-    align-items: center;         /* vertically center logos */
-    justify-content: center;     /* start centered */
+    align-items: center;
+    justify-content: center;
     width: max-content;
     margin: 0 auto;
     animation: marquee 25s linear infinite;
@@ -396,49 +283,8 @@ header{
 /* infinite looping animation */
 @keyframes marquee {
     0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }  /* move by width of first set */
+    100% { transform: translateX(-50%); }
 }
-
-
-/* small phones only */
-@media (max-width: 400px) {
-    .carousel {
-        margin-top: px;
-    }
-
-    .card {
-        width: 150px;
-        height: 80px;
-        font-size: 9px;
-    }
-}
-
-@media (max-width: 700px) {
-    .hero {
-        flex-direction: column;        /* stack text and robot */
-        align-items: flex-start;
-        gap: 24px;
-    }
-
-    .content-box {
-        margin: 0;                     /* no extra margin on tiny screens */
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;        /* stack buttons vertically */
-        width: 100%;
-        max-width: 320px;              /* keeps them a nice size */
-    }
-
-    .View-P,
-    .Contact-P {
-        width: 100%;
-        text-align: center;
-    }
-}
-
 
 /* --------------------------------------------------
    FOOTER
@@ -459,8 +305,8 @@ footer {
 ========================================= */
 .section-2 {
     width: 100%;
-    padding: 40px 24px 80px;
-    background-image: url("Images/bg7.jpg");  /* your texture image */
+    padding: 40px 0 80px;      /* ⬅ removed left/right padding */
+    background-image: url("Images/bg7.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -470,17 +316,14 @@ footer {
     z-index: 2;
 }
 
-/* Optional but HIGHLY recommended: overlay for contrast */
+/* Optional overlay for contrast */
 .section-2::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.33);  /* darkens image slightly */
+    background: rgba(0, 0, 0, 0.33);
     z-index: -1;
 }
-
-
-
 
 /* Title */
 .Services {
@@ -492,66 +335,44 @@ footer {
     margin: 0 0 40px;
 }
 
-/* 2×2 grid container */
 .Services-Child-2 {
     max-width: 1600px;
     margin: 0 auto;
+    padding: 0 24px;           /* ⬅ new: creates space around cards */
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
     justify-content: center;
 }
 
-/* Single card outer layer */
-.service-card {
-    background-color: #f1f1f1;
-    border-radius: 32px;
-    padding: 18px;
-    width: 40%;      /* 2 per row */
-    box-sizing: border-box;
 
-    /* hover animation */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Single card 1 outer layer */
+/* service card types */
+.service-card,
 .service-card1 {
     background-color: #f1f1f1;
     border-radius: 32px;
     padding: 18px;
-    width: 60%;       /* 2 per row */
     box-sizing: border-box;
-
-    /* hover animation */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.service-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+.service-card {
+    width: 40%;      /* 2 per row */
 }
 
+.service-card1 {
+    width: 60%;      /* bigger card */
+}
+
+.service-card:hover,
 .service-card1:hover {
     transform: translateY(-6px);
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
 }
 
-/* Inner white box */
-.service-card-inner {
-    position: relative;
-    height: 100%;
-    background-color: #ffffff;
-    border-radius: 24px;
-    padding: 20px 20px 24px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-/* Inner1 white box */
+/* inner content */
+.service-card-inner,
 .service-card-inner1 {
     position: relative;
     height: 100%;
@@ -564,31 +385,20 @@ footer {
     flex-direction: column;
 }
 
-/* Image */
-.service-image {
+/* images */
+.service-image,
+.service-image1 {
     width: 100%;
     margin-bottom: 20px;
 }
 
-.service-image img {
-    position: relative;
+.service-image img,
+.service-image1 img {
     width: 100%;
     height: 100%;
     display: block;
     border-radius: 18px;
 }
-
-.service-image1{
-    /* background-color: rgba(0, 0, 0, 0.158); */
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.service-image1 img{
-    /* background-color: rgba(0, 0, 0, 0.158); */
-    width: 100%;
-}
-
 
 /* Service name text */
 .service-title {
@@ -598,17 +408,6 @@ footer {
     letter-spacing: 1px;
     color: #111;
 }
-
-/* MOBILE — Stack cards vertically */
-@media (max-width: 900px) {
-    .service-card {
-        width: 100%;
-    }
-    .service-card1 {
-        width: 100%;
-    }
-}
-
 
 /* ============================
    TESTIMONIALS SECTION
@@ -668,7 +467,7 @@ footer {
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
 }
 
-/* --- slider wrapper --- */
+/* slider wrapper */
 .testimonial-slider {
     position: relative;
     z-index: 1;
@@ -681,7 +480,7 @@ footer {
 .testimonial-track {
     position: relative;
     width: 100%;
-    min-height: 360px;   /* a bit more vertical room */
+    min-height: 360px;   /* vertical room */
 }
 
 /* base card */
@@ -720,7 +519,7 @@ footer {
     box-shadow: 0 26px 70px rgba(0, 0, 0, 0.5);
 }
 
-/* LEFT card (previous) – more gap and lower */
+/* LEFT card (previous) – more gap */
 .testimonial-card.is-prev {
     opacity: 0.25;
     z-index: 2;
@@ -783,7 +582,7 @@ footer {
 /* NAV BUTTONS BELOW CARD */
 .testimonial-nav {
     position: relative;
-    margin-top: 32px;      /* BELOW the reserved 260px of the card */
+    margin-top: 32px;
     display: flex;
     justify-content: center;
     gap: 64px;
@@ -805,7 +604,13 @@ footer {
     transition: all 0.2s ease;
 }
 
-.one-row-services{
+.testimonial-nav button:hover {
+    background: #2a3cff;
+    border-color: #2a3cff;
+}
+
+/* extra row layout you had */
+.one-row-services {
     background-color: rgba(146, 126, 126, 0.178);
     position: relative;
     display: flex;
@@ -814,19 +619,107 @@ footer {
     gap: 20px;
 }
 
-.testimonial-nav button:hover {
-    background: #2a3cff;
-    border-color: #2a3cff;
-}
+/* =========================================
+   RESPONSIVE STYLES (ALL MEDIA QUERIES)
+========================================= */
 
-@media (max-width: 1400px){
+/* ---------- 1200px and below (large tablets / small laptops) ---------- */
+@media (max-width: 1200px) {
+    header {
+        padding-top: 20px;
+    }
 
-    .testimonial-nav {
-        gap: 10%;
+    .header {
+        height: 45px;
+        margin: 0;
+        padding: 0;
+        max-width: 90%;
+        border-radius: 18px;
+        font-size: 16px;
+        background-color: #646464;
+    }
+
+    .header .items {
+        min-width: 50px;
+    }
+
+    .header .items .itemchild {
+        font-size: 12px;
+    }
+
+    .header #specialitemchildbaby {
+        font-size: 12px;
+    }
+
+    .header #itemsdad {
+        width: auto;
+        display: flex;
+        font-size: 14px;
+        font-weight: 600;
     }
 }
 
+/* ---------- 900px and below (tablets, big phones) ---------- */
+@media (max-width: 900px) {
+    /* SERVICES: stack cards so there is no width overflow */
+    .section-2 {
+        padding: 40px 16px 60px;
+    }
+
+    .Services {
+        font-size: 32px;
+    }
+
+    .Services-Child-2 {
+        gap: 24px;
+    }
+
+    .service-card,
+    .service-card1 {
+        width: 100%;
+    }
+}
+
+/* ---------- 700px and below (phones, portrait) ---------- */
 @media (max-width: 700px) {
+    /* HERO */
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .content-box {
+        margin: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .View-P,
+    .Contact-P {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* SERVICES */
+    .section-2 {
+        padding: 36px 16px 56px;
+    }
+
+    .Services {
+        font-size: 28px;
+    }
+
+    /* TESTIMONIALS SECTION 3 */
     .Parent-3 {
         padding: 60px 12px 90px;
     }
@@ -834,6 +727,11 @@ footer {
     .Testimonial-title,
     .Testimonial {
         font-size: 24px;
+    }
+
+    .Testimonial-pill {
+        font-size: 13px;
+        padding-inline: 20px;
     }
 
     .testimonial-track {
@@ -845,18 +743,61 @@ footer {
         max-width: 100%;
         min-height: 300px;
         padding: 26px 18px 22px;
+        transform: translateX(-50%) translateY(0) scale(1);
     }
 
-    /* On phones, only show the active card.
-       This avoids weird overlaps on small screens (iPhone, Redmi, etc.). */
+    /* On phones, only show the active card to avoid overlaps */
     .testimonial-card.is-prev,
     .testimonial-card.is-next {
         opacity: 0;
         pointer-events: none;
     }
 
-    .Testimonial-pill {
-        font-size: 13px;
-        padding-inline: 20px;
+    .testimonial-nav {
+        margin-top: 26px;
+        gap: 32px;
+    }
+
+    .testimonial-nav button {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
+
+/* ---------- 600px and below (small phones, narrow screens) ---------- */
+@media (max-width: 600px) {
+    header {
+        padding-top: 20px;
+    }
+
+    .header {
+        max-width: 92%;
+    }
+
+    .Welcome-to {
+        font-size: 36px;
+    }
+
+    .supporting-text {
+        font-size: 16px;
+    }
+}
+
+/* ---------- 400px and below (very small phones) ---------- */
+@media (max-width: 400px) {
+    /* LOGO CAROUSEL */
+    .carousel {
+        margin-top: 8px;
+    }
+
+    .carousel-item {
+        width: 140px;
+        height: 70px;
+    }
+
+    /* Slightly smaller testimonial card padding for tiny phones */
+    .testimonial-card {
+        padding: 20px 14px 18px;
     }
 }
