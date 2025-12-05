@@ -582,31 +582,25 @@ footer {
     font-family: 'Times New Roman', Times, serif; color: whitesmoke;
 }
 
-/* COOLVETICA */
 @font-face {
     font-family: "Coolvetica";
     src: url("Fonts/Coolvetica-Regular.ttf") format("truetype");
-    font-weight: normal;
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Coolvetica";
     src: url("Fonts/Coolvetica-Bold.ttf") format("truetype");
-    font-weight: bold;
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
 }
 
-.Services {
-    font-family: "Coolvetica", sans-serif;
-}
 
-.Welcome-to {
-    font-family: "Coolvetica", sans-serif;
-}
-
-.Mono {
-    font-family: "Lust-Didone", serif;
-}
-
-body {
+.Welcome-to,
+.Services,
+.service-title {
     font-family: "Coolvetica", sans-serif;
 }
