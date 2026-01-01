@@ -1,0 +1,109 @@
+---
+const primaryCta = { label: "Book a Strategy Call", href: "#book" };
+const secondaryCta = { label: "See Proof", href: "#proof" };
+
+// Put your video here: /public/videos/showreel.mp4
+const videoSrc = "/videos/showreel.mp4";
+
+// Put your thumbnail here: /public/images/hero-video-thumb.jpg (1920x1080)
+const posterSrc = "/images/hero-video-thumb.jpg";
+---
+
+<section class="relative overflow-hidden bg-zinc-950">
+  <!-- Cinemora lime background glow -->
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute -top-24 right-[-180px] h-[520px] w-[520px] rounded-full bg-lime-300/10 blur-3xl"></div>
+    <div class="absolute bottom-[-220px] left-[-220px] h-[520px] w-[520px] rounded-full bg-lime-500/10 blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-6xl px-4 py-16 md:py-24">
+    <!-- top pill -->
+    <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/40 px-3 py-1 text-xs text-zinc-300">
+      <span class="h-2 w-2 rounded-full bg-lime-400"></span>
+      LinkedIn content systems that convert
+    </div>
+
+    <!-- Text block -->
+    <div class="mx-auto max-w-3xl text-center">
+      <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-zinc-50 md:text-6xl">
+        We turn <span class="text-lime-400">attention</span> into{" "}
+        <span class="text-lime-400">clients.</span>
+      </h1>
+
+      <p class="mt-5 text-base leading-relaxed text-zinc-300 md:text-lg">
+        Cinemora helps founders and brands build authority on LinkedIn with a repeatable content system,
+        conversion-focused creatives, and proof-led strategy.
+      </p>
+
+      <div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+        <a
+          href={primaryCta.href}
+          class="inline-flex items-center justify-center rounded-full bg-lime-400 px-6 py-3 text-sm font-semibold text-zinc-950 shadow-lg shadow-lime-400/20 transition hover:brightness-110"
+        >
+          {primaryCta.label}
+        </a>
+
+        <a
+          href={secondaryCta.href}
+          class="inline-flex items-center justify-center rounded-full border border-zinc-700 bg-zinc-950/40 px-6 py-3 text-sm font-semibold text-zinc-100 transition hover:border-lime-400/60 hover:bg-zinc-900/40"
+        >
+          {secondaryCta.label}
+        </a>
+      </div>
+
+      <div class="mt-6 flex flex-wrap justify-center gap-2 text-xs text-zinc-300">
+        <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-3 py-1">LinkedIn-first approach</span>
+        <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-3 py-1">Systems over random posting</span>
+        <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-3 py-1">Proof before promises</span>
+      </div>
+    </div>
+
+    <!-- Big video under text (Thumbnail + Hover-to-play) -->
+    <div class="mt-14">
+      <div class="mx-auto max-w-7xl rounded-3xl border border-zinc-800 bg-zinc-900/30 p-4 shadow-[0_30px_120px_-40px_rgba(0,0,0,0.95)]">
+        <div
+          id="heroVideoWrap"
+          class="relative aspect-video overflow-hidden rounded-2xl border border-zinc-800 bg-black"
+        >
+          <video
+            id="heroVideo"
+            class="h-full w-full object-cover"
+            muted
+            playsinline
+            preload="metadata"
+            poster={posterSrc}
+          >
+            <source src={videoSrc} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
+          <!-- Cinemora lime overlay (subtle) -->
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-lime-400/10 via-transparent to-transparent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hover logic (Astro-safe) -->
+  <script is:inline>
+    const wrap = document.getElementById("heroVideoWrap");
+    const video = document.getElementById("heroVideo");
+
+    if (wrap && video) {
+      wrap.addEventListener("mouseenter", async () => {
+        try {
+          video.currentTime = 0;
+          await video.play();
+        } catch (e) {
+          // autoplay policies can block play sometimes; user can still click play if needed
+        }
+      });
+
+      wrap.addEventListener("mouseleave", () => {
+        video.pause();
+        video.currentTime = 0;
+        video.load(); // forces poster thumbnail to show again
+      });
+    }
+  </script>
+</section>
