@@ -1,0 +1,125 @@
+---
+const nav = [
+  { label: "Services", href: "#services" },
+  { label: "Work", href: "#work" },
+  { label: "Process", href: "#process" },
+  { label: "About", href: "#about" },
+];
+
+const cta = { label: "Book a Strategy Call", href: "#book" };
+---
+
+  <header class="fixed top-0 z-50 w-full overflow-x-clip pt-12">
+  {/* Floating rounded glass header */}
+   <div class="w-full px-4">
+    <div class="relative mx-auto max-w-6xl">
+       <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/55 backdrop-blur-xl shadow-lg shadow-black/30 [transform:translateZ(0)]">
+        {/* subtle glow line */}
+          <div class="pointer-events-none absolute left-6 right-6 -bottom-px h-px bg-gradient-to-r from-transparent via-lime-400/30 to-transparent"></div>
+
+        <div class="flex items-center justify-between gap-4 px-4 py-3">
+          {/* Left: Logo */}
+          <a href="#" class="group flex items-center gap-3">
+            <div class="h-10 w-10 overflow-hidden rounded-xl bg-lime-400 shadow-lg shadow-lime-400/15 transition group-hover:brightness-110">
+              <img
+                src="/images/logo.png"
+                alt="Cinemora Studios"
+                class="h-full w-full object-contain"
+                loading="eager"
+              />
+            </div>
+
+            <div class="leading-tight">
+              <span class="text-sm font-semibold text-white font-brand">
+                CINEMORA STUDIOS
+              </span>
+
+              <div class="text-xs text-white/55">
+                We turn attention into clients.
+              </div>
+            </div>
+          </a>
+
+          {/* Center: Desktop nav */}
+          <nav class="hidden items-center gap-2 md:flex">
+            {nav.map((item) => (
+              <a
+                href={item.href}
+                class="rounded-full px-4 py-2 text-sm font-medium text-white/70 transition hover:bg-white/5 hover:text-white"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Right: CTA + Mobile button */}
+          <div class="flex items-center gap-2">
+            <a
+              href={cta.href}
+              class="hidden rounded-full bg-lime-400 px-5 py-2.5 text-sm font-semibold text-zinc-950 shadow-lg shadow-lime-400/20 transition hover:brightness-110 md:inline-flex"
+            >
+              {cta.label}
+            </a>
+
+            {/* Mobile menu button */}
+            <button
+              id="navToggle"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10 md:hidden"
+              aria-label="Open menu"
+              aria-expanded="false"
+              type="button"
+            >
+              ☰
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile dropdown */}
+        <div id="mobileNav" class="hidden md:hidden">
+          <div class="px-4 pb-4">
+            <div class="rounded-2xl border border-white/10 bg-zinc-950/70 p-2 backdrop-blur-xl">
+              <div class="flex flex-col">
+                {nav.map((item) => (
+                  <a
+                    href={item.href}
+                    class="rounded-xl px-4 py-3 text-sm font-medium text-white/80 transition hover:bg-white/5"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+
+                <a
+                  href={cta.href}
+                  class="mt-2 rounded-xl bg-lime-400 px-4 py-3 text-center text-sm font-semibold text-zinc-950 shadow-lg shadow-lime-400/20 transition hover:brightness-110"
+                >
+                  {cta.label}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {/* Toggle script */}
+  <script is:inline>
+    const btn = document.getElementById("navToggle");
+    const menu = document.getElementById("mobileNav");
+
+    btn?.addEventListener("click", () => {
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!isOpen));
+      menu.classList.toggle("hidden");
+    });
+
+    // Close on link click (mobile)
+    menu?.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        menu.classList.add("hidden");
+        btn.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
+</header>

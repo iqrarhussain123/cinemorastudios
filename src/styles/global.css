@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* optional: smooth fonts */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Cinemora lime video overlay */
+.hero-video-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(183, 255, 42, 0.12),
+    rgba(0, 0, 0, 0) 55%,
+    rgba(183, 255, 42, 0.08)
+  );
+}
+
+.hero-video-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(183, 255, 42, 0.12),
+    rgba(0, 0, 0, 0) 55%,
+    rgba(183, 255, 42, 0.08)
+  );
+}
+
+
+
+.calendly-inline-widget {
+  overflow: hidden !important;
+}
+
+.calendly-horizontal {
+  position: relative;
+  width: 100%;
+  height: 720px;
+  overflow: hidden !important;
+}
+
+.calendly-horizontal iframe {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+  display: block !important;
+  overflow: hidden !important;
+}
+
+/* prevent any horizontal page slider */
+html,
+body {
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: "Roba";
+  src: url("/fonts/Roba-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-brand {
+  font-family: "Roba", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  letter-spacing: 0.1em;
+}
+
+/* Background depth system */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  /* Base: near-black, not pure black */
+  background: #070A0C;
+  overflow: hidden;
+}
+
+

@@ -1,0 +1,93 @@
+
+> cd-cinemora-site@0.0.1 dev
+> astro dev --port 4321
+
+[2m16:53:12[22m [34m[types][39m Generated [2m1ms[22m
+[2m16:53:12[22m [34m[content][39m Syncing content
+[2m16:53:12[22m [34m[content][39m Synced content
+
+[42m[1m astro [22m[49m [32mv5.16.6[39m [2mready in[22m 363 [2mms[22m
+
+[2m┃[22m Local    [36mhttp://localhost:4321/[39m
+[2m┃[22m Network  [2muse --host to expose[22m
+
+[2m16:53:12[22m [32mwatching for file changes...[39m
+[2m16:53:41[22m [34m[200][39m / [2m76ms[22m
+[2m16:56:15[22m [34m[watch][39m src/components/Hero.astro
+[2m16:56:15[22m [34m[watch][39m src/components/Hero.astro
+[2m16:56:16[22m [34m[200][39m / [2m93ms[22m
+[2m16:57:09[22m [34m[200][39m / [2m10ms[22m
+[2m16:58:45[22m [34m[200][39m / [2m8ms[22m
+[2m16:59:08[22m [34m[watch][39m src/components/Hero.astro
+[2m16:59:08[22m [34m[watch][39m src/components/Hero.astro
+[2m16:59:10[22m [34m[200][39m / [2m83ms[22m
+[2m17:17:30[22m [34m[watch][39m src/components/TrustedBy.astro
+[2m17:17:30[22m [34m[watch][39m src/components/TrustedBy.astro
+[2m17:17:31[22m [34m[200][39m / [2m46ms[22m
+[2m17:17:47[22m [34m[200][39m / [2m22ms[22m
+[2m17:19:42[22m [34m[watch][39m src/components/TrustedBy.astro
+[2m17:19:42[22m [34m[watch][39m src/components/TrustedBy.astro
+[2m17:19:42[22m [34m[200][39m / [2m47ms[22m
+[2m17:19:51[22m [34m[200][39m / [2m18ms[22m
+[2m17:20:19[22m [34m[watch][39m src/components/TrustedBy.astro
+[2m17:20:19[22m [34m[watch][39m src/components/TrustedBy.astro
+[2m17:20:20[22m [34m[200][39m / [2m73ms[22m
+[2m17:20:22[22m [34m[200][39m / [2m25ms[22m
+[2m17:20:39[22m [34m[watch][39m src/components/TrustedBy.astro
+[2m17:20:39[22m [34m[watch][39m src/components/TrustedBy.astro
+[2m17:20:40[22m [34m[200][39m / [2m34ms[22m
+[2m17:20:44[22m [34m[watch][39m src/components/TrustedBy.astro
+[2m17:20:44[22m [34m[watch][39m src/components/TrustedBy.astro
+[2m17:20:44[22m [34m[200][39m / [2m24ms[22m
+[2m17:20:48[22m [34m[200][39m / [2m10ms[22m
+[2m17:21:39[22m [34m[200][39m / [2m11ms[22m
+[2m17:23:03[22m [34m[watch][39m src/components/Hero.astro
+[2m17:23:03[22m [34m[watch][39m src/components/Hero.astro
+[2m17:23:03[22m [34m[200][39m / [2m35ms[22m
+[2m17:24:02[22m [34m[watch][39m src/components/Hero.astro
+[2m17:24:02[22m [34m[watch][39m src/components/Hero.astro
+[2m17:24:03[22m [34m[200][39m / [2m117ms[22m
+[2m17:24:07[22m [34m[200][39m / [2m13ms[22m
+[2m17:24:35[22m [34m[200][39m / [2m15ms[22m
+[2m17:24:48[22m [34m[watch][39m src/components/Hero.astro
+[2m17:24:48[22m [34m[watch][39m src/components/Hero.astro
+[2m17:24:48[22m [34m[200][39m / [2m47ms[22m
+[2m17:25:35[22m [34m[watch][39m src/components/Hero.astro
+[2m17:25:35[22m [34m[watch][39m src/components/Hero.astro
+[2m17:25:36[22m [34m[200][39m / [2m161ms[22m
+[2m17:25:42[22m [34m[200][39m / [2m20ms[22m
+[2m17:26:37[22m [34m[watch][39m src/components/Hero.astro
+[2m17:26:37[22m [34m[watch][39m src/components/Hero.astro
+[2m17:26:37[22m [34m[200][39m / [2m44ms[22m
+[2m17:26:41[22m [34m[200][39m / [2m15ms[22m
+[2m17:27:07[22m [34m[watch][39m src/components/Hero.astro
+[2m17:27:07[22m [34m[watch][39m src/components/Hero.astro
+[2m17:27:07[22m [34m[200][39m / [2m37ms[22m
+[2m17:27:11[22m [34m[200][39m / [2m19ms[22m
+[2m17:28:03[22m [34m[watch][39m src/components/Hero.astro
+[2m17:28:03[22m [34m[watch][39m src/components/Hero.astro
+[2m17:28:03[22m [34m[200][39m / [2m37ms[22m
+[2m17:29:15[22m [34m[watch][39m src/components/Navbar.astro
+[2m17:29:15[22m [34m[watch][39m src/components/Navbar.astro
+[2m17:29:15[22m [34m[200][39m / [2m34ms[22m
+[2m17:29:30[22m [34m[watch][39m src/components/Navbar.astro
+[2m17:29:30[22m [34m[watch][39m src/components/Navbar.astro
+[2m17:29:30[22m [34m[200][39m / [2m50ms[22m
+[2m17:29:41[22m [34m[watch][39m src/components/Navbar.astro
+[2m17:29:41[22m [34m[watch][39m src/components/Navbar.astro
+[2m17:29:41[22m [34m[200][39m / [2m41ms[22m
+[2m17:30:13[22m [34m[watch][39m src/components/Hero.astro
+[2m17:30:13[22m [34m[watch][39m src/components/Hero.astro
+[2m17:30:14[22m [34m[200][39m / [2m43ms[22m
+[2m17:31:15[22m [34m[watch][39m src/components/Hero.astro
+[2m17:31:15[22m [34m[watch][39m src/components/Hero.astro
+[2m17:31:15[22m [34m[200][39m / [2m41ms[22m
+[2m17:31:40[22m [34m[watch][39m src/components/Hero.astro
+[2m17:31:40[22m [34m[watch][39m src/components/Hero.astro
+[2m17:31:41[22m [34m[200][39m / [2m49ms[22m
+[2m17:32:29[22m [34m[watch][39m src/components/Hero.astro
+[2m17:32:29[22m [34m[watch][39m src/components/Hero.astro
+[2m17:32:30[22m [34m[200][39m / [2m115ms[22m
+[2m17:36:56[22m [34m[200][39m / [2m11ms[22m
+[2m17:38:09[22m [34m[200][39m / [2m3ms[22m
+[2m17:41:30[22m [34m[200][39m / [2m4ms[22m
