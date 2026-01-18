@@ -16,7 +16,7 @@ const logos = [
 ];
 ---
 
-<section class="relative w-full border-y border-white/10 bg-black/30">
+<section class="relative w-full bg-[#f1f1f2] text-zinc-900">
   <div class="mx-auto max-w-6xl px-4 py-6">
     <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
 
@@ -24,14 +24,14 @@ const logos = [
       <div class="flex flex-col gap-3">
         <div class="flex items-center gap-3">
           <span class="h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_18px_rgba(183,255,42,0.6)]"></span>
-          <p class="text-sm text-white/70">
-            Trusted by <span class="text-white font-semibold">50+ brands</span>
+          <p class="text-sm text-zinc-600">
+            Trusted by <span class="text-zinc-900 font-semibold">50+ brands</span>
           </p>
         </div>
 
         <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
           {logos.map((l) => (
-            <span class="text-sm text-white/55 hover:text-white/80 transition">
+            <span class="text-sm text-zinc-600 hover:text-zinc-900 transition">
               {l}
             </span>
           ))}
@@ -41,11 +41,11 @@ const logos = [
       <!-- Right: stats -->
       <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {stats.map((s) => (
-          <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
-            <p class="text-lg font-semibold text-white">
+          <div class="rounded-xl border border-lime-200/70 bg-lime-50 px-4 py-3 shadow-sm">
+            <p class="text-lg font-semibold text-zinc-900">
               <span class="text-lime-400">{s.value}</span>
             </p>
-            <p class="text-xs text-white/60">{s.label}</p>
+            <p class="text-xs text-zinc-600">{s.label}</p>
           </div>
         ))}
       </div>
