@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 const stats = [
   { value: "50+ ", label: "Brands trusted" },
@@ -90,3 +91,60 @@ const logos = [
     }
   }
 </style>
+=======
+---
+const stats = [
+  { value: "50+ ", label: "Brands trusted" },
+  { value: "3.5M+", label: "Views generated" },
+  { value: "20K+", label: "Leads captured" },
+  { value: "30%+", label: "Avg engagement" },
+];
+
+const logos = [
+  "Upwork",
+  "Spoken",
+  "Digitas",
+  "CH",
+  "Hobnob",
+  "Fiver Real Estate",
+];
+---
+
+<section class="relative w-full bg-[#f1f1f2] text-zinc-900">
+  <div class="mx-auto max-w-6xl px-4 py-6">
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+
+      <!-- Left: Trusted by + logos -->
+      <div class="flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <span class="h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_18px_rgba(183,255,42,0.6)]"></span>
+          <p class="text-sm text-zinc-600">
+            Trusted by <span class="text-zinc-900 font-semibold">50+ brands</span>
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+          {logos.map((l) => (
+            <span class="text-sm text-zinc-600 hover:text-zinc-900 transition">
+              {l}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: stats -->
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {stats.map((s) => (
+          <div class="rounded-xl border border-lime-200/70 bg-lime-50 px-4 py-3 shadow-sm">
+            <p class="text-lg font-semibold text-zinc-900">
+              <span class="text-lime-400">{s.value}</span>
+            </p>
+            <p class="text-xs text-zinc-600">{s.label}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+>>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2

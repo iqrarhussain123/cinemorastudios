@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 const steps = [
   {
@@ -69,3 +70,76 @@ const steps = [
     </div>
   </div>
 </section>
+=======
+---
+const steps = [
+  {
+    title: "Deep Audit",
+    desc: "We audit your positioning, offers, and current content gaps.",
+    icon: "🔍",
+  },
+  {
+    title: "Strategy Mapping",
+    desc: "Clear inbound system mapped to your exact revenue goal.",
+    icon: "🧠",
+  },
+  {
+    title: "Content Engine",
+    desc: "High-retention LinkedIn & video frameworks built to convert.",
+    icon: "⚙️",
+  },
+  {
+    title: "Distribution",
+    desc: "Strategic posting & amplification for maximum reach.",
+    icon: "📣",
+  },
+  {
+    title: "Conversion Layer",
+    desc: "CTAs, funnels & proof wired into every asset.",
+    icon: "💰",
+  },
+  {
+    title: "Scale & Optimize",
+    desc: "We double down on what performs and kill what doesn’t.",
+    icon: "📈",
+  },
+];
+---
+
+<section class="relative bg-[#f4f1ea] py-24 text-zinc-900">
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-white/50 via-transparent to-transparent"></div>
+
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mb-14 text-center">
+      <p class="mb-3 text-sm uppercase tracking-widest text-lime-700">
+        Our Process
+      </p>
+      <h2 class="text-4xl font-bold text-zinc-900">
+        A system — not random posting
+      </h2>
+      <p class="mt-4 text-zinc-600 max-w-2xl mx-auto">
+        Everything we do is designed to turn attention into predictable clients.
+      </p>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {steps.map((step, i) => (
+        <div class="group relative rounded-2xl border border-black/10 bg-white p-6 transition hover:border-lime-400/40 hover:bg-white/90">
+          <div class="mb-4 text-3xl">{step.icon}</div>
+
+          <h3 class="mb-2 text-lg font-semibold text-zinc-900">
+            {i + 1}. {step.title}
+          </h3>
+
+          <p class="text-sm text-zinc-600">
+            {step.desc}
+          </p>
+
+          <div class="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition group-hover:opacity-100
+            bg-gradient-to-tr from-lime-400/10 via-transparent to-transparent"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+>>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2

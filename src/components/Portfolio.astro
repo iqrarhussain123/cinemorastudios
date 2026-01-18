@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 /**
  * Portfolio (Proof) section
@@ -143,3 +144,150 @@ const pills = ["All", "LinkedIn", "Editing", "Design", "Ads", "Case Studies"];
     </div>
   </div>
 </section>
+=======
+---
+/**
+ * Portfolio (Proof) section
+ * - Uses remote image URLs (no local /public needed)
+ * - Cards are clickable (href can be replaced with case study links later)
+ */
+
+const items = [
+  {
+    title: "LinkedIn Content System",
+    desc: "Inbound authority + leads with a repeatable content engine.",
+    tag: "Strategy + Content",
+    href: "#",
+    thumb:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=70",
+  },
+  {
+    title: "Short-form Reels Editing",
+    desc: "Retention-first edits designed to hold attention and convert.",
+    tag: "Editing",
+    href: "#",
+    thumb:
+      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=70",
+  },
+  {
+    title: "Founder Personal Branding",
+    desc: "Positioning + proof-led posts that build trust fast.",
+    tag: "Personal Brand",
+    href: "#",
+    thumb:
+      "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1400&q=70",
+  },
+  {
+    title: "Ad Creative Library",
+    desc: "High-performing creative variations built for scale.",
+    tag: "Ads",
+    href: "#",
+    thumb:
+      "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1400&q=70",
+  },
+  {
+    title: "Carousel Design System",
+    desc: "Clean, premium, scroll-stopping design templates.",
+    tag: "Design",
+    href: "#",
+    thumb:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=70",
+  },
+  {
+    title: "Case Study Storytelling",
+    desc: "Proof-focused narratives that sell without sounding salesy.",
+    tag: "Case Study",
+    href: "#",
+    thumb:
+      "https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&w=1400&q=70",
+  },
+];
+
+// Optional: small filter pills (UI only, no JS needed)
+const pills = ["All", "LinkedIn", "Editing", "Design", "Ads", "Case Studies"];
+---
+
+<section id="proof" class="relative py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <!-- Heading -->
+    <div class="mb-10 text-center">
+      <p class="mb-3 text-sm uppercase tracking-widest text-lime-400">Portfolio</p>
+      <h2 class="text-4xl font-bold text-white">Proof that we can deliver</h2>
+      <p class="mt-4 mx-auto max-w-2xl text-white/60">
+        Here’s a snapshot of the kind of content, systems, and creative we build.
+        Swap these placeholders with your real work anytime.
+      </p>
+
+      <!-- Pills (optional) -->
+      <div class="mt-6 flex flex-wrap justify-center gap-2">
+        {pills.map((p) => (
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+            {p}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((it) => (
+        <a
+          href={it.href}
+          class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:border-lime-400/40 hover:bg-white/10"
+        >
+          <!-- Thumbnail -->
+          <div class="relative aspect-video overflow-hidden">
+            <img
+              src={it.thumb}
+              alt={it.title}
+              class="h-full w-full object-cover opacity-90 transition group-hover:opacity-100 group-hover:scale-[1.02]"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
+
+            <!-- Dark gradient for readability -->
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+
+            <!-- Play icon (visual cue; you can remove if you want) -->
+            <div class="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-black/60 border border-white/15 backdrop-blur">
+              <div class="ml-0.5 h-0 w-0 border-y-[7px] border-y-transparent border-l-[10px] border-l-lime-400"></div>
+            </div>
+
+            <!-- Tag -->
+            <div class="absolute right-4 top-4 rounded-full bg-black/60 border border-white/15 px-3 py-1 text-xs text-white/80 backdrop-blur">
+              {it.tag}
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="p-5">
+            <h3 class="text-lg font-semibold text-white">{it.title}</h3>
+            <p class="mt-2 text-sm text-white/60">{it.desc}</p>
+
+            <div class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-lime-400">
+              <span>View</span>
+              <span class="translate-x-0 transition group-hover:translate-x-1">→</span>
+            </div>
+          </div>
+
+          <!-- Subtle lime glow on hover -->
+          <div
+            class="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100"
+            style="background: linear-gradient(135deg, rgba(183,255,42,0.10), rgba(0,0,0,0) 55%, rgba(183,255,42,0.06));"
+          ></div>
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-10 flex justify-center">
+      <a
+        href="#book"
+        class="rounded-xl bg-lime-400 px-6 py-3 font-semibold text-black transition hover:opacity-90"
+      >
+        View Full Proof
+      </a>
+    </div>
+  </div>
+</section>
+>>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2

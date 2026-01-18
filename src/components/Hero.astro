@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 const primaryCta = { label: "Book a Strategy Call", href: "#book" };
 const secondaryCta = { label: "See Proof", href: "#proof" };
@@ -9,6 +10,19 @@ const videoSrc = "/videos/showreel.mp4";
 const posterSrc = "/images/hero-video-thumb.jpg";
 ---
 
+=======
+---
+const primaryCta = { label: "Book a Strategy Call", href: "#book" };
+const secondaryCta = { label: "See Proof", href: "#proof" };
+
+// Put your video here: /public/videos/showreel.mp4
+const videoSrc = "/videos/showreel.mp4";
+
+// Put your thumbnail here: /public/images/hero-video-thumb.jpg (1920x1080)
+const posterSrc = "/images/hero-video-thumb.jpg";
+---
+
+>>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2
 <section class="relative overflow-hidden bg-[#f4f1ea]">
   <div class="relative">
     <img
@@ -41,7 +55,11 @@ const posterSrc = "/images/hero-video-thumb.jpg";
         Cinemora helps founders and brands build authority on LinkedIn with a repeatable content system,
         conversion-focused creatives, and proof-led strategy.
       </p>
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2
       <div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
         <a
           href={primaryCta.href}
@@ -49,7 +67,11 @@ const posterSrc = "/images/hero-video-thumb.jpg";
         >
           {primaryCta.label}
         </a>
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2
         <a
           href={secondaryCta.href}
           class="inline-flex items-center justify-center rounded-full border border-zinc-700 bg-zinc-950/40 px-7 py-3.5 text-base font-semibold text-zinc-100 transition hover:border-lime-400/60 hover:bg-zinc-900/40"
@@ -64,7 +86,11 @@ const posterSrc = "/images/hero-video-thumb.jpg";
         <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-1.5">Proof before promises</span>
       </div>
     </div>
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2
         <!-- Big video under text (Thumbnail + Hover-to-play) -->
         <div class="mt-16 md:mt-20">
           <div class="mx-auto max-w-7xl rounded-3xl border border-zinc-800 bg-zinc-900/30 p-4 shadow-[0_30px_120px_-40px_rgba(0,0,0,0.95)]">
@@ -91,6 +117,7 @@ const posterSrc = "/images/hero-video-thumb.jpg";
       </div>
     </div>
   </div>
+<<<<<<< HEAD
 
   <!-- Hover logic (Astro-safe) -->
   <script is:inline>
@@ -115,3 +142,29 @@ const posterSrc = "/images/hero-video-thumb.jpg";
     }
   </script>
 </section>
+=======
+
+  <!-- Hover logic (Astro-safe) -->
+  <script is:inline>
+    const wrap = document.getElementById("heroVideoWrap");
+    const video = document.getElementById("heroVideo");
+
+    if (wrap && video) {
+      wrap.addEventListener("mouseenter", async () => {
+        try {
+          video.currentTime = 0;
+          await video.play();
+        } catch (e) {
+          // autoplay policies can block play sometimes; user can still click play if needed
+        }
+      });
+
+      wrap.addEventListener("mouseleave", () => {
+        video.pause();
+        video.currentTime = 0;
+        video.load(); // forces poster thumbnail to show again
+      });
+    }
+  </script>
+</section>
+>>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2
