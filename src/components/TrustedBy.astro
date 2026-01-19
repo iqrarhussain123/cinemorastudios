@@ -17,11 +17,11 @@ const logos = [
 
       <!-- Left: Trusted by + logos -->
       <div class="flex flex-col gap-3 text-center md:w-full md:items-center">
-        <div class="flex items-center justify-center gap-3">
-          <span class="h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_18px_rgba(183,255,42,0.6)]"></span>
-          <p class="text-base text-zinc-600 md:text-lg">
+        <div class="flex items-center justify-center">
+          <span class="trustedby-pill inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/25 px-3 py-1 text-base text-zinc-700 backdrop-blur-xl md:text-lg">
+            <span class="trustedby-dot h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_18px_rgba(183,255,42,0.6)]"></span>
             Trusted by <span class="text-zinc-900 font-semibold">50+ brands</span>
-          </p>
+          </span>
         </div>
       </div>
 
@@ -47,12 +47,11 @@ const logos = [
       </div>
     </div>
 
-
     <!-- Stats -->
     <div class="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-6">
-      {stats.map((s) => (
-        <div class="rounded-xl px-5 py-4 text-center">
-          <p class="text-xl font-bold text-zinc-900 md:text-2xl">
+      {stats.map((s, i) => (
+        <div class="stat-item rounded-xl px-5 py-4 text-center" data-index={i}>
+          <p class="text-2xl font-bold text-zinc-900 md:text-3xl">
             <span
               class="text-lime-400 stat-count"
               data-target={s.value}
@@ -62,110 +61,129 @@ const logos = [
               0
             </span>
           </p>
-          <p class="text-sm text-zinc-600">{s.label}</p>
+          <p class="text-base text-zinc-600">{s.label}</p>
         </div>
       ))}
     </div>
 
-      <div class="relative mt-16 text-center">
-          <p class="text-sm text-zinc-500">Is this you?</p>
-          <h3 class="mt-4 text-3xl font-semibold text-zinc-900 md:text-5xl md:leading-tight">
-            Content feels
-            <span class="text-lime-600"> too hard</span>?
-          </h3>
+    <div class="relative mt-24 text-center">
+      <p class="text-sm text-zinc-500">Is this you?</p>
+      <h3 class="mt-4 text-3xl font-semibold text-zinc-900 md:text-5xl md:leading-tight">
+        Content feels
+        <span
+          class="trustedby-headline text-lime-600"
+          data-text="too hard?"
+          aria-label="too hard?"
+        ></span>
+      </h3>
 
-    <div class="pointer-events-none absolute right-8 top-16 hidden flex-col items-center gap-1 text-sm text-zinc-500 md:flex">
-      <span class="font-handwriting">sounds familiar?</span>
-      <img
-        src="/images/trusted%20by%20icons/arrow.png"
-        alt=""
-        class="h-16 w-28 object-contain scale-x-[-1] scale-y-[-1]"
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
+      <div class="pointer-events-none absolute right-10 top-20 hidden flex-col items-center gap-1 text-sm text-zinc-500 md:flex">
+        <span class="font-handwriting">sounds familiar?</span>
+        <img
+          src="/images/trusted%20by%20icons/arrow.png"
+          alt=""
+          class="h-16 w-28 object-contain scale-x-[-1] scale-y-[-1]"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
 
+      <div class="trustedby-cards mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12" data-trustedby-cards>
+        <svg data-connector-svg class="trustedby-connector" aria-hidden="true">
+          <path data-connector-track></path>
+          <path data-connector-progress></path>
+        </svg>
 
-
-      <div class="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-2xl bg-white/60 px-6 py-8 text-center shadow-sm">
-          <img
-            src="/images/trusted%20by%20icons/growth.png"
-            alt="Growth chart"
-            class="mx-auto mb-4 h-12 w-12 object-contain"
-            loading="lazy"
-            decoding="async"
-          />
-          <p class="text-sm text-zinc-700">
+        <div class="relative z-10 flex min-h-[260px] flex-col items-center justify-center gap-4 rounded-2xl bg-white px-8 py-10 text-center shadow-sm" data-card>
+          <div class="flex h-16 w-16 items-center justify-center rounded-full border border-lime-200 bg-white/70">
+            <img
+              src="/images/trusted%20by%20icons/growth.png"
+              alt="Growth chart"
+              class="h-10 w-10 object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <p class="trustedby-card-text text-base text-center text-zinc-700">
             Are you posting content regularly, but it’s <strong>not</strong> turning into real inquiries
             or sales?
           </p>
         </div>
 
-        <div class="rounded-2xl bg-white/60 px-6 py-8 text-center shadow-sm">
-          <img
-            src="/images/trusted%20by%20icons/location.png"
-            alt="Question marker"
-            class="mx-auto mb-4 h-12 w-12 object-contain"
-            loading="lazy"
-            decoding="async"
-          />
-          <p class="text-sm text-zinc-700">
+        <div class="relative z-10 flex min-h-[260px] flex-col items-center justify-center gap-4 rounded-2xl bg-white px-8 py-10 text-center shadow-sm" data-card>
+          <div class="flex h-16 w-16 items-center justify-center rounded-full border border-lime-200 bg-white/70">
+            <img
+              src="/images/trusted%20by%20icons/location.png"
+              alt="Question marker"
+              class="h-10 w-10 -translate-x-1 object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <p class="trustedby-card-text text-base text-center text-zinc-700">
             Do you feel unsure <strong>what to post</strong> or <strong>why</strong> it should work in the
             first place?
           </p>
         </div>
 
-        <div class="rounded-2xl bg-white/60 px-6 py-8 text-center shadow-sm">
-          <img
-            src="/images/trusted%20by%20icons/star.png"
-            alt="Star"
-            class="mx-auto mb-4 h-12 w-12 object-contain"
-            loading="lazy"
-            decoding="async"
-          />
-          <p class="text-sm text-zinc-700">
+        <div class="relative z-10 flex min-h-[260px] flex-col items-center justify-center gap-4 rounded-2xl bg-white px-8 py-10 text-center shadow-sm" data-card>
+          <div class="flex h-16 w-16 items-center justify-center rounded-full border border-lime-200 bg-white/70">
+            <img
+              src="/images/trusted%20by%20icons/star.png"
+              alt="Star"
+              class="h-10 w-10 object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <p class="trustedby-card-text text-base text-center text-zinc-700">
             Does your content feel “okay”, but <strong>nowhere near premium</strong> or industry-leading?
           </p>
         </div>
 
-        <div class="rounded-2xl bg-white/60 px-6 py-8 text-center shadow-sm">
-          <img
-            src="/images/trusted%20by%20icons/clock.png"
-            alt="Clock"
-            class="mx-auto mb-4 h-12 w-12 object-contain"
-            loading="lazy"
-            decoding="async"
-          />
-          <p class="text-sm text-zinc-700">
+        <div class="relative z-10 flex min-h-[260px] flex-col items-center justify-center gap-4 rounded-2xl bg-white px-8 py-10 text-center shadow-sm mb-8" data-card>
+          <div class="flex h-16 w-16 items-center justify-center rounded-full border border-lime-200 bg-white/70">
+            <img
+              src="/images/trusted%20by%20icons/clock.png"
+              alt="Clock"
+              class="h-10 w-10 object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <p class="trustedby-card-text text-base text-center text-zinc-700">
             Are you tired of starting strong, <strong>then disappearing</strong> because content takes too
             much time?
           </p>
         </div>
 
-        <div class="rounded-2xl bg-white/60 px-6 py-8 text-center shadow-sm">
-          <img
-            src="/images/trusted%20by%20icons/warning.png"
-            alt="Warning"
-            class="mx-auto mb-4 h-12 w-12 object-contain"
-            loading="lazy"
-            decoding="async"
-          />
-          <p class="text-sm text-zinc-700">
+        <div class="relative z-10 flex min-h-[260px] flex-col items-center justify-center gap-4 rounded-2xl bg-white px-8 py-10 text-center shadow-sm mb-8" data-card>
+          <div class="flex h-16 w-16 items-center justify-center rounded-full border border-lime-200 bg-white/70">
+            <img
+              src="/images/trusted%20by%20icons/warning.png"
+              alt="Warning"
+              class="h-10 w-10 object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <p class="trustedby-card-text text-base text-center text-zinc-700">
             Do growth tips feel <strong>contradictory</strong>, leaving you stuck between <strong>trends</strong>
             and guesswork?
           </p>
         </div>
 
-        <div class="rounded-2xl bg-white/60 px-6 py-8 text-center shadow-sm">
-          <img
-            src="/images/trusted%20by%20icons/chat.png"
-            alt="Chat"
-            class="mx-auto mb-4 h-12 w-12 object-contain"
-            loading="lazy"
-            decoding="async"
-          />
-          <p class="text-sm text-zinc-700">
+        <div class="relative z-10 flex min-h-[260px] flex-col items-center justify-center gap-4 rounded-2xl bg-white px-8 py-10 text-center shadow-sm mb-8" data-card>
+          <div class="flex h-16 w-16 items-center justify-center rounded-full border border-lime-200 bg-white/70">
+            <img
+              src="/images/trusted%20by%20icons/chat.png"
+              alt="Chat"
+              class="h-10 w-10 object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <p class="trustedby-card-text text-base text-center text-zinc-700">
             Are people watching your content... but <strong>not taking action</strong> or reaching out?
           </p>
         </div>
@@ -182,6 +200,92 @@ const logos = [
 </style>
 
 <style>
+  :global(.trustedby-headline) {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  :global(.trustedby-headline .word) {
+    display: inline-block;
+    transform: translateY(18px);
+    opacity: 0;
+    filter: blur(6px);
+    transition: transform 2000ms ease, opacity 2000ms ease, filter 2000ms ease;
+  }
+
+  :global(.trustedby-headline.is-visible .word) {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.trustedby-headline .word),
+    :global(.trustedby-headline.is-visible .word) {
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+  }
+</style>
+
+<style>
+  .stat-item {
+    transform: translateY(16px);
+    opacity: 0;
+    filter: blur(4px);
+    transition: transform 600ms ease, opacity 600ms ease, filter 600ms ease;
+  }
+
+  .stat-item.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stat-item,
+    .stat-item.is-visible {
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+  }
+</style>
+
+<style>
+  .trustedby-pill {
+    animation: breathe 4s ease-in-out infinite;
+    transform-origin: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .trustedby-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.25;
+      transform: scale(0.7);
+    }
+  }
+
+  @keyframes breathe {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+  }
+
   .logo-marquee {
     animation: marquee 24s linear infinite;
   }
@@ -201,8 +305,62 @@ const logos = [
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .trustedby-pill {
+      animation: none;
+    }
+
+    .trustedby-dot {
+      animation: none;
+    }
+
     .logo-marquee {
       animation: none;
+    }
+  }
+</style>
+
+<style>
+  .trustedby-cards {
+    position: relative;
+  }
+
+  .trustedby-card-text {
+    line-height: 1.35;
+    min-height: 2.7em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .trustedby-connector {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .trustedby-connector [data-connector-track],
+  .trustedby-connector [data-connector-progress] {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+  }
+
+  .trustedby-connector [data-connector-track] {
+    stroke: rgba(120, 120, 120, 0.18);
+  }
+
+  .trustedby-connector [data-connector-progress] {
+    stroke: #84cc16;
+  }
+
+  @media (max-width: 1023px) {
+    .trustedby-connector {
+      display: none;
     }
   }
 </style>

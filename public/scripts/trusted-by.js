@@ -19,23 +19,184 @@ const animate = (el) => {
 };
 
 const runOnce = () => {
-  const statEls = document.querySelectorAll(".stat-count");
-  statEls.forEach((el) => animate(el));
+  const items = document.querySelectorAll(".stat-item");
+  items.forEach((item) => {
+    const index = Number(item.dataset.index || 0);
+    const count = item.querySelector(".stat-count");
+    if (!count || count.dataset.animated === "true") return;
+
+    const delayMs = index * 200;
+    setTimeout(() => {
+      item.classList.add("is-visible");
+      animate(count);
+      count.dataset.animated = "true";
+    }, delayMs);
+  });
+};
+
+const animateHeadline = () => {
+  const headline = document.querySelector(".trustedby-headline");
+  if (!headline) return;
+  if (!headline.dataset.text) return;
+
+  if (!headline.dataset.split) {
+    const text = headline.dataset.text;
+    headline.textContent = "";
+    const fragment = document.createDocumentFragment();
+
+    const perWordDelayMs = 600;
+    const words = text.split(" ");
+    words.forEach((word, index) => {
+      const span = document.createElement("span");
+      span.className = "word";
+      span.textContent = word;
+      span.style.transitionDelay = `${index * perWordDelayMs}ms`;
+      fragment.appendChild(span);
+      if (index < words.length - 1) {
+        fragment.appendChild(document.createTextNode(" "));
+      }
+    });
+
+    headline.appendChild(fragment);
+    headline.dataset.split = "true";
+  }
+
+  headline.classList.remove("is-visible");
+  void headline.offsetHeight;
+  requestAnimationFrame(() => headline.classList.add("is-visible"));
+};
+
+const setupConnector = () => {
+  const section = document.querySelector("[data-trustedby-section]");
+  const grid = document.querySelector("[data-trustedby-cards]");
+  const svg = document.querySelector("[data-connector-svg]");
+  const track = document.querySelector("[data-connector-track]");
+  const progress = document.querySelector("[data-connector-progress]");
+  if (!section || !grid || !svg || !track || !progress) return;
+
+  const media = window.matchMedia("(min-width: 1024px)");
+  let pathLength = 0;
+  let ticking = false;
+  let active = false;
+
+  const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+
+  const getCardPoints = () => {
+    const cards = [...grid.querySelectorAll("[data-card]")];
+    const gridRect = grid.getBoundingClientRect();
+    const points = cards.map((card) => {
+      const rect = card.getBoundingClientRect();
+      return {
+        x: rect.left - gridRect.left + rect.width / 2,
+        y: rect.top - gridRect.top + rect.height / 2,
+        top: rect.top,
+        left: rect.left,
+      };
+    });
+
+    points.sort((a, b) => a.top - b.top);
+    const topRow = points.slice(0, 3).sort((a, b) => a.left - b.left);
+    const bottomRow = points.slice(3, 6).sort((a, b) => a.left - b.left).reverse();
+    return [...topRow, ...bottomRow];
+  };
+
+  const buildPath = () => {
+    if (!media.matches) {
+      svg.style.display = "none";
+      return;
+    }
+
+    svg.style.display = "block";
+    const points = getCardPoints();
+    if (points.length < 2) return;
+
+    let d = `M ${points[0].x} ${points[0].y}`;
+    for (let i = 1; i < points.length; i += 1) {
+      d += ` L ${points[i].x} ${points[i].y}`;
+    }
+
+    track.setAttribute("d", d);
+    progress.setAttribute("d", d);
+    pathLength = progress.getTotalLength();
+    progress.style.strokeDasharray = `${pathLength}`;
+    progress.style.strokeDashoffset = `${pathLength}`;
+  };
+
+  const updateProgress = () => {
+    if (!active || !media.matches || pathLength === 0) return;
+    const sectionRect = section.getBoundingClientRect();
+    const gridRect = grid.getBoundingClientRect();
+    const viewportOffset = window.innerHeight * 0.2;
+    const viewportPoint = window.scrollY + viewportOffset;
+    const start = window.scrollY + gridRect.top - viewportOffset;
+    const end = window.scrollY + sectionRect.bottom - viewportOffset;
+    const total = Math.max(end - start, 1);
+    const rawProgress = clamp((viewportPoint - start) / total, 0, 1);
+    progress.style.strokeDashoffset = `${pathLength * (1 - rawProgress)}`;
+  };
+
+  const onScroll = () => {
+    if (!active || ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      updateProgress();
+      ticking = false;
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        active = entry.isIntersecting;
+        if (active) {
+          updateProgress();
+        } else if (pathLength) {
+          progress.style.strokeDashoffset = `${pathLength}`;
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  const onResize = () => {
+    buildPath();
+    updateProgress();
+  };
+
+  buildPath();
+  observer.observe(section);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onResize);
+  window.addEventListener("load", onResize);
+  media.addEventListener("change", onResize);
 };
 
 const setup = () => {
   const section = document.querySelector("[data-trustedby-section]");
-  if (!section || !("IntersectionObserver" in window)) {
-    runOnce();
-    return;
-  }
+  if (!section || !("IntersectionObserver" in window)) return;
 
   const observer = new IntersectionObserver(
-    (entries, obs) => {
+    (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        runOnce();
-        obs.disconnect();
+        if (entry.isIntersecting) {
+          runOnce();
+          animateHeadline();
+          return;
+        }
+
+        const headline = document.querySelector(".trustedby-headline");
+        if (headline) {
+          headline.classList.remove("is-visible");
+        }
+
+        const items = document.querySelectorAll(".stat-item");
+        items.forEach((item) => {
+          item.classList.remove("is-visible");
+          const count = item.querySelector(".stat-count");
+          if (!count) return;
+          count.dataset.animated = "false";
+          count.textContent = "0";
+        });
       });
     },
     { threshold: 0.3 }
@@ -46,6 +207,8 @@ const setup = () => {
 
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", setup);
+  document.addEventListener("DOMContentLoaded", setupConnector);
 } else {
   setup();
+  setupConnector();
 }
