@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 const calendlyUrl =
   "https://calendly.com/iqrar-cinemorastudios/30min?hide_gdpr_banner=1&background_color=0b0b0c&text_color=ffffff&primary_color=a3e635";
@@ -18,16 +17,16 @@ const calendlyUrl =
       </p>
 
       <h2 class="text-3xl font-extrabold tracking-tight text-white md:text-5xl">
-        Book a call — leave with a clear plan.
+        Book a call - leave with a clear plan.
       </h2>
 
       <p class="mx-auto mt-4 max-w-2xl text-white/60">
-        In 30 minutes, we’ll identify what’s blocking conversions and map a
+        In 30 minutes, we'll identify what's blocking conversions and map a
         simple path to inbound clients.
       </p>
     </div>
 
-    <!-- ✅ Desktop/Large screens: Calendly embed -->
+    <!-- ƒo. Desktop/Large screens: Calendly embed -->
     <div class="mx-auto max-w-6xl hidden lg:block">
       <div class="relative overflow-hidden rounded-3xl bg-zinc-900/20 p-2 shadow-[0_30px_120px_-55px_rgba(0,0,0,0.9)]">
         <div class="relative overflow-hidden rounded-2xl bg-black">
@@ -42,7 +41,7 @@ const calendlyUrl =
       </div>
     </div>
 
-    <!-- ✅ Tablet/Phone/Small laptops: Button instead of embed -->
+    <!-- ƒo. Tablet/Phone/Small laptops: Button instead of embed -->
     <div class="mx-auto max-w-3xl lg:hidden text-center">
       <div class="rounded-3xl bg-zinc-900/20 p-6 shadow-[0_30px_120px_-55px_rgba(0,0,0,0.9)]">
         <p class="text-white/70">
@@ -59,14 +58,14 @@ const calendlyUrl =
         </a>
 
         <p class="mt-4 text-sm text-white/50">
-          No contracts • No pressure • 30 minutes
+          No contracts - No pressure - 30 minutes
         </p>
       </div>
     </div>
 
     <!-- Footer note (desktop too) -->
     <p class="mt-6 text-center text-sm text-white/50 hidden lg:block">
-      No contracts • No pressure • 30 minutes
+      No contracts - No pressure - 30 minutes
     </p>
   </div>
 
@@ -98,104 +97,3 @@ const calendlyUrl =
     })();
   </script>
 </section>
-=======
----
-const calendlyUrl =
-  "https://calendly.com/iqrar-cinemorastudios/30min?hide_gdpr_banner=1&background_color=0b0b0c&text_color=ffffff&primary_color=a3e635";
----
-
-<section id="book" class="relative py-24 bg-zinc-950">
-  <!-- background glow -->
-  <div class="pointer-events-none absolute inset-0">
-    <div class="absolute left-1/2 top-[-120px] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-lime-400/10 blur-3xl"></div>
-  </div>
-
-  <div class="relative mx-auto max-w-6xl px-4">
-    <!-- Copy -->
-    <div class="mx-auto mb-10 max-w-3xl text-center">
-      <p class="mb-3 text-xs uppercase tracking-[0.22em] text-lime-400">
-        Free Strategy Call
-      </p>
-
-      <h2 class="text-3xl font-extrabold tracking-tight text-white md:text-5xl">
-        Book a call — leave with a clear plan.
-      </h2>
-
-      <p class="mx-auto mt-4 max-w-2xl text-white/60">
-        In 30 minutes, we’ll identify what’s blocking conversions and map a
-        simple path to inbound clients.
-      </p>
-    </div>
-
-    <!-- ✅ Desktop/Large screens: Calendly embed -->
-    <div class="mx-auto max-w-6xl hidden lg:block">
-      <div class="relative overflow-hidden rounded-3xl bg-zinc-900/20 p-2 shadow-[0_30px_120px_-55px_rgba(0,0,0,0.9)]">
-        <div class="relative overflow-hidden rounded-2xl bg-black">
-          <div
-            class="calendly-inline-widget calendly-horizontal"
-            data-url={calendlyUrl}
-          ></div>
-
-          <!-- lime overlay -->
-          <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-lime-400/10 via-transparent to-transparent"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ✅ Tablet/Phone/Small laptops: Button instead of embed -->
-    <div class="mx-auto max-w-3xl lg:hidden text-center">
-      <div class="rounded-3xl bg-zinc-900/20 p-6 shadow-[0_30px_120px_-55px_rgba(0,0,0,0.9)]">
-        <p class="text-white/70">
-          For the best booking experience, open Calendly.
-        </p>
-
-        <a
-          href={calendlyUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-5 inline-flex items-center justify-center rounded-full bg-lime-400 px-8 py-4 text-base font-semibold text-black transition hover:brightness-110"
-        >
-          Book Your Free Call
-        </a>
-
-        <p class="mt-4 text-sm text-white/50">
-          No contracts • No pressure • 30 minutes
-        </p>
-      </div>
-    </div>
-
-    <!-- Footer note (desktop too) -->
-    <p class="mt-6 text-center text-sm text-white/50 hidden lg:block">
-      No contracts • No pressure • 30 minutes
-    </p>
-  </div>
-
-  <!-- Calendly script (only needed for desktop embed, safe to include always) -->
-  <script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-  <!-- Kill scrollbars (desktop embed only exists on lg+) -->
-  <script is:inline>
-    (() => {
-      const killScrollbars = () => {
-        const iframe = document.querySelector(".calendly-inline-widget iframe");
-        if (!iframe) return false;
-
-        iframe.setAttribute("scrolling", "no");
-        iframe.style.overflow = "hidden";
-        iframe.style.border = "0";
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.display = "block";
-
-        return true;
-      };
-
-      let tries = 0;
-      const t = setInterval(() => {
-        tries++;
-        if (killScrollbars() || tries > 80) clearInterval(t);
-      }, 150);
-    })();
-  </script>
-</section>
->>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2

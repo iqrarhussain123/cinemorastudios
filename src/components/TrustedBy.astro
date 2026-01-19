@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 ---
-const stats = [
-  { value: "50+ ", label: "Brands trusted" },
-  { value: "3.5M+", label: "Views generated" },
-  { value: "20K+", label: "Leads captured" },
-  { value: "30%+", label: "Avg engagement" },
-];
+import stats from "../data/trusted-by-stats.json";
 
 const logos = [
   { src: "/images/logos/client-accelerators.png", alt: "Client Accelerators" },
@@ -17,54 +11,175 @@ const logos = [
 ];
 ---
 
-<section class="relative w-full bg-[#f1f1f2] text-zinc-900">
+<section class="relative w-full bg-[#f1f1f2] text-zinc-900" data-trustedby-section>
   <div class="mx-auto max-w-6xl px-3 py-6 md:px-4">
     <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
 
       <!-- Left: Trusted by + logos -->
-      <div class="flex flex-col gap-3">
-        <div class="flex items-center gap-3">
+      <div class="flex flex-col gap-3 text-center md:w-full md:items-center">
+        <div class="flex items-center justify-center gap-3">
           <span class="h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_18px_rgba(183,255,42,0.6)]"></span>
-          <p class="text-sm text-zinc-600">
+          <p class="text-base text-zinc-600 md:text-lg">
             Trusted by <span class="text-zinc-900 font-semibold">50+ brands</span>
           </p>
         </div>
-
-      </div>
-
-      <!-- Right: stats -->
-      <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {stats.map((s) => (
-          <div class="rounded-xl border border-lime-200/70 bg-lime-50 px-4 py-3 shadow-sm">
-            <p class="text-lg font-semibold text-zinc-900">
-              <span class="text-lime-400">{s.value}</span>
-            </p>
-            <p class="text-xs text-zinc-600">{s.label}</p>
-          </div>
-        ))}
       </div>
 
     </div>
 
     <div class="mt-6 flex justify-center">
-      <div class="logo-mask w-full max-w-6xl overflow-hidden px-[20%]">
-        <div class="logo-marquee mx-auto flex w-max items-center justify-center gap-8 py-2">
-          {[...logos, ...logos].map((logo) => (
-            <div class="flex h-10 w-32 items-center justify-center md:h-12 md:w-36">
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                class="max-h-full max-w-full object-contain opacity-70 transition hover:opacity-100"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          ))}
+      <div class="w-full max-w-6xl px-[20%]">
+        <div class="logo-mask overflow-hidden">
+          <div class="logo-marquee mx-auto flex w-max items-center justify-center gap-10 py-3">
+            {[...logos, ...logos].map((logo) => (
+              <div class="flex h-14 w-44 items-center justify-center md:h-16 md:w-52">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  class="max-h-full max-w-full object-contain opacity-70 transition hover:opacity-100"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Stats -->
+    <div class="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-6">
+      {stats.map((s) => (
+        <div class="rounded-xl px-5 py-4 text-center">
+          <p class="text-xl font-bold text-zinc-900 md:text-2xl">
+            <span
+              class="text-lime-400 stat-count"
+              data-target={s.value}
+              data-decimals={s.decimals}
+              data-suffix={s.suffix}
+            >
+              0
+            </span>
+          </p>
+          <p class="text-sm text-zinc-600">{s.label}</p>
+        </div>
+      ))}
+    </div>
+
+      <div class="relative mt-16 text-center">
+          <p class="text-sm text-zinc-500">Is this you?</p>
+          <h3 class="mt-4 text-3xl font-semibold text-zinc-900 md:text-5xl md:leading-tight">
+            Content feels
+            <span class="text-lime-600"> too hard</span>?
+          </h3>
+
+    <div class="pointer-events-none absolute right-8 top-16 hidden flex-col items-center gap-1 text-sm text-zinc-500 md:flex">
+      <span class="font-handwriting">sounds familiar?</span>
+      <img
+        src="/images/trusted%20by%20icons/arrow.png"
+        alt=""
+        class="h-16 w-28 object-contain scale-x-[-1] scale-y-[-1]"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+
+
+      <div class="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-2xl bg-white/60 px-6 py-8 text-center shadow-sm">
+          <img
+            src="/images/trusted%20by%20icons/growth.png"
+            alt="Growth chart"
+            class="mx-auto mb-4 h-12 w-12 object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="text-sm text-zinc-700">
+            Are you posting content regularly, but it’s <strong>not</strong> turning into real inquiries
+            or sales?
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-white/60 px-6 py-8 text-center shadow-sm">
+          <img
+            src="/images/trusted%20by%20icons/location.png"
+            alt="Question marker"
+            class="mx-auto mb-4 h-12 w-12 object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="text-sm text-zinc-700">
+            Do you feel unsure <strong>what to post</strong> or <strong>why</strong> it should work in the
+            first place?
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-white/60 px-6 py-8 text-center shadow-sm">
+          <img
+            src="/images/trusted%20by%20icons/star.png"
+            alt="Star"
+            class="mx-auto mb-4 h-12 w-12 object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="text-sm text-zinc-700">
+            Does your content feel “okay”, but <strong>nowhere near premium</strong> or industry-leading?
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-white/60 px-6 py-8 text-center shadow-sm">
+          <img
+            src="/images/trusted%20by%20icons/clock.png"
+            alt="Clock"
+            class="mx-auto mb-4 h-12 w-12 object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="text-sm text-zinc-700">
+            Are you tired of starting strong, <strong>then disappearing</strong> because content takes too
+            much time?
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-white/60 px-6 py-8 text-center shadow-sm">
+          <img
+            src="/images/trusted%20by%20icons/warning.png"
+            alt="Warning"
+            class="mx-auto mb-4 h-12 w-12 object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="text-sm text-zinc-700">
+            Do growth tips feel <strong>contradictory</strong>, leaving you stuck between <strong>trends</strong>
+            and guesswork?
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-white/60 px-6 py-8 text-center shadow-sm">
+          <img
+            src="/images/trusted%20by%20icons/chat.png"
+            alt="Chat"
+            class="mx-auto mb-4 h-12 w-12 object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="text-sm text-zinc-700">
+            Are people watching your content... but <strong>not taking action</strong> or reaching out?
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .font-handwriting {
+    font-family: "Comic Sans MS", "Comic Sans", "Bradley Hand", cursive;
+    letter-spacing: 0.02em;
+  }
+</style>
 
 <style>
   .logo-marquee {
@@ -91,60 +206,5 @@ const logos = [
     }
   }
 </style>
-=======
----
-const stats = [
-  { value: "50+ ", label: "Brands trusted" },
-  { value: "3.5M+", label: "Views generated" },
-  { value: "20K+", label: "Leads captured" },
-  { value: "30%+", label: "Avg engagement" },
-];
 
-const logos = [
-  "Upwork",
-  "Spoken",
-  "Digitas",
-  "CH",
-  "Hobnob",
-  "Fiver Real Estate",
-];
----
-
-<section class="relative w-full bg-[#f1f1f2] text-zinc-900">
-  <div class="mx-auto max-w-6xl px-4 py-6">
-    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-
-      <!-- Left: Trusted by + logos -->
-      <div class="flex flex-col gap-3">
-        <div class="flex items-center gap-3">
-          <span class="h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_18px_rgba(183,255,42,0.6)]"></span>
-          <p class="text-sm text-zinc-600">
-            Trusted by <span class="text-zinc-900 font-semibold">50+ brands</span>
-          </p>
-        </div>
-
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
-          {logos.map((l) => (
-            <span class="text-sm text-zinc-600 hover:text-zinc-900 transition">
-              {l}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <!-- Right: stats -->
-      <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {stats.map((s) => (
-          <div class="rounded-xl border border-lime-200/70 bg-lime-50 px-4 py-3 shadow-sm">
-            <p class="text-lg font-semibold text-zinc-900">
-              <span class="text-lime-400">{s.value}</span>
-            </p>
-            <p class="text-xs text-zinc-600">{s.label}</p>
-          </div>
-        ))}
-      </div>
-
-    </div>
-  </div>
-</section>
->>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2
+<script type="module" src="/scripts/trusted-by.js"></script>
