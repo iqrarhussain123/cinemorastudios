@@ -63,6 +63,12 @@ body {
   letter-spacing: 0.1em;
 }
 
+.font-brand-tight {
+  font-family: "Roba", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  letter-spacing: 0.02em;
+}
+
 /* Background depth system */
 .site-bg {
   position: fixed;

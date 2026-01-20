@@ -130,11 +130,10 @@ const setupConnector = () => {
 
   const updateProgress = () => {
     if (!active || !media.matches || pathLength === 0) return;
-    const sectionRect = section.getBoundingClientRect();
     const gridRect = grid.getBoundingClientRect();
     const viewportCenter = window.scrollY + window.innerHeight / 2;
-    const start = window.scrollY + gridRect.top + gridRect.height / 2;
-    const end = window.scrollY + sectionRect.bottom;
+    const start = window.scrollY + gridRect.top + gridRect.height * 0.15;
+    const end = window.scrollY + gridRect.top + gridRect.height * 0.65;
     const total = Math.max(end - start, 1);
     const rawProgress = clamp((viewportCenter - start) / total, 0, 1);
     progress.style.strokeDashoffset = `${pathLength * (1 - rawProgress)}`;
