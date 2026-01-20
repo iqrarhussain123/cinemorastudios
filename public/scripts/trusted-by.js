@@ -84,6 +84,8 @@ const setupConnector = () => {
   let pathLength = 0;
   let ticking = false;
   let active = false;
+  let orderedCards = [];
+  let thresholds = [];
 
   const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
@@ -91,8 +93,10 @@ const setupConnector = () => {
     const cards = [...grid.querySelectorAll("[data-card]")];
     const gridRect = grid.getBoundingClientRect();
     const points = cards.map((card) => {
-      const rect = card.getBoundingClientRect();
+      const anchor = card.querySelector(".trustedby-icon-wrap") ?? card;
+      const rect = anchor.getBoundingClientRect();
       return {
+        card,
         x: rect.left - gridRect.left + rect.width / 2,
         y: rect.top - gridRect.top + rect.height / 2,
         top: rect.top,
@@ -109,17 +113,29 @@ const setupConnector = () => {
   const buildPath = () => {
     if (!media.matches) {
       svg.style.display = "none";
+      orderedCards.forEach((card) => card.classList.remove("is-active"));
       return;
     }
 
     svg.style.display = "block";
     const points = getCardPoints();
     if (points.length < 2) return;
+    orderedCards = points.map((point) => point.card);
 
     let d = `M ${points[0].x} ${points[0].y}`;
     for (let i = 1; i < points.length; i += 1) {
       d += ` L ${points[i].x} ${points[i].y}`;
     }
+
+    let total = 0;
+    const cumulative = [0];
+    for (let i = 1; i < points.length; i += 1) {
+      const dx = points[i].x - points[i - 1].x;
+      const dy = points[i].y - points[i - 1].y;
+      total += Math.hypot(dx, dy);
+      cumulative[i] = total;
+    }
+    thresholds = points.map((_, index) => (total ? cumulative[index] / total : 0));
 
     track.setAttribute("d", d);
     progress.setAttribute("d", d);
@@ -137,6 +153,10 @@ const setupConnector = () => {
     const total = Math.max(end - start, 1);
     const rawProgress = clamp((viewportCenter - start) / total, 0, 1);
     progress.style.strokeDashoffset = `${pathLength * (1 - rawProgress)}`;
+    orderedCards.forEach((card, index) => {
+      const threshold = thresholds[index] ?? 1;
+      card.classList.toggle("is-active", rawProgress >= threshold);
+    });
   };
 
   const onScroll = () => {
@@ -156,6 +176,7 @@ const setupConnector = () => {
           updateProgress();
         } else if (pathLength) {
           progress.style.strokeDashoffset = `${pathLength}`;
+          orderedCards.forEach((card) => card.classList.remove("is-active"));
         }
       });
     },
