@@ -198,12 +198,26 @@ const logos = [
     letter-spacing: 0.02em;
   }
 
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap");
+  @import url("https://api.fontshare.com/v2/css?f[]=satoshi@700&display=swap");
 
   .trustedby-playfair,
   .stat-count {
     font-family: "Space Grotesk", system-ui, sans-serif;
     font-weight: 700;
+  }
+
+  @media (max-width: 1023px) {
+    .trustedby-playfair {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-weight: 700;
+    }
+
+    .stat-count {
+      font-family: "Satoshi", system-ui, sans-serif;
+      font-weight: 700;
+    }
   }
 </style>
 
