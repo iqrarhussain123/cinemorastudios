@@ -24,26 +24,26 @@ const posterSrc = "/images/hero-video-thumb.jpg";
   </div>
 
   <div class="relative z-10">
-    <div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 pt-24 pb-16 sm:pt-28 md:pt-36 md:pb-24">
+    <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 pt-24 pb-16 sm:pt-28 md:pt-36 md:pb-24">
       <!-- top pill -->
-      <div class="hero-reveal hero-reveal-1 mb-4 inline-flex w-fit items-center gap-1.5 self-start rounded-full border border-zinc-800/80 bg-zinc-900/50 px-2 py-1 text-xs text-zinc-200">
+      <div class="hero-pill hero-reveal-1 mb-4 inline-flex w-fit items-center gap-1.5 self-start rounded-full border border-zinc-800/80 bg-zinc-900/50 px-2 py-1 text-xs text-zinc-200">
         <span class="h-2 w-2 rounded-full bg-lime-400"></span>
         Content systems that convert
       </div>
 
       <!-- Text block -->
       <div class="mx-auto mt-2 max-w-4xl text-center">
-        <h1 class="hero-reveal hero-reveal-2 text-4xl font-extrabold leading-tight tracking-tight text-zinc-50 sm:text-5xl md:text-7xl">
+        <h1 class="hero-title hero-reveal-2 text-4xl font-extrabold leading-tight tracking-tight text-zinc-50 sm:text-5xl md:text-7xl">
           We turn <span class="text-lime-400">attention</span> into{" "}
           <span class="text-lime-400">clients.</span>
         </h1>
 
-        <p class="hero-reveal hero-reveal-3 mt-4 text-base leading-relaxed text-zinc-200 sm:text-lg md:text-xl">
+        <p class="hero-sub hero-reveal-3 mt-4 text-base leading-relaxed text-zinc-200 sm:text-lg md:text-xl">
           Cinemora helps founders and brands build authority on LinkedIn with a repeatable content system,
           conversion-focused creatives, and proof-led strategy.
         </p>
 
-        <div class="hero-reveal hero-reveal-4 mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+        <div class="hero-ctas hero-reveal-4 mt-6 flex flex-col justify-center gap-3 sm:flex-row">
           <a
             href={primaryCta.href}
             class="inline-flex items-center justify-center rounded-full bg-lime-400 px-6 py-3 text-base font-semibold text-zinc-950 shadow-lg shadow-lime-400/20 transition hover:brightness-110"
@@ -59,7 +59,7 @@ const posterSrc = "/images/hero-video-thumb.jpg";
           </a>
         </div>
 
-        <div class="hero-reveal hero-reveal-5 mt-5 flex flex-wrap justify-center gap-2 text-sm text-zinc-300">
+        <div class="hero-tags hero-reveal-5 mt-5 flex flex-wrap justify-center gap-2 text-sm text-zinc-300">
           <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-1.5">LinkedIn-first approach</span>
           <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-1.5">Systems over random posting</span>
           <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-1.5">Proof before promises</span>
@@ -67,7 +67,7 @@ const posterSrc = "/images/hero-video-thumb.jpg";
       </div>
 
       <!-- Big video under text (Thumbnail + Hover-to-play) -->
-      <div class="hero-reveal hero-reveal-6 mt-12 md:mt-16">
+      <div class="hero-video hero-reveal-6 mt-12 md:mt-16">
         <div class="mx-auto max-w-7xl rounded-3xl border border-zinc-800 bg-zinc-900/30 p-3 shadow-[0_30px_120px_-40px_rgba(0,0,0,0.95)] md:p-4">
           <div
             id="heroVideoWrap"
@@ -128,13 +128,6 @@ const posterSrc = "/images/hero-video-thumb.jpg";
     background: linear-gradient(to bottom, rgba(241, 241, 242, 0), #f1f1f2 80%);
   }
 
-  .hero-reveal {
-    opacity: 0;
-    transform: translateY(18px);
-    filter: blur(6px);
-    animation: hero-in 900ms ease forwards;
-  }
-
   .hero-reveal-1 { animation-delay: 80ms; }
   .hero-reveal-2 { animation-delay: 160ms; }
   .hero-reveal-3 { animation-delay: 240ms; }
@@ -142,16 +135,73 @@ const posterSrc = "/images/hero-video-thumb.jpg";
   .hero-reveal-5 { animation-delay: 400ms; }
   .hero-reveal-6 { animation-delay: 520ms; }
 
-  @keyframes hero-in {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
-    }
+  .hero-pill {
+    opacity: 0;
+    animation: hero-pill 900ms ease forwards;
+  }
+
+  .hero-title {
+    opacity: 0;
+    animation: hero-title 900ms ease forwards;
+  }
+
+  .hero-sub {
+    opacity: 0;
+    animation: hero-sub 900ms ease forwards;
+  }
+
+  .hero-ctas {
+    opacity: 0;
+    animation: hero-ctas 900ms ease forwards;
+  }
+
+  .hero-tags {
+    opacity: 0;
+    animation: hero-tags 900ms ease forwards;
+  }
+
+  .hero-video {
+    opacity: 0;
+    animation: hero-video 900ms ease forwards;
+  }
+
+  @keyframes hero-pill {
+    from { opacity: 0; transform: translateY(12px) scale(0.96); filter: blur(4px); }
+    to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  }
+
+  @keyframes hero-title {
+    from { opacity: 0; transform: translateY(22px); letter-spacing: 0.02em; }
+    to { opacity: 1; transform: translateY(0); letter-spacing: 0; }
+  }
+
+  @keyframes hero-sub {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes hero-ctas {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes hero-tags {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes hero-video {
+    from { opacity: 0; transform: translateY(20px) scale(0.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-reveal {
+    .hero-pill,
+    .hero-title,
+    .hero-sub,
+    .hero-ctas,
+    .hero-tags,
+    .hero-video {
       animation: none;
       opacity: 1;
       transform: none;

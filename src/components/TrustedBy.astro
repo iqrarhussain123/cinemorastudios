@@ -12,7 +12,7 @@ const logos = [
 ---
 
 <section class="relative w-full bg-[#f1f1f2] text-zinc-900" data-trustedby-section>
-  <div class="mx-auto max-w-6xl px-3 py-6 md:px-4">
+  <div class="mx-auto max-w-[90rem] px-2 py-6 sm:px-4 md:px-6">
     <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
 
       <!-- Left: Trusted by + logos -->
@@ -28,7 +28,7 @@ const logos = [
     </div>
 
     <div class="mt-6 flex justify-center">
-      <div class="w-full max-w-6xl px-[8%] sm:px-[12%] md:px-[16%] lg:px-[20%]">
+      <div class="w-full max-w-[90rem] px-[4%] sm:px-[8%] md:px-[10%] lg:px-[12%]">
         <div class="logo-mask overflow-hidden">
           <div class="logo-marquee mx-auto flex w-max items-center justify-center gap-10 py-3">
             {[...logos, ...logos].map((logo) => (
@@ -48,10 +48,10 @@ const logos = [
     </div>
 
     <!-- Stats -->
-    <div class="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-6">
+    <div class="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
       {stats.map((s, i) => (
         <div class="stat-item rounded-xl px-5 py-4 text-center" data-index={i}>
-          <p class="text-2xl font-bold text-zinc-900 md:text-3xl">
+          <p class="text-3xl font-bold text-zinc-900 md:text-4xl">
             <span
               class="text-lime-400 stat-count"
               data-target={s.value}
@@ -61,14 +61,14 @@ const logos = [
               0
             </span>
           </p>
-          <p class="text-base text-zinc-600">{s.label}</p>
+          <p class="text-lg text-zinc-600">{s.label}</p>
         </div>
       ))}
     </div>
 
     <div class="relative mt-24 text-center">
       <p class="text-sm text-zinc-500">Is this you?</p>
-      <h3 class="mt-4 text-3xl font-semibold text-zinc-900 md:text-5xl md:leading-tight">
+      <h3 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-zinc-900 md:text-5xl">
         Content feels
         <span
           class="trustedby-headline text-lime-600"
@@ -88,18 +88,18 @@ const logos = [
         />
       </div>
 
-      <div class="trustedby-cards mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12" data-trustedby-cards>
+      <div class="trustedby-cards mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10" data-trustedby-cards>
         <svg data-connector-svg class="trustedby-connector" aria-hidden="true">
           <path data-connector-track></path>
           <path data-connector-progress></path>
         </svg>
 
-        <div class="relative z-10 flex min-h-[220px] flex-col items-center justify-center gap-4 rounded-2xl bg-white px-6 py-8 text-center shadow-sm sm:min-h-[240px] md:px-8 md:py-10 lg:min-h-[260px]" data-card>
+        <div class="trustedby-cloud relative z-10 flex min-h-[220px] flex-col items-center justify-center gap-4 px-6 py-8 text-center sm:min-h-[240px] md:px-8 md:py-10 lg:min-h-[260px]" data-card>
           <div class="flex h-16 w-16 items-center justify-center rounded-full border border-lime-200 bg-white/70">
             <img
               src="/images/trusted%20by%20icons/growth.png"
               alt="Growth chart"
-              class="h-10 w-10 object-contain"
+              class="trustedby-icon h-10 w-10 object-contain"
               loading="lazy"
               decoding="async"
             />
@@ -110,12 +110,12 @@ const logos = [
           </p>
         </div>
 
-        <div class="relative z-10 flex min-h-[220px] flex-col items-center justify-center gap-4 rounded-2xl bg-white px-6 py-8 text-center shadow-sm sm:min-h-[240px] md:px-8 md:py-10 lg:min-h-[260px]" data-card>
+        <div class="trustedby-cloud relative z-10 flex min-h-[220px] flex-col items-center justify-center gap-4 px-6 py-8 text-center sm:min-h-[240px] md:px-8 md:py-10 lg:min-h-[260px]" data-card>
           <div class="flex h-16 w-16 items-center justify-center rounded-full border border-lime-200 bg-white/70">
             <img
               src="/images/trusted%20by%20icons/location.png"
               alt="Question marker"
-              class="h-10 w-10 -translate-x-1 object-contain"
+              class="trustedby-icon h-10 w-10 -translate-x-1 object-contain"
               loading="lazy"
               decoding="async"
             />
@@ -126,12 +126,12 @@ const logos = [
           </p>
         </div>
 
-        <div class="relative z-10 flex min-h-[220px] flex-col items-center justify-center gap-4 rounded-2xl bg-white px-6 py-8 text-center shadow-sm sm:min-h-[240px] md:px-8 md:py-10 lg:min-h-[260px]" data-card>
+        <div class="trustedby-cloud relative z-10 flex min-h-[220px] flex-col items-center justify-center gap-4 px-6 py-8 text-center sm:min-h-[240px] md:px-8 md:py-10 lg:min-h-[260px]" data-card>
           <div class="flex h-16 w-16 items-center justify-center rounded-full border border-lime-200 bg-white/70">
             <img
               src="/images/trusted%20by%20icons/star.png"
               alt="Star"
-              class="h-10 w-10 object-contain"
+              class="trustedby-icon h-10 w-10 object-contain"
               loading="lazy"
               decoding="async"
             />
@@ -141,12 +141,12 @@ const logos = [
           </p>
         </div>
 
-        <div class="relative z-10 flex min-h-[220px] flex-col items-center justify-center gap-4 rounded-2xl bg-white px-6 py-8 text-center shadow-sm sm:min-h-[240px] md:px-8 md:py-10 lg:min-h-[260px] lg:mb-8" data-card>
+        <div class="trustedby-cloud relative z-10 flex min-h-[220px] flex-col items-center justify-center gap-4 px-6 py-8 text-center sm:min-h-[240px] md:px-8 md:py-10 lg:min-h-[260px] lg:mb-8" data-card>
           <div class="flex h-16 w-16 items-center justify-center rounded-full border border-lime-200 bg-white/70">
             <img
               src="/images/trusted%20by%20icons/clock.png"
               alt="Clock"
-              class="h-10 w-10 object-contain"
+              class="trustedby-icon h-10 w-10 object-contain"
               loading="lazy"
               decoding="async"
             />
@@ -157,12 +157,12 @@ const logos = [
           </p>
         </div>
 
-        <div class="relative z-10 flex min-h-[220px] flex-col items-center justify-center gap-4 rounded-2xl bg-white px-6 py-8 text-center shadow-sm sm:min-h-[240px] md:px-8 md:py-10 lg:min-h-[260px] lg:mb-8" data-card>
+        <div class="trustedby-cloud relative z-10 flex min-h-[220px] flex-col items-center justify-center gap-4 px-6 py-8 text-center sm:min-h-[240px] md:px-8 md:py-10 lg:min-h-[260px] lg:mb-8" data-card>
           <div class="flex h-16 w-16 items-center justify-center rounded-full border border-lime-200 bg-white/70">
             <img
               src="/images/trusted%20by%20icons/warning.png"
               alt="Warning"
-              class="h-10 w-10 object-contain"
+              class="trustedby-icon h-10 w-10 object-contain"
               loading="lazy"
               decoding="async"
             />
@@ -173,12 +173,12 @@ const logos = [
           </p>
         </div>
 
-        <div class="relative z-10 flex min-h-[220px] flex-col items-center justify-center gap-4 rounded-2xl bg-white px-6 py-8 text-center shadow-sm sm:min-h-[240px] md:px-8 md:py-10 lg:min-h-[260px] lg:mb-8" data-card>
+        <div class="trustedby-cloud relative z-10 flex min-h-[220px] flex-col items-center justify-center gap-4 px-6 py-8 text-center sm:min-h-[240px] md:px-8 md:py-10 lg:min-h-[260px] lg:mb-8" data-card>
           <div class="flex h-16 w-16 items-center justify-center rounded-full border border-lime-200 bg-white/70">
             <img
               src="/images/trusted%20by%20icons/chat.png"
               alt="Chat"
-              class="h-10 w-10 object-contain"
+              class="trustedby-icon h-10 w-10 object-contain"
               loading="lazy"
               decoding="async"
             />
@@ -324,6 +324,37 @@ const logos = [
     position: relative;
   }
 
+  .trustedby-cloud {
+    background: #a3e635;
+    border: 1px solid rgba(132, 204, 22, 0.5);
+    border-radius: 28px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .trustedby-cloud::before,
+  .trustedby-cloud::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    width: 48px;
+    height: 48px;
+    background: #a3e635;
+    border-radius: 999px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .trustedby-cloud::before {
+    left: 16px;
+  }
+
+  .trustedby-cloud::after {
+    right: 16px;
+  }
+
+  .trustedby-icon {
+    filter: grayscale(1) brightness(0);
+  }
+
   .trustedby-card-text {
     line-height: 1.35;
     min-height: 2.7em;
@@ -347,7 +378,7 @@ const logos = [
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke-width: 2;
+    stroke-width: 3;
   }
 
   .trustedby-connector [data-connector-track] {

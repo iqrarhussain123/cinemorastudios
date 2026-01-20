@@ -66,6 +66,12 @@ const animateHeadline = () => {
   requestAnimationFrame(() => headline.classList.add("is-visible"));
 };
 
+const resetHeadline = () => {
+  const headline = document.querySelector(".trustedby-headline");
+  if (!headline) return;
+  headline.classList.remove("is-visible");
+};
+
 const setupConnector = () => {
   const section = document.querySelector("[data-trustedby-section]");
   const grid = document.querySelector("[data-trustedby-cards]");
@@ -126,12 +132,11 @@ const setupConnector = () => {
     if (!active || !media.matches || pathLength === 0) return;
     const sectionRect = section.getBoundingClientRect();
     const gridRect = grid.getBoundingClientRect();
-    const viewportOffset = window.innerHeight * 0.2;
-    const viewportPoint = window.scrollY + viewportOffset;
-    const start = window.scrollY + gridRect.top - viewportOffset;
-    const end = window.scrollY + sectionRect.bottom - viewportOffset;
+    const viewportCenter = window.scrollY + window.innerHeight / 2;
+    const start = window.scrollY + gridRect.top + gridRect.height / 2;
+    const end = window.scrollY + sectionRect.bottom;
     const total = Math.max(end - start, 1);
-    const rawProgress = clamp((viewportPoint - start) / total, 0, 1);
+    const rawProgress = clamp((viewportCenter - start) / total, 0, 1);
     progress.style.strokeDashoffset = `${pathLength * (1 - rawProgress)}`;
   };
 
@@ -184,10 +189,7 @@ const setup = () => {
           return;
         }
 
-        const headline = document.querySelector(".trustedby-headline");
-        if (headline) {
-          headline.classList.remove("is-visible");
-        }
+        resetHeadline();
 
         const items = document.querySelectorAll(".stat-item");
         items.forEach((item) => {
@@ -199,7 +201,7 @@ const setup = () => {
         });
       });
     },
-    { threshold: 0.3 }
+    { threshold: 0.2, rootMargin: "-20% 0px -20% 0px" }
   );
 
   observer.observe(section);
