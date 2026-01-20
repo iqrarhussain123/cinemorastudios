@@ -9,88 +9,90 @@ const videoSrc = "/videos/showreel.mp4";
 const posterSrc = "/images/hero-video-thumb.jpg";
 ---
 
-<section class="relative overflow-hidden bg-[#f4f1ea]">
-  <div class="relative">
+<section class="hero-section relative overflow-hidden bg-[#f1f1f2]">
+  <div class="hero-bg pointer-events-none absolute inset-0 z-0">
     <img
       src="/images/background.jpeg"
       alt=""
-      class="block w-full select-none"
+      class="h-full w-full object-cover"
       loading="eager"
       decoding="async"
       draggable="false"
     />
     <!-- Darken top for readability while keeping the bottom fade intact -->
-    <div class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-black/65 via-black/40 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/40 to-transparent"></div>
+  </div>
 
-    <div class="absolute inset-0 z-10">
-      <div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 pt-28 pb-16 md:pt-36 md:pb-24">
-        <!-- top pill -->
-        <div class="mb-6 inline-flex w-fit items-center gap-1.5 self-start rounded-full border border-zinc-800/80 bg-zinc-900/50 px-2 py-1 text-xs text-zinc-200">
-          <span class="h-2 w-2 rounded-full bg-lime-400"></span>
-          Content systems that convert
+  <div class="relative z-10">
+    <div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 pt-24 pb-16 sm:pt-28 md:pt-36 md:pb-24">
+      <!-- top pill -->
+      <div class="hero-reveal hero-reveal-1 mb-4 inline-flex w-fit items-center gap-1.5 self-start rounded-full border border-zinc-800/80 bg-zinc-900/50 px-2 py-1 text-xs text-zinc-200">
+        <span class="h-2 w-2 rounded-full bg-lime-400"></span>
+        Content systems that convert
+      </div>
+
+      <!-- Text block -->
+      <div class="mx-auto mt-2 max-w-4xl text-center">
+        <h1 class="hero-reveal hero-reveal-2 text-4xl font-extrabold leading-tight tracking-tight text-zinc-50 sm:text-5xl md:text-7xl">
+          We turn <span class="text-lime-400">attention</span> into{" "}
+          <span class="text-lime-400">clients.</span>
+        </h1>
+
+        <p class="hero-reveal hero-reveal-3 mt-4 text-base leading-relaxed text-zinc-200 sm:text-lg md:text-xl">
+          Cinemora helps founders and brands build authority on LinkedIn with a repeatable content system,
+          conversion-focused creatives, and proof-led strategy.
+        </p>
+
+        <div class="hero-reveal hero-reveal-4 mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+          <a
+            href={primaryCta.href}
+            class="inline-flex items-center justify-center rounded-full bg-lime-400 px-6 py-3 text-base font-semibold text-zinc-950 shadow-lg shadow-lime-400/20 transition hover:brightness-110"
+          >
+            {primaryCta.label}
+          </a>
+
+          <a
+            href={secondaryCta.href}
+            class="inline-flex items-center justify-center rounded-full border border-zinc-700 bg-zinc-950/40 px-6 py-3 text-base font-semibold text-zinc-100 transition hover:border-lime-400/60 hover:bg-zinc-900/40"
+          >
+            {secondaryCta.label}
+          </a>
         </div>
 
-        <!-- Text block -->
-        <div class="mx-auto mt-6 max-w-4xl text-center">
-          <h1 class="text-5xl font-extrabold leading-tight tracking-tight text-zinc-50 md:text-7xl">
-            We turn <span class="text-lime-400">attention</span> into{" "}
-            <span class="text-lime-400">clients.</span>
-          </h1>
-
-          <p class="mt-5 text-lg leading-relaxed text-zinc-200 md:text-xl">
-            Cinemora helps founders and brands build authority on LinkedIn with a repeatable content system,
-            conversion-focused creatives, and proof-led strategy.
-          </p>
-
-          <div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-            <a
-              href={primaryCta.href}
-              class="inline-flex items-center justify-center rounded-full bg-lime-400 px-7 py-3.5 text-base font-semibold text-zinc-950 shadow-lg shadow-lime-400/20 transition hover:brightness-110"
-            >
-              {primaryCta.label}
-            </a>
-
-            <a
-              href={secondaryCta.href}
-              class="inline-flex items-center justify-center rounded-full border border-zinc-700 bg-zinc-950/40 px-7 py-3.5 text-base font-semibold text-zinc-100 transition hover:border-lime-400/60 hover:bg-zinc-900/40"
-            >
-              {secondaryCta.label}
-            </a>
-          </div>
-
-          <div class="mt-6 flex flex-wrap justify-center gap-2 text-sm text-zinc-300">
-            <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-1.5">LinkedIn-first approach</span>
-            <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-1.5">Systems over random posting</span>
-            <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-1.5">Proof before promises</span>
-          </div>
+        <div class="hero-reveal hero-reveal-5 mt-5 flex flex-wrap justify-center gap-2 text-sm text-zinc-300">
+          <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-1.5">LinkedIn-first approach</span>
+          <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-1.5">Systems over random posting</span>
+          <span class="rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-1.5">Proof before promises</span>
         </div>
+      </div>
 
-        <!-- Big video under text (Thumbnail + Hover-to-play) -->
-        <div class="mt-16 md:mt-20">
-          <div class="mx-auto max-w-7xl rounded-3xl border border-zinc-800 bg-zinc-900/30 p-4 shadow-[0_30px_120px_-40px_rgba(0,0,0,0.95)]">
-            <div
-              id="heroVideoWrap"
-              class="relative aspect-video overflow-hidden rounded-2xl border border-zinc-800 bg-black"
+      <!-- Big video under text (Thumbnail + Hover-to-play) -->
+      <div class="hero-reveal hero-reveal-6 mt-12 md:mt-16">
+        <div class="mx-auto max-w-7xl rounded-3xl border border-zinc-800 bg-zinc-900/30 p-3 shadow-[0_30px_120px_-40px_rgba(0,0,0,0.95)] md:p-4">
+          <div
+            id="heroVideoWrap"
+            class="relative aspect-video overflow-hidden rounded-2xl border border-zinc-800 bg-black"
+          >
+            <div class="pointer-events-none absolute inset-0 hero-video-overlay"></div>
+            <video
+              id="heroVideo"
+              class="h-full w-full object-cover"
+              muted
+              playsinline
+              preload="metadata"
+              poster={posterSrc}
             >
-              <div class="pointer-events-none absolute inset-0 hero-video-overlay"></div>
-              <video
-                id="heroVideo"
-                class="h-full w-full object-cover"
-                muted
-                playsinline
-                preload="metadata"
-                poster={posterSrc}
-              >
-                <source src={videoSrc} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <source src={videoSrc} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
 
-            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="hero-bottom-fade pointer-events-none absolute inset-x-0 bottom-0"></div>
 
   <!-- Hover logic (Astro-safe) -->
   <script is:inline>
@@ -115,3 +117,45 @@ const posterSrc = "/images/hero-video-thumb.jpg";
     }
   </script>
 </section>
+
+<style>
+  .hero-section {
+    min-height: 100svh;
+  }
+
+  .hero-bottom-fade {
+    height: 140px;
+    background: linear-gradient(to bottom, rgba(241, 241, 242, 0), #f1f1f2 80%);
+  }
+
+  .hero-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(6px);
+    animation: hero-in 900ms ease forwards;
+  }
+
+  .hero-reveal-1 { animation-delay: 80ms; }
+  .hero-reveal-2 { animation-delay: 160ms; }
+  .hero-reveal-3 { animation-delay: 240ms; }
+  .hero-reveal-4 { animation-delay: 320ms; }
+  .hero-reveal-5 { animation-delay: 400ms; }
+  .hero-reveal-6 { animation-delay: 520ms; }
+
+  @keyframes hero-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-reveal {
+      animation: none;
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+  }
+</style>
