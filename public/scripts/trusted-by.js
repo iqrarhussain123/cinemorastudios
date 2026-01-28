@@ -93,12 +93,12 @@ const setupConnector = () => {
     const cards = [...grid.querySelectorAll("[data-card]")];
     const gridRect = grid.getBoundingClientRect();
     const points = cards.map((card) => {
-      const anchor = card.querySelector(".trustedby-icon-wrap") ?? card;
-      const rect = anchor.getBoundingClientRect();
+      const rect = card.getBoundingClientRect();
+      const offsetY = 10;
       return {
         card,
         x: rect.left - gridRect.left + rect.width / 2,
-        y: rect.top - gridRect.top + rect.height / 2,
+        y: rect.top - gridRect.top + rect.height / 2 + offsetY,
         top: rect.top,
         left: rect.left,
       };

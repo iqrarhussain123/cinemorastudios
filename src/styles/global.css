@@ -5,6 +5,7 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  background-color: transparent;
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -13,16 +14,8 @@ body {
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Cinemora lime video overlay */
-.hero-video-overlay {
-  background: linear-gradient(
-    135deg,
-    rgba(183, 255, 42, 0.12),
-    rgba(0, 0, 0, 0) 55%,
-    rgba(183, 255, 42, 0.08)
-  );
+  /* Custom Mac-style Cursor */
+  cursor: url("data:image/svg+xml,%3Csvg width='25' height='29' viewBox='0 0 25 29' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.00293 2.00488L22.6973 13.4375H14.1562L18.3125 24.5938L15.4219 26.5469L11.125 15.3594L5.65625 20.9375V2.00488Z' fill='black'/%3E%3Cpath d='M7.00293 4.41797V17.5117L10.5156 13.9219L11.0469 13.375H11.8125H13.7969L17.1562 22.3906L16.5781 22.7812L13.2344 13.8125H19.7266L7.00293 4.41797Z' fill='white' stroke='white' stroke-width='1.5'/%3E%3Cpath d='M11.125 15.3594L5.65625 20.9375V2.00488L22.6973 13.4375H14.1562L18.3125 24.5938L15.4219 26.5469L11.125 15.3594Z' stroke='white' stroke-width='1.5'/%3E%3Cpath d='M6.00293 2.00488L22.6973 13.4375H14.1562L18.3125 24.5938L15.4219 26.5469L11.125 15.3594L5.65625 20.9375V2.00488Z' fill='black'/%3E%3C/svg%3E") 2 2, auto;
 }
 
 .calendly-inline-widget {
@@ -77,8 +70,48 @@ body {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-
-  /* Base: near-black, not pure black */
-  background: #070A0C;
+  background: transparent;
   overflow: hidden;
+}
+
+.hero-trustedby-bg {
+  background: url("/images/background_hero_trustedby.jpg") top center / cover no-repeat;
+}
+
+/* Remove any potential divider lines */
+.hero-trustedby-bg>* {
+  border-bottom: none !important;
+}
+
+[data-trustedby-section] {
+  border-top: none !important;
+}
+
+/* Remove any lines between hero and trustedby */
+.hero-section::after,
+.hero-section::before,
+[data-trustedby-section]::before,
+[data-trustedby-section]::after {
+  display: none !important;
+  content: none !important;
+  border: none !important;
+}
+
+/* Ensure no borders on video containers create visible lines */
+.hero-video {
+  border-bottom: none !important;
+}
+
+/* Remove any decorative lines near the trustedby pill */
+[data-trustedby-section] .flex.items-center.justify-center::before,
+[data-trustedby-section] .flex.items-center.justify-center::after,
+[data-trustedby-section]>div::before,
+[data-trustedby-section]>div::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Force no borders on all elements in trustedby section */
+[data-trustedby-section] * {
+  border-top: none !important;
 }

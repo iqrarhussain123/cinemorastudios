@@ -2,14 +2,15 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-white/10 bg-black/40">
+<footer class="border-t border-white/10 bg-black">
   <div class="mx-auto max-w-6xl px-4 py-14">
     <div class="grid gap-10 md:grid-cols-3">
-
       <!-- Brand -->
       <div>
         <div class="flex items-center gap-3">
-          <div class="grid h-9 w-9 place-items-center rounded bg-lime-400 font-black text-black">
+          <div
+            class="grid h-9 w-9 place-items-center rounded bg-lime-400 font-black text-black"
+          >
             C
           </div>
           <div>
@@ -19,7 +20,8 @@ const year = new Date().getFullYear();
         </div>
 
         <p class="mt-4 max-w-sm text-sm text-white/60">
-          Strategy-led content systems for founders and brands who want predictable inbound growth.
+          Strategy-led content systems for founders and brands who want
+          predictable inbound growth.
         </p>
       </div>
 
@@ -36,14 +38,27 @@ const year = new Date().getFullYear();
       <div>
         <p class="mb-3 text-sm font-semibold text-white">Contact</p>
         <ul class="space-y-2 text-sm text-white/60">
-          <li>Email: cinemorastudios.agency</li>
+          <li>
+            Email: <a
+              href="mailto:iqrar@cinemorastudios.agency"
+              class="hover:text-lime-400 transition-colors"
+              >iqrar@cinemorastudios.agency</a
+            >
+          </li>
+          <li>
+            Phone: <a
+              href="tel:+923360599017"
+              class="hover:text-lime-400 transition-colors">+92 336 0599017</a
+            >
+          </li>
           <li>Location: Remote / Global</li>
         </ul>
       </div>
-
     </div>
 
-    <div class="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-white/40 md:flex-row">
+    <div
+      class="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-white/40 md:flex-row"
+    >
       <p>Ac {year} Cinemora Studios. All rights reserved.</p>
       <div class="flex gap-4">
         <a href="#" class="hover:text-white">Privacy</a>

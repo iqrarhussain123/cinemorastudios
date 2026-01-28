@@ -2,7 +2,11 @@
 import "../styles/global.css";
 import Background from "../components/Background.astro";
 
-const { title = "Cinemora Studios" } = Astro.props;
+const {
+  title = "Cinemora Studios | Premium Content Systems",
+  description = "Helping elite coaches and real estate brands build authority and dominate with premium content. We turn attention into clients through strategy-led creation.",
+  image = "/images/hero-video-thumb.jpg",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -10,7 +14,54 @@ const { title = "Cinemora Studios" } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Cinemora Studios" />
+    <meta
+      name="keywords"
+      content="content agency, video marketing, real estate marketing, coaching business, authority building, premium content"
+    />
+    <link rel="canonical" href={Astro.url} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Schema.org JSON-LD for AI & Search Engines -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "MarketingAgency",
+        name: "Cinemora Studios",
+        url: "https://cinemorastudios.agency",
+        logo: "https://cinemorastudios.agency/images/logo.png",
+        description:
+          "Helping elite coaches build authority and real estate brands dominate with premium content systems.",
+        email: "iqrar@cinemorastudios.agency",
+        telephone: "+923360599017",
+        founder: {
+          "@type": "Person",
+          name: "Iqrar Hussain",
+        },
+        areaServed: "Global",
+        priceRange: "$$$",
+      })}
+    />
   </head>
 
   <body class="min-h-screen text-white">
