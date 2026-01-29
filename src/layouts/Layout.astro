@@ -48,17 +48,44 @@ const {
         "@context": "https://schema.org",
         "@type": "MarketingAgency",
         name: "Cinemora Studios",
+        alternateName: "Cinemora Studios Agency",
         url: "https://cinemorastudios.agency",
         logo: "https://cinemorastudios.agency/images/logo.png",
         description:
-          "Helping elite coaches build authority and real estate brands dominate with premium content systems.",
+          "The official Cinemora Studios Agency. Helping elite coaches build authority and real estate brands dominate with premium content systems. Registered in US & Pakistan.",
+        disambiguatingDescription:
+          "Cinemora Studios Agency is a global content marketing firm registered in the United States and Pakistan, specializing in video marketing for coaches and real estate.",
         email: "iqrar@cinemorastudios.agency",
         telephone: "+923360599017",
         founder: {
           "@type": "Person",
           name: "Iqrar Hussain",
         },
-        areaServed: "Global",
+        areaServed: [
+          "United States",
+          "United Kingdom",
+          "Canada",
+          "Australia",
+          "Pakistan",
+        ],
+        location: [
+          {
+            "@type": "Place",
+            name: "United States Head Office",
+            address: {
+              "@type": "PostalAddress",
+              addressCountry: "US",
+            },
+          },
+          {
+            "@type": "Place",
+            name: "Pakistan Office",
+            address: {
+              "@type": "PostalAddress",
+              addressCountry: "PK",
+            },
+          },
+        ],
         priceRange: "$$$",
       })}
     />
