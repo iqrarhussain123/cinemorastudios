@@ -134,80 +134,133 @@ const posterSrc = "/images/hero-video-thumb.jpg";
           class="mx-auto max-w-[95rem] rounded-[2rem] border border-white/5 bg-white/5 p-2 shadow-[0_0_150px_-30px_rgba(163,230,53,0.15)] ring-1 ring-white/10 backdrop-blur-3xl transition-transform duration-100 ease-out md:p-3"
           style="transform-style: preserve-3d;"
         >
-          <!-- Dynamic Shine Overlay -->
-          <div
-            id="videoShine"
-            class="pointer-events-none absolute inset-0 z-50 rounded-[2rem] bg-gradient-to-tr from-white/10 via-white/5 to-transparent opacity-0 mix-blend-overlay transition-opacity duration-300"
+          <!-- Mute Toggle Button (Apple UI Style) -->
+          <button
+            id="muteToggle"
+            class="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/30 backdrop-blur-md transition-transform duration-200 hover:scale-105 hover:bg-black/50 active:scale-95"
+            aria-label="Toggle sound"
           >
-          </div>
-          <div
-            id="heroVideoWrap"
-            class="relative aspect-video overflow-hidden rounded-[1.5rem] border border-white/5 bg-zinc-950 shadow-2xl"
-          >
-            <video
-              id="heroVideo"
-              class="h-full w-full object-cover"
-              muted
-              playsinline
-              preload="metadata"
-              poster={posterSrc}
+            <!-- Muted Icon (Default) -->
+            <svg
+              id="iconMuted"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-white"
             >
-              <source src={videoSrc} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+              <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+              <line x1="23" x2="1" y1="1" y2="23"></line>
+            </svg>
+            <!-- Unmuted Icon (Hidden) -->
+            <svg
+              id="iconUnmuted"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="hidden text-white"
+            >
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path
+                d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"
+              ></path>
+            </svg>
+          </button>
+
+          <video
+            id="heroVideo"
+            class="h-full w-full object-cover"
+            muted
+            playsinline
+            preload="metadata"
+            poster={posterSrc}
+          >
+            <source src={videoSrc} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Hover logic (Astro-safe) -->
-  <script is:inline>
-    // Video Hover Logic & 3D Tilt
-    const wrap = document.getElementById("heroVideoWrap");
-    const video = document.getElementById("heroVideo");
-    const tiltContainer = document.getElementById("videoTiltContainer");
-    const shine = document.getElementById("videoShine");
-
-    if (wrap && video) {
-      wrap.addEventListener("mouseenter", async () => {
-        try {
-          video.currentTime = 0;
-          await video.play();
-        } catch (e) {}
-      });
-
-      wrap.addEventListener("mouseleave", () => {
-        video.pause();
-        video.currentTime = 0;
-        video.load();
-      });
-    }
-
-    // 3D Tilt Logic
-    if (tiltContainer && shine) {
-      document.addEventListener("mousemove", (e) => {
-        const { clientX, clientY } = e;
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-
-        // Calculate percentage from center (-1 to 1)
-        const xPct = (clientX / width - 0.5) * 2;
-        const yPct = (clientY / height - 0.5) * 2;
-
-        // Tilt intensity
-        const tiltX = yPct * -2; // Rotate X axis (up/down looking)
-        const tiltY = xPct * 2; // Rotate Y axis (left/right looking)
-
-        tiltContainer.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-
-        // Dynamic Shine position/opacity
-        shine.style.opacity = Math.min(Math.abs(xPct) + Math.abs(yPct), 0.6);
-        shine.style.background = `linear-gradient(${135 + xPct * 45}deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%)`;
-      });
-    }
-  </script>
 </section>
+
+<!-- Hover logic (Astro-safe) -->
+<script is:inline>
+  // Video Hover Logic & 3D Tilt
+  const wrap = document.getElementById("heroVideoWrap");
+  const video = document.getElementById("heroVideo");
+  const tiltContainer = document.getElementById("videoTiltContainer");
+  const shine = document.getElementById("videoShine");
+  const muteBtn = document.getElementById("muteToggle");
+  const iconMuted = document.getElementById("iconMuted");
+  const iconUnmuted = document.getElementById("iconUnmuted");
+
+  if (wrap && video && muteBtn) {
+    // Toggle Mute
+    muteBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent playing/pausing if wrap has click listeners
+      video.muted = !video.muted;
+
+      // Toggle Icons
+      if (video.muted) {
+        iconMuted.classList.remove("hidden");
+        iconUnmuted.classList.add("hidden");
+      } else {
+        iconMuted.classList.add("hidden");
+        iconUnmuted.classList.remove("hidden");
+      }
+    });
+
+    wrap.addEventListener("mouseenter", async () => {
+      try {
+        // Keep current time if already playing?
+        // Logic says reset to 0 on enter.
+        video.currentTime = 0;
+        await video.play();
+      } catch (e) {}
+    });
+
+    wrap.addEventListener("mouseleave", () => {
+      video.pause();
+      video.currentTime = 0;
+      // Don't reload, just pause and reset
+    });
+  }
+
+  // 3D Tilt Logic
+  if (tiltContainer && shine) {
+    document.addEventListener("mousemove", (e) => {
+      const { clientX, clientY } = e;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      // Calculate percentage from center (-1 to 1)
+      const xPct = (clientX / width - 0.5) * 2;
+      const yPct = (clientY / height - 0.5) * 2;
+
+      // Tilt intensity
+      const tiltX = yPct * -2; // Rotate X axis (up/down looking)
+      const tiltY = xPct * 2; // Rotate Y axis (left/right looking)
+
+      tiltContainer.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+
+      // Dynamic Shine position/opacity
+      shine.style.opacity = Math.min(Math.abs(xPct) + Math.abs(yPct), 0.6);
+      shine.style.background = `linear-gradient(${135 + xPct * 45}deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%)`;
+    });
+  }
+</script>
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap");

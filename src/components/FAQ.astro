@@ -33,77 +33,257 @@ const faqs = [
     />
   </div>
 
-  <div class="mx-auto max-w-3xl px-6">
-    <div class="mb-16 text-center">
-      <span
-        class="mb-6 inline-flex items-center justify-center rounded-full border border-lime-400/20 bg-lime-400/5 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-lime-400 backdrop-blur-md"
+  <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 relative z-10">
+    <!-- Top Headline -->
+    <div class="mb-12 text-center md:mb-16">
+      <h2
+        class="mx-auto max-w-4xl text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:leading-tight"
       >
-        FAQ
-      </span>
-      <h2 class="text-4xl font-bold tracking-tight text-white md:text-5xl">
-        We've got answers
-      </h2>
-      <p class="mt-6 text-lg text-zinc-400 max-w-lg mx-auto leading-relaxed">
-        Everything you need to know about our process and results.
-      </p>
-    </div>
-
-    <div class="space-y-4">
-      {
-        faqs.map((item, i) => (
-          <details class="group rounded-3xl border border-white/5 bg-black/40 p-1 open:bg-black/60 transition-all duration-300 backdrop-blur-xl hover:border-white/10">
-            <summary class="flex w-full cursor-pointer list-none items-center justify-between gap-6 rounded-[1.25rem] bg-white/5 p-5 transition-colors duration-300 group-hover:bg-white/10 group-open:bg-transparent sm:p-6">
-              <span class="text-left text-lg font-medium text-zinc-100 transition-colors group-hover:text-white sm:text-xl">
-                {item.q}
-              </span>
-
-              <span class="relative flex h-10 w-10 flex-none items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-300 group-hover:border-lime-400/50 group-hover:text-lime-400 group-open:rotate-45 group-open:border-lime-400 group-open:bg-lime-400 group-open:text-black">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <>
-                    <path d="M5 12h14" />
-                    <path d="M12 5v14" />
-                  </>
-                </svg>
-              </span>
-            </summary>
-
-            <div class="px-6 pb-6 pt-2 text-base leading-relaxed text-zinc-300/90 sm:px-8 sm:text-lg">
-              {item.a}
-            </div>
-          </details>
-        ))
-      }
-    </div>
-
-    <div class="mt-20 flex justify-center">
-      <a
-        href="#book"
-        class="relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-lime-400 px-10 py-4 text-base font-bold text-black transition-transform duration-300 hover:scale-105 hover:bg-lime-300 shadow-[0_0_40px_-10px_rgba(163,230,53,0.3)]"
-      >
-        <span>Book a Strategy Call</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+        Cinemora builds conversion-focused creative for brands that <span
+          class="bg-gradient-to-r from-lime-300 to-lime-500 bg-clip-text text-transparent"
+          >want real growth.</span
         >
-      </a>
+      </h2>
+    </div>
+
+    <!-- Main Grid Layout -->
+    <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
+      <!-- Left Card: Main Value Block with Gradient Overlay -->
+      <div
+        class="relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-zinc-900/90 p-8 shadow-2xl ring-1 ring-white/10 sm:p-10 md:p-12"
+      >
+        <!-- Ambient Background Glow -->
+        <div
+          class="absolute -bottom-24 -right-24 h-[300px] w-[300px] rounded-full bg-lime-500/20 blur-[80px]"
+        >
+        </div>
+
+        <div class="relative z-10">
+          <div
+            class="mb-6 inline-block rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-zinc-300 backdrop-blur-md"
+          >
+            Get Ahead
+          </div>
+          <h3
+            class="mb-6 text-4xl font-bold leading-tight text-white tracking-tight md:text-5xl"
+          >
+            With just a strategy, creative, and distribution, <span
+              class="text-zinc-400">you can turn ideas into income.</span
+            >
+          </h3>
+          <p class="mb-8 text-base leading-relaxed text-zinc-400 max-w-md">
+            Cinemora designs high-end brand visuals, performance ad creatives,
+            and landing page assets using proven systems. Your brand could be
+            the next one people talk about.
+          </p>
+
+          <!-- Trust Chips (Visual Mimic of Reference) -->
+          <div class="flex flex-wrap gap-3 mt-auto">
+            <div
+              class="flex items-center gap-3 rounded-xl border border-white/5 bg-white/5 px-4 py-3 pr-6 backdrop-blur-sm transition hover:bg-white/10"
+            >
+              <div
+                class="h-10 w-10 overflow-hidden rounded-full bg-zinc-800 shrink-0"
+              >
+                <img
+                  src="/images/hero-video-thumb.jpg"
+                  class="h-full w-full object-cover opacity-80"
+                  alt="Icon"
+                />
+              </div>
+              <span class="text-sm font-bold text-zinc-200"
+                >From Idea to Income</span
+              >
+            </div>
+            <div
+              class="flex items-center gap-3 rounded-xl border border-white/5 bg-white/5 px-4 py-3 pr-6 backdrop-blur-sm transition hover:bg-white/10"
+            >
+              <div
+                class="h-10 w-10 overflow-hidden rounded-full bg-zinc-800 shrink-0"
+              >
+                <div
+                  class="flex h-full w-full items-center justify-center text-xs font-bold text-zinc-500"
+                >
+                  S
+                </div>
+              </div>
+              <span class="text-sm font-bold text-zinc-200"
+                >Scale to Full-Time</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Card: 3 Feature Blocks Stacked -->
+      <div class="flex flex-col gap-4">
+        <!-- Block 1 -->
+        <div
+          class="group flex items-start gap-6 rounded-[2rem] bg-zinc-900/40 p-6 ring-1 ring-white/5 transition-all hover:bg-zinc-900/60 hover:ring-white/10 md:p-8"
+        >
+          <div
+            class="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-950 shadow-inner ring-1 ring-white/5 group-hover:scale-105 transition-transform duration-300"
+          >
+            <!-- Icon with Glow -->
+            <div class="relative flex items-center justify-center">
+              <div
+                class="absolute inset-0 bg-lime-400/30 blur-xl opacity-50 group-hover:opacity-100 transition-opacity"
+              >
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="relative text-white drop-shadow-md"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M12 2v20"></path><path
+                  d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                ></path></svg
+              >
+            </div>
+          </div>
+          <div>
+            <h3
+              class="mb-2 text-sm font-bold text-zinc-400 uppercase tracking-widest"
+            >
+              START SMART
+            </h3>
+            <p class="text-white font-medium mb-1">Conversion Strategy</p>
+            <p class="text-sm text-zinc-500 leading-relaxed">
+              We audit your current funnel and market position to build a
+              data-backed content roadmap before a single frame is shot.
+            </p>
+          </div>
+        </div>
+
+        <!-- Block 2 -->
+        <div
+          class="group flex items-start gap-6 rounded-[2rem] bg-zinc-900/40 p-6 ring-1 ring-white/5 transition-all hover:bg-zinc-900/60 hover:ring-white/10 md:p-8"
+        >
+          <div
+            class="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-950 shadow-inner ring-1 ring-white/5 group-hover:scale-105 transition-transform duration-300"
+          >
+            <div class="relative flex items-center justify-center">
+              <div
+                class="absolute inset-0 bg-orange-500/30 blur-xl opacity-50 group-hover:opacity-100 transition-opacity"
+              >
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="relative text-white drop-shadow-md"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                ></polygon></svg
+              >
+            </div>
+          </div>
+          <div>
+            <h3
+              class="mb-2 text-sm font-bold text-zinc-400 uppercase tracking-widest"
+            >
+              FIND WINNING PRODUCTS
+            </h3>
+            <p class="text-white font-medium mb-1">High-Impact Creative</p>
+            <p class="text-sm text-zinc-500 leading-relaxed">
+              Ad creatives, landing page visuals, and brand assets designed
+              psychologically to stop the scroll and sell.
+            </p>
+          </div>
+        </div>
+
+        <!-- Block 3 -->
+        <div
+          class="group flex items-start gap-6 rounded-[2rem] bg-zinc-900/40 p-6 ring-1 ring-white/5 transition-all hover:bg-zinc-900/60 hover:ring-white/10 md:p-8"
+        >
+          <div
+            class="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-950 shadow-inner ring-1 ring-white/5 group-hover:scale-105 transition-transform duration-300"
+          >
+            <div class="relative flex items-center justify-center">
+              <div
+                class="absolute inset-0 bg-orange-500/30 blur-xl opacity-50 group-hover:opacity-100 transition-opacity"
+              >
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="relative text-white drop-shadow-md"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M12 20V10"></path><path d="M18 20V4"></path><path
+                  d="M6 20v-4"></path></svg
+              >
+            </div>
+          </div>
+          <div>
+            <h3
+              class="mb-2 text-sm font-bold text-zinc-400 uppercase tracking-widest"
+            >
+              GROW & SCALE
+            </h3>
+            <p class="text-white font-medium mb-1">Optimize & Scale</p>
+            <p class="text-sm text-zinc-500 leading-relaxed">
+              We don't guess. We iterate based on real performance feedback data
+              to maximize your ROAS and lead quality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Testimonial Block -->
+    <div class="mx-auto mt-12 max-w-4xl text-center">
+      <div
+        class="relative rounded-3xl border border-white/5 bg-white/5 px-8 py-10 backdrop-blur-md"
+      >
+        <svg
+          class="mx-auto mb-6 h-10 w-10 text-lime-400/40"
+          fill="currentColor"
+          viewBox="0 0 32 32"
+          aria-hidden="true"
+          ><path
+            d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
+          ></path></svg
+        >
+        <blockquote
+          class="text-xl font-medium leading-relaxed text-zinc-200 sm:text-2xl"
+        >
+          "Cinemora transformed our chaotic content efforts into a predictable
+          lead machine. The quality is unmatched and the strategy actually
+          drives revenue."
+        </blockquote>
+        <div class="mt-6 flex items-center justify-center gap-4">
+          <div class="h-10 w-10 overflow-hidden rounded-full bg-zinc-800">
+            <!-- Placeholder avatar -->
+            <div
+              class="flex h-full w-full items-center justify-center text-xs font-bold text-zinc-500"
+            >
+              SJ
+            </div>
+          </div>
+          <div class="text-left">
+            <div class="font-bold text-white">Sarah Jenkins</div>
+            <div class="text-sm text-lime-400">Founder, RealEstate Pro</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
