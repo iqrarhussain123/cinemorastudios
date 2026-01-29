@@ -1,0 +1,91 @@
+---
+
+---
+
+<div class="cursor-blob"></div>
+
+<style>
+    body {
+        cursor: none !important;
+    }
+
+    .cursor-blob {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #f7f8fa;
+        mix-blend-mode: difference;
+        pointer-events: none;
+        z-index: 9999;
+        transition:
+            width 0.25s ease,
+            height 0.25s ease,
+            border-radius 0.25s ease;
+        will-change: transform;
+    }
+
+    /* Enhanced blob squish animation */
+    .cursor-blob.moving {
+        animation: blob-squish-intense 0.35s ease-in-out infinite;
+    }
+
+    /* Hover state - extreme morphing */
+    .cursor-blob.hovering {
+        width: 80px;
+        height: 80px;
+        background: rgba(247, 248, 250, 0.7);
+        border-radius: 35% 65% 45% 75% / 65% 35% 70% 45%;
+    }
+
+    @keyframes blob-squish-intense {
+        0%,
+        100% {
+            border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+        }
+        25% {
+            border-radius: 45% 55% 48% 52% / 55% 45% 52% 48%;
+        }
+        50% {
+            border-radius: 52% 48% 45% 55% / 48% 52% 45% 55%;
+        }
+        75% {
+            border-radius: 55% 45% 52% 48% / 45% 55% 48% 52%;
+        }
+    }
+</style>
+
+<script>
+    const blob = document.querySelector(".cursor-blob") as HTMLElement;
+    const hoverables = document.querySelectorAll("a, button, .hoverable");
+
+    let isMoving = false;
+    let movingTimeout: number;
+
+    // Instant cursor following (no lerp - matches native cursor speed)
+    document.addEventListener("mousemove", (e) => {
+        if (blob) {
+            // Direct position update for instant response
+            blob.style.transform = `translate(${e.clientX - 25}px, ${e.clientY - 25}px)`;
+
+            // Enhanced moving animation
+            blob.classList.add("moving");
+            clearTimeout(movingTimeout);
+            movingTimeout = window.setTimeout(() => {
+                blob.classList.remove("moving");
+            }, 80);
+        }
+    });
+
+    // Hover effects
+    hoverables.forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+            if (blob) blob.classList.add("hovering");
+        });
+        el.addEventListener("mouseleave", () => {
+            if (blob) blob.classList.remove("hovering");
+        });
+    });
+</script>

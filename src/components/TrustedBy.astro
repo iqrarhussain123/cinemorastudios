@@ -2,509 +2,894 @@
 import stats from "../data/trusted-by-stats.json";
 
 const logos = [
-  { src: "/images/logos/client-accelerators.png", alt: "Client Accelerators" },
-  { src: "/images/logos/hodderborg.png", alt: "Hodderborg" },
-  { src: "/images/logos/nasdaq.png", alt: "Nasdaq" },
-  {
-    src: "/images/logos/S%20FIVE%20REAL%20ESTATE.png",
-    alt: "S Five Real Estate",
-  },
-  { src: "/images/logos/SPOKEN-WINES.png", alt: "Spoken Wines" },
-  { src: "/images/logos/Success%20School.png", alt: "Success School" },
+    {
+        src: "/images/logos/client-accelerators.png",
+        alt: "Client Accelerators",
+    },
+    { src: "/images/logos/hodderborg.png", alt: "Hodderborg" },
+    { src: "/images/logos/nasdaq.png", alt: "Nasdaq" },
+    {
+        src: "/images/logos/S%20FIVE%20REAL%20ESTATE.png",
+        alt: "S Five Real Estate",
+    },
+    { src: "/images/logos/SPOKEN-WINES.png", alt: "Spoken Wines" },
+    { src: "/images/logos/Success%20School.png", alt: "Success School" },
 ];
 ---
 
-<section class="relative mt-12 w-full text-zinc-900" data-trustedby-section>
-  <div class="mx-auto max-w-[90rem] px-2 py-6 sm:px-4 md:px-6">
-    <div
-      class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
-    >
-      <!-- Left: Trusted by + logos -->
-      <div class="flex flex-col gap-3 text-center md:w-full md:items-center">
-        <div class="relative overflow-hidden">
-          <div class="flex items-center justify-center">
-            <span
-              class="trustedby-pill inline-flex items-center gap-2 rounded-full bg-white/25 px-3 py-1 text-base text-zinc-700 backdrop-blur-xl md:text-lg"
-            >
-              <span
-                class="trustedby-dot h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_18px_rgba(183,255,42,0.6)]"
-              ></span>
-              Trusted by <span class="text-zinc-900 font-semibold"
-                >50+ brands</span
-              >
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+<section
+    class="relative mt-12 w-full text-zinc-900 overflow-hidden"
+    data-trustedby-section
+>
+    <!-- Atmospheric Background Glow -->
+    <div class="atmospheric-glow"></div>
 
-    <div class="mt-6 flex justify-center">
-      <div
-        class="w-full max-w-[90rem] px-[6%] sm:px-[10%] md:px-[12%] lg:px-[14%]"
-      >
-        <div class="logo-mask overflow-hidden">
-          <div
-            class="logo-marquee mx-auto flex w-max items-center justify-center gap-10 py-3"
-          >
+    <!-- Cinematic Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <div class="relative z-10 mx-auto max-w-[92%] px-2 py-6 sm:px-4 md:px-6">
+        <div
+            class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+        >
+            <!-- Left: Trusted by + logos -->
+            <div
+                class="flex flex-col gap-3 text-center md:w-full md:items-center"
+            >
+                <div class="relative overflow-hidden">
+                    <div class="flex items-center justify-center">
+                        <span
+                            class="trustedby-pill inline-flex items-center gap-2 rounded-full bg-white/40 px-3 py-1 text-base text-zinc-800 backdrop-blur-xl md:text-lg border border-white/50"
+                        >
+                            <span
+                                class="trustedby-dot h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_18px_rgba(183,255,42,0.8)]"
+                            ></span>
+                            Trusted by <span class="text-zinc-900 font-bold"
+                                >50+ brands</span
+                            >
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-[8px] flex justify-center">
+            <div class="w-full px-[6%] sm:px-[10%] md:px-[12%] lg:px-[14%]">
+                <div class="logo-mask overflow-hidden">
+                    <div
+                        class="logo-marquee mx-auto flex w-max items-center justify-center gap-10 py-2"
+                    >
+                        {
+                            [...logos, ...logos].map((logo) => (
+                                <div class="flex h-32 w-72 items-center justify-center md:h-60 md:w-96">
+                                    <img
+                                        src={logo.src}
+                                        alt={logo.alt}
+                                        class="max-h-full max-w-full object-contain opacity-70 transition duration-300 hover:opacity-100 hover:scale-105"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="mt-8 mb-20 grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
             {
-              [...logos, ...logos].map((logo) => (
-                <div class="flex h-14 w-44 items-center justify-center md:h-16 md:w-52">
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    class="max-h-full max-w-full object-contain opacity-70 transition hover:opacity-100"
+                stats.map((s, i) => (
+                    <div class="stat-item px-5 py-4 text-center" data-index={i}>
+                        <p class="text-4xl font-bold text-zinc-900 md:text-5xl">
+                            <span
+                                class="text-lime-500 stat-count drop-shadow-sm"
+                                data-target={s.value}
+                                data-decimals={s.decimals}
+                                data-suffix={s.suffix}
+                            >
+                                0
+                            </span>
+                        </p>
+                        <p class="text-lg text-zinc-600 font-medium">
+                            {s.label}
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Pain Points: Deconstructed Timeline Flow -->
+        <div class="relative mt-4 text-center">
+            <p
+                class="text-sm font-semibold tracking-widest text-zinc-500 uppercase mb-2"
+            >
+                Is this you?
+            </p>
+            <h3
+                class="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-zinc-900 md:text-7xl trustedby-playfair"
+            >
+                Content feels
+                <span
+                    class="trustedby-headline text-lime-600 italic font-medium"
+                    data-text="too hard?"
+                    aria-label="too hard?"></span><span
+                    class="trustedby-cursor cursor-blink text-lime-600"></span>
+            </h3>
+
+            <div
+                class="pointer-events-none relative mt-8 top-6 ml-4 md:ml-20 hidden w-fit flex-col items-center gap-2 text-zinc-500 md:flex animate-float-delayed"
+            >
+                <span
+                    class="font-handwriting rotate-[-6deg] text-5xl font-bold text-zinc-400"
+                    >sounds familiar?</span
+                >
+                <img
+                    src="/images/trusted%20by%20icons/arrow.png"
+                    alt=""
+                    class="h-32 w-52 object-contain opacity-80"
                     loading="lazy"
                     decoding="async"
-                  />
+                />
+            </div>
+
+            <!-- Scroll-Triggered Vertical Text Slider (Viewport Scroll, Non-Sticky) -->
+            <div class="scroll-container" style="height: 700px;">
+                <div class="viewport-frame">
+                    <div class="pain-point-list">
+                        <!-- Pain Point 1 -->
+                        <div class="pp-item" data-index="0">
+                            <span class="pp-arrow">←</span>
+                            <h2 class="pp-text">NO CONVERSIONS</h2>
+                        </div>
+                        <!-- Pain Point 2 -->
+                        <div class="pp-item" data-index="1">
+                            <span class="pp-arrow">←</span>
+                            <h2 class="pp-text">UNSURE WHAT TO POST</h2>
+                        </div>
+                        <!-- Pain Point 3 -->
+                        <div class="pp-item" data-index="2">
+                            <span class="pp-arrow">←</span>
+                            <h2 class="pp-text">NOT PREMIUM ENOUGH</h2>
+                        </div>
+                        <!-- Pain Point 4 -->
+                        <div class="pp-item" data-index="3">
+                            <span class="pp-arrow">←</span>
+                            <h2 class="pp-text">INCONSISTENT POSTING</h2>
+                        </div>
+                        <!-- Pain Point 5 -->
+                        <div class="pp-item" data-index="4">
+                            <span class="pp-arrow">←</span>
+                            <h2 class="pp-text">CONTRADICTORY ADVICE</h2>
+                        </div>
+                        <!-- Pain Point 6 -->
+                        <div class="pp-item" data-index="5">
+                            <span class="pp-arrow">←</span>
+                            <h2 class="pp-text">VIEWS, NO ACTION</h2>
+                        </div>
+                    </div>
                 </div>
-              ))
-            }
-          </div>
+            </div>
         </div>
-      </div>
     </div>
-
-    <!-- Stats -->
-    <div class="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
-      {
-        stats.map((s, i) => (
-          <div
-            class="stat-item rounded-xl px-5 py-4 text-center"
-            data-index={i}
-          >
-            <p class="text-3xl font-bold text-zinc-900 md:text-4xl">
-              <span
-                class="text-lime-400 stat-count"
-                data-target={s.value}
-                data-decimals={s.decimals}
-                data-suffix={s.suffix}
-              >
-                0
-              </span>
-            </p>
-            <p class="text-lg text-zinc-600">{s.label}</p>
-          </div>
-        ))
-      }
-    </div>
-
-    <div class="relative mt-24 text-center">
-      <p class="text-sm text-zinc-500">Is this you?</p>
-      <h3
-        class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-zinc-900 md:text-5xl trustedby-playfair"
-      >
-        Content feels
-        <span
-          class="trustedby-headline text-lime-600"
-          data-text="too hard?"
-          aria-label="too hard?"></span>
-      </h3>
-
-      <div
-        class="pointer-events-none absolute right-10 top-20 hidden flex-col items-center gap-1 text-sm text-zinc-500 md:flex"
-      >
-        <span class="font-handwriting">sounds familiar?</span>
-        <img
-          src="/images/trusted%20by%20icons/arrow.png"
-          alt=""
-          class="h-16 w-28 object-contain scale-x-[-1] scale-y-[-1]"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-
-      <div
-        class="trustedby-cards mt-16 grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 lg:gap-10"
-        data-trustedby-cards
-      >
-        <svg data-connector-svg class="trustedby-connector" aria-hidden="true">
-          <path data-connector-track></path>
-          <path data-connector-progress></path>
-        </svg>
-
-        <div
-          class="trustedby-cloud relative z-10 mx-auto flex w-full max-w-[22rem] min-h-[180px] flex-col items-center justify-center gap-3 px-4 py-5 text-center sm:max-w-none sm:min-h-[210px] sm:gap-4 sm:px-5 sm:py-6 md:min-h-[230px] md:px-6 md:py-7 lg:min-h-[250px] lg:px-7 lg:py-8"
-          data-card
-        >
-          <div
-            class="trustedby-icon-wrap flex h-10 w-10 items-center justify-center rounded-full border border-lime-200 bg-white/70 sm:h-12 sm:w-12 lg:h-14 lg:w-14"
-          >
-            <img
-              src="/images/trusted%20by%20icons/growth.png"
-              alt="Growth chart"
-              class="trustedby-icon h-6 w-6 object-contain sm:h-7 sm:w-7 lg:h-8 lg:w-8"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <p
-            class="trustedby-card-text text-xs text-center text-zinc-700 sm:text-sm md:text-base"
-          >
-            Are you posting content regularly, but it's <strong>not</strong> turning
-            into real inquiries or sales?
-          </p>
-        </div>
-
-        <div
-          class="trustedby-cloud relative z-10 mx-auto flex w-full max-w-[22rem] min-h-[180px] flex-col items-center justify-center gap-3 px-4 py-5 text-center sm:max-w-none sm:min-h-[210px] sm:gap-4 sm:px-5 sm:py-6 md:min-h-[230px] md:px-6 md:py-7 lg:min-h-[250px] lg:px-7 lg:py-8"
-          data-card
-        >
-          <div
-            class="trustedby-icon-wrap flex h-10 w-10 items-center justify-center rounded-full border border-lime-200 bg-white/70 sm:h-12 sm:w-12 lg:h-14 lg:w-14"
-          >
-            <img
-              src="/images/trusted%20by%20icons/location.png"
-              alt="Question marker"
-              class="trustedby-icon h-6 w-6 -translate-x-1 object-contain sm:h-7 sm:w-7 lg:h-8 lg:w-8"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <p
-            class="trustedby-card-text text-xs text-center text-zinc-700 sm:text-sm md:text-base"
-          >
-            Do you feel unsure <strong>what to post</strong> or <strong
-              >why</strong
-            > it should work in the first place?
-          </p>
-        </div>
-
-        <div
-          class="trustedby-cloud relative z-10 mx-auto flex w-full max-w-[22rem] min-h-[180px] flex-col items-center justify-center gap-3 px-4 py-5 text-center sm:max-w-none sm:min-h-[210px] sm:gap-4 sm:px-5 sm:py-6 md:min-h-[230px] md:px-6 md:py-7 lg:min-h-[250px] lg:px-7 lg:py-8"
-          data-card
-        >
-          <div
-            class="trustedby-icon-wrap flex h-10 w-10 items-center justify-center rounded-full border border-lime-200 bg-white/70 sm:h-12 sm:w-12 lg:h-14 lg:w-14"
-          >
-            <img
-              src="/images/trusted%20by%20icons/star.png"
-              alt="Star"
-              class="trustedby-icon h-6 w-6 object-contain sm:h-7 sm:w-7 lg:h-8 lg:w-8"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <p
-            class="trustedby-card-text text-xs text-center text-zinc-700 sm:text-sm md:text-base"
-          >
-            Does your content feel "okay", but <strong
-              >nowhere near premium</strong
-            > or industry-leading?
-          </p>
-        </div>
-
-        <div
-          class="trustedby-cloud relative z-10 mx-auto flex w-full max-w-[22rem] min-h-[180px] flex-col items-center justify-center gap-3 px-4 py-5 text-center sm:max-w-none sm:min-h-[210px] sm:gap-4 sm:px-5 sm:py-6 md:min-h-[230px] md:px-6 md:py-7 lg:mt-6 lg:min-h-[250px] lg:px-7 lg:py-8 lg:mb-8"
-          data-card
-        >
-          <div
-            class="trustedby-icon-wrap flex h-10 w-10 items-center justify-center rounded-full border border-lime-200 bg-white/70 sm:h-12 sm:w-12 lg:h-14 lg:w-14"
-          >
-            <img
-              src="/images/trusted%20by%20icons/clock.png"
-              alt="Clock"
-              class="trustedby-icon h-6 w-6 object-contain sm:h-7 sm:w-7 lg:h-8 lg:w-8"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <p
-            class="trustedby-card-text text-xs text-center text-zinc-700 sm:text-sm md:text-base"
-          >
-            Are you tired of starting strong, <strong>then disappearing</strong> because
-            content takes too much time?
-          </p>
-        </div>
-
-        <div
-          class="trustedby-cloud relative z-10 mx-auto flex w-full max-w-[22rem] min-h-[180px] flex-col items-center justify-center gap-3 px-4 py-5 text-center sm:max-w-none sm:min-h-[210px] sm:gap-4 sm:px-5 sm:py-6 md:min-h-[230px] md:px-6 md:py-7 lg:mt-6 lg:min-h-[250px] lg:px-7 lg:py-8 lg:mb-8"
-          data-card
-        >
-          <div
-            class="trustedby-icon-wrap flex h-10 w-10 items-center justify-center rounded-full border border-lime-200 bg-white/70 sm:h-12 sm:w-12 lg:h-14 lg:w-14"
-          >
-            <img
-              src="/images/trusted%20by%20icons/warning.png"
-              alt="Warning"
-              class="trustedby-icon h-6 w-6 object-contain sm:h-7 sm:w-7 lg:h-8 lg:w-8"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <p
-            class="trustedby-card-text text-xs text-center text-zinc-700 sm:text-sm md:text-base"
-          >
-            Do growth tips feel <strong>contradictory</strong>, leaving you
-            stuck between <strong>trends</strong>
-            and guesswork?
-          </p>
-        </div>
-
-        <div
-          class="trustedby-cloud relative z-10 mx-auto flex w-full max-w-[22rem] min-h-[180px] flex-col items-center justify-center gap-3 px-4 py-5 text-center sm:max-w-none sm:min-h-[210px] sm:gap-4 sm:px-5 sm:py-6 md:min-h-[230px] md:px-6 md:py-7 lg:mt-6 lg:min-h-[250px] lg:px-7 lg:py-8 lg:mb-8"
-          data-card
-        >
-          <div
-            class="trustedby-icon-wrap flex h-10 w-10 items-center justify-center rounded-full border border-lime-200 bg-white/70 sm:h-12 sm:w-12 lg:h-14 lg:w-14"
-          >
-            <img
-              src="/images/trusted%20by%20icons/chat.png"
-              alt="Chat"
-              class="trustedby-icon h-6 w-6 object-contain sm:h-7 sm:w-7 lg:h-8 lg:w-8"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <p
-            class="trustedby-card-text text-xs text-center text-zinc-700 sm:text-sm md:text-base"
-          >
-            Are people watching your content... but <strong
-              >not taking action</strong
-            > or reaching out?
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap");
-  @import url("https://api.fontshare.com/v2/css?f[]=satoshi@700&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap");
+    @import url("https://api.fontshare.com/v2/css?f[]=satoshi@700&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+    @import url("https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap");
 
-  .font-handwriting {
-    font-family: "Comic Sans MS", "Comic Sans", "Bradley Hand", cursive;
-    letter-spacing: 0.02em;
-  }
+    .font-handwriting {
+        font-family: "Architects Daughter", cursive;
+        letter-spacing: 0.02em;
+    }
 
-  .trustedby-playfair,
-  .stat-count {
-    font-family: "Space Grotesk", system-ui, sans-serif;
-    font-weight: 700;
-  }
-
-  @media (max-width: 1023px) {
     .trustedby-playfair {
-      font-family: "Playfair Display", "Times New Roman", serif;
-      font-weight: 700;
+        font-family: "Playfair Display", serif;
+        font-weight: 800;
+        letter-spacing: -0.02em;
     }
 
     .stat-count {
-      font-family: "Satoshi", system-ui, sans-serif;
-      font-weight: 700;
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-weight: 700;
     }
-  }
+
+    @media (max-width: 1023px) {
+        .trustedby-playfair {
+            font-size: 3rem;
+        }
+
+        .stat-count {
+            font-family: "Satoshi", system-ui, sans-serif;
+        }
+    }
+
+    .cursor-blink {
+        display: inline-block;
+        width: 2px;
+        height: 0.8em;
+        background-color: currentColor;
+        margin-left: 2px;
+        vertical-align: middle;
+        animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+        from,
+        to {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+    }
+
+    /* Mercury Flow Animation */
+    @keyframes mercury-flow {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
 </style>
 
 <style>
-  :global(.trustedby-headline) {
-    display: inline-block;
-    white-space: nowrap;
-  }
+    /* --- Creative Overhaul Styles --- */
 
-  :global(.trustedby-headline .word) {
-    display: inline-block;
-    transform: translateY(18px);
-    opacity: 0;
-    filter: blur(6px);
-    transition:
-      transform 2000ms ease,
-      opacity 2000ms ease,
-      filter 2000ms ease;
-  }
+    /* 1. Atmospheric Glow */
+    .atmospheric-glow {
+        position: absolute;
+        top: 50%;
+        right: 10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+            circle,
+            rgba(132, 204, 22, 0.25) 0%,
+            rgba(20, 184, 166, 0.1) 40%,
+            transparent 70%
+        );
+        transform: translate(50%, -50%);
+        filter: blur(80px);
+        z-index: 0;
+        animation: pulse-glow 8s ease-in-out infinite alternate;
+        pointer-events: none;
+    }
 
-  :global(.trustedby-headline.is-visible .word) {
-    transform: translateY(0);
-    opacity: 1;
-    filter: blur(0);
-  }
+    @keyframes pulse-glow {
+        0% {
+            opacity: 0.5;
+            transform: translate(50%, -50%) scale(0.9);
+        }
+        100% {
+            opacity: 1;
+            transform: translate(50%, -50%) scale(1.1);
+        }
+    }
 
-  @media (prefers-reduced-motion: reduce) {
-    :global(.trustedby-headline .word),
+    /* 2. Cinematic Noise Overlay */
+    .noise-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        opacity: 0.07;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Scroll Slider Styles */
+    .scroll-container {
+        position: relative;
+        width: 100%;
+        margin-top: 4rem;
+        margin-bottom: 8rem;
+        overflow: visible; /* Allow glow to bleed */
+    }
+
+    .viewport-frame {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end; /* Align list to the right */
+    }
+
+    .pain-point-list {
+        position: relative;
+        width: 100%;
+        max-width: 1000px;
+        height: 100%;
+        margin-right: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        perspective: 1500px;
+    }
+
+    .pp-item {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        display: flex; /* Flex row for Arrow + Text */
+        flex-direction: row-reverse; /* Arrow on right, Text on left */
+        align-items: center;
+        gap: 3rem;
+        transform: translateY(-50%); /* Centered by default */
+        /* Expo Ease Out for premium feel */
+        transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        opacity: 0;
+        pointer-events: none;
+        white-space: nowrap;
+    }
+
+    .pp-text {
+        font-family: "Clash Display", sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 0;
+        line-height: 0.9;
+        text-align: right;
+        transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+
+        /* Liquid Fluid Chrome Effect (Enhanced) */
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-image: linear-gradient(
+            135deg,
+            #ff4d4d 0%,
+            #f9cb28 25%,
+            #4ade80 50%,
+            #22d3ee 75%,
+            #a78bfa 100%
+        );
+        animation: fluid-flow 4s ease infinite alternate;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+        /* Slight wave distortion via transform if possible, but gradient flow handles the 'liquid' feel best on text */
+    }
+
+    @keyframes fluid-flow {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .pp-item:hover .pp-text {
+        transform: scale(1.05) translateX(-10px);
+        animation-duration: 2s;
+        /* Extreme Water-Like Fluid Effect */
+        background-image:
+            /* Bubble highlight (top of water bubble) */
+            radial-gradient(
+                circle 80px at calc(var(--mx, 50%) - 3%)
+                    calc(var(--my, 50%) - 3%),
+                rgba(255, 255, 255, 0.8) 0%,
+                transparent 40%
+            ),
+            /* Main water bubble (empty center) */
+            radial-gradient(
+                    circle 150px at var(--mx, 50%) var(--my, 50%),
+                    transparent 0%,
+                    transparent 20%,
+                    rgba(100, 200, 255, 0.15) 30%,
+                    rgba(60, 150, 220, 0.3) 50%,
+                    rgba(20, 100, 180, 0.4) 70%,
+                    transparent 100%
+                ),
+            /* Water depth layer */
+            linear-gradient(
+                    180deg,
+                    rgba(100, 200, 255, 0.3) 0%,
+                    rgba(60, 150, 220, 0.5) 50%,
+                    rgba(100, 200, 255, 0.3) 100%
+                ),
+            /* Animated water surface shimmer */
+            linear-gradient(
+                    120deg,
+                    #4dd0e1 0%,
+                    #80deea 15%,
+                    #b2ebf2 30%,
+                    #80deea 45%,
+                    #4dd0e1 60%,
+                    #80deea 75%,
+                    #b2ebf2 90%,
+                    #4dd0e1 100%
+                );
+        background-size:
+            100% 100%,
+            100% 100%,
+            100% 100%,
+            400% 100%;
+        -webkit-text-stroke: 1.5px rgba(0, 100, 150, 0.8);
+        filter: drop-shadow(0 0 20px rgba(77, 208, 225, 0.4))
+            drop-shadow(0 0 40px rgba(128, 222, 234, 0.2));
+    }
+
+    .pp-arrow {
+        font-size: 4rem;
+        line-height: 1;
+        transform: rotate(0deg) translateX(20px);
+        transition:
+            transform 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+            color 0.5s ease,
+            opacity 0.5s;
+        opacity: 0;
+    }
+
+    /* --- Visual States --- */
+
+    /* HIDDEN (Default) */
+    .pp-item {
+        visibility: hidden;
+    }
+
+    /* TOP STATE: Distant, Solid, Faded */
+    .pp-item.state-top {
+        visibility: visible;
+        opacity: 0.15; /* Very subtle */
+        transform: translateY(-180px) scale(0.8) skewX(5deg);
+        filter: blur(2px);
+    }
+    .pp-item.state-top .pp-text {
+        font-size: 3.5rem;
+        color: #000000;
+        -webkit-text-stroke: 0;
+    }
+    .pp-item.state-top .pp-arrow {
+        transform: rotate(45deg);
+        opacity: 0;
+    }
+
+    /* CENTER STATE: Active, Filled, Glows */
+    .pp-item.state-active {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0) scale(1) skewX(0deg);
+        filter: blur(0);
+        z-index: 10;
+    }
+    .pp-item.state-active .pp-text {
+        font-size: 8rem;
+        -webkit-text-stroke: 0;
+        background-image: linear-gradient(
+            120deg,
+            #000000 0%,
+            #404040 25%,
+            #111111 50%,
+            #404040 75%,
+            #000000 100%
+        );
+        text-shadow: 2px 10px 60px rgba(0, 0, 0, 0.25);
+    }
+    .pp-item.state-active .pp-arrow {
+        transform: rotate(0deg) translateX(0);
+        opacity: 1;
+        color: #84cc16;
+        filter: drop-shadow(0 0 10px rgba(132, 204, 22, 0.5));
+    }
+
+    /* BOTTOM STATE: Entering, Solid, Faded */
+    .pp-item.state-bottom {
+        visibility: visible;
+        opacity: 0.4; /* Reduced visibility */
+        transform: translateY(180px) scale(0.9) skewX(-5deg);
+        filter: blur(1px);
+    }
+    .pp-item.state-bottom .pp-text {
+        font-size: 5rem;
+        color: #000000;
+        -webkit-text-stroke: 0;
+    }
+    .pp-item.state-bottom .pp-arrow {
+        transform: rotate(-45deg);
+        opacity: 0;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+        .pp-item.state-active .pp-text {
+            font-size: 4rem;
+        }
+        .pp-item.state-top .pp-text {
+            font-size: 1.8rem;
+        }
+        .pp-item.state-bottom .pp-text {
+            font-size: 2.5rem;
+        }
+        .pain-point-list {
+            margin-right: 2rem;
+        }
+
+        .atmospheric-glow {
+            width: 400px;
+            height: 400px;
+            filter: blur(50px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .pp-item {
+            gap: 1rem;
+        }
+        .pp-item.state-active .pp-text {
+            font-size: 2.8rem;
+        }
+        .pp-item.state-top .pp-text {
+            font-size: 1.5rem;
+        }
+        .pp-item.state-bottom .pp-text {
+            font-size: 2rem;
+        }
+        .pp-arrow {
+            font-size: 2.5rem;
+        }
+
+        .pain-point-list {
+            height: 100%;
+            margin-right: 1.5rem;
+        }
+        .scroll-container {
+            margin-bottom: 4rem;
+            height: 500px !important;
+        }
+    }
+</style>
+
+<style>
+    :global(.trustedby-headline) {
+        display: inline-block;
+        white-space: nowrap;
+    }
+    :global(.trustedby-headline .word) {
+        display: inline-block;
+        transform: translateY(18px);
+        opacity: 0;
+        filter: blur(6px);
+        transition:
+            transform 2000ms ease,
+            opacity 2000ms ease,
+            filter 2000ms ease;
+    }
     :global(.trustedby-headline.is-visible .word) {
-      transform: none;
-      filter: none;
-      transition: none;
+        transform: translateY(0);
+        opacity: 1;
+        filter: blur(0);
     }
-  }
+    @media (prefers-reduced-motion: reduce) {
+        :global(.trustedby-headline .word),
+        :global(.trustedby-headline.is-visible .word) {
+            transform: none;
+            filter: none;
+            transition: none;
+        }
+    }
 </style>
 
 <style>
-  .stat-item {
-    transform: translateY(16px);
-    opacity: 0;
-    filter: blur(4px);
-    transition:
-      transform 600ms ease,
-      opacity 600ms ease,
-      filter 600ms ease;
-  }
-
-  .stat-item.is-visible {
-    transform: translateY(0);
-    opacity: 1;
-    filter: blur(0);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .stat-item,
+    .stat-item {
+        transform: translateY(16px);
+        opacity: 0;
+        filter: blur(4px);
+        transition:
+            transform 600ms ease,
+            opacity 600ms ease,
+            filter 600ms ease;
+    }
     .stat-item.is-visible {
-      transform: none;
-      filter: none;
-      transition: none;
+        transform: translateY(0);
+        opacity: 1;
+        filter: blur(0);
     }
-  }
+    @media (prefers-reduced-motion: reduce) {
+        .stat-item,
+        .stat-item.is-visible {
+            transform: none;
+            filter: none;
+            transition: none;
+        }
+    }
 </style>
 
 <style>
-  .trustedby-pill {
-    animation: breathe 4s ease-in-out infinite;
-    transform-origin: center;
-  }
-
-  .trustedby-dot {
-    animation: pulse-dot 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse-dot {
-    0%,
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.25;
-      transform: scale(0.7);
-    }
-  }
-
-  @keyframes breathe {
-    0%,
-    100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.03);
-    }
-  }
-
-  .logo-marquee {
-    animation: marquee 24s linear infinite;
-  }
-
-  .logo-mask {
-    mask-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      #000 20%,
-      #000 80%,
-      transparent 100%
-    );
-    -webkit-mask-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      #000 20%,
-      #000 80%,
-      transparent 100%
-    );
-  }
-
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
     .trustedby-pill {
-      animation: none;
+        animation: breathe 4s ease-in-out infinite;
+        transform-origin: center;
     }
-
     .trustedby-dot {
-      animation: none;
+        animation: pulse-dot 2s ease-in-out infinite;
     }
-
+    @keyframes pulse-dot {
+        0%,
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.25;
+            transform: scale(0.7);
+        }
+    }
+    @keyframes breathe {
+        0%,
+        100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.03);
+        }
+    }
     .logo-marquee {
-      animation: none;
+        animation: marquee 24s linear infinite;
     }
-  }
+    .logo-mask {
+        mask-image: linear-gradient(
+            90deg,
+            transparent 0%,
+            #000 20%,
+            #000 80%,
+            transparent 100%
+        );
+        -webkit-mask-image: linear-gradient(
+            90deg,
+            transparent 0%,
+            #000 20%,
+            #000 80%,
+            transparent 100%
+        );
+    }
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .animate-float-delayed {
+        animation: float-delayed 4s ease-in-out infinite;
+    }
+    @keyframes float-delayed {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .trustedby-pill,
+        .trustedby-dot,
+        .logo-marquee,
+        .atmospheric-glow,
+        .animate-float-delayed {
+            animation: none;
+        }
+    }
 </style>
 
-<style>
-  .trustedby-cards {
-    position: relative;
-  }
+<script>
+    // Hybrid Scroll + Auto-Play Logic
+    const scrollContainer = document.querySelector(".scroll-container");
+    const items = document.querySelectorAll(".pp-item");
 
-  .trustedby-cloud {
-    background-image: url("/images/trusted%20by%20icons/container%20of%20cards.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    background-color: transparent;
-    border-radius: 0;
-    box-shadow: none;
-    filter: none;
-    position: relative;
-  }
+    if (scrollContainer && items.length > 0) {
+        let scrollProgress = 0;
+        let autoProgress = 0;
+        let lastTime = 0;
+        const speed = 0.35; // Items per second (Slow & Premium)
 
-  .trustedby-cloud.is-active {
-    filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.18));
-  }
+        // Update Scroll Progress on Scroll
+        function onScroll() {
+            if (!scrollContainer) return;
+            const rect = scrollContainer.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const totalDistance = viewportHeight + rect.height;
+            const distanceTraveled = viewportHeight - rect.top;
 
-  .trustedby-icon {
-    filter: grayscale(1) brightness(0);
-  }
+            // Normalize 0 to 1
+            let raw = distanceTraveled / totalDistance;
+            // Map to total items range
+            scrollProgress = raw * items.length;
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll(); // Init
 
-  .trustedby-card-text {
-    line-height: 1.35;
-    min-height: 2.7em;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+        // Animation Loop
+        function loop(time: number) {
+            if (!lastTime) lastTime = time;
+            const delta = (time - lastTime) / 1000;
+            lastTime = time;
 
-  .trustedby-connector {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
+            // Auto-advance
+            autoProgress += speed * delta;
 
-  .trustedby-connector [data-connector-track],
-  .trustedby-connector [data-connector-progress] {
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 3;
-  }
+            // Combine
+            const totalIndex = scrollProgress + autoProgress;
 
-  .trustedby-connector [data-connector-track] {
-    stroke: rgba(120, 120, 120, 0.18);
-  }
+            // Wrap index
+            const count = items.length;
+            const activeIndex = Math.floor(
+                ((totalIndex % count) + count) % count,
+            );
 
-  .trustedby-connector [data-connector-progress] {
-    stroke: #84cc16;
-  }
+            // Render
+            items.forEach((item, index) => {
+                item.classList.remove(
+                    "state-active",
+                    "state-top",
+                    "state-bottom",
+                );
 
-  @media (max-width: 1023px) {
-    .trustedby-connector {
-      display: none;
+                // Indices
+                const topIndex = (activeIndex - 1 + count) % count;
+                const bottomIndex = (activeIndex + 1) % count;
+
+                if (index === activeIndex) {
+                    item.classList.add("state-active");
+                } else if (index === topIndex) {
+                    item.classList.add("state-top");
+                } else if (index === bottomIndex) {
+                    item.classList.add("state-bottom");
+                }
+            });
+
+            requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
     }
-  }
 
-  @media (max-width: 640px) {
-    .stat-count {
-      font-family: "Satoshi", system-ui, sans-serif;
-      font-weight: 700;
+    // Typing Animation for "too hard?"
+    const headlineEl = document.querySelector(".trustedby-headline");
+    const cursorEl = document.querySelector(".trustedby-cursor");
+    const textToType = headlineEl?.getAttribute("data-text") || "";
+
+    if (headlineEl && textToType) {
+        let charIdx = 0;
+        let hasAnimated = false;
+
+        const typeHeadline = () => {
+            if (charIdx < textToType.length) {
+                headlineEl.textContent += textToType.charAt(charIdx);
+                charIdx++;
+                setTimeout(typeHeadline, 100);
+            } else {
+                // Keep cursor blinking for a bit then hide? Or keep it.
+                // User said animate, let's keep it blinking.
+            }
+        };
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        hasAnimated = true;
+                        setTimeout(typeHeadline, 500);
+                    }
+                });
+            },
+            { threshold: 0.5 },
+        );
+
+        observer.observe(headlineEl);
     }
-  }
-</style>
 
-<script type="module" src="/scripts/trusted-by.js"></script>
+    // Interactive Liquid Bubble Mouse Tracking
+    const ppItems = document.querySelectorAll(".pp-item");
+
+    ppItems.forEach((item) => {
+        const text = item.querySelector(".pp-text") as HTMLElement;
+        if (!text) return;
+
+        item.addEventListener("mousemove", (e: any) => {
+            const rect = text.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+            // Smoother movement with requestAnimationFrame
+            requestAnimationFrame(() => {
+                text.style.setProperty("--mx", `${x}%`);
+                text.style.setProperty("--my", `${y}%`);
+            });
+        });
+    });
+
+    // Stats Counter Animation
+    const statsSection = document.querySelector("[data-trustedby-section]");
+    const statCounts = document.querySelectorAll(".stat-count");
+
+    if (statsSection && statCounts.length > 0) {
+        let hasCounted = false;
+
+        const startCounting = () => {
+            statCounts.forEach((stat) => {
+                const target = stat.getAttribute("data-target");
+                const decimals = parseInt(
+                    stat.getAttribute("data-decimals") || "0",
+                );
+                const suffix = stat.getAttribute("data-suffix") || "";
+
+                // Parse target (handle K/M/B suffixes if present in data-target, though likely passed as value)
+                // Assuming data-target is a raw number string based on props
+                let endValue = parseFloat(target || "0");
+
+                // Simple animation
+                let startValue = 0;
+                let duration = 2000;
+                let startTime: number | null = null;
+
+                function step(timestamp: number) {
+                    if (!startTime) startTime = timestamp;
+                    const progress = Math.min(
+                        (timestamp - startTime) / duration,
+                        1,
+                    );
+
+                    // Ease out quart
+                    const ease = 1 - Math.pow(1 - progress, 4);
+
+                    const current = startValue + (endValue - startValue) * ease;
+
+                    // Format
+                    let formatted = current.toFixed(decimals);
+
+                    // Add suffix
+                    stat.textContent = formatted + suffix;
+
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                }
+                window.requestAnimationFrame(step);
+            });
+        };
+
+        const statsObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Reveal items
+                        document
+                            .querySelectorAll(".stat-item")
+                            .forEach((el, i) => {
+                                el.classList.add("is-visible");
+                            });
+
+                        startCounting();
+                    } else {
+                        // Optional: Hide items to re-trigger fade-in or just reset numbers?
+                        // To "count up every time", we simply need to re-run startCounting on entry.
+                        // But for cleanest effect, we can remove is-visible class so they fade in again too.
+                        document
+                            .querySelectorAll(".stat-item")
+                            .forEach((el) => {
+                                el.classList.remove("is-visible");
+                            });
+                    }
+                });
+            },
+            { threshold: 0.2 },
+        );
+
+        statsObserver.observe(statsSection);
+    }
+</script>

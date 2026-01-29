@@ -1,0 +1,20 @@
+{
+    "primaryCta": {
+        "label": "Book a Strategy Call",
+        "href": "#book"
+    },
+    "secondaryCta": {
+        "label": "See Proof",
+        "href": "#proof"
+    },
+    "videoSrc": "/videos/showreel.mp4",
+    "posterSrc": "/images/hero-video-thumb.jpg",
+    "typeText": "Helping elite coaches build authority and real estate brands dominate with premium content.",
+    "headline": {
+        "line1": "We turn",
+        "highlight1": "attention",
+        "line2": "into",
+        "highlight2": "clients."
+    },
+    "pillText": "Content systems that convert"
+}

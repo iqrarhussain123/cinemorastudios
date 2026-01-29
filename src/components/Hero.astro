@@ -1,38 +1,61 @@
 ---
-const primaryCta = { label: "Book a Strategy Call", href: "#book" };
-const secondaryCta = { label: "See Proof", href: "#proof" };
-
-// Put your video here: /public/videos/showreel.mp4
-const videoSrc = "/videos/showreel.mp4";
-
-// Put your thumbnail here: /public/images/hero-video-thumb.jpg (1920x1080)
-const posterSrc = "/images/hero-video-thumb.jpg";
+import heroData from "../data/hero.json";
+const {
+  primaryCta,
+  secondaryCta,
+  videoSrc,
+  posterSrc,
+  typeText,
+  headline,
+  pillText,
+} = heroData;
 ---
 
 <section class="hero-section relative overflow-hidden bg-transparent">
+  <!-- Cinematic Texture Overlay -->
+  <div
+    class="absolute inset-0 z-0 opacity-30 mix-blend-overlay pointer-events-none"
+  >
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <filter id="noiseFilterHero">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.6"
+          stitchTiles="stitch"></feTurbulence>
+      </filter>
+      <rect
+        width="100%"
+        height="100%"
+        filter="url(#noiseFilterHero)"
+        opacity="0.4"></rect>
+    </svg>
+  </div>
+
   <div class="relative z-10">
     <div
-      class="mx-auto flex w-full max-w-[100rem] flex-col gap-8 px-4 sm:px-6 pt-24 pb-32 sm:pt-28 md:pt-36 md:pb-40"
+      class="mx-auto flex w-full max-w-[96%] flex-col px-4 sm:px-6 pt-32 pb-12 sm:pt-40 md:pt-48 md:pb-16"
     >
       <!-- top pill -->
       <div
-        class="hero-pill hero-reveal-1 mx-auto mb-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-zinc-800/80 bg-zinc-900/50 px-3 py-1.5 text-xs text-zinc-200 backdrop-blur-md"
+        class="hero-pill hero-reveal-1 ml-12 mb-8 inline-flex w-fit items-center gap-1.5 rounded-full border border-zinc-800/80 bg-zinc-900/50 px-4 py-2 text-sm text-zinc-200 backdrop-blur-md"
       >
         <span class="h-2 w-2 rounded-full bg-lime-400"></span>
-        Content systems that convert
+        {pillText}
       </div>
 
       <!-- Text block -->
-      <div class="mx-auto mt-2 max-w-4xl text-center">
+      <div class="relative z-10 mx-auto max-w-[92%] px-4 pt-8 pb-0 text-center">
         <h1
-          class="hero-title hero-reveal-2 text-4xl font-extrabold leading-tight tracking-tight text-zinc-50 sm:text-5xl md:text-7xl"
+          class="hero-title hero-reveal-2 text-5xl font-extrabold leading-[1.1] tracking-tighter text-zinc-50 sm:text-7xl md:text-8xl"
         >
-          We turn <span class="text-lime-400">attention</span><br />
-          into <span class="text-lime-400">clients.</span>
+          {headline.line1}
+          <span class="text-lime-400">{headline.highlight1}</span><br />
+          {headline.line2}
+          <span class="text-lime-400">{headline.highlight2}</span>
         </h1>
 
         <div
-          class="hero-sub hero-reveal-3 mx-auto mt-12 w-full max-w-2xl text-left"
+          class="hero-sub hero-reveal-3 mx-auto mt-20 w-full max-w-2xl text-left"
         >
           <div class="relative w-full">
             <!-- Static Image Background -->
@@ -40,6 +63,10 @@ const posterSrc = "/images/hero-video-thumb.jpg";
               src="/images/typing-bar-bg.png"
               alt="AI Input Interface"
               class="w-full rounded-[2rem] shadow-2xl"
+              width="672"
+              height="120"
+              loading="eager"
+              decoding="async"
             />
 
             <!-- Typing Text Overlay -->
@@ -50,9 +77,13 @@ const posterSrc = "/images/hero-video-thumb.jpg";
                 <div
                   class="relative w-full text-sm font-light leading-snug text-zinc-100 sm:text-base md:text-lg"
                 >
-                  <span id="typing-text"></span><span
-                    class="animate-pulse font-light text-lime-400">|</span
-                  >
+                  <span id="typing-text" data-text={typeText}></span>
+                  <span class="custom-cursor-container">
+                    <span class="cursor-beam">
+                      <span class="cursor-halo"></span>
+                      <span class="cursor-satellite"></span>
+                    </span>
+                  </span>
                 </div>
               </div>
 
@@ -64,18 +95,32 @@ const posterSrc = "/images/hero-video-thumb.jpg";
 
         <script is:inline>
           // Typing effect
-          const typeText =
-            "Helping elite coaches build authority and real estate brands dominate with premium content.";
           const typeEl = document.getElementById("typing-text");
+          const typeText = typeEl?.getAttribute("data-text") || "";
+
           let charIndex = 0;
 
-          if (typeEl) {
+          if (typeEl && typeText) {
+            let isDeleting = false;
+
             setTimeout(() => {
               const type = () => {
-                if (charIndex < typeText.length) {
+                const current = typeEl.textContent;
+
+                if (!isDeleting && charIndex < typeText.length) {
+                  // Typing
                   typeEl.textContent += typeText.charAt(charIndex);
                   charIndex++;
                   setTimeout(type, 30);
+                } else if (isDeleting && charIndex > 0) {
+                  // Deleting
+                  typeEl.textContent = typeText.substring(0, charIndex - 1);
+                  charIndex--;
+                  setTimeout(type, 15);
+                } else {
+                  // State Switch
+                  isDeleting = !isDeleting;
+                  setTimeout(type, isDeleting ? 2000 : 500);
                 }
               };
               type();
@@ -84,7 +129,7 @@ const posterSrc = "/images/hero-video-thumb.jpg";
         </script>
 
         <div
-          class="hero-ctas hero-reveal-4 mt-8 flex flex-col justify-center gap-4 sm:flex-row"
+          class="hero-ctas hero-reveal-4 mt-14 mb-16 flex flex-col justify-center gap-4 sm:flex-row"
         >
           <!-- Primary Premium Button -->
           <a
@@ -127,17 +172,16 @@ const posterSrc = "/images/hero-video-thumb.jpg";
 
       <!-- Big video under text (Thumbnail + Hover-to-play) -->
       <div
-        class="hero-video hero-reveal-6 mt-16 md:mt-20 px-2 sm:px-6 perspective-1000"
+        class="hero-video hero-reveal-6 mt-0 px-2 sm:px-6 perspective-1000 relative z-20 w-full"
       >
         <div
           id="videoTiltContainer"
-          class="mx-auto max-w-[95rem] rounded-[2rem] border border-white/5 bg-white/5 p-2 shadow-[0_0_150px_-30px_rgba(163,230,53,0.15)] ring-1 ring-white/10 backdrop-blur-3xl transition-transform duration-100 ease-out md:p-3"
+          class="group mx-auto max-w-[95rem] aspect-video rounded-[2rem] border border-white/5 bg-white/5 p-2 shadow-2xl ring-1 ring-white/10 backdrop-blur-3xl transition-transform duration-500 ease-out md:p-3"
           style="transform-style: preserve-3d;"
         >
-          <!-- Mute Toggle Button (Apple UI Style) -->
           <button
             id="muteToggle"
-            class="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/30 backdrop-blur-md transition-transform duration-200 hover:scale-105 hover:bg-black/50 active:scale-95"
+            class="absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/30 backdrop-blur-md transition-all duration-200 hover:scale-110 hover:bg-black/50 active:scale-95"
             aria-label="Toggle sound"
           >
             <!-- Muted Icon (Default) -->
@@ -180,7 +224,7 @@ const posterSrc = "/images/hero-video-thumb.jpg";
 
           <video
             id="heroVideo"
-            class="h-full w-full object-cover"
+            class="relative z-10 h-full w-full object-cover rounded-xl shadow-2xl"
             muted
             playsinline
             preload="metadata"
@@ -198,10 +242,10 @@ const posterSrc = "/images/hero-video-thumb.jpg";
 <!-- Hover logic (Astro-safe) -->
 <script is:inline>
   // Video Hover Logic & 3D Tilt
-  const wrap = document.getElementById("heroVideoWrap");
+  const wrap = document.getElementById("videoTiltContainer");
   const video = document.getElementById("heroVideo");
+  const ambientVideo = document.getElementById("ambientVideo");
   const tiltContainer = document.getElementById("videoTiltContainer");
-  const shine = document.getElementById("videoShine");
   const muteBtn = document.getElementById("muteToggle");
   const iconMuted = document.getElementById("iconMuted");
   const iconUnmuted = document.getElementById("iconUnmuted");
@@ -209,7 +253,7 @@ const posterSrc = "/images/hero-video-thumb.jpg";
   if (wrap && video && muteBtn) {
     // Toggle Mute
     muteBtn.addEventListener("click", (e) => {
-      e.stopPropagation(); // Prevent playing/pausing if wrap has click listeners
+      e.stopPropagation();
       video.muted = !video.muted;
 
       // Toggle Icons
@@ -224,17 +268,30 @@ const posterSrc = "/images/hero-video-thumb.jpg";
 
     wrap.addEventListener("mouseenter", async () => {
       try {
-        // Keep current time if already playing?
-        // Logic says reset to 0 on enter.
-        video.currentTime = 0;
+        if (ambientVideo) {
+          ambientVideo.play();
+        }
         await video.play();
       } catch (e) {}
     });
 
     wrap.addEventListener("mouseleave", () => {
       video.pause();
-      video.currentTime = 0;
-      // Don't reload, just pause and reset
+      video.load(); // Resets main video to poster
+      if (ambientVideo) {
+        ambientVideo.pause();
+        ambientVideo.load();
+      }
+    });
+
+    // Sync ambient video with main video just in case
+    video.addEventListener("timeupdate", () => {
+      if (
+        ambientVideo &&
+        Math.abs(ambientVideo.currentTime - video.currentTime) > 0.3
+      ) {
+        ambientVideo.currentTime = video.currentTime;
+      }
     });
   }
 
@@ -406,5 +463,94 @@ const posterSrc = "/images/hero-video-thumb.jpg";
     .hero-title {
       font-family: "Playfair Display", "Times New Roman", serif;
     }
+  }
+
+  /* --- Creative AI Nova Cursor --- */
+  @keyframes cursor-nova-pulse {
+    0%,
+    100% {
+      transform: scaleY(1);
+      box-shadow:
+        0 0 15px rgba(163, 230, 53, 0.6),
+        0 0 30px rgba(163, 230, 53, 0.2);
+    }
+    50% {
+      transform: scaleY(1.1);
+      box-shadow:
+        0 0 25px rgba(163, 230, 53, 0.9),
+        0 0 50px rgba(163, 230, 53, 0.4);
+    }
+  }
+
+  @keyframes satellite-drift {
+    0% {
+      transform: translate(-2px, -2px) scale(1);
+      opacity: 0.6;
+    }
+    33% {
+      transform: translate(6px, 2px) scale(0.8);
+      opacity: 1;
+    }
+    66% {
+      transform: translate(-4px, 5px) scale(1.2);
+      opacity: 0.4;
+    }
+    100% {
+      transform: translate(-2px, -2px) scale(1);
+      opacity: 0.6;
+    }
+  }
+
+  .custom-cursor-container {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    height: 1.25em;
+    margin-left: 4px;
+    position: relative;
+  }
+
+  .cursor-beam {
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, #bef264, #a3e635, #65a30d);
+    border-radius: 99px;
+    position: relative;
+    animation: cursor-nova-pulse 1.2s ease-in-out infinite;
+  }
+
+  .cursor-halo {
+    position: absolute;
+    inset: -4px -8px;
+    background: radial-gradient(
+      circle,
+      rgba(163, 230, 53, 0.3) 0%,
+      transparent 70%
+    );
+    filter: blur(6px);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cursor-satellite {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #a3e635;
+    border-radius: 50%;
+    right: -10px;
+    top: 20%;
+    animation: satellite-drift 3s ease-in-out infinite;
+    box-shadow: 0 0 10px #a3e635;
+  }
+
+  .cursor-trail {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    opacity: 0.3;
+    filter: blur(2px);
+    transform: translateX(-2px);
   }
 </style>
