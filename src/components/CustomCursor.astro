@@ -27,6 +27,12 @@
         will-change: transform;
     }
 
+    @media (hover: none) and (pointer: coarse) {
+        .cursor-blob {
+            display: none;
+        }
+    }
+
     /* Enhanced blob squish animation */
     .cursor-blob.moving {
         animation: blob-squish-intense 0.35s ease-in-out infinite;

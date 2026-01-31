@@ -16,13 +16,13 @@
         /* Essential Scroll Reveal Base */
         .reveal-item {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(40px) scale(0.98);
             transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .reveal-item.is-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         /* Image Hover Effect */
@@ -31,6 +31,107 @@
         }
         .team-card:hover .team-card-image {
             transform: scale(1.08);
+        }
+
+        .team-card {
+            position: relative;
+        }
+
+        .team-card::after {
+            content: "";
+            position: absolute;
+            inset: -18px;
+            background: radial-gradient(
+                circle at top left,
+                rgba(163, 230, 53, 0.12),
+                rgba(255, 255, 255, 0) 60%
+            );
+            opacity: 0;
+            transition: opacity 700ms ease;
+            z-index: -1;
+        }
+
+        .team-card.is-visible::after {
+            opacity: 1;
+        }
+
+        .team-card-content p {
+            text-align: justify;
+            text-justify: inter-word;
+            text-align-last: left;
+            hyphens: auto;
+        }
+
+        .team-card-name {
+            position: relative;
+            display: inline-block;
+        }
+
+        .team-card-name::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                rgba(132, 204, 22, 0.8),
+                rgba(190, 242, 100, 0.4),
+                rgba(132, 204, 22, 0)
+            );
+            transition: width 700ms ease;
+        }
+
+        .team-card.is-visible .team-card-name::after {
+            width: 55%;
+        }
+
+        .team-card-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                120deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.2) 45%,
+                transparent 70%
+            );
+            transform: translateX(-120%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .team-card.is-visible .team-card-media::after {
+            animation: team-sheen 1.2s ease forwards;
+        }
+
+        .team-card.is-visible .team-card-media {
+            animation: team-float 6s ease-in-out infinite;
+        }
+
+        @keyframes team-sheen {
+            0% {
+                transform: translateX(-120%);
+                opacity: 0;
+            }
+            30% {
+                opacity: 0.35;
+            }
+            100% {
+                transform: translateX(120%);
+                opacity: 0;
+            }
+        }
+
+        @keyframes team-float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         /* Staggered Reveal Delays */
@@ -46,6 +147,93 @@
         .delay-4 {
             transition-delay: 550ms;
         }
+
+        @media (max-width: 767px) {
+            .team-section {
+                padding-top: 5rem;
+                padding-bottom: 5rem;
+            }
+
+            .team-section h2 {
+                font-size: 2.5rem;
+                line-height: 1.05;
+            }
+
+            .team-section p {
+                font-size: 1rem;
+            }
+
+            .team-card {
+                flex-direction: row;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .team-card-content {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .team-card:nth-child(even) {
+                flex-direction: row-reverse;
+                text-align: right;
+            }
+
+            .team-card:nth-child(even) .team-card-content {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+
+            .team-card:nth-child(even) .team-card-name::after {
+                left: auto;
+                right: 0;
+            }
+
+            .team-card-media {
+                flex: 0 0 42%;
+                max-width: 150px;
+                margin-bottom: 0;
+                border-radius: 1.4rem;
+            }
+
+            .team-card-content {
+                flex: 1;
+            }
+
+            .team-card-content h3 {
+                font-size: 1.6rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .team-card-content p {
+                font-size: 0.85rem;
+                max-width: none;
+            }
+
+            .team-card-content div {
+                margin-bottom: 0.35rem;
+            }
+
+            .team-card-content p {
+                text-align: justify;
+                text-justify: inter-word;
+                text-align-last: left;
+            }
+
+            .team-card:nth-child(even) .team-card-content p {
+                text-align-last: right;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .team-card-media,
+            .team-card-media::after {
+                animation: none !important;
+                transform: none !important;
+            }
+        }
     </style>
 
     <div class="relative z-10 max-w-[94%] mx-auto px-6 md:px-12">
@@ -60,7 +248,7 @@
                     Our Creative Force
                 </p>
                 <h2
-                    class="text-6xl md:text-8xl font-playfair font-black text-zinc-900 leading-[0.9] tracking-tight"
+                    class="text-4xl sm:text-5xl md:text-8xl font-playfair font-black text-zinc-900 leading-[0.9] tracking-tight"
                 >
                     The <span class="italic font-normal">Minds</span> Behind Cinemora
                 </h2>
@@ -80,7 +268,7 @@
             <!-- Team Member 1 -->
             <div class="team-card reveal-item delay-1 flex flex-col group">
                 <div
-                    class="relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-zinc-100 mb-8 border border-zinc-100"
+                    class="team-card-media relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-zinc-100 mb-8 border border-zinc-100"
                 >
                     <img
                         src="https://framerusercontent.com/images/V0M3J8BygkAJWol7DpZzVLVD3PI.png?scale-down-to=512"
@@ -89,14 +277,14 @@
                         loading="lazy"
                     />
                 </div>
-                <div class="mt-auto">
+                <div class="team-card-content mt-auto">
                     <div
                         class="text-lime-600 font-outfit font-bold uppercase tracking-widest text-xs mb-3"
                     >
                         CEO & Founder
                     </div>
                     <h3
-                        class="text-4xl font-playfair font-black text-zinc-900 mb-4 group-hover:text-lime-600 transition-colors"
+                        class="team-card-name text-4xl font-playfair font-black text-zinc-900 mb-4 group-hover:text-lime-600 transition-colors"
                     >
                         Marker Villa
                     </h3>
@@ -113,7 +301,7 @@
                 class="team-card reveal-item delay-2 flex flex-col group lg:mt-16"
             >
                 <div
-                    class="relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-zinc-100 mb-8 border border-zinc-100"
+                    class="team-card-media relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-zinc-100 mb-8 border border-zinc-100"
                 >
                     <img
                         src="https://framerusercontent.com/images/MXGhdOCjqMV4qWQWzwqR64ap4CE.png?scale-down-to=512"
@@ -122,14 +310,14 @@
                         loading="lazy"
                     />
                 </div>
-                <div class="mt-auto">
+                <div class="team-card-content mt-auto">
                     <div
                         class="text-lime-600 font-outfit font-bold uppercase tracking-widest text-xs mb-3"
                     >
                         UI/UX Designer
                     </div>
                     <h3
-                        class="text-4xl font-playfair font-black text-zinc-900 mb-4 group-hover:text-lime-600 transition-colors"
+                        class="team-card-name text-4xl font-playfair font-black text-zinc-900 mb-4 group-hover:text-lime-600 transition-colors"
                     >
                         Haden Molk
                     </h3>
@@ -144,7 +332,7 @@
             <!-- Team Member 3 -->
             <div class="team-card reveal-item delay-3 flex flex-col group">
                 <div
-                    class="relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-zinc-100 mb-8 border border-zinc-100"
+                    class="team-card-media relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-zinc-100 mb-8 border border-zinc-100"
                 >
                     <img
                         src="https://framerusercontent.com/images/2SG2YtGYMAFSLxtZQdyf06GJeU.png?scale-down-to=512"
@@ -153,14 +341,14 @@
                         loading="lazy"
                     />
                 </div>
-                <div class="mt-auto">
+                <div class="team-card-content mt-auto">
                     <div
                         class="text-lime-600 font-outfit font-bold uppercase tracking-widest text-xs mb-3"
                     >
                         Lead Developer
                     </div>
                     <h3
-                        class="text-4xl font-playfair font-black text-zinc-900 mb-4 group-hover:text-lime-600 transition-colors"
+                        class="team-card-name text-4xl font-playfair font-black text-zinc-900 mb-4 group-hover:text-lime-600 transition-colors"
                     >
                         Christin Harish
                     </h3>
@@ -177,7 +365,7 @@
                 class="team-card reveal-item delay-4 flex flex-col group lg:mt-16"
             >
                 <div
-                    class="relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-zinc-100 mb-8 border border-zinc-100"
+                    class="team-card-media relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-zinc-100 mb-8 border border-zinc-100"
                 >
                     <img
                         src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2864&auto=format&fit=crop"
@@ -186,14 +374,14 @@
                         loading="lazy"
                     />
                 </div>
-                <div class="mt-auto">
+                <div class="team-card-content mt-auto">
                     <div
                         class="text-lime-600 font-outfit font-bold uppercase tracking-widest text-xs mb-3"
                     >
                         Marketing lead
                     </div>
                     <h3
-                        class="text-4xl font-playfair font-black text-zinc-900 mb-4 group-hover:text-lime-600 transition-colors"
+                        class="team-card-name text-4xl font-playfair font-black text-zinc-900 mb-4 group-hover:text-lime-600 transition-colors"
                     >
                         Diallyl Elana
                     </h3>

@@ -23,8 +23,12 @@ body {
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Custom Mac-style Cursor */
-  cursor: url("data:image/svg+xml,%3Csvg width='25' height='29' viewBox='0 0 25 29' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.00293 2.00488L22.6973 13.4375H14.1562L18.3125 24.5938L15.4219 26.5469L11.125 15.3594L5.65625 20.9375V2.00488Z' fill='black'/%3E%3Cpath d='M7.00293 4.41797V17.5117L10.5156 13.9219L11.0469 13.375H11.8125H13.7969L17.1562 22.3906L16.5781 22.7812L13.2344 13.8125H19.7266L7.00293 4.41797Z' fill='white' stroke='white' stroke-width='1.5'/%3E%3Cpath d='M11.125 15.3594L5.65625 20.9375V2.00488L22.6973 13.4375H14.1562L18.3125 24.5938L15.4219 26.5469L11.125 15.3594Z' stroke='white' stroke-width='1.5'/%3E%3Cpath d='M6.00293 2.00488L22.6973 13.4375H14.1562L18.3125 24.5938L15.4219 26.5469L11.125 15.3594L5.65625 20.9375V2.00488Z' fill='black'/%3E%3C/svg%3E") 2 2, auto;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
 }
 
 .calendly-inline-widget {
@@ -85,6 +89,14 @@ body {
 
 .hero-trustedby-bg {
   background: url("/images/background_hero_trustedby.jpg") top center / cover no-repeat;
+}
+
+@media (max-width: 768px) {
+  .hero-trustedby-bg {
+    /* Adjusted zoom to match reference */
+    background-size: 400% auto;
+    background-position: top center;
+  }
 }
 
 /* Remove any potential divider lines */

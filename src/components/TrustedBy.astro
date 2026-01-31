@@ -18,7 +18,7 @@ const logos = [
 ---
 
 <section
-    class="relative mt-12 w-full text-zinc-900 overflow-hidden"
+    class="relative mt-3 md:mt-6 w-full text-zinc-900 overflow-hidden"
     data-trustedby-section
 >
     <!-- Atmospheric Background Glow -->
@@ -27,7 +27,9 @@ const logos = [
     <!-- Cinematic Noise Overlay -->
     <div class="noise-overlay"></div>
 
-    <div class="relative z-10 mx-auto max-w-[92%] px-2 py-6 sm:px-4 md:px-6">
+    <div
+        class="relative z-10 mx-auto max-w-[92%] px-2 pt-2 pb-6 sm:px-4 md:px-6"
+    >
         <div
             class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
         >
@@ -53,14 +55,14 @@ const logos = [
         </div>
 
         <div class="mt-[8px] flex justify-center">
-            <div class="w-full px-[6%] sm:px-[10%] md:px-[12%] lg:px-[14%]">
+            <div class="w-full px-0 sm:px-[10%] md:px-[12%] lg:px-[14%]">
                 <div class="logo-mask overflow-hidden">
                     <div
-                        class="logo-marquee mx-auto flex w-max items-center justify-center gap-10 py-2"
+                        class="logo-marquee mx-auto flex w-max items-center justify-center gap-4 py-2 sm:gap-8 md:gap-10"
                     >
                         {
                             [...logos, ...logos].map((logo) => (
-                                <div class="flex h-32 w-72 items-center justify-center md:h-60 md:w-96">
+                                <div class="flex h-20 w-32 items-center justify-center sm:h-32 sm:w-48 md:h-60 md:w-96">
                                     <img
                                         src={logo.src}
                                         alt={logo.alt}
@@ -100,6 +102,7 @@ const logos = [
         </div>
 
         <!-- Pain Points: Deconstructed Timeline Flow -->
+        <div class="trustedby-break">
         <div class="relative mt-4 text-center">
             <p
                 class="text-sm font-semibold tracking-widest text-zinc-500 uppercase mb-2"
@@ -133,8 +136,11 @@ const logos = [
                 />
             </div>
 
-            <!-- Scroll-Triggered Vertical Text Slider (Viewport Scroll, Non-Sticky) -->
-            <div class="scroll-container" style="height: 700px;">
+            <!-- Scroll-Triggered Vertical Text Slider (Desktop Only) -->
+            <div
+                class="scroll-container hidden md:block"
+                style="height: 700px;"
+            >
                 <div class="viewport-frame">
                     <div class="pain-point-list">
                         <!-- Pain Point 1 -->
@@ -170,6 +176,145 @@ const logos = [
                     </div>
                 </div>
             </div>
+
+            <!-- Mobile/Tablet Pain Points (Premium List) -->
+            <div class="mobile-pp-wrap md:hidden mt-16 px-6 pb-16">
+                <div class="mobile-pp-list mx-auto flex max-w-md flex-col gap-12">
+                    <!-- Item 1: No Conversions -->
+                    <div class="mobile-pp-item">
+                        <div class="mobile-pp-icon" aria-hidden="true">
+                            <svg
+                                class="mobile-pp-svg"
+                                viewBox="0 0 64 64"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <rect x="10" y="12" width="44" height="40" rx="10"></rect>
+                                <path d="M18 30l10 10 10-8 10 10"></path>
+                            </svg>
+                        </div>
+                        <p class="mobile-pp-text">No conversions</p>
+                        <p class="mobile-pp-subtext">
+                            Views come in, leads don’t follow.
+                        </p>
+                    </div>
+
+                    <!-- Item 2: Unsure What To Post -->
+                    <div class="mobile-pp-item">
+                        <div class="mobile-pp-icon" aria-hidden="true">
+                            <svg
+                                class="mobile-pp-svg"
+                                viewBox="0 0 64 64"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <circle cx="32" cy="32" r="20"></circle>
+                                <path d="M26 26a6 6 0 0 1 12 1c0 4-6 4-6 8"></path>
+                                <circle cx="32" cy="44" r="1.5" fill="currentColor" stroke="none"></circle>
+                            </svg>
+                        </div>
+                        <p class="mobile-pp-text">Unsure what to post</p>
+                        <p class="mobile-pp-subtext">
+                            Ideas feel random and low impact.
+                        </p>
+                    </div>
+
+                    <!-- Item 3: Not Premium Enough -->
+                    <div class="mobile-pp-item">
+                        <div class="mobile-pp-icon" aria-hidden="true">
+                            <svg
+                                class="mobile-pp-svg"
+                                viewBox="0 0 64 64"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M32 8l18 18-18 30-18-30 18-18z"></path>
+                                <path d="M18 26h28"></path>
+                            </svg>
+                        </div>
+                        <p class="mobile-pp-text">Not premium enough</p>
+                        <p class="mobile-pp-subtext">
+                            Your brand doesn’t look high-end yet.
+                        </p>
+                    </div>
+
+                    <!-- Item 4: Inconsistent Posting -->
+                    <div class="mobile-pp-item">
+                        <div class="mobile-pp-icon" aria-hidden="true">
+                            <svg
+                                class="mobile-pp-svg"
+                                viewBox="0 0 64 64"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <rect x="12" y="16" width="40" height="36" rx="8"></rect>
+                                <path d="M12 26h40"></path>
+                                <path d="M22 12v8"></path>
+                                <path d="M42 12v8"></path>
+                                <circle cx="24" cy="36" r="2"></circle>
+                                <circle cx="36" cy="40" r="2"></circle>
+                            </svg>
+                        </div>
+                        <p class="mobile-pp-text">Inconsistent posting</p>
+                        <p class="mobile-pp-subtext">
+                            The posting rhythm keeps breaking.
+                        </p>
+                    </div>
+
+                    <!-- Item 5: Contradictory Advice -->
+                    <div class="mobile-pp-item">
+                        <div class="mobile-pp-icon" aria-hidden="true">
+                            <svg
+                                class="mobile-pp-svg"
+                                viewBox="0 0 64 64"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M16 22h28"></path>
+                                <path d="M38 16l8 6-8 6"></path>
+                                <path d="M48 42H20"></path>
+                                <path d="M26 36l-8 6 8 6"></path>
+                            </svg>
+                        </div>
+                        <p class="mobile-pp-text">Contradictory advice</p>
+                        <p class="mobile-pp-subtext">
+                            Every expert says the opposite.
+                        </p>
+                    </div>
+
+                    <!-- Item 6: Views, No Action -->
+                    <div class="mobile-pp-item">
+                        <div class="mobile-pp-icon" aria-hidden="true">
+                            <svg
+                                class="mobile-pp-svg"
+                                viewBox="0 0 64 64"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M8 32s10-14 24-14 24 14 24 14-10 14-24 14-24-14-24-14z"></path>
+                                <circle cx="32" cy="32" r="6"></circle>
+                            </svg>
+                        </div>
+                        <p class="mobile-pp-text">Views, no action</p>
+                        <p class="mobile-pp-subtext">
+                            Attention isn’t turning into sales.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </section>
@@ -207,6 +352,20 @@ const logos = [
         }
     }
 
+    @media (max-width: 1023px) {
+        .trustedby-break {
+            background: #f8f6f3;
+            padding: 2.25rem 0 2.5rem;
+            margin-top: 1rem;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+
+
     .cursor-blink {
         display: inline-block;
         width: 2px;
@@ -237,6 +396,182 @@ const logos = [
         }
         100% {
             background-position: 0% 50%;
+        }
+    }
+
+    .mobile-pp-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.75rem;
+        position: relative;
+        padding: 0.25rem 0.5rem 1.25rem;
+        opacity: 0;
+        transform: translateY(18px);
+        animation: mobile-pp-reveal 700ms ease forwards;
+    }
+
+    .mobile-pp-item:nth-child(1) {
+        animation-delay: 80ms;
+    }
+    .mobile-pp-item:nth-child(2) {
+        animation-delay: 160ms;
+    }
+    .mobile-pp-item:nth-child(3) {
+        animation-delay: 240ms;
+    }
+    .mobile-pp-item:nth-child(4) {
+        animation-delay: 320ms;
+    }
+    .mobile-pp-item:nth-child(5) {
+        animation-delay: 400ms;
+    }
+    .mobile-pp-item:nth-child(6) {
+        animation-delay: 480ms;
+    }
+
+    .mobile-pp-icon {
+        width: 80px;
+        height: 80px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        border: 1px solid rgba(24, 24, 27, 0.08);
+        background: linear-gradient(180deg, #ffffff 0%, #f6f2ea 100%);
+        box-shadow: 0 12px 30px rgba(24, 24, 27, 0.08);
+        color: #f59e0b;
+        position: relative;
+        overflow: hidden;
+        animation: mobile-pp-float 3.6s ease-in-out infinite;
+    }
+
+    .mobile-pp-icon::before {
+        content: "";
+        position: absolute;
+        inset: -60%;
+        background: conic-gradient(
+            from 120deg,
+            rgba(245, 158, 11, 0.22),
+            rgba(251, 191, 36, 0.1),
+            rgba(255, 255, 255, 0.2),
+            rgba(245, 158, 11, 0.22)
+        );
+        opacity: 0.35;
+        animation: mobile-pp-spin 10s linear infinite;
+    }
+
+    .mobile-pp-svg {
+        width: 44px;
+        height: 44px;
+        stroke-width: 2.2;
+        position: relative;
+        z-index: 1;
+    }
+
+    .mobile-pp-text {
+        font-size: 1.05rem;
+        line-height: 1.55;
+        font-weight: 600;
+        color: #111827;
+        letter-spacing: -0.01em;
+    }
+
+    .mobile-pp-subtext {
+        margin-top: -0.15rem;
+        max-width: 18rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #6b7280;
+        font-weight: 500;
+    }
+
+    .mobile-pp-text,
+    .mobile-pp-subtext {
+        position: relative;
+        z-index: 2;
+        display: inline-block;
+        background: #f8f6f3;
+        padding: 0 0.5rem;
+        box-decoration-break: clone;
+    }
+
+    .mobile-pp-wrap {
+        position: relative;
+    }
+
+    .mobile-pp-wrap::before {
+        content: "";
+        position: absolute;
+        top: 34px;
+        bottom: 34px;
+        left: 50%;
+        width: 2px;
+        transform: translateX(-50%);
+        background: linear-gradient(
+            180deg,
+            rgba(249, 115, 22, 0) 0%,
+            rgba(249, 115, 22, 0.35) 20%,
+            rgba(249, 115, 22, 0.2) 80%,
+            rgba(249, 115, 22, 0) 100%
+        );
+        opacity: 0.8;
+        pointer-events: none;
+    }
+
+    .mobile-pp-list {
+        position: relative;
+        padding: 0.5rem 0;
+    }
+
+    @media (min-width: 480px) {
+        .mobile-pp-icon {
+            width: 92px;
+            height: 92px;
+        }
+
+        .mobile-pp-svg {
+            width: 52px;
+            height: 52px;
+        }
+
+        .mobile-pp-text {
+            font-size: 1.125rem;
+        }
+
+        .mobile-pp-subtext {
+            font-size: 1rem;
+        }
+    }
+
+    @keyframes mobile-pp-reveal {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes mobile-pp-float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-6px);
+        }
+    }
+
+    @keyframes mobile-pp-spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .mobile-pp-item,
+        .mobile-pp-icon,
+        .mobile-pp-icon::before {
+            animation: none;
         }
     }
 </style>
@@ -529,25 +864,56 @@ const logos = [
             gap: 1rem;
         }
         .pp-item.state-active .pp-text {
-            font-size: 2.8rem;
+            font-size: 11vw; /* Responsive scaling to prevent cutoff */
+            line-height: 1;
+            white-space: normal; /* Allow wrapping if absolutely needed, though vw should fit */
+            text-align: right;
+        }
+        .pp-item.state-top {
+            transform: translateY(-220px) scale(0.8) skewX(5deg); /* Increased spacing */
         }
         .pp-item.state-top .pp-text {
-            font-size: 1.5rem;
+            font-size: 6vw;
+        }
+        .pp-item.state-bottom {
+            transform: translateY(220px) scale(0.9) skewX(-5deg); /* Increased spacing */
         }
         .pp-item.state-bottom .pp-text {
-            font-size: 2rem;
+            font-size: 7vw;
         }
         .pp-arrow {
-            font-size: 2.5rem;
+            font-size: 8vw;
         }
 
         .pain-point-list {
             height: 100%;
-            margin-right: 1.5rem;
+            margin-right: 1rem;
+            width: 100%; /* Ensure full width availability */
         }
         .scroll-container {
             margin-bottom: 4rem;
-            height: 500px !important;
+            height: 60vh !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .pp-item.state-active .pp-text {
+            font-size: 13vw; /* Larger visual weight but fits screen width */
+        }
+        .pp-item.state-top {
+            transform: translateY(-160px) scale(0.8) skewX(5deg);
+        }
+        .pp-item.state-top .pp-text {
+            font-size: 6vw;
+        }
+        .pp-item.state-bottom {
+            transform: translateY(160px) scale(0.9) skewX(-5deg);
+        }
+        .pp-item.state-bottom .pp-text {
+            font-size: 7vw;
+        }
+        .pp-arrow {
+            font-size: 8vw;
         }
     }
 </style>
