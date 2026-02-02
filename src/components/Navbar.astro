@@ -67,6 +67,7 @@ const cta = { label: "Book a Strategy Call", href: "#book" };
           <div class="flex items-center gap-2">
             <a
               href={cta.href}
+              onclick="gtag('event', 'contact_click', { 'method': 'navbar_book_call' })"
               class="hidden rounded-full bg-lime-400 px-5 py-2.5 text-sm font-semibold text-zinc-950 shadow-lg shadow-lime-400/20 transition hover:brightness-110 md:inline-flex"
             >
               {cta.label}

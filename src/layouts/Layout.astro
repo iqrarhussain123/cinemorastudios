@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 import Background from "../components/Background.astro";
-import CustomCursor from "../components/CustomCursor.astro";
 
 const {
   title = "Cinemora Studios | Official Video Marketing Agency",
@@ -33,6 +32,8 @@ const {
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={image} />
+  <meta property="og:site_name" content="Cinemora Studios" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
@@ -123,10 +124,30 @@ const {
       priceRange: "$$$",
     })}
   />
+
+  <!-- Google Analytics 4 -->
+  {
+    import.meta.env.PUBLIC_GA_ID && (
+      <>
+        <script
+          is:inline
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_ID}`}
+        />
+        <script is:inline define:vars={{ gaId: import.meta.env.PUBLIC_GA_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+          gtag("config", gaId);
+        </script>
+      </>
+    )
+  }
 </head>
 
 <body class="min-h-screen text-white">
   <Background />
-  <CustomCursor />
   <slot />
 </body>

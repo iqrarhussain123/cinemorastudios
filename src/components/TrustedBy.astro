@@ -103,218 +103,239 @@ const logos = [
 
         <!-- Pain Points: Deconstructed Timeline Flow -->
         <div class="trustedby-break">
-        <div class="relative mt-4 text-center">
-            <p
-                class="text-sm font-semibold tracking-widest text-zinc-500 uppercase mb-2"
-            >
-                Is this you?
-            </p>
-            <h3
-                class="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-zinc-900 md:text-7xl trustedby-playfair"
-            >
-                Content feels
-                <span
-                    class="trustedby-headline text-lime-600 italic font-medium"
-                    data-text="too hard?"
-                    aria-label="too hard?"></span><span
-                    class="trustedby-cursor cursor-blink text-lime-600"></span>
-            </h3>
-
-            <div
-                class="pointer-events-none relative mt-8 top-6 ml-4 md:ml-20 hidden w-fit flex-col items-center gap-2 text-zinc-500 md:flex animate-float-delayed"
-            >
-                <span
-                    class="font-handwriting rotate-[-6deg] text-5xl font-bold text-zinc-400"
-                    >sounds familiar?</span
+            <div class="relative mt-4 text-center">
+                <p
+                    class="text-sm font-semibold tracking-widest text-zinc-500 uppercase mb-2"
                 >
-                <img
-                    src="/images/trusted%20by%20icons/arrow.png"
-                    alt=""
-                    class="h-32 w-52 object-contain opacity-80"
-                    loading="lazy"
-                    decoding="async"
-                />
-            </div>
+                    Is this you?
+                </p>
+                <h3
+                    class="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-zinc-900 md:text-7xl trustedby-playfair"
+                >
+                    Content feels
+                    <span
+                        class="trustedby-headline text-lime-600 italic font-medium"
+                        data-text="too hard?"
+                        aria-label="too hard?"></span><span
+                        class="trustedby-cursor cursor-blink text-lime-600"
+                    ></span>
+                </h3>
 
-            <!-- Scroll-Triggered Vertical Text Slider (Desktop Only) -->
-            <div
-                class="scroll-container hidden md:block"
-                style="height: 700px;"
-            >
-                <div class="viewport-frame">
-                    <div class="pain-point-list">
-                        <!-- Pain Point 1 -->
-                        <div class="pp-item" data-index="0">
-                            <span class="pp-arrow">←</span>
-                            <h2 class="pp-text">NO CONVERSIONS</h2>
+                <div
+                    class="pointer-events-none relative mt-8 top-6 ml-4 md:ml-20 hidden w-fit flex-col items-center gap-2 text-zinc-500 md:flex animate-float-delayed"
+                >
+                    <span
+                        class="font-handwriting rotate-[-6deg] text-5xl font-bold text-zinc-400"
+                        >sounds familiar?</span
+                    >
+                    <img
+                        src="/images/trusted%20by%20icons/arrow.png"
+                        alt=""
+                        class="h-32 w-52 object-contain opacity-80"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </div>
+                <!-- Scroll-Triggered Vertical Text Slider (Desktop Only) -->
+                <div
+                    class="scroll-container hidden md:block"
+                    style="height: 700px;"
+                >
+                    <div class="viewport-frame">
+                        <div class="pain-point-list">
+                            <!-- Pain Point 1 -->
+                            <div class="pp-item" data-index="0">
+                                <span class="pp-arrow">→</span>
+                                <h2 class="pp-text">NO CONVERSIONS</h2>
+                            </div>
+                            <!-- Pain Point 2 -->
+                            <div class="pp-item" data-index="1">
+                                <span class="pp-arrow">→</span>
+                                <h2 class="pp-text">UNSURE WHAT TO POST</h2>
+                            </div>
+                            <!-- Pain Point 3 -->
+                            <div class="pp-item" data-index="2">
+                                <span class="pp-arrow">→</span>
+                                <h2 class="pp-text">NOT PREMIUM ENOUGH</h2>
+                            </div>
+                            <!-- Pain Point 4 -->
+                            <div class="pp-item" data-index="3">
+                                <span class="pp-arrow">→</span>
+                                <h2 class="pp-text">INCONSISTENT POSTING</h2>
+                            </div>
+                            <!-- Pain Point 5 -->
+                            <div class="pp-item" data-index="4">
+                                <span class="pp-arrow">→</span>
+                                <h2 class="pp-text">CONTRADICTORY ADVICE</h2>
+                            </div>
+                            <!-- Pain Point 6 -->
+                            <div class="pp-item" data-index="5">
+                                <span class="pp-arrow">→</span>
+                                <h2 class="pp-text">VIEWS, NO ACTION</h2>
+                            </div>
                         </div>
-                        <!-- Pain Point 2 -->
-                        <div class="pp-item" data-index="1">
-                            <span class="pp-arrow">←</span>
-                            <h2 class="pp-text">UNSURE WHAT TO POST</h2>
+                    </div>
+                </div>
+
+                <!-- Mobile/Tablet Pain Points (Premium List) -->
+                <div class="mobile-pp-wrap md:hidden mt-16 px-6 pb-16">
+                    <div
+                        class="mobile-pp-list mx-auto flex max-w-md flex-col gap-12"
+                    >
+                        <!-- Item 1: No Conversions -->
+                        <div class="mobile-pp-item">
+                            <div class="mobile-pp-icon" aria-hidden="true">
+                                <svg
+                                    class="mobile-pp-svg"
+                                    viewBox="0 0 64 64"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <rect
+                                        x="10"
+                                        y="12"
+                                        width="44"
+                                        height="40"
+                                        rx="10"></rect>
+                                    <path d="M18 30l10 10 10-8 10 10"></path>
+                                </svg>
+                            </div>
+                            <p class="mobile-pp-text">No conversions</p>
+                            <p class="mobile-pp-subtext">
+                                Views come in, leads don’t follow.
+                            </p>
                         </div>
-                        <!-- Pain Point 3 -->
-                        <div class="pp-item" data-index="2">
-                            <span class="pp-arrow">←</span>
-                            <h2 class="pp-text">NOT PREMIUM ENOUGH</h2>
+
+                        <!-- Item 2: Unsure What To Post -->
+                        <div class="mobile-pp-item">
+                            <div class="mobile-pp-icon" aria-hidden="true">
+                                <svg
+                                    class="mobile-pp-svg"
+                                    viewBox="0 0 64 64"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <circle cx="32" cy="32" r="20"></circle>
+                                    <path d="M26 26a6 6 0 0 1 12 1c0 4-6 4-6 8"
+                                    ></path>
+                                    <circle
+                                        cx="32"
+                                        cy="44"
+                                        r="1.5"
+                                        fill="currentColor"
+                                        stroke="none"></circle>
+                                </svg>
+                            </div>
+                            <p class="mobile-pp-text">Unsure what to post</p>
+                            <p class="mobile-pp-subtext">
+                                Ideas feel random and low impact.
+                            </p>
                         </div>
-                        <!-- Pain Point 4 -->
-                        <div class="pp-item" data-index="3">
-                            <span class="pp-arrow">←</span>
-                            <h2 class="pp-text">INCONSISTENT POSTING</h2>
+
+                        <!-- Item 3: Not Premium Enough -->
+                        <div class="mobile-pp-item">
+                            <div class="mobile-pp-icon" aria-hidden="true">
+                                <svg
+                                    class="mobile-pp-svg"
+                                    viewBox="0 0 64 64"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="M32 8l18 18-18 30-18-30 18-18z"
+                                    ></path>
+                                    <path d="M18 26h28"></path>
+                                </svg>
+                            </div>
+                            <p class="mobile-pp-text">Not premium enough</p>
+                            <p class="mobile-pp-subtext">
+                                Your brand doesn’t look high-end yet.
+                            </p>
                         </div>
-                        <!-- Pain Point 5 -->
-                        <div class="pp-item" data-index="4">
-                            <span class="pp-arrow">←</span>
-                            <h2 class="pp-text">CONTRADICTORY ADVICE</h2>
+
+                        <!-- Item 4: Inconsistent Posting -->
+                        <div class="mobile-pp-item">
+                            <div class="mobile-pp-icon" aria-hidden="true">
+                                <svg
+                                    class="mobile-pp-svg"
+                                    viewBox="0 0 64 64"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <rect
+                                        x="12"
+                                        y="16"
+                                        width="40"
+                                        height="36"
+                                        rx="8"></rect>
+                                    <path d="M12 26h40"></path>
+                                    <path d="M22 12v8"></path>
+                                    <path d="M42 12v8"></path>
+                                    <circle cx="24" cy="36" r="2"></circle>
+                                    <circle cx="36" cy="40" r="2"></circle>
+                                </svg>
+                            </div>
+                            <p class="mobile-pp-text">Inconsistent posting</p>
+                            <p class="mobile-pp-subtext">
+                                The posting rhythm keeps breaking.
+                            </p>
                         </div>
-                        <!-- Pain Point 6 -->
-                        <div class="pp-item" data-index="5">
-                            <span class="pp-arrow">←</span>
-                            <h2 class="pp-text">VIEWS, NO ACTION</h2>
+
+                        <!-- Item 5: Contradictory Advice -->
+                        <div class="mobile-pp-item">
+                            <div class="mobile-pp-icon" aria-hidden="true">
+                                <svg
+                                    class="mobile-pp-svg"
+                                    viewBox="0 0 64 64"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="M16 22h28"></path>
+                                    <path d="M38 16l8 6-8 6"></path>
+                                    <path d="M48 42H20"></path>
+                                    <path d="M26 36l-8 6 8 6"></path>
+                                </svg>
+                            </div>
+                            <p class="mobile-pp-text">Contradictory advice</p>
+                            <p class="mobile-pp-subtext">
+                                Every expert says the opposite.
+                            </p>
+                        </div>
+
+                        <!-- Item 6: Views, No Action -->
+                        <div class="mobile-pp-item">
+                            <div class="mobile-pp-icon" aria-hidden="true">
+                                <svg
+                                    class="mobile-pp-svg"
+                                    viewBox="0 0 64 64"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path
+                                        d="M8 32s10-14 24-14 24 14 24 14-10 14-24 14-24-14-24-14z"
+                                    ></path>
+                                    <circle cx="32" cy="32" r="6"></circle>
+                                </svg>
+                            </div>
+                            <p class="mobile-pp-text">Views, no action</p>
+                            <p class="mobile-pp-subtext">
+                                Attention isn’t turning into sales.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Mobile/Tablet Pain Points (Premium List) -->
-            <div class="mobile-pp-wrap md:hidden mt-16 px-6 pb-16">
-                <div class="mobile-pp-list mx-auto flex max-w-md flex-col gap-12">
-                    <!-- Item 1: No Conversions -->
-                    <div class="mobile-pp-item">
-                        <div class="mobile-pp-icon" aria-hidden="true">
-                            <svg
-                                class="mobile-pp-svg"
-                                viewBox="0 0 64 64"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <rect x="10" y="12" width="44" height="40" rx="10"></rect>
-                                <path d="M18 30l10 10 10-8 10 10"></path>
-                            </svg>
-                        </div>
-                        <p class="mobile-pp-text">No conversions</p>
-                        <p class="mobile-pp-subtext">
-                            Views come in, leads don’t follow.
-                        </p>
-                    </div>
-
-                    <!-- Item 2: Unsure What To Post -->
-                    <div class="mobile-pp-item">
-                        <div class="mobile-pp-icon" aria-hidden="true">
-                            <svg
-                                class="mobile-pp-svg"
-                                viewBox="0 0 64 64"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <circle cx="32" cy="32" r="20"></circle>
-                                <path d="M26 26a6 6 0 0 1 12 1c0 4-6 4-6 8"></path>
-                                <circle cx="32" cy="44" r="1.5" fill="currentColor" stroke="none"></circle>
-                            </svg>
-                        </div>
-                        <p class="mobile-pp-text">Unsure what to post</p>
-                        <p class="mobile-pp-subtext">
-                            Ideas feel random and low impact.
-                        </p>
-                    </div>
-
-                    <!-- Item 3: Not Premium Enough -->
-                    <div class="mobile-pp-item">
-                        <div class="mobile-pp-icon" aria-hidden="true">
-                            <svg
-                                class="mobile-pp-svg"
-                                viewBox="0 0 64 64"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path d="M32 8l18 18-18 30-18-30 18-18z"></path>
-                                <path d="M18 26h28"></path>
-                            </svg>
-                        </div>
-                        <p class="mobile-pp-text">Not premium enough</p>
-                        <p class="mobile-pp-subtext">
-                            Your brand doesn’t look high-end yet.
-                        </p>
-                    </div>
-
-                    <!-- Item 4: Inconsistent Posting -->
-                    <div class="mobile-pp-item">
-                        <div class="mobile-pp-icon" aria-hidden="true">
-                            <svg
-                                class="mobile-pp-svg"
-                                viewBox="0 0 64 64"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <rect x="12" y="16" width="40" height="36" rx="8"></rect>
-                                <path d="M12 26h40"></path>
-                                <path d="M22 12v8"></path>
-                                <path d="M42 12v8"></path>
-                                <circle cx="24" cy="36" r="2"></circle>
-                                <circle cx="36" cy="40" r="2"></circle>
-                            </svg>
-                        </div>
-                        <p class="mobile-pp-text">Inconsistent posting</p>
-                        <p class="mobile-pp-subtext">
-                            The posting rhythm keeps breaking.
-                        </p>
-                    </div>
-
-                    <!-- Item 5: Contradictory Advice -->
-                    <div class="mobile-pp-item">
-                        <div class="mobile-pp-icon" aria-hidden="true">
-                            <svg
-                                class="mobile-pp-svg"
-                                viewBox="0 0 64 64"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path d="M16 22h28"></path>
-                                <path d="M38 16l8 6-8 6"></path>
-                                <path d="M48 42H20"></path>
-                                <path d="M26 36l-8 6 8 6"></path>
-                            </svg>
-                        </div>
-                        <p class="mobile-pp-text">Contradictory advice</p>
-                        <p class="mobile-pp-subtext">
-                            Every expert says the opposite.
-                        </p>
-                    </div>
-
-                    <!-- Item 6: Views, No Action -->
-                    <div class="mobile-pp-item">
-                        <div class="mobile-pp-icon" aria-hidden="true">
-                            <svg
-                                class="mobile-pp-svg"
-                                viewBox="0 0 64 64"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path d="M8 32s10-14 24-14 24 14 24 14-10 14-24 14-24-14-24-14z"></path>
-                                <circle cx="32" cy="32" r="6"></circle>
-                            </svg>
-                        </div>
-                        <p class="mobile-pp-text">Views, no action</p>
-                        <p class="mobile-pp-subtext">
-                            Attention isn’t turning into sales.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
         </div>
     </div>
 </section>
@@ -364,7 +385,6 @@ const logos = [
             padding-right: 1rem;
         }
     }
-
 
     .cursor-blink {
         display: inline-block;
@@ -858,7 +878,6 @@ const logos = [
             filter: blur(50px);
         }
     }
-
 
     @media (max-width: 768px) {
         .pp-item {

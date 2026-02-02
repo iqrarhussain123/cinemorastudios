@@ -25,11 +25,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: none;
-  }
-}
+
+
 
 .calendly-inline-widget {
   overflow: hidden !important;

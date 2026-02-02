@@ -53,6 +53,7 @@ const year = new Date().getFullYear();
       <div>
         <a
           href="#book"
+          onclick="gtag('event', 'contact_click', { 'method': 'footer_book_call' })"
           class="inline-flex items-center gap-2 rounded-full bg-lime-400 px-8 py-4 text-base font-bold text-black transition-transform duration-300 hover:scale-105"
         >
           Book Your Strategy Call
@@ -233,6 +234,7 @@ const year = new Date().getFullYear();
             </svg>
             <a
               href="mailto:iqrar@cinemorastudios.agency"
+              onclick="gtag('event', 'contact_click', { 'method': 'footer_email' })"
               class="transition-colors text-white hover:text-lime-300"
               >iqrar@cinemorastudios.agency</a
             >
@@ -254,6 +256,7 @@ const year = new Date().getFullYear();
             </svg>
             <a
               href="tel:+923360599017"
+              onclick="gtag('event', 'whatsapp_click', { 'method': 'footer_phone' })"
               class="transition-colors text-white hover:text-lime-300"
               >+92 336 0599017</a
             >
