@@ -146,7 +146,6 @@ const {
             </div>
           </a>
         </div>
-
       </div>
 
       <!-- Big video under text (Thumbnail + Hover-to-play) -->
@@ -463,9 +462,9 @@ const {
 
     document.addEventListener("mousemove", (e) => {
       const shine = document.querySelector(".shine-overlay");
-      
+
       if (!shine) return; // Exit if shine element doesn't exist
-      
+
       const { clientX, clientY } = e;
       const width = window.innerWidth;
       const height = window.innerHeight;

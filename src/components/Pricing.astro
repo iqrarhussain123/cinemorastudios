@@ -1,0 +1,160 @@
+---
+/**
+ * Pricing / Investment Section
+ * Showcase 3 tiers of partnership: Starter, Growth, Scale
+ */
+
+const plans = [
+    {
+        name: "Starter",
+        price: "Starts at $3k",
+        description:
+            "Perfect for founders just starting to build their personal brand.",
+        features: [
+            "4 High-Impact LinkedIn Posts/mo",
+            "1 Long-form Newsletter/mo",
+            "Monthly Strategy Call",
+            "Basic Analytics Report",
+        ],
+        cta: "Book Discovery",
+        popular: false,
+        delay: "0",
+    },
+    {
+        name: "Growth",
+        price: "Starts at $6k",
+        description: "For rapid scale and dominant category leadership.",
+        features: [
+            "8-12 LinkedIn Posts/mo",
+            "4 Short-form Video Scripts",
+            "Weekly Strategy Syncs",
+            "Comment Management",
+            "Quarterly Content Roadmap",
+        ],
+        cta: "Start Scaling",
+        popular: true,
+        delay: "100",
+    },
+    {
+        name: "Partner",
+        price: "Custom",
+        description:
+            "Full-service content engine for establishing industry authority.",
+        features: [
+            "Daily Content (All Platforms)",
+            "Full Video Production Support",
+            "Ghostwriting & PR Alignment",
+            "24/7 Slack Access",
+            "Dedicated Creative Director",
+        ],
+        cta: "Contact Us",
+        popular: false,
+        delay: "200",
+    },
+];
+---
+
+<section id="pricing" class="relative py-32 bg-zinc-950 overflow-hidden">
+    <!-- Dynamic Background -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div
+            class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-lime-500/5 rounded-full blur-[120px] mix-blend-screen"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-lime-500/5 rounded-full blur-[120px] mix-blend-screen"
+        >
+        </div>
+    </div>
+
+    <div class="mx-auto max-w-7xl px-4 relative z-10">
+        <!-- Heading -->
+        <div class="mb-20 text-center max-w-3xl mx-auto">
+            <h2
+                class="text-xs font-bold uppercase tracking-[0.2em] text-lime-400 mb-6 font-body"
+            >
+                Investment
+            </h2>
+            <h3
+                class="text-4xl md:text-5xl lg:text-6xl font-heading font-light text-white mb-6 leading-tight"
+            >
+                Transparent pricing, <br /><span class="text-lime-400 italic"
+                    >tangible outcomes.</span
+                >
+            </h3>
+            <p class="text-lg text-zinc-400 font-body max-w-xl mx-auto">
+                We don't sell hours. We sell a predictable pipeline of authority
+                and leads.
+            </p>
+        </div>
+
+        <!-- Pricing Grid -->
+        <div class="grid md:grid-cols-3 gap-8 items-start">
+            {
+                plans.map((plan) => (
+                    <div
+                        class={`relative group rounded-[2rem] p-8 md:p-10 border transition-all duration-500 ${plan.popular ? "bg-white/5 border-lime-400/50 shadow-[0_0_50px_-20px_rgba(132,204,22,0.3)] scale-105 z-10" : "bg-white/[0.02] border-white/5 hover:bg-white/5 hover:border-white/10"}`}
+                    >
+                        {plan.popular && (
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-lime-400 text-black text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+                                Most Popular
+                            </div>
+                        )}
+
+                        <div class="mb-8">
+                            <h4 class="text-xl font-heading text-white mb-2">
+                                {plan.name}
+                            </h4>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-bold text-white font-body">
+                                    {plan.price}
+                                </span>
+                            </div>
+                            <p class="mt-4 text-sm text-zinc-400 leading-relaxed font-body">
+                                {plan.description}
+                            </p>
+                        </div>
+
+                        <ul class="space-y-4 mb-10">
+                            {plan.features.map((feature) => (
+                                <li class="flex items-start gap-3 text-sm text-zinc-300 font-body">
+                                    <svg
+                                        class="w-5 h-5 text-lime-400 shrink-0 mt-0.5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                    {feature}
+                                </li>
+                            ))}
+                        </ul>
+
+                        <a
+                            href="#book"
+                            class={`block w-full text-center py-4 rounded-xl font-bold transition-all duration-300 font-body ${plan.popular ? "bg-lime-400 text-black hover:bg-lime-300 shadow-[0_4px_20px_rgba(132,204,22,0.4)]" : "bg-white/5 text-white hover:bg-white/10 border border-white/5"}`}
+                        >
+                            {plan.cta}
+                        </a>
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Bottom Note -->
+        <div class="mt-16 text-center">
+            <p class="text-zinc-500 text-sm font-body">
+                Need a bespoke package? <a
+                    href="#book"
+                    class="text-lime-400 hover:underline">Let's talk custom.</a
+                >
+            </p>
+        </div>
+    </div>
+</section>
