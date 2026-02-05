@@ -1,417 +1,332 @@
 ---
-
+const teamMembers = [
+    {
+        name: "Iqrar Husain",
+        role: "CEO & Founder",
+        quote: "We don't just edit videos. We engineer attention.",
+        bio: [
+            "Iqrar isn't just a founder; he's the strategic architect behind Cinemora's most viral campaigns. With a background that fuses data-driven marketing with high-end cinematic production, he recognized early on that the future of brand authority lies in video.",
+            "He built Cinemora Studios to bridge the gap between 'aesthetic' and 'effective'. Under his leadership, the agency has helped elite coaches and real estate moguls generate millions in pipeline revenue, proving that premium content is the ultimate leverage in the digital age.",
+        ],
+        stats: [
+            { label: "Revenue Generated", value: "$4M+" },
+            { label: "Views Managed", value: "50M+" },
+        ],
+        image: "/images/ceo image.png",
+        signature: "/images/signature.png",
+    },
+];
 ---
 
-<section class="team-section relative py-32 bg-white overflow-hidden" id="team">
+<section class="team-section" id="team" data-team>
+    <div class="team-container">
+        {
+            teamMembers.map((member, index) => (
+                <div class="team-grid">
+                    <!-- Left Column: Content -->
+                    <div class="team-content-col">
+                        <header class="team-header reveal-text delay-1">
+                            <span class="team-kicker">Our Creative Force</span>
+                            <h2 class="team-title">
+                                The <span class="team-title-em">Minds</span> Behind Cinemora
+                            </h2>
+                        </header>
+
+                        <div class="team-body">
+                            <blockquote class="team-quote reveal-text delay-2">
+                                "{member.quote}"
+                            </blockquote>
+
+                            <div class="team-bio-wrapper reveal-text delay-3">
+                                {member.bio.map((paragraph) => (
+                                    <p class="team-bio">{paragraph}</p>
+                                ))}
+                            </div>
+
+                            <div class="team-stats reveal-text delay-4">
+                                {member.stats.map((stat) => (
+                                    <div class="team-stat">
+                                        <span class="stat-value">{stat.value}</span>
+                                        <span class="stat-label">{stat.label}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div class="team-actions reveal-text delay-5">
+                                <a href="#contact" class="team-link">
+                                    Work with Iqrar <span class="arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Visual -->
+                    <div class="team-visual-col">
+                        <div class="team-visual reveal-visual">
+                            <img
+                                src={member.image}
+                                alt={member.name}
+                                class="team-photo"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Space+Grotesk:wght@300;400;500&display=swap");
 
-        .font-playfair {
-            font-family: "Playfair Display", serif;
-        }
-        .font-outfit {
-            font-family: "Outfit", sans-serif;
-        }
+        .team-section {
+            --paper: #f7f5f0;
+            --ink: #111111;
+            --muted: #666666;
+            --accent: #84cc16;
 
-        /* Essential Scroll Reveal Base */
-        .reveal-item {
-            opacity: 0;
-            transform: translateY(40px) scale(0.98);
-            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .reveal-item.is-visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        /* Image Hover Effect */
-        .team-card-image {
-            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        .team-card:hover .team-card-image {
-            transform: scale(1.08);
-        }
-
-        .team-card {
             position: relative;
+            /* FIX: Ensure section has enough height for the split look */
+            padding: 0; /* Remove padding here so image hits top/bottom if desired? */
+            /* Actually, likely keep vertical padding on the TEXT side, but maybe image allows full bleed? 
+               Let's keep section padding but extend image. 
+               SAFE BET: Keep section padding for now, but expand grid. 
+               Wait, "increase height to cover that" -> implies full bleed?
+               Let's stick to standard vertical padding for the SECTION, but stretch the image in the grid. */
+            padding: 8%;
+            background: transparent;
+            color: var(--ink);
+            overflow: hidden;
+            border-top: 1px solid rgba(0,0,0,0.05);
         }
 
-        .team-card::after {
-            content: "";
-            position: absolute;
-            inset: -18px;
-            background: radial-gradient(
-                circle at top left,
-                rgba(163, 230, 53, 0.12),
-                rgba(255, 255, 255, 0) 60%
-            );
-            opacity: 0;
-            transition: opacity 700ms ease;
-            z-index: -1;
+        .team-container {
+            width: 100%;
+            max-width: 100%; /* FIX: True full width, no auto margins from max-width */
+            margin: 0;
+            /* FIX: "Finish the margins" -> Zero padding everywhere */
+            padding: 0; 
         }
 
-        .team-card.is-visible::after {
-            opacity: 1;
+        .team-grid {
+            display: grid;
+            gap: 2rem;
+            width: 100%;
         }
 
-        .team-card-content p {
-            text-align: justify;
-            text-justify: inter-word;
-            text-align-last: left;
-            hyphens: auto;
-        }
-
-        .team-card-name {
-            position: relative;
-            display: inline-block;
-        }
-
-        .team-card-name::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(
-                90deg,
-                rgba(132, 204, 22, 0.8),
-                rgba(190, 242, 100, 0.4),
-                rgba(132, 204, 22, 0)
-            );
-            transition: width 700ms ease;
-        }
-
-        .team-card.is-visible .team-card-name::after {
-            width: 55%;
-        }
-
-        .team-card-media::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                120deg,
-                transparent 0%,
-                rgba(255, 255, 255, 0.2) 45%,
-                transparent 70%
-            );
-            transform: translateX(-120%);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .team-card.is-visible .team-card-media::after {
-            animation: team-sheen 1.2s ease forwards;
-        }
-
-        .team-card.is-visible .team-card-media {
-            animation: team-float 6s ease-in-out infinite;
-        }
-
-        @keyframes team-sheen {
-            0% {
-                transform: translateX(-120%);
-                opacity: 0;
-            }
-            30% {
-                opacity: 0.35;
-            }
-            100% {
-                transform: translateX(120%);
-                opacity: 0;
-            }
-        }
-
-        @keyframes team-float {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        /* Staggered Reveal Delays */
-        .delay-1 {
-            transition-delay: 100ms;
-        }
-        .delay-2 {
-            transition-delay: 250ms;
-        }
-        .delay-3 {
-            transition-delay: 400ms;
-        }
-        .delay-4 {
-            transition-delay: 550ms;
-        }
-
-        @media (max-width: 767px) {
-            .team-section {
-                padding-top: 5rem;
-                padding-bottom: 5rem;
-            }
-
-            .team-section h2 {
-                font-size: 2.5rem;
-                line-height: 1.05;
-            }
-
-            .team-section p {
-                font-size: 1rem;
-            }
-
-            .team-card {
-                flex-direction: row;
+        @media (min-width: 1024px) {
+            .team-grid {
+                grid-template-columns: 1.4fr 0.8fr;
+                gap: 5rem; 
                 align-items: center;
-                gap: 1rem;
+                margin: 0;
             }
-
-            .team-card-content {
+            
+            .team-content-col {
+                /* Minimal safe area for text readability */
+                padding-left: 11%; 
+                padding-right: 20%;
+                display: block;
+                padding-top: 2rem; 
+                padding-bottom: 2rem;
+            }
+            
+            .team-visual-col {
+                /* FIX: Zero margin on the right -> Image touches edge */
+                padding-right: 20%;
                 display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .team-card:nth-child(even) {
-                flex-direction: row-reverse;
-                text-align: right;
-            }
-
-            .team-card:nth-child(even) .team-card-content {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-            }
-
-            .team-card:nth-child(even) .team-card-name::after {
-                left: auto;
-                right: 0;
-            }
-
-            .team-card-media {
-                flex: 0 0 42%;
-                max-width: 150px;
-                margin-bottom: 0;
-                border-radius: 1.4rem;
-            }
-
-            .team-card-content {
-                flex: 1;
-            }
-
-            .team-card-content h3 {
-                font-size: 1.6rem;
-                margin-bottom: 0.4rem;
-            }
-
-            .team-card-content p {
-                font-size: 0.85rem;
-                max-width: none;
-            }
-
-            .team-card-content div {
-                margin-bottom: 0.35rem;
-            }
-
-            .team-card-content p {
-                text-align: justify;
-                text-justify: inter-word;
-                text-align-last: left;
-            }
-
-            .team-card:nth-child(even) .team-card-content p {
-                text-align-last: right;
+                justify-content: flex-end; 
             }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .team-card-media,
-            .team-card-media::after {
-                animation: none !important;
-                transform: none !important;
+        /* Content Styling */
+        .team-kicker {
+            font-family: "Space Grotesk", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .team-title {
+            font-family: "Fraunces", serif;
+            font-weight: 300;
+            font-size: clamp(3rem, 6vw, 5rem); 
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            margin-bottom: 2.5rem;
+        }
+
+        .team-title-em {
+            font-style: italic;
+        }
+
+        .team-quote {
+            font-family: "Fraunces", serif;
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem); 
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.3;
+            color: var(--ink);
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .team-bio {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.15rem; 
+            line-height: 1.6;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            max-width: 90%; /* Let it flow */
+        }
+
+        /* Stats */
+        .team-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .stat-value {
+            font-family: "Fraunces", serif;
+            font-size: 2.25rem;
+            line-height: 1;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+
+        .stat-label {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+        }
+
+        /* Link */
+        .team-link {
+            font-family: "Space Grotesk", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            padding-bottom: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .team-link:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Visual */
+        .team-visual {
+            position: relative;
+            width: 100%;
+            /* FIX: Reduce size and restore aspect ratio */
+            max-width: 550px; 
+            aspect-ratio: 4/5; 
+            height: auto;
+            background: #e5e5e5;
+            overflow: hidden;
+            /* 2. FIX: Remove clip-path hiding to guarantee visibility */
+            /* clip-path: inset(100% 0 0 0); */ 
+            /* FIX: Balanced border radius everywhere since it's floating */
+            border-radius: 12px;
+            /* AESTHETIC UPGRADE: Soft shadow for depth */
+            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.4); 
+        }
+        
+        .team-visual.is-visible {
+            /* clip-path: inset(0 0 0 0); */
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(1);
+            /* transform: scale(1.1); */
+            transition: filter 0.7s ease, transform 0.7s ease;
+        }
+
+        .team-visual:hover .team-photo {
+            filter: grayscale(0) contrast(1.1);
+            transform: scale(1.03);
+        }
+
+        /* Text Reveals */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-text.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delays */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+
+        @media (max-width: 1023px) {
+            .team-visual-col {
+                order: 0; 
+                margin-bottom: 2rem;
+                height: 50vh; /* Make sure it has height on mobile too */
+                padding-right: 1.5rem;
+                padding-left: 1.5rem;
+            }
+            .team-content-col {
+                order: 1;
+                /* Mobile Padding */
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            /* Mobile visual adjustment */
+            .team-visual {
+                max-width: 100%;
+                border-radius: 4px;
+                height: 100%;
             }
         }
     </style>
 
-    <div class="relative z-10 max-w-[94%] mx-auto px-6 md:px-12">
-        <!-- Header: Minimalist Editorial Style -->
-        <div
-            class="flex flex-col md:flex-row justify-between items-end gap-12 mb-16 reveal-item"
-        >
-            <div class="max-w-2xl">
-                <p
-                    class="font-outfit text-lime-600 font-bold uppercase tracking-[0.2em] text-sm mb-6"
-                >
-                    Our Creative Force
-                </p>
-                <h2
-                    class="text-4xl sm:text-5xl md:text-8xl font-playfair font-black text-zinc-900 leading-[0.9] tracking-tight"
-                >
-                    The <span class="italic font-normal">Minds</span> Behind Cinemora
-                </h2>
-            </div>
-            <div class="max-w-xs pb-4">
-                <p class="font-outfit text-zinc-500 leading-relaxed text-lg">
-                    A collective of visionaries, designers, and developers
-                    crafting the future of premium content.
-                </p>
-            </div>
-        </div>
-
-        <!-- Editorial Grid -->
-        <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8"
-        >
-            <!-- Team Member 1 -->
-            <div class="team-card reveal-item delay-1 flex flex-col group">
-                <div
-                    class="team-card-media relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-zinc-100 mb-8 border border-zinc-100"
-                >
-                    <img
-                        src="https://framerusercontent.com/images/V0M3J8BygkAJWol7DpZzVLVD3PI.png?scale-down-to=512"
-                        alt="Marker Villa"
-                        class="team-card-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                        loading="lazy"
-                    />
-                </div>
-                <div class="team-card-content mt-auto">
-                    <div
-                        class="text-lime-600 font-outfit font-bold uppercase tracking-widest text-xs mb-3"
-                    >
-                        CEO & Founder
-                    </div>
-                    <h3
-                        class="team-card-name text-4xl font-playfair font-black text-zinc-900 mb-4 group-hover:text-lime-600 transition-colors"
-                    >
-                        Marker Villa
-                    </h3>
-                    <p
-                        class="font-outfit text-zinc-400 text-sm leading-relaxed max-w-[200px]"
-                    >
-                        Strategic lead & Visionary builder.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Team Member 2 -->
-            <div
-                class="team-card reveal-item delay-2 flex flex-col group lg:mt-16"
-            >
-                <div
-                    class="team-card-media relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-zinc-100 mb-8 border border-zinc-100"
-                >
-                    <img
-                        src="https://framerusercontent.com/images/MXGhdOCjqMV4qWQWzwqR64ap4CE.png?scale-down-to=512"
-                        alt="Haden Molk"
-                        class="team-card-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                        loading="lazy"
-                    />
-                </div>
-                <div class="team-card-content mt-auto">
-                    <div
-                        class="text-lime-600 font-outfit font-bold uppercase tracking-widest text-xs mb-3"
-                    >
-                        UI/UX Designer
-                    </div>
-                    <h3
-                        class="team-card-name text-4xl font-playfair font-black text-zinc-900 mb-4 group-hover:text-lime-600 transition-colors"
-                    >
-                        Haden Molk
-                    </h3>
-                    <p
-                        class="font-outfit text-zinc-400 text-sm leading-relaxed max-w-[200px]"
-                    >
-                        Experience Architect & Digital Artist.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Team Member 3 -->
-            <div class="team-card reveal-item delay-3 flex flex-col group">
-                <div
-                    class="team-card-media relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-zinc-100 mb-8 border border-zinc-100"
-                >
-                    <img
-                        src="https://framerusercontent.com/images/2SG2YtGYMAFSLxtZQdyf06GJeU.png?scale-down-to=512"
-                        alt="Christin Harish"
-                        class="team-card-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                        loading="lazy"
-                    />
-                </div>
-                <div class="team-card-content mt-auto">
-                    <div
-                        class="text-lime-600 font-outfit font-bold uppercase tracking-widest text-xs mb-3"
-                    >
-                        Lead Developer
-                    </div>
-                    <h3
-                        class="team-card-name text-4xl font-playfair font-black text-zinc-900 mb-4 group-hover:text-lime-600 transition-colors"
-                    >
-                        Christin Harish
-                    </h3>
-                    <p
-                        class="font-outfit text-zinc-400 text-sm leading-relaxed max-w-[200px]"
-                    >
-                        System architect & Code perfectionist.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Team Member 4 -->
-            <div
-                class="team-card reveal-item delay-4 flex flex-col group lg:mt-16"
-            >
-                <div
-                    class="team-card-media relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-zinc-100 mb-8 border border-zinc-100"
-                >
-                    <img
-                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2864&auto=format&fit=crop"
-                        alt="Diallyl Elana"
-                        class="team-card-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                        loading="lazy"
-                    />
-                </div>
-                <div class="team-card-content mt-auto">
-                    <div
-                        class="text-lime-600 font-outfit font-bold uppercase tracking-widest text-xs mb-3"
-                    >
-                        Marketing lead
-                    </div>
-                    <h3
-                        class="team-card-name text-4xl font-playfair font-black text-zinc-900 mb-4 group-hover:text-lime-600 transition-colors"
-                    >
-                        Diallyl Elana
-                    </h3>
-                    <p
-                        class="font-outfit text-zinc-400 text-sm leading-relaxed max-w-[200px]"
-                    >
-                        Growth strategist & Brand builder.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Minimalist Scroll Animation Script -->
     <script>
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px",
-        };
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add("is-visible");
+                    entry.target.classList.add('is-visible');
+                    
+                    // Specific logic to trigger visual if content is triggered?
+                    // The CSS handles each element individually if they have the class
+                    // If the parent is triggered, we might want to cascade.
+                    
+                    // Current setup: elements have .reveal-text or .reveal-visual
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.15 });
 
-        document.querySelectorAll(".reveal-item").forEach((item) => {
-            revealObserver.observe(item);
-        });
+        document.querySelectorAll('.reveal-text, .team-visual').forEach(el => observer.observe(el));
     </script>
 </section>

@@ -15,10 +15,12 @@ const logos = [
     { src: "/images/logos/SPOKEN-WINES.png", alt: "Spoken Wines" },
     { src: "/images/logos/Success%20School.png", alt: "Success School" },
 ];
+
+const mobileLogos = logos.slice(3);
 ---
 
 <section
-    class="relative mt-3 md:mt-6 w-full text-zinc-900 overflow-hidden"
+    class="relative w-full text-zinc-900 overflow-hidden trustedby-shell"
     data-trustedby-section
 >
     <!-- Atmospheric Background Glow -->
@@ -40,7 +42,7 @@ const logos = [
                 <div class="relative overflow-hidden">
                     <div class="flex items-center justify-center">
                         <span
-                            class="trustedby-pill inline-flex items-center gap-2 rounded-full bg-white/40 px-3 py-1 text-base text-zinc-800 backdrop-blur-xl md:text-lg border border-white/50"
+                            class="trustedby-pill inline-flex items-center gap-2 rounded-full bg-white/40 px-3 py-1 text-base text-zinc-800 backdrop-blur-xl md:text-lg border border-white/50 font-body"
                         >
                             <span
                                 class="trustedby-dot h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_18px_rgba(183,255,42,0.8)]"
@@ -58,7 +60,7 @@ const logos = [
             <div class="w-full px-0 sm:px-[10%] md:px-[12%] lg:px-[14%]">
                 <div class="logo-mask overflow-hidden">
                     <div
-                        class="logo-marquee mx-auto flex w-max items-center justify-center gap-4 py-2 sm:gap-8 md:gap-10"
+                        class="logo-marquee mx-auto hidden w-max items-center justify-center gap-4 py-2 sm:gap-8 md:gap-10 lg:flex"
                     >
                         {
                             [...logos, ...logos].map((logo) => (
@@ -74,31 +76,55 @@ const logos = [
                             ))
                         }
                     </div>
+                    <div
+                        class="trustedby-logos-static mx-auto flex w-full max-w-md items-center justify-between gap-6 px-3 py-2 lg:hidden"
+                    >
+                        {
+                            mobileLogos.map((logo) => (
+                                <div class="trustedby-logo-item flex items-center justify-center">
+                                    <img
+                                        src={logo.src}
+                                        alt={logo.alt}
+                                        class="max-h-full max-w-full object-contain"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Stats -->
-        <div class="mt-8 mb-20 grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
-            {
-                stats.map((s, i) => (
-                    <div class="stat-item px-5 py-4 text-center" data-index={i}>
-                        <p class="text-4xl font-bold text-zinc-900 md:text-5xl">
-                            <span
-                                class="text-lime-500 stat-count drop-shadow-sm"
-                                data-target={s.value}
-                                data-decimals={s.decimals}
-                                data-suffix={s.suffix}
-                            >
-                                0
-                            </span>
-                        </p>
-                        <p class="text-lg text-zinc-600 font-medium">
-                            {s.label}
-                        </p>
-                    </div>
-                ))
-            }
+        <div class="trustedby-stats-shell">
+            <div
+                class="trustedby-stats-grid mt-8 mb-20 grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4"
+            >
+                {
+                    stats.map((s, i) => (
+                        <div
+                            class="stat-item px-5 py-4 text-center"
+                            data-index={i}
+                        >
+                            <p class="text-4xl font-bold text-zinc-900 md:text-5xl">
+                                <span
+                                    class="text-lime-500 stat-count drop-shadow-sm"
+                                    data-target={s.value}
+                                    data-decimals={s.decimals}
+                                    data-suffix={s.suffix}
+                                >
+                                    0
+                                </span>
+                            </p>
+                            <p class="stat-label text-lg text-zinc-600 font-medium">
+                                {s.label}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
 
         <!-- Pain Points: Deconstructed Timeline Flow -->
@@ -142,6 +168,7 @@ const logos = [
                     style="height: 700px;"
                 >
                     <div class="viewport-frame">
+                        <div class="pp-focus" aria-hidden="true"></div>
                         <div class="pain-point-list">
                             <!-- Pain Point 1 -->
                             <div class="pp-item" data-index="0">
@@ -341,11 +368,8 @@ const logos = [
 </section>
 
 <style>
-    @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap");
-    @import url("https://api.fontshare.com/v2/css?f[]=satoshi@700&display=swap");
+    /* Old imports removed */
     @import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
-    @import url("https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap");
 
     .font-handwriting {
         font-family: "Architects Daughter", cursive;
@@ -353,14 +377,14 @@ const logos = [
     }
 
     .trustedby-playfair {
-        font-family: "Playfair Display", serif;
-        font-weight: 800;
+        font-family: var(--font-heading);
+        font-weight: 300; /* Lighter weight for premium feel */
         letter-spacing: -0.02em;
     }
 
     .stat-count {
-        font-family: "Space Grotesk", system-ui, sans-serif;
-        font-weight: 700;
+        font-family: var(--font-heading);
+        font-weight: 400;
     }
 
     @media (max-width: 1023px) {
@@ -369,7 +393,7 @@ const logos = [
         }
 
         .stat-count {
-            font-family: "Satoshi", system-ui, sans-serif;
+            font-family: var(--font-heading);
         }
     }
 
@@ -658,6 +682,25 @@ const logos = [
         justify-content: flex-end; /* Align list to the right */
     }
 
+    .pp-focus {
+        position: absolute;
+        top: 50%;
+        right: 6%;
+        transform: translateY(-50%);
+        width: min(70%, 620px);
+        height: 180px;
+        background: radial-gradient(
+            closest-side,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(242, 241, 237, 0.85) 45%,
+            rgba(242, 241, 237, 0) 100%
+        );
+        filter: blur(12px);
+        opacity: 0.9;
+        z-index: 1;
+        pointer-events: none;
+    }
+
     .pain-point-list {
         position: relative;
         width: 100%;
@@ -669,120 +712,57 @@ const logos = [
         align-items: flex-end;
         justify-content: center;
         perspective: 1500px;
+        z-index: 2;
     }
 
     .pp-item {
         position: absolute;
         top: 50%;
-        right: 0;
+        right: 4%;
         display: flex; /* Flex row for Arrow + Text */
         flex-direction: row-reverse; /* Arrow on right, Text on left */
         align-items: center;
-        gap: 3rem;
+        gap: 2rem;
         transform: translateY(-50%); /* Centered by default */
         /* Expo Ease Out for premium feel */
-        transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        transition:
+            transform 1000ms cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 900ms ease,
+            filter 900ms ease;
         opacity: 0;
         pointer-events: none;
         white-space: nowrap;
+        will-change: transform, opacity;
     }
 
     .pp-text {
-        font-family: "Clash Display", sans-serif;
-        font-weight: 600;
+        font-family: var(--font-heading);
+        font-weight: 300;
         text-transform: uppercase;
         margin: 0;
-        line-height: 0.9;
+        line-height: 0.92;
         text-align: right;
-        transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-
-        /* Liquid Fluid Chrome Effect (Enhanced) */
-        background-size: 300% 300%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        background-image: linear-gradient(
-            135deg,
-            #ff4d4d 0%,
-            #f9cb28 25%,
-            #4ade80 50%,
-            #22d3ee 75%,
-            #a78bfa 100%
-        );
-        animation: fluid-flow 4s ease infinite alternate;
-        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
-        /* Slight wave distortion via transform if possible, but gradient flow handles the 'liquid' feel best on text */
-    }
-
-    @keyframes fluid-flow {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
+        display: inline-block;
+        transition:
+            transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 700ms ease,
+            color 700ms ease;
+        color: rgba(24, 24, 27, 0.4);
+        letter-spacing: 0.02em;
+        text-rendering: geometricPrecision;
     }
 
     .pp-item:hover .pp-text {
-        transform: scale(1.05) translateX(-10px);
-        animation-duration: 2s;
-        /* Extreme Water-Like Fluid Effect */
-        background-image:
-            /* Bubble highlight (top of water bubble) */
-            radial-gradient(
-                circle 80px at calc(var(--mx, 50%) - 3%)
-                    calc(var(--my, 50%) - 3%),
-                rgba(255, 255, 255, 0.8) 0%,
-                transparent 40%
-            ),
-            /* Main water bubble (empty center) */
-            radial-gradient(
-                    circle 150px at var(--mx, 50%) var(--my, 50%),
-                    transparent 0%,
-                    transparent 20%,
-                    rgba(100, 200, 255, 0.15) 30%,
-                    rgba(60, 150, 220, 0.3) 50%,
-                    rgba(20, 100, 180, 0.4) 70%,
-                    transparent 100%
-                ),
-            /* Water depth layer */
-            linear-gradient(
-                    180deg,
-                    rgba(100, 200, 255, 0.3) 0%,
-                    rgba(60, 150, 220, 0.5) 50%,
-                    rgba(100, 200, 255, 0.3) 100%
-                ),
-            /* Animated water surface shimmer */
-            linear-gradient(
-                    120deg,
-                    #4dd0e1 0%,
-                    #80deea 15%,
-                    #b2ebf2 30%,
-                    #80deea 45%,
-                    #4dd0e1 60%,
-                    #80deea 75%,
-                    #b2ebf2 90%,
-                    #4dd0e1 100%
-                );
-        background-size:
-            100% 100%,
-            100% 100%,
-            100% 100%,
-            400% 100%;
-        -webkit-text-stroke: 1.5px rgba(0, 100, 150, 0.8);
-        filter: drop-shadow(0 0 20px rgba(77, 208, 225, 0.4))
-            drop-shadow(0 0 40px rgba(128, 222, 234, 0.2));
+        transform: translateX(-6px);
+        color: rgba(24, 24, 27, 0.7);
     }
 
     .pp-arrow {
-        font-size: 4rem;
+        font-size: 3rem;
         line-height: 1;
-        transform: rotate(0deg) translateX(20px);
+        transform: scaleX(-1) translateX(10px);
         transition:
-            transform 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+            transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
             color 0.5s ease,
             opacity 0.5s;
         opacity: 0;
@@ -798,17 +778,16 @@ const logos = [
     /* TOP STATE: Distant, Solid, Faded */
     .pp-item.state-top {
         visibility: visible;
-        opacity: 0.15; /* Very subtle */
-        transform: translateY(-180px) scale(0.8) skewX(5deg);
-        filter: blur(2px);
+        opacity: 0.22;
+        transform: translateY(-170px) scale(0.9);
+        filter: blur(0.6px);
     }
     .pp-item.state-top .pp-text {
         font-size: 3.5rem;
-        color: #000000;
-        -webkit-text-stroke: 0;
+        color: rgba(24, 24, 27, 0.3);
     }
     .pp-item.state-top .pp-arrow {
-        transform: rotate(45deg);
+        transform: scaleX(-1) rotate(20deg);
         opacity: 0;
     }
 
@@ -816,25 +795,29 @@ const logos = [
     .pp-item.state-active {
         visibility: visible;
         opacity: 1;
-        transform: translateY(0) scale(1) skewX(0deg);
+        transform: translateY(0) scale(1);
         filter: blur(0);
         z-index: 10;
+        animation: pp-float 6s ease-in-out infinite;
     }
     .pp-item.state-active .pp-text {
         font-size: 8rem;
-        -webkit-text-stroke: 0;
-        background-image: linear-gradient(
-            120deg,
-            #000000 0%,
-            #404040 25%,
-            #111111 50%,
-            #404040 75%,
-            #000000 100%
-        );
-        text-shadow: 2px 10px 60px rgba(0, 0, 0, 0.25);
+        color: #161616;
+        text-shadow: 0 6px 28px rgba(0, 0, 0, 0.12);
+        position: relative;
+    }
+    .pp-item.state-active .pp-text::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: -0.4em;
+        width: 56px;
+        height: 2px;
+        background: linear-gradient(90deg, #84cc16, transparent);
+        opacity: 0.9;
     }
     .pp-item.state-active .pp-arrow {
-        transform: rotate(0deg) translateX(0);
+        transform: scaleX(-1) rotate(0deg) translateX(0);
         opacity: 1;
         color: #84cc16;
         filter: drop-shadow(0 0 10px rgba(132, 204, 22, 0.5));
@@ -843,18 +826,27 @@ const logos = [
     /* BOTTOM STATE: Entering, Solid, Faded */
     .pp-item.state-bottom {
         visibility: visible;
-        opacity: 0.4; /* Reduced visibility */
-        transform: translateY(180px) scale(0.9) skewX(-5deg);
-        filter: blur(1px);
+        opacity: 0.3;
+        transform: translateY(170px) scale(0.92);
+        filter: blur(0.6px);
     }
     .pp-item.state-bottom .pp-text {
         font-size: 5rem;
-        color: #000000;
-        -webkit-text-stroke: 0;
+        color: rgba(24, 24, 27, 0.35);
     }
     .pp-item.state-bottom .pp-arrow {
-        transform: rotate(-45deg);
+        transform: scaleX(-1) rotate(-20deg);
         opacity: 0;
+    }
+
+    @keyframes pp-float {
+        0%,
+        100% {
+            transform: translateY(0) scale(1);
+        }
+        50% {
+            transform: translateY(-8px) scale(1);
+        }
     }
 
     /* Responsive adjustments */
@@ -994,6 +986,112 @@ const logos = [
 </style>
 
 <style>
+    .trustedby-stats-shell {
+        position: relative;
+    }
+
+    .trustedby-logos-static img {
+        opacity: 0.55;
+        filter: grayscale(1) contrast(0.6);
+    }
+
+    @media (max-width: 1023px) {
+        .trustedby-shell {
+            background: transparent;
+        }
+
+        .trustedby-pill {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            padding: 0.5rem 1.2rem;
+            font-size: 0.92rem;
+        }
+
+        .trustedby-dot {
+            width: 6px;
+            height: 6px;
+            box-shadow: 0 0 10px rgba(132, 204, 22, 0.6);
+        }
+
+        .logo-mask {
+            mask-image: none;
+            -webkit-mask-image: none;
+        }
+
+        .trustedby-logos-static {
+            gap: 1.1rem;
+            max-width: 320px;
+        }
+
+        .trustedby-logo-item {
+            width: 90px;
+            height: 22px;
+            flex: 1;
+            max-width: 100px;
+        }
+
+        .trustedby-stats-shell {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .trustedby-stats-grid {
+            margin: 1.35rem 0 2rem;
+            gap: 1.35rem;
+        }
+
+        .stat-item {
+            padding: 0.25rem 0.3rem;
+        }
+
+        .stat-count {
+            font-size: 2.25rem;
+            line-height: 1;
+            color: #84cc16;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            line-height: 1.25;
+            font-weight: 500;
+        }
+    }
+
+    @media (min-width: 640px) and (max-width: 1023px) {
+        .trustedby-logo-item {
+            width: 110px;
+            height: 26px;
+        }
+
+        .stat-count {
+            font-size: 2.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.98rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .trustedby-logos-static {
+            gap: 0.85rem;
+            max-width: 280px;
+        }
+
+        .trustedby-logo-item {
+            width: 78px;
+            height: 20px;
+        }
+    }
+</style>
+
+<style>
     .trustedby-pill {
         animation: breathe 4s ease-in-out infinite;
         transform-origin: center;
@@ -1079,10 +1177,14 @@ const logos = [
     const items = document.querySelectorAll(".pp-item");
 
     if (scrollContainer && items.length > 0) {
+        const allowMotion =
+            !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         let scrollProgress = 0;
         let autoProgress = 0;
         let lastTime = 0;
-        const speed = 0.35; // Items per second (Slow & Premium)
+        let rafId = 0;
+        let running = false;
+        const speed = 0.25; // Items per second (Slow & Premium)
 
         // Update Scroll Progress on Scroll
         function onScroll() {
@@ -1100,25 +1202,8 @@ const logos = [
         window.addEventListener("scroll", onScroll, { passive: true });
         onScroll(); // Init
 
-        // Animation Loop
-        function loop(time: number) {
-            if (!lastTime) lastTime = time;
-            const delta = (time - lastTime) / 1000;
-            lastTime = time;
-
-            // Auto-advance
-            autoProgress += speed * delta;
-
-            // Combine
-            const totalIndex = scrollProgress + autoProgress;
-
-            // Wrap index
+        function render(activeIndex: number) {
             const count = items.length;
-            const activeIndex = Math.floor(
-                ((totalIndex % count) + count) % count,
-            );
-
-            // Render
             items.forEach((item, index) => {
                 item.classList.remove(
                     "state-active",
@@ -1126,7 +1211,6 @@ const logos = [
                     "state-bottom",
                 );
 
-                // Indices
                 const topIndex = (activeIndex - 1 + count) % count;
                 const bottomIndex = (activeIndex + 1) % count;
 
@@ -1138,10 +1222,65 @@ const logos = [
                     item.classList.add("state-bottom");
                 }
             });
-
-            requestAnimationFrame(loop);
         }
-        requestAnimationFrame(loop);
+
+        // Animation Loop (only when visible)
+        function loop(time: number) {
+            if (!running) return;
+            if (!lastTime) lastTime = time;
+            const delta = (time - lastTime) / 1000;
+            lastTime = time;
+
+            // Auto-advance
+            autoProgress += speed * delta;
+
+            // Combine
+            const totalIndex = scrollProgress + autoProgress;
+
+            // Wrap index
+            const activeIndex = Math.floor(
+                ((totalIndex % items.length) + items.length) % items.length,
+            );
+
+            render(activeIndex);
+
+            rafId = requestAnimationFrame(loop);
+        }
+
+        function startLoop() {
+            if (!allowMotion || running) return;
+            running = true;
+            lastTime = 0;
+            rafId = requestAnimationFrame(loop);
+        }
+
+        function stopLoop() {
+            running = false;
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = 0;
+            }
+        }
+
+        if (!allowMotion) {
+            render(0);
+        } else {
+            const sliderObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            onScroll();
+                            startLoop();
+                        } else {
+                            stopLoop();
+                        }
+                    });
+                },
+                { threshold: 0.1 },
+            );
+
+            sliderObserver.observe(scrollContainer);
+        }
     }
 
     // Typing Animation for "too hard?"
@@ -1178,26 +1317,6 @@ const logos = [
 
         observer.observe(headlineEl);
     }
-
-    // Interactive Liquid Bubble Mouse Tracking
-    const ppItems = document.querySelectorAll(".pp-item");
-
-    ppItems.forEach((item) => {
-        const text = item.querySelector(".pp-text") as HTMLElement;
-        if (!text) return;
-
-        item.addEventListener("mousemove", (e: any) => {
-            const rect = text.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-            // Smoother movement with requestAnimationFrame
-            requestAnimationFrame(() => {
-                text.style.setProperty("--mx", `${x}%`);
-                text.style.setProperty("--my", `${y}%`);
-            });
-        });
-    });
 
     // Stats Counter Animation
     const statsSection = document.querySelector("[data-trustedby-section]");

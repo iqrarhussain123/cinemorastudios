@@ -11,29 +11,10 @@ const {
 } = heroData;
 ---
 
-<section class="hero-section relative overflow-hidden bg-transparent">
-  <!-- Cinematic Texture Overlay -->
-  <div
-    class="absolute inset-0 z-0 opacity-30 mix-blend-overlay pointer-events-none"
-  >
-    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-      <filter id="noiseFilterHero">
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency="0.6"
-          stitchTiles="stitch"></feTurbulence>
-      </filter>
-      <rect
-        width="100%"
-        height="100%"
-        filter="url(#noiseFilterHero)"
-        opacity="0.4"></rect>
-    </svg>
-  </div>
-
-  <div class="relative z-10">
+<section class="hero-section hero-bg relative overflow-hidden">
+  <div class="relative">
     <div
-      class="mx-auto flex w-full max-w-[96%] flex-col px-4 sm:px-6 pt-32 pb-2 sm:pt-40 md:pt-48 md:pb-16"
+      class="mx-auto flex w-full max-w-[100%] flex-col px-4 sm:px-6 pt-32 pb-2 sm:pt-40 md:pt-48 md:pb-16"
     >
       <!-- top pill -->
       <div
@@ -51,12 +32,16 @@ const {
         >
         </div>
         <h1
-          class="hero-title hero-reveal-2 text-2xl font-extrabold leading-[1.1] tracking-tighter text-zinc-50 sm:text-5xl md:text-7xl lg:text-8xl"
+          class="hero-title hero-reveal-2 font-heading font-light leading-[1] tracking-tight text-zinc-50 text-2xl sm:text-5xl md:text-7xl lg:text-8xl"
         >
           {headline.line1}
-          <span class="text-lime-400">{headline.highlight1}</span><br />
+          <span class="text-lime-400 italic font-normal"
+            >{headline.highlight1}</span
+          ><br />
           {headline.line2}
-          <span class="text-lime-400">{headline.highlight2}</span>
+          <span class="text-lime-400 italic font-normal"
+            >{headline.highlight2}</span
+          >
         </h1>
 
         <div
@@ -80,7 +65,7 @@ const {
               <!-- Text Zone (Use smallest spacer possible) -->
               <div class="flex-1 overflow-hidden px-6 pt-5 sm:px-8 sm:pt-6">
                 <div
-                  class="relative w-full text-sm font-light leading-snug text-zinc-100 sm:text-base md:text-lg"
+                  class="relative w-full font-body text-sm font-light leading-snug text-zinc-100 sm:text-base md:text-lg"
                 >
                   <span id="typing-text" data-text={typeText}></span>
                   <span class="custom-cursor-container">
@@ -139,7 +124,7 @@ const {
           <!-- Primary Premium Button -->
           <a
             href={primaryCta.href}
-            class="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-lime-400 to-lime-500 px-8 py-3.5 text-base font-bold text-black shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_-5px_rgba(163,230,53,0.6)] md:text-zinc-950"
+            class="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-lime-400 to-lime-500 px-8 py-3.5 text-base font-body font-medium text-black shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_-5px_rgba(163,230,53,0.6)] md:text-zinc-950"
           >
             <span class="relative z-10">{primaryCta.label}</span>
             <svg
@@ -169,12 +154,12 @@ const {
       >
         <div
           id="videoTiltContainer"
-          class="group relative mx-auto max-w-[95rem] aspect-video md:aspect-[21/9] lg:aspect-video rounded-[2rem] border border-white/5 bg-white/5 p-2 shadow-2xl ring-1 ring-white/10 backdrop-blur-3xl transition-transform duration-500 ease-out md:p-3 overflow-hidden"
+          class="group relative mx-auto max-w-[95rem] aspect-video md:aspect-[21/9] lg:aspect-video rounded-[2rem] transition-transform duration-500 ease-out overflow-hidden hero-video-glass"
           style="transform-style: preserve-3d;"
         >
           <video
             id="heroVideo"
-            class="relative z-10 h-full w-full object-cover rounded-xl shadow-2xl"
+            class="relative z-10 h-full w-full object-cover rounded-xl"
             loop
             muted
             playsinline
@@ -292,6 +277,9 @@ const {
       </div>
     </div>
   </div>
+
+  <!-- Blend Hero into TrustedBy background to remove seam -->
+  <div class="hero-bottom-fade" aria-hidden="true"></div>
 </section>
 
 <!-- Hover logic (Astro-safe) -->
@@ -501,15 +489,32 @@ const {
 </script>
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap");
+  /* Playfair Import Removed */
 
   .hero-section {
     min-height: auto;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+  .hero-bottom-fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: clamp(100px, 16vw, 260px);
+    background: linear-gradient(
+      to bottom,
+      rgba(242, 241, 237, 0) 0%,
+      var(--color-cream, #f2f1ed) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
   }
 
   @media (min-width: 768px) {
     .hero-section {
-      min-height: 100svh;
+      min-height: auto;
     }
   }
 
@@ -560,6 +565,35 @@ const {
   .hero-video {
     opacity: 0;
     animation: hero-video 900ms ease forwards;
+  }
+
+  .hero-video-glass {
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+      0 18px 40px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0)
+    );
+    backdrop-filter: blur(12px);
+  }
+
+  .hero-video-glass::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: calc(2rem - 6px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    .hero-video {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
   }
 
   @keyframes hero-pill {
@@ -648,7 +682,7 @@ const {
 
   @media (max-width: 640px) {
     .hero-title {
-      font-family: "Playfair Display", "Times New Roman", serif;
+      font-family: var(--font-heading);
     }
   }
 

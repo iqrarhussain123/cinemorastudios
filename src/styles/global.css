@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Space+Grotesk:wght@300;400;500&display=swap");
 
 html,
 body {
@@ -6,72 +7,67 @@ body {
   margin: 0;
   padding: 0;
   background-color: transparent;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  color: var(--color-text-main);
 }
 
-/* optional: smooth fonts */
 /* Global Design Tokens */
 :root {
   --color-lime: #84cc16;
   --color-lime-glow: rgba(132, 204, 22, 0.5);
-  --color-bg-dark: #0a0a0a;
-  --color-text-main: #ffffff;
-  --color-text-muted: #a1a1aa;
+  --color-bg-main: #ffffff;
+  --color-text-main: #111111;
+  --color-text-muted: #666666;
+  --color-cream: #f2f1ed;
+
+  /* Typography */
+  --font-heading: "Fraunces", serif;
+  --font-body: "Space Grotesk", sans-serif;
+
+  /* Premium Polish */
+  --shadow-premium: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+  --radius-premium: 12px;
 }
 
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Hero background (restored) */
+.hero-bg {
+  background: #0a0a0a url("/images/background_hero_trustedby.jpg") top center / cover no-repeat;
 }
 
-
-
-
-.calendly-inline-widget {
-  overflow: hidden !important;
+/* TrustedBy background matches cream tone behind hero video */
+.trustedby-shell {
+  background: var(--color-cream);
 }
 
-.calendly-horizontal {
-  position: relative;
-  width: 100%;
-  height: 950px;
-  overflow: hidden !important;
+@media (max-width: 768px) {
+  .hero-bg {
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
 }
 
-.calendly-horizontal iframe {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  border: 0 !important;
-  display: block !important;
-  overflow: hidden !important;
+/* Typography Utilities */
+.font-heading {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  /* Default thin elegant look */
 }
 
-/* prevent any horizontal page slider */
-html,
-body {
-  overflow-x: hidden;
+.font-body {
+  font-family: var(--font-body);
 }
 
-@font-face {
-  font-family: "Roba";
-  src: url("/fonts/Roba-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-display: swap;
-}
-
+/* Legacy Compat: Map old .font-brand to new Heading */
 .font-brand {
-  font-family: "Roba", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  letter-spacing: 0.1em;
+  font-family: var(--font-heading);
+  font-weight: 300;
+  letter-spacing: -0.02em;
 }
 
 .font-brand-tight {
-  font-family: "Roba", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  letter-spacing: 0.02em;
+  font-family: var(--font-heading);
+  letter-spacing: -0.03em;
 }
 
 /* Background depth system */
@@ -84,20 +80,12 @@ body {
   overflow: hidden;
 }
 
-.hero-trustedby-bg {
-  background: url("/images/background_hero_trustedby.jpg") top center / cover no-repeat;
-}
 
-@media (max-width: 768px) {
-  .hero-trustedby-bg {
-    /* Adjusted zoom to match reference */
-    background-size: 400% auto;
-    background-position: top center;
-  }
-}
 
 /* Remove any potential divider lines */
-.hero-trustedby-bg>* {
+/* Remove any potential divider lines */
+.hero-bg>*,
+.trustedby-shell>* {
   border-bottom: none !important;
 }
 
@@ -109,7 +97,9 @@ body {
 .hero-section::after,
 .hero-section::before,
 [data-trustedby-section]::before,
-[data-trustedby-section]::after {
+[data-trustedby-section]::after,
+.hero-bg::after,
+.hero-bg::before {
   display: none !important;
   content: none !important;
   border: none !important;

@@ -64,9 +64,9 @@ const pills = ["All", "LinkedIn", "Editing", "Design", "Ads", "Case Studies"];
   <div class="mx-auto max-w-6xl px-4">
     <!-- Heading -->
     <div class="mb-10 text-center">
-      <p class="mb-3 text-sm uppercase tracking-widest text-lime-400">Portfolio</p>
-      <h2 class="text-4xl font-bold text-white">Proof that we can deliver</h2>
-      <p class="mt-4 mx-auto max-w-2xl text-white/60">
+      <p class="mb-3 text-sm uppercase tracking-widest text-lime-400 font-body">Portfolio</p>
+      <h2 class="text-4xl font-heading font-light text-white">Proof that we can deliver</h2>
+      <p class="mt-4 mx-auto max-w-2xl text-white/60 font-body">
         Here's a snapshot of the kind of content, systems, and creative we build.
         Swap these placeholders with your real work anytime.
       </p>
@@ -74,7 +74,7 @@ const pills = ["All", "LinkedIn", "Editing", "Design", "Ads", "Case Studies"];
       <!-- Pills (optional) -->
       <div class="mt-6 flex flex-wrap justify-center gap-2">
         {pills.map((p) => (
-          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 font-body">
             {p}
           </span>
         ))}
@@ -86,14 +86,15 @@ const pills = ["All", "LinkedIn", "Editing", "Design", "Ads", "Case Studies"];
       {items.map((it) => (
         <a
           href={it.href}
-          class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:border-lime-400/40 hover:bg-white/10"
+          class="group relative overflow-hidden border border-white/10 bg-white/5 transition hover:border-lime-400/40 hover:bg-white/10"
+          style="border-radius: var(--radius-premium); box-shadow: var(--shadow-premium);"
         >
           <!-- Thumbnail -->
           <div class="relative aspect-video overflow-hidden">
             <img
               src={it.thumb}
               alt={it.title}
-              class="h-full w-full object-cover opacity-90 transition group-hover:opacity-100 group-hover:scale-[1.02]"
+              class="h-full w-full object-cover opacity-90 transition duration-700 ease-out group-hover:opacity-100 group-hover:scale-[1.03]"
               loading="lazy"
               referrerpolicy="no-referrer"
             />
@@ -107,17 +108,17 @@ const pills = ["All", "LinkedIn", "Editing", "Design", "Ads", "Case Studies"];
             </div>
 
             <!-- Tag -->
-            <div class="absolute right-4 top-4 rounded-full bg-black/60 border border-white/15 px-3 py-1 text-xs text-white/80 backdrop-blur">
+            <div class="absolute right-4 top-4 rounded-full bg-black/60 border border-white/15 px-3 py-1 text-xs text-white/80 backdrop-blur font-body">
               {it.tag}
             </div>
           </div>
 
           <!-- Content -->
           <div class="p-5">
-            <h3 class="text-lg font-semibold text-white">{it.title}</h3>
-            <p class="mt-2 text-sm text-white/60">{it.desc}</p>
+            <h3 class="text-lg font-heading text-white">{it.title}</h3>
+            <p class="mt-2 text-sm text-white/60 font-body">{it.desc}</p>
 
-            <div class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-lime-400">
+            <div class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-lime-400 font-body">
               <span>View</span>
               <span class="translate-x-0 transition group-hover:translate-x-1">-&gt;</span>
             </div>
@@ -136,7 +137,7 @@ const pills = ["All", "LinkedIn", "Editing", "Design", "Ads", "Case Studies"];
     <div class="mt-10 flex justify-center">
       <a
         href="#book"
-        class="rounded-xl bg-lime-400 px-6 py-3 font-semibold text-black transition hover:opacity-90"
+        class="rounded-xl bg-lime-400 px-6 py-3 font-semibold text-black transition hover:opacity-90 font-body"
       >
         View Full Proof
       </a>
