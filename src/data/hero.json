@@ -7,6 +7,10 @@
         "label": "See Proof",
         "href": "#proof"
     },
+    "whatsappCta": {
+        "label": "Whatsapp now",
+        "href": "https://wa.me/923360599017?text=Hey%2C%20I%20need%20your%20help%20on%20my%20content%20strategizing%2C%20and%20management."
+    },
     "videoSrc": "/videos/showreel.mp4",
     "posterSrc": "/images/hero-video-thumb.jpg",
     "typeText": "Helping elite coaches build authority and real estate brands dominate with premium content.",

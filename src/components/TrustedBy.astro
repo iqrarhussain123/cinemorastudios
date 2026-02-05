@@ -63,13 +63,31 @@ const mobileLogos = logos.slice(3);
                         class="logo-marquee mx-auto hidden w-max items-center justify-center gap-4 py-2 sm:gap-8 md:gap-10 lg:flex"
                     >
                         {
-                            [...logos, ...logos].map((logo) => (
+                            logos.map((logo, index) => (
                                 <div class="flex h-20 w-32 items-center justify-center sm:h-32 sm:w-48 md:h-60 md:w-96">
                                     <img
                                         src={logo.src}
                                         alt={logo.alt}
                                         class="max-h-full max-w-full object-contain opacity-70 transition duration-300 hover:opacity-100 hover:scale-105"
+                                        loading="eager"
+                                        fetchpriority={index < 2 ? "high" : "auto"}
+                                        decoding="async"
+                                    />
+                                </div>
+                            ))
+                        }
+                        {
+                            logos.map((logo) => (
+                                <div
+                                    class="flex h-20 w-32 items-center justify-center sm:h-32 sm:w-48 md:h-60 md:w-96"
+                                    aria-hidden="true"
+                                >
+                                    <img
+                                        src={logo.src}
+                                        alt=""
+                                        class="max-h-full max-w-full object-contain opacity-70 transition duration-300 hover:opacity-100 hover:scale-105"
                                         loading="lazy"
+                                        fetchpriority="low"
                                         decoding="async"
                                     />
                                 </div>
@@ -86,7 +104,8 @@ const mobileLogos = logos.slice(3);
                                         src={logo.src}
                                         alt={logo.alt}
                                         class="max-h-full max-w-full object-contain"
-                                        loading="lazy"
+                                        loading="eager"
+                                        fetchpriority="high"
                                         decoding="async"
                                     />
                                 </div>
