@@ -70,7 +70,9 @@ const mobileLogos = logos.slice(3);
                                         alt={logo.alt}
                                         class="max-h-full max-w-full object-contain opacity-70 transition duration-300 hover:opacity-100 hover:scale-105"
                                         loading="eager"
-                                        fetchpriority={index < 2 ? "high" : "auto"}
+                                        fetchpriority={
+                                            index < 2 ? "high" : "auto"
+                                        }
                                         decoding="async"
                                     />
                                 </div>
@@ -829,6 +831,27 @@ const mobileLogos = logos.slice(3);
         color: rgba(24, 24, 27, 0.3);
     }
 
+    /* === INSTANT LOAD OPTIMIZATION === */
+    /* Force first item to be visible immediately - NO JS WAITING */
+    .pp-item[data-index="0"]:not(.active):not(.previous):not(.next) {
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: translateY(-50%) scale(1) translateZ(0) !important;
+        z-index: 10;
+        filter: none !important;
+    }
+
+    .pp-item[data-index="0"]:not(.active):not(.previous):not(.next) .pp-text {
+        font-size: 7rem;
+        color: #161616 !important;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .pp-item[data-index="0"]:not(.active):not(.previous):not(.next) .pp-arrow {
+        opacity: 1 !important;
+        color: var(--color-lime-primary) !important;
+    }
+
     /* Hover Effects */
     .pp-item.active:hover .pp-text {
         transform: translateX(-8px) translateZ(0);
@@ -1287,6 +1310,16 @@ const mobileLogos = logos.slice(3);
             display: none !important;
         }
     }
+
+    /* Force remove any focus outlines */
+    [data-trustedby-section]:focus,
+    [data-trustedby-section]:focus-visible,
+    [data-trustedby-section] *:focus,
+    [data-trustedby-section] *:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
 </style>
 
 <script>
@@ -1344,7 +1377,7 @@ const mobileLogos = logos.slice(3);
 
                 const nextIndex = (currentIndex + 1) % items.length;
                 updateItems(nextIndex);
-            }, 2000); // Change every 2 seconds
+            }, 1000); // Super fast 1s interval as requested ("speed of light")
         }
 
         function stopAutoPlay() {
@@ -1367,11 +1400,13 @@ const mobileLogos = logos.slice(3);
                     }
                 });
             },
-            { threshold: 0.1 }, // Reduced threshold for faster initialization
+            { threshold: 0.01 }, // Trigger as soon as 1 pixel is visible
         );
 
-        // Initialize first item immediately (don't wait for intersection)
-        updateItems(0);
+        // Initialize first item synchronously immediately
+        items.forEach((item, index) => {
+            if (index === 0) item.classList.add("active");
+        });
 
         observer.observe(verticalScroller);
 
