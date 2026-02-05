@@ -9,11 +9,11 @@ const logos = [
     { src: "/images/logos/hodderborg.png", alt: "Hodderborg" },
     { src: "/images/logos/nasdaq.png", alt: "Nasdaq" },
     {
-        src: "/images/logos/S%20FIVE%20REAL%20ESTATE.png",
+        src: "/images/logos/S FIVE REAL ESTATE.png",
         alt: "S Five Real Estate",
     },
     { src: "/images/logos/SPOKEN-WINES.png", alt: "Spoken Wines" },
-    { src: "/images/logos/Success%20School.png", alt: "Success School" },
+    { src: "/images/logos/Success School.png", alt: "Success School" },
 ];
 
 const mobileLogos = logos.slice(3);
@@ -45,7 +45,7 @@ const mobileLogos = logos.slice(3);
                             class="trustedby-pill inline-flex items-center gap-2 rounded-full bg-white/40 px-3 py-1 text-base text-zinc-800 backdrop-blur-xl md:text-lg border border-white/50 font-body"
                         >
                             <span
-                                class="trustedby-dot h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_18px_rgba(183,255,42,0.8)]"
+                                class="trustedby-dot h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_18px_var(--color-lime-glow)]"
                             ></span>
                             Trusted by <span class="text-zinc-900 font-bold"
                                 >50+ brands</span
@@ -155,21 +155,20 @@ const mobileLogos = logos.slice(3);
                         >sounds familiar?</span
                     >
                     <img
-                        src="/images/trusted%20by%20icons/arrow.png"
-                        alt=""
+                        src="/images/trusted by icons/arrow.png"
+                        alt="Decorative arrow pointing to pain points"
                         class="h-32 w-52 object-contain opacity-80"
                         loading="lazy"
                         decoding="async"
                     />
                 </div>
-                <!-- Scroll-Triggered Vertical Text Slider (Desktop Only) -->
+                <!-- Optimized Vertical Text Scroller (Desktop Only) -->
                 <div
-                    class="scroll-container hidden md:block"
-                    style="height: 700px;"
+                    class="vertical-scroller hidden md:block"
+                    style="height: 600px;"
                 >
-                    <div class="viewport-frame">
-                        <div class="pp-focus" aria-hidden="true"></div>
-                        <div class="pain-point-list">
+                    <div class="scroller-viewport">
+                        <div class="pain-points-list">
                             <!-- Pain Point 1 -->
                             <div class="pp-item" data-index="0">
                                 <span class="pp-arrow">→</span>
@@ -664,44 +663,27 @@ const mobileLogos = logos.slice(3);
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Scroll Slider Styles */
-    .scroll-container {
+    /* === OPTIMIZED VERTICAL SCROLLER === */
+    .vertical-scroller {
         position: relative;
         width: 100%;
         margin-top: 4rem;
         margin-bottom: 8rem;
-        overflow: visible; /* Allow glow to bleed */
+        contain: layout style paint; /* CSS containment for performance */
+        overflow: hidden;
     }
 
-    .viewport-frame {
+    .scroller-viewport {
         position: relative;
         height: 100%;
         width: 100%;
         display: flex;
         align-items: center;
-        justify-content: flex-end; /* Align list to the right */
+        justify-content: flex-end;
+        perspective: 1000px; /* Enable 3D transforms */
     }
 
-    .pp-focus {
-        position: absolute;
-        top: 50%;
-        right: 6%;
-        transform: translateY(-50%);
-        width: min(70%, 620px);
-        height: 180px;
-        background: radial-gradient(
-            closest-side,
-            rgba(255, 255, 255, 0.95) 0%,
-            rgba(242, 241, 237, 0.85) 45%,
-            rgba(242, 241, 237, 0) 100%
-        );
-        filter: blur(12px);
-        opacity: 0.9;
-        z-index: 1;
-        pointer-events: none;
-    }
-
-    .pain-point-list {
+    .pain-points-list {
         position: relative;
         width: 100%;
         max-width: 1000px;
@@ -711,28 +693,27 @@ const mobileLogos = logos.slice(3);
         flex-direction: column;
         align-items: flex-end;
         justify-content: center;
-        perspective: 1500px;
-        z-index: 2;
+        transform-style: preserve-3d; /* Enable 3D context */
     }
 
     .pp-item {
         position: absolute;
         top: 50%;
         right: 4%;
-        display: flex; /* Flex row for Arrow + Text */
-        flex-direction: row-reverse; /* Arrow on right, Text on left */
+        display: flex;
+        flex-direction: row-reverse;
         align-items: center;
         gap: 2rem;
-        transform: translateY(-50%); /* Centered by default */
-        /* Expo Ease Out for premium feel */
+        transform: translateY(-50%) translateZ(0);
         transition:
-            transform 1000ms cubic-bezier(0.22, 1, 0.36, 1),
-            opacity 900ms ease,
-            filter 900ms ease;
+            transform 400ms cubic-bezier(0.23, 1, 0.32, 1),
+            opacity 300ms ease-out,
+            filter 300ms ease-out;
         opacity: 0;
-        pointer-events: none;
+        visibility: hidden;
         white-space: nowrap;
         will-change: transform, opacity;
+        backface-visibility: hidden;
     }
 
     .pp-text {
@@ -740,112 +721,157 @@ const mobileLogos = logos.slice(3);
         font-weight: 300;
         text-transform: uppercase;
         margin: 0;
-        line-height: 0.92;
+        line-height: 0.9;
         text-align: right;
-        display: inline-block;
-        transition:
-            transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
-            opacity 700ms ease,
-            color 700ms ease;
         color: rgba(24, 24, 27, 0.4);
-        letter-spacing: 0.02em;
-        text-rendering: geometricPrecision;
-    }
-
-    .pp-item:hover .pp-text {
-        transform: translateX(-6px);
-        color: rgba(24, 24, 27, 0.7);
+        letter-spacing: -0.01em;
+        text-rendering: optimizeLegibility;
+        transform: translateZ(0);
+        transition:
+            color 200ms ease,
+            text-shadow 200ms ease;
     }
 
     .pp-arrow {
         font-size: 3rem;
         line-height: 1;
-        transform: scaleX(-1) translateX(10px);
+        transform: scaleX(-1) translateZ(0);
         transition:
-            transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-            color 0.5s ease,
-            opacity 0.5s;
-        opacity: 0;
+            transform 250ms cubic-bezier(0.23, 1, 0.32, 1),
+            color 200ms ease,
+            opacity 200ms ease;
+        color: var(--color-lime-primary);
     }
 
-    /* --- Visual States --- */
+    /* === PERFORMANCE-OPTIMIZED STATES === */
 
-    /* HIDDEN (Default) */
-    .pp-item {
-        visibility: hidden;
-    }
-
-    /* TOP STATE: Distant, Solid, Faded */
-    .pp-item.state-top {
-        visibility: visible;
-        opacity: 0.22;
-        transform: translateY(-170px) scale(0.9);
-        filter: blur(0.6px);
-    }
-    .pp-item.state-top .pp-text {
-        font-size: 3.5rem;
-        color: rgba(24, 24, 27, 0.3);
-    }
-    .pp-item.state-top .pp-arrow {
-        transform: scaleX(-1) rotate(20deg);
-        opacity: 0;
-    }
-
-    /* CENTER STATE: Active, Filled, Glows */
-    .pp-item.state-active {
+    /* Active State - Center Focus */
+    .pp-item.active {
         visibility: visible;
         opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
+        transform: translateY(-50%) scale(1) translateZ(0);
         z-index: 10;
-        animation: pp-float 6s ease-in-out infinite;
     }
-    .pp-item.state-active .pp-text {
-        font-size: 8rem;
+
+    .pp-item.active .pp-text {
+        font-size: 7rem;
         color: #161616;
-        text-shadow: 0 6px 28px rgba(0, 0, 0, 0.12);
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         position: relative;
     }
-    .pp-item.state-active .pp-text::after {
+
+    .pp-item.active .pp-text::after {
         content: "";
         position: absolute;
         right: 0;
-        bottom: -0.4em;
-        width: 56px;
-        height: 2px;
-        background: linear-gradient(90deg, #84cc16, transparent);
-        opacity: 0.9;
-    }
-    .pp-item.state-active .pp-arrow {
-        transform: scaleX(-1) rotate(0deg) translateX(0);
-        opacity: 1;
-        color: #84cc16;
-        filter: drop-shadow(0 0 10px rgba(132, 204, 22, 0.5));
+        bottom: -0.3em;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(
+            90deg,
+            var(--color-lime-primary) 0%,
+            var(--color-lime-dark) 70%,
+            transparent 100%
+        );
+        border-radius: 2px;
+        animation: line-glow 2s ease-in-out infinite alternate;
     }
 
-    /* BOTTOM STATE: Entering, Solid, Faded */
-    .pp-item.state-bottom {
+    .pp-item.active .pp-arrow {
+        opacity: 1;
+        transform: scaleX(-1) translateZ(0);
+        filter: drop-shadow(0 0 12px rgba(132, 204, 22, 0.4));
+        animation: arrow-pulse 3s ease-in-out infinite;
+    }
+
+    /* Previous State - Above */
+    .pp-item.previous {
         visibility: visible;
         opacity: 0.3;
-        transform: translateY(170px) scale(0.92);
-        filter: blur(0.6px);
-    }
-    .pp-item.state-bottom .pp-text {
-        font-size: 5rem;
-        color: rgba(24, 24, 27, 0.35);
-    }
-    .pp-item.state-bottom .pp-arrow {
-        transform: scaleX(-1) rotate(-20deg);
-        opacity: 0;
+        transform: translateY(-200px) scale(0.85) translateZ(0);
+        filter: blur(1px);
     }
 
-    @keyframes pp-float {
+    .pp-item.previous .pp-text {
+        font-size: 4rem;
+        color: rgba(24, 24, 27, 0.25);
+    }
+
+    /* Next State - Below */
+    .pp-item.next {
+        visibility: visible;
+        opacity: 0.4;
+        transform: translateY(150px) scale(0.9) translateZ(0);
+        filter: blur(0.5px);
+    }
+
+    .pp-item.next .pp-text {
+        font-size: 5rem;
+        color: rgba(24, 24, 27, 0.3);
+    }
+
+    /* Hover Effects */
+    .pp-item.active:hover .pp-text {
+        transform: translateX(-8px) translateZ(0);
+        text-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Animations */
+    @keyframes line-glow {
+        0% {
+            opacity: 0.7;
+            width: 60px;
+        }
+        100% {
+            opacity: 1;
+            width: 75px;
+        }
+    }
+
+    @keyframes arrow-pulse {
         0%,
         100% {
-            transform: translateY(0) scale(1);
+            transform: scaleX(-1) translateZ(0) scale(1);
         }
         50% {
-            transform: translateY(-8px) scale(1);
+            transform: scaleX(-1) translateZ(0) scale(1.1);
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .pp-item.active .pp-text {
+            font-size: 5rem;
+        }
+        .pp-item.previous .pp-text {
+            font-size: 3rem;
+        }
+        .pp-item.next .pp-text {
+            font-size: 4rem;
+        }
+        .pp-arrow {
+            font-size: 2.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .vertical-scroller {
+            height: 400px !important;
+        }
+        .pp-item.active .pp-text {
+            font-size: 12vw;
+        }
+        .pp-item.previous .pp-text {
+            font-size: 8vw;
+        }
+        .pp-item.next .pp-text {
+            font-size: 10vw;
+        }
+        .pp-arrow {
+            font-size: 8vw;
+        }
+        .pp-item {
+            gap: 1rem;
         }
     }
 
@@ -966,21 +992,53 @@ const mobileLogos = logos.slice(3);
         opacity: 0;
         filter: blur(4px);
         transition:
-            transform 600ms ease,
-            opacity 600ms ease,
-            filter 600ms ease;
+            transform 800ms cubic-bezier(0.16, 1, 0.3, 1),
+            opacity 800ms ease,
+            filter 800ms ease;
+        cursor: pointer;
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
     }
+
+    .stat-item::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(132, 204, 22, 0.05) 0%,
+            rgba(132, 204, 22, 0.02) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 12px;
+    }
+
+    .stat-item:hover::before {
+        opacity: 1;
+    }
+
+    .stat-item:hover {
+        transform: translateY(-4px) scale(1.02);
+    }
+
     .stat-item.is-visible {
         transform: translateY(0);
         opacity: 1;
         filter: blur(0);
     }
+
     @media (prefers-reduced-motion: reduce) {
         .stat-item,
-        .stat-item.is-visible {
+        .stat-item.is-visible,
+        .stat-item:hover {
             transform: none;
             filter: none;
             transition: none;
+        }
+        .stat-item::before {
+            display: none;
         }
     }
 </style>
@@ -1052,7 +1110,7 @@ const mobileLogos = logos.slice(3);
         .stat-count {
             font-size: 2.25rem;
             line-height: 1;
-            color: #84cc16;
+            color: var(--color-lime-primary);
         }
 
         .stat-label {
@@ -1120,31 +1178,56 @@ const mobileLogos = logos.slice(3);
         }
     }
     .logo-marquee {
-        animation: marquee 24s linear infinite;
+        animation: marquee 30s linear infinite;
+        will-change: transform;
+        contain: layout; /* CSS containment */
+        transform: translateZ(0); /* Force hardware acceleration */
     }
+
+    .logo-marquee:hover {
+        animation-play-state: paused;
+    }
+
     .logo-mask {
         mask-image: linear-gradient(
             90deg,
             transparent 0%,
-            #000 20%,
-            #000 80%,
+            rgba(0, 0, 0, 0.1) 10%,
+            #000 25%,
+            #000 75%,
+            rgba(0, 0, 0, 0.1) 90%,
             transparent 100%
         );
         -webkit-mask-image: linear-gradient(
             90deg,
             transparent 0%,
-            #000 20%,
-            #000 80%,
+            rgba(0, 0, 0, 0.1) 10%,
+            #000 25%,
+            #000 75%,
+            rgba(0, 0, 0, 0.1) 90%,
             transparent 100%
         );
     }
+
     @keyframes marquee {
         0% {
-            transform: translateX(0);
+            transform: translateX(0) translateZ(0);
         }
         100% {
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateZ(0);
         }
+    }
+
+    /* Enhanced logo hover effects */
+    .logo-marquee img {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        filter: grayscale(1) brightness(0.8) contrast(1.2);
+    }
+
+    .logo-marquee img:hover {
+        filter: grayscale(0) brightness(1) contrast(1);
+        transform: scale(1.08) translateY(-2px);
+        opacity: 1 !important;
     }
 
     .animate-float-delayed {
@@ -1165,141 +1248,187 @@ const mobileLogos = logos.slice(3);
         .trustedby-dot,
         .logo-marquee,
         .atmospheric-glow,
-        .animate-float-delayed {
-            animation: none;
+        .animate-float-delayed,
+        .pp-item,
+        .pp-arrow,
+        .line-glow,
+        .arrow-pulse {
+            animation: none !important;
+            transition: none !important;
+        }
+
+        /* Show static state for reduced motion */
+        .pp-item.active {
+            visibility: visible !important;
+            opacity: 1 !important;
+            transform: translateY(-50%) scale(1) translateZ(0) !important;
+        }
+
+        .pp-item:not(.active) {
+            display: none !important;
         }
     }
 </style>
 
 <script>
-    // Hybrid Scroll + Auto-Play Logic
-    const scrollContainer = document.querySelector(".scroll-container");
+    // High-Performance Vertical Scroller
+    const verticalScroller = document.querySelector(".vertical-scroller");
     const items = document.querySelectorAll(".pp-item");
 
-    if (scrollContainer && items.length > 0) {
-        const allowMotion =
-            !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        let scrollProgress = 0;
-        let autoProgress = 0;
-        let lastTime = 0;
-        let rafId = 0;
-        let running = false;
-        const speed = 0.25; // Items per second (Slow & Premium)
+    if (verticalScroller && items.length > 0) {
+        let currentIndex = 0;
+        let isAnimating = false;
+        let autoPlayInterval: ReturnType<typeof setInterval> | null = null;
+        let isVisible = false;
 
-        // Update Scroll Progress on Scroll
-        function onScroll() {
-            if (!scrollContainer) return;
-            const rect = scrollContainer.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-            const totalDistance = viewportHeight + rect.height;
-            const distanceTraveled = viewportHeight - rect.top;
+        // Optimized render function - only updates when needed
+        function updateItems(newIndex: number) {
+            if (isAnimating || newIndex === currentIndex) return;
 
-            // Normalize 0 to 1
-            let raw = distanceTraveled / totalDistance;
-            // Map to total items range
-            scrollProgress = raw * items.length;
-        }
-        window.addEventListener("scroll", onScroll, { passive: true });
-        onScroll(); // Init
+            isAnimating = true;
+            currentIndex = newIndex;
 
-        function render(activeIndex: number) {
-            const count = items.length;
-            items.forEach((item, index) => {
-                item.classList.remove(
-                    "state-active",
-                    "state-top",
-                    "state-bottom",
-                );
+            // Use requestAnimationFrame for smooth updates
+            requestAnimationFrame(() => {
+                items.forEach((item, index) => {
+                    // Remove all state classes
+                    item.classList.remove("active", "previous", "next");
 
-                const topIndex = (activeIndex - 1 + count) % count;
-                const bottomIndex = (activeIndex + 1) % count;
+                    // Calculate positions
+                    const prevIndex =
+                        (currentIndex - 1 + items.length) % items.length;
+                    const nextIndex = (currentIndex + 1) % items.length;
 
-                if (index === activeIndex) {
-                    item.classList.add("state-active");
-                } else if (index === topIndex) {
-                    item.classList.add("state-top");
-                } else if (index === bottomIndex) {
-                    item.classList.add("state-bottom");
-                }
+                    // Apply new states
+                    if (index === currentIndex) {
+                        item.classList.add("active");
+                    } else if (index === prevIndex) {
+                        item.classList.add("previous");
+                    } else if (index === nextIndex) {
+                        item.classList.add("next");
+                    }
+                });
+
+                // Reset animation flag after transition
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 50);
             });
         }
 
-        // Animation Loop (only when visible)
-        function loop(time: number) {
-            if (!running) return;
-            if (!lastTime) lastTime = time;
-            const delta = (time - lastTime) / 1000;
-            lastTime = time;
+        // Auto-play functionality
+        function startAutoPlay() {
+            if (autoPlayInterval) return;
 
-            // Auto-advance
-            autoProgress += speed * delta;
+            autoPlayInterval = setInterval(() => {
+                if (!isVisible) return;
 
-            // Combine
-            const totalIndex = scrollProgress + autoProgress;
-
-            // Wrap index
-            const activeIndex = Math.floor(
-                ((totalIndex % items.length) + items.length) % items.length,
-            );
-
-            render(activeIndex);
-
-            rafId = requestAnimationFrame(loop);
+                const nextIndex = (currentIndex + 1) % items.length;
+                updateItems(nextIndex);
+            }, 2000); // Change every 2 seconds
         }
 
-        function startLoop() {
-            if (!allowMotion || running) return;
-            running = true;
-            lastTime = 0;
-            rafId = requestAnimationFrame(loop);
-        }
-
-        function stopLoop() {
-            running = false;
-            if (rafId) {
-                cancelAnimationFrame(rafId);
-                rafId = 0;
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
             }
         }
 
-        if (!allowMotion) {
-            render(0);
-        } else {
-            const sliderObserver = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            onScroll();
-                            startLoop();
-                        } else {
-                            stopLoop();
-                        }
-                    });
-                },
-                { threshold: 0.1 },
-            );
+        // Intersection Observer for performance
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    isVisible = entry.isIntersecting;
 
-            sliderObserver.observe(scrollContainer);
+                    if (isVisible) {
+                        startAutoPlay();
+                    } else {
+                        stopAutoPlay();
+                    }
+                });
+            },
+            { threshold: 0.1 }, // Reduced threshold for faster initialization
+        );
+
+        // Initialize first item immediately (don't wait for intersection)
+        updateItems(0);
+
+        observer.observe(verticalScroller);
+
+        // Pause on hover
+        verticalScroller.addEventListener("mouseenter", stopAutoPlay);
+        verticalScroller.addEventListener("mouseleave", () => {
+            if (isVisible) startAutoPlay();
+        });
+
+        // Keyboard navigation (accessibility)
+        verticalScroller.addEventListener("keydown", (e: Event) => {
+            const keyEvent = e as KeyboardEvent;
+            if (keyEvent.key === "ArrowUp") {
+                e.preventDefault();
+                const prevIndex =
+                    (currentIndex - 1 + items.length) % items.length;
+                updateItems(prevIndex);
+            } else if (keyEvent.key === "ArrowDown") {
+                e.preventDefault();
+                const nextIndex = (currentIndex + 1) % items.length;
+                updateItems(nextIndex);
+            }
+        });
+
+        // Make focusable for keyboard navigation with proper focus styles
+        const scrollerElement = verticalScroller as HTMLElement;
+        scrollerElement.setAttribute("tabindex", "0");
+        scrollerElement.setAttribute("role", "region");
+        scrollerElement.setAttribute(
+            "aria-label",
+            "Pain points scroller - use arrow keys to navigate",
+        );
+
+        // Add focus styles
+        scrollerElement.style.outline = "none";
+        scrollerElement.addEventListener("focus", () => {
+            scrollerElement.style.boxShadow =
+                "0 0 0 2px var(--color-lime-primary)";
+        });
+        scrollerElement.addEventListener("blur", () => {
+            scrollerElement.style.boxShadow = "none";
+        });
+
+        // Cleanup on page unload
+        window.addEventListener("beforeunload", () => {
+            stopAutoPlay();
+            observer.disconnect();
+        });
+
+        // Reduced motion support
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            stopAutoPlay();
+            updateItems(0); // Show first item only
         }
     }
 
-    // Typing Animation for "too hard?"
+    // Typing Animation for "too hard?" - with error handling
     const headlineEl = document.querySelector(".trustedby-headline");
     const cursorEl = document.querySelector(".trustedby-cursor");
     const textToType = headlineEl?.getAttribute("data-text") || "";
 
-    if (headlineEl && textToType) {
+    if (headlineEl && textToType && cursorEl) {
         let charIdx = 0;
         let hasAnimated = false;
 
         const typeHeadline = () => {
-            if (charIdx < textToType.length) {
-                headlineEl.textContent += textToType.charAt(charIdx);
-                charIdx++;
-                setTimeout(typeHeadline, 100);
-            } else {
-                // Keep cursor blinking for a bit then hide? Or keep it.
-                // User said animate, let's keep it blinking.
+            try {
+                if (charIdx < textToType.length) {
+                    headlineEl.textContent += textToType.charAt(charIdx);
+                    charIdx++;
+                    setTimeout(typeHeadline, 100);
+                }
+            } catch (error) {
+                console.warn("Typing animation error:", error);
+                // Fallback: show complete text
+                headlineEl.textContent = textToType;
             }
         };
 
@@ -1326,7 +1455,7 @@ const mobileLogos = logos.slice(3);
         let hasCounted = false;
 
         const startCounting = () => {
-            statCounts.forEach((stat) => {
+            statCounts.forEach((stat, index) => {
                 const target = stat.getAttribute("data-target");
                 const decimals = parseInt(
                     stat.getAttribute("data-decimals") || "0",
@@ -1337,58 +1466,63 @@ const mobileLogos = logos.slice(3);
                 // Assuming data-target is a raw number string based on props
                 let endValue = parseFloat(target || "0");
 
-                // Simple animation
-                let startValue = 0;
-                let duration = 2000;
-                let startTime: number | null = null;
+                // Staggered animation start
+                const delay = index * 200; // 200ms delay between each stat
 
-                function step(timestamp: number) {
-                    if (!startTime) startTime = timestamp;
-                    const progress = Math.min(
-                        (timestamp - startTime) / duration,
-                        1,
-                    );
+                setTimeout(() => {
+                    // Simple animation
+                    let startValue = 0;
+                    let duration = 2500; // Slightly longer for more premium feel
+                    let startTime: number | null = null;
 
-                    // Ease out quart
-                    const ease = 1 - Math.pow(1 - progress, 4);
+                    function step(timestamp: number) {
+                        if (!startTime) startTime = timestamp;
+                        const progress = Math.min(
+                            (timestamp - startTime) / duration,
+                            1,
+                        );
 
-                    const current = startValue + (endValue - startValue) * ease;
+                        // Enhanced easing - elastic out
+                        const ease =
+                            progress === 1
+                                ? 1
+                                : 1 - Math.pow(2, -10 * progress);
 
-                    // Format
-                    let formatted = current.toFixed(decimals);
+                        const current =
+                            startValue + (endValue - startValue) * ease;
 
-                    // Add suffix
-                    stat.textContent = formatted + suffix;
+                        // Format
+                        let formatted = current.toFixed(decimals);
 
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
+                        // Add suffix
+                        stat.textContent = formatted + suffix;
+
+                        if (progress < 1) {
+                            window.requestAnimationFrame(step);
+                        }
                     }
-                }
-                window.requestAnimationFrame(step);
+                    window.requestAnimationFrame(step);
+                }, delay);
             });
         };
 
         const statsObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        // Reveal items
+                    if (entry.isIntersecting && !hasCounted) {
+                        hasCounted = true; // Prevent multiple animations
+
+                        // Reveal items with stagger
                         document
                             .querySelectorAll(".stat-item")
                             .forEach((el, i) => {
-                                el.classList.add("is-visible");
+                                setTimeout(() => {
+                                    el.classList.add("is-visible");
+                                }, i * 150); // Staggered reveal
                             });
 
                         startCounting();
-                    } else {
-                        // Optional: Hide items to re-trigger fade-in or just reset numbers?
-                        // To "count up every time", we simply need to re-run startCounting on entry.
-                        // But for cleanest effect, we can remove is-visible class so they fade in again too.
-                        document
-                            .querySelectorAll(".stat-item")
-                            .forEach((el) => {
-                                el.classList.remove("is-visible");
-                            });
+                        statsObserver.disconnect(); // Stop observing after first trigger
                     }
                 });
             },

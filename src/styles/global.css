@@ -11,14 +11,36 @@ body {
   color: var(--color-text-main);
 }
 
-/* Global Design Tokens */
+/* Global Design Tokens - Consolidated Color Palette */
 :root {
-  --color-lime: #84cc16;
+  /* Primary Brand Colors */
+  --color-lime-primary: #84cc16;
+  --color-lime-light: #a3e635;
+  --color-lime-dark: #65a30d;
   --color-lime-glow: rgba(132, 204, 22, 0.5);
+  --color-lime-subtle: rgba(132, 204, 22, 0.1);
+
+  /* Background Colors */
   --color-bg-main: #ffffff;
-  --color-text-main: #111111;
-  --color-text-muted: #666666;
+  --color-bg-dark: #0a0a0a;
+  --color-bg-card: rgba(255, 255, 255, 0.05);
   --color-cream: #f2f1ed;
+
+  /* Text Colors */
+  --color-text-main: #111111;
+  --color-text-white: #ffffff;
+  --color-text-muted: #666666;
+  --color-text-zinc-400: #a1a1aa;
+  --color-text-zinc-300: #d4d4d8;
+
+  /* Legacy color variables for Team component */
+  --ink: var(--color-text-main);
+  --accent: var(--color-lime-primary);
+  --muted: var(--color-text-muted);
+
+  /* Border Colors */
+  --color-border-light: rgba(255, 255, 255, 0.1);
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
 
   /* Typography */
   --font-heading: "Fraunces", serif;
@@ -26,12 +48,18 @@ body {
 
   /* Premium Polish */
   --shadow-premium: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px -10px var(--color-lime-glow);
   --radius-premium: 12px;
+  --radius-large: 2.5rem;
+
+  /* Animation Easing */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Hero background (restored) */
 .hero-bg {
-  background: #0a0a0a url("/images/background_hero_trustedby.jpg") top center / cover no-repeat;
+  background: var(--color-bg-dark) url("/images/background_hero_trustedby.jpg") top center / cover no-repeat;
 }
 
 /* TrustedBy background matches cream tone behind hero video */
@@ -48,6 +76,50 @@ body {
 }
 
 /* Typography Utilities */
+.text-lime-primary { color: var(--color-lime-primary); }
+.text-lime-light { color: var(--color-lime-light); }
+.text-lime-dark { color: var(--color-lime-dark); }
+
+.bg-lime-primary { background-color: var(--color-lime-primary); }
+.bg-lime-light { background-color: var(--color-lime-light); }
+.bg-lime-dark { background-color: var(--color-lime-dark); }
+
+.border-lime-primary { border-color: var(--color-lime-primary); }
+.border-lime-light { border-color: var(--color-lime-light); }
+
+/* Premium Animation Utilities */
+.transition-premium {
+  transition: all 0.6s var(--ease-premium);
+}
+
+.transition-smooth {
+  transition: all 0.3s var(--ease-smooth);
+}
+
+/* Hardware Acceleration Utilities */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Performance Optimizations */
+.contain-layout { contain: layout; }
+.contain-style { contain: style; }
+.contain-paint { contain: paint; }
+.contain-all { contain: layout style paint; }
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 .font-heading {
   font-family: var(--font-heading);
   font-weight: 300;

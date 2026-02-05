@@ -14,7 +14,7 @@ const {
 <section class="hero-section hero-bg relative overflow-hidden">
   <div class="relative">
     <div
-      class="mx-auto flex w-full max-w-[100%] flex-col px-4 sm:px-6 pt-32 pb-2 sm:pt-40 md:pt-48 md:pb-16"
+      class="mx-auto flex w-full max-w-[100%] flex-col px-4 sm:px-6 pt-20 pb-2 sm:pt-32 md:pt-40 lg:pt-48 md:pb-16"
     >
       <!-- top pill -->
       <div
@@ -461,13 +461,10 @@ const {
     // I will try to select it.
 
     document.addEventListener("mousemove", (e) => {
-      const shine = document.querySelector(".shine-overlay"); // Assuming consistent class
-      // actually, if it wasn't defined in the block I replaced, it might error.
-      // I'll skip the shine part if I can't find it, or define it.
-      // Let's assume the previous code worked and replace it carefully.
-      // Previous code: `if (tiltContainer && shine)`.
-      // I'll just check if tiltContainer exists and add the logic.
-
+      const shine = document.querySelector(".shine-overlay");
+      
+      if (!shine) return; // Exit if shine element doesn't exist
+      
       const { clientX, clientY } = e;
       const width = window.innerWidth;
       const height = window.innerHeight;
