@@ -1,145 +1,458 @@
-<<<<<<< HEAD
 ---
-const steps = [
+const chips = [
+  "Production to pipeline",
+  "We handle it end-to-end",
+  "Proof-led creative",
+  "Systems, not guesswork",
+  "Content that converts",
+  "Proven frameworks",
+];
+
+const phases = [
   {
-    title: "Deep Audit",
-    desc: "We audit your positioning, offers, and current content gaps.",
-    icon: "🔍",
+    number: "01",
+    title: "Ideation & Strategy",
+    subtitle: "From ideation to scripting",
   },
   {
-    title: "Strategy Mapping",
-    desc: "Clear inbound system mapped to your exact revenue goal.",
-    icon: "🧠",
+    number: "02",
+    title: "High-End Production",
+    subtitle: "From scripting to editing",
   },
   {
-    title: "Content Engine",
-    desc: "High-retention LinkedIn & video frameworks built to convert.",
-    icon: "⚙️",
+    number: "03",
+    title: "Growth & Conversion",
+    subtitle: "From editing to posting and making sales",
   },
   {
-    title: "Distribution",
-    desc: "Strategic posting & amplification for maximum reach.",
-    icon: "📣",
-  },
-  {
-    title: "Conversion Layer",
-    desc: "CTAs, funnels & proof wired into every asset.",
-    icon: "💰",
-  },
-  {
-    title: "Scale & Optimize",
-    desc: "We double down on what performs and kill what doesn’t.",
-    icon: "📈",
+    number: "04",
+    title: "Complete Solution",
+    subtitle: "We handle it all",
   },
 ];
+
+const testimonial = {
+  quote:
+    "Working with Cinemora was a game-changer. They didn't just create videos—they built us a complete content engine that consistently brings in qualified leads. ROI was visible within 60 days.",
+  name: "Sarah Chen",
+  role: "CEO, TechFlow Solutions",
+  image: "https://unavatar.io/github/sarahchen",
+};
 ---
 
-<section class="relative bg-[#f4f1ea] py-24 text-zinc-900">
-  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-white/50 via-transparent to-transparent"></div>
+<section class="process-shell" id="process" data-process>
+  <div class="process-bg" aria-hidden="true"></div>
+  <div class="process-gridlines" aria-hidden="true"></div>
+  <div class="process-noise" aria-hidden="true"></div>
 
-  <div class="mx-auto max-w-6xl px-4">
-    <div class="mb-14 text-center">
-      <p class="mb-3 text-sm uppercase tracking-widest text-lime-700">
-        Our Process
-      </p>
-      <h2 class="text-4xl font-bold text-zinc-900">
-        A system — not random posting
+  <div class="process-wrap">
+    <header class="process-header reveal">
+      <h2 class="process-title">
+        Cinemora builds <span class="process-italic">conversion-focused</span>
+        creative for brands that <span class="process-accent"
+          >want real growth.</span
+        >
       </h2>
-      <p class="mt-4 text-zinc-600 max-w-2xl mx-auto">
-        Everything we do is designed to turn attention into predictable clients.
-      </p>
-    </div>
+    </header>
 
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {steps.map((step, i) => (
-        <div class="group relative rounded-2xl border border-black/10 bg-white p-6 transition hover:border-lime-400/40 hover:bg-white/90">
-          <div class="mb-4 text-3xl">{step.icon}</div>
-
-          <h3 class="mb-2 text-lg font-semibold text-zinc-900">
-            {i + 1}. {step.title}
+    <div class="process-grid">
+      <div class="process-card process-primary reveal">
+        <div class="process-primary-left">
+          <span class="process-tag">Get Ahead</span>
+          <h3>
+            We build content systems that
+            <span>bring paying clients.</span>
           </h3>
-
-          <p class="text-sm text-zinc-600">
-            {step.desc}
+          <p>
+            We design high-end brand visuals and performance ad creatives using
+            proven systems. Your brand could be next.
           </p>
 
-          <div class="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition group-hover:opacity-100
-            bg-gradient-to-tr from-lime-400/10 via-transparent to-transparent"></div>
+          <div class="process-chips">
+            {chips.map((chip) => <span>{chip}</span>)}
+          </div>
         </div>
-      ))}
+
+        <div class="process-primary-right">
+          <div class="process-phase-list">
+            {
+              phases.map((phase) => (
+                <div class="phase-row">
+                  <div class="phase-icon">{phase.number}</div>
+                  <div class="phase-copy">
+                    <p class="phase-meta">Phase {phase.number}</p>
+                    <p class="phase-title">{phase.title}</p>
+                    <p class="phase-sub">{phase.subtitle}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="process-card process-quote reveal">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">{testimonial.quote}</p>
+        <div class="quote-footer">
+          <img src={testimonial.image} alt={testimonial.name} loading="lazy" />
+          <div>
+            <p class="quote-name">{testimonial.name}</p>
+            <p class="quote-role">{testimonial.role}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <style>
+    .process-shell {
+      position: relative;
+      overflow: hidden;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      padding: clamp(5rem, 10vw, 8rem) 0;
+    }
+
+    .process-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(
+          800px 520px at 12% 10%,
+          rgba(132, 204, 22, 0.16),
+          transparent 60%
+        ),
+        radial-gradient(
+          900px 600px at 85% 15%,
+          rgba(255, 255, 255, 0.06),
+          transparent 70%
+        );
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    .process-gridlines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 140px 140px;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .process-noise {
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      mix-blend-mode: screen;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .process-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 4vw, 4rem);
+    }
+
+    .process-header {
+      text-align: center;
+      max-width: 840px;
+      margin: 0 auto clamp(2.8rem, 6vw, 4rem);
+    }
+
+    .process-title {
+      font-family: var(--font-heading, "Fraunces", serif);
+      font-weight: 500;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .process-italic {
+      font-style: italic;
+    }
+
+    .process-accent {
+      color: #84cc16;
+      font-style: italic;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: clamp(1.6rem, 4vw, 3rem);
+      align-items: stretch;
+    }
+
+    .process-card {
+      position: relative;
+      background: rgba(12, 12, 12, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      padding: clamp(1.8rem, 3vw, 2.8rem);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .process-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      pointer-events: none;
+    }
+
+    .process-primary {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.85fr);
+      gap: clamp(1.4rem, 3vw, 2.4rem);
+    }
+
+    .process-primary-left {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 100%;
+    }
+
+    .process-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1rem;
+      font-family: var(--font-body, "Space Grotesk", sans-serif);
+    }
+
+    .process-primary-left h3 {
+      font-family: var(--font-heading, "Fraunces", serif);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .process-primary-left h3 span {
+      color: #84cc16;
+      font-style: italic;
+    }
+
+    .process-primary-left p {
+      font-family: var(--font-body, "Space Grotesk", sans-serif);
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+
+    .process-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: auto;
+    }
+
+    .process-chips span {
+      font-family: var(--font-body, "Space Grotesk", sans-serif);
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 0.4rem 0.85rem;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .process-primary-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .process-phase-list {
+      display: grid;
+      gap: 0.9rem;
+      width: 100%;
+    }
+
+    .phase-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.9rem;
+      align-items: center;
+      padding: 0.9rem 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(18, 18, 18, 0.7);
+      transition:
+        border-color 200ms ease,
+        background 200ms ease;
+    }
+
+    .phase-row:hover {
+      border-color: rgba(132, 204, 22, 0.45);
+      background: rgba(26, 26, 26, 0.9);
+    }
+
+    .phase-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(132, 204, 22, 0.15);
+      color: #b7ff2a;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-heading, "Fraunces", serif);
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: 1px solid rgba(132, 204, 22, 0.3);
+    }
+
+    .phase-meta {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.6rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin: 0;
+      font-family: var(--font-body, "Space Grotesk", sans-serif);
+    }
+
+    .phase-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 0.2rem 0 0.15rem;
+    }
+
+    .phase-sub {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0;
+    }
+
+    .process-quote {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      gap: 1.4rem;
+      border: 1px solid rgba(132, 204, 22, 0.25);
+      background: rgba(14, 14, 14, 0.9);
+    }
+
+    .quote-mark {
+      font-size: 3.2rem;
+      color: rgba(132, 204, 22, 0.6);
+      line-height: 1;
+    }
+
+    .quote-text {
+      font-family: var(--font-heading, "Fraunces", serif);
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .quote-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .quote-footer img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(132, 204, 22, 0.6);
+    }
+
+    .quote-name {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .quote-role {
+      margin: 0;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(132, 204, 22, 0.7);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 900ms ease,
+        transform 900ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-primary {
+        grid-template-columns: 1fr;
+      }
+
+      .process-primary-right {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .process-card {
+        padding: 1.4rem;
+      }
+
+      .process-primary-left h3 {
+        font-size: clamp(1.8rem, 7vw, 2.4rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    const processSection = document.querySelector("[data-process]");
+    const revealItems = processSection?.querySelectorAll(".reveal") || [];
+
+    if (revealItems.length) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.2 },
+      );
+
+      revealItems.forEach((item) => observer.observe(item));
+    }
+  </script>
 </section>
-=======
----
-const steps = [
-  {
-    title: "Deep Audit",
-    desc: "We audit your positioning, offers, and current content gaps.",
-    icon: "🔍",
-  },
-  {
-    title: "Strategy Mapping",
-    desc: "Clear inbound system mapped to your exact revenue goal.",
-    icon: "🧠",
-  },
-  {
-    title: "Content Engine",
-    desc: "High-retention LinkedIn & video frameworks built to convert.",
-    icon: "⚙️",
-  },
-  {
-    title: "Distribution",
-    desc: "Strategic posting & amplification for maximum reach.",
-    icon: "📣",
-  },
-  {
-    title: "Conversion Layer",
-    desc: "CTAs, funnels & proof wired into every asset.",
-    icon: "💰",
-  },
-  {
-    title: "Scale & Optimize",
-    desc: "We double down on what performs and kill what doesn’t.",
-    icon: "📈",
-  },
-];
----
-
-<section class="relative bg-[#f4f1ea] py-24 text-zinc-900">
-  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-white/50 via-transparent to-transparent"></div>
-
-  <div class="mx-auto max-w-6xl px-4">
-    <div class="mb-14 text-center">
-      <p class="mb-3 text-sm uppercase tracking-widest text-lime-700">
-        Our Process
-      </p>
-      <h2 class="text-4xl font-bold text-zinc-900">
-        A system — not random posting
-      </h2>
-      <p class="mt-4 text-zinc-600 max-w-2xl mx-auto">
-        Everything we do is designed to turn attention into predictable clients.
-      </p>
-    </div>
-
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {steps.map((step, i) => (
-        <div class="group relative rounded-2xl border border-black/10 bg-white p-6 transition hover:border-lime-400/40 hover:bg-white/90">
-          <div class="mb-4 text-3xl">{step.icon}</div>
-
-          <h3 class="mb-2 text-lg font-semibold text-zinc-900">
-            {i + 1}. {step.title}
-          </h3>
-
-          <p class="text-sm text-zinc-600">
-            {step.desc}
-          </p>
-
-          <div class="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition group-hover:opacity-100
-            bg-gradient-to-tr from-lime-400/10 via-transparent to-transparent"></div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
->>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2

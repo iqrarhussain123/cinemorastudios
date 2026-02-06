@@ -1,176 +1,355 @@
-<<<<<<< HEAD
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Space+Grotesk:wght@300;400;500&display=swap");
 
-
-html, body {
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-
-/* optional: smooth fonts */
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Cinemora lime video overlay */
-.hero-video-overlay {
-  background: linear-gradient(
-    135deg,
-    rgba(183, 255, 42, 0.12),
-    rgba(0, 0, 0, 0) 55%,
-    rgba(183, 255, 42, 0.08)
-  );
-}
-
-.hero-video-overlay {
-  background: linear-gradient(
-    135deg,
-    rgba(183, 255, 42, 0.12),
-    rgba(0, 0, 0, 0) 55%,
-    rgba(183, 255, 42, 0.08)
-  );
-}
-
-
-
-.calendly-inline-widget {
-  overflow: hidden !important;
-}
-
-.calendly-horizontal {
-  position: relative;
-  width: 100%;
-  height: 720px;
-  overflow: hidden !important;
-}
-
-.calendly-horizontal iframe {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  border: 0 !important;
-  display: block !important;
-  overflow: hidden !important;
-}
-
-/* prevent any horizontal page slider */
 html,
 body {
   overflow-x: hidden;
-}
-
-@font-face {
-  font-family: "Roba";
-  src: url("/fonts/Roba-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-display: swap;
-}
-
-.font-brand {
-  font-family: "Roba", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  letter-spacing: 0.1em;
-}
-
-/* Background depth system */
-=======
-@import "tailwindcss";
-
-
-html, body {
-  overflow-x: hidden;
   margin: 0;
   padding: 0;
+  background-color: transparent;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  color: var(--color-text-main);
 }
 
+/* Global Design Tokens - Consolidated Color Palette */
+:root {
+  /* Primary Brand Colors */
+  --color-lime-primary: #84cc16;
+  --color-lime-light: #a3e635;
+  --color-lime-dark: #65a30d;
+  --color-lime-glow: rgba(132, 204, 22, 0.5);
+  --color-lime-subtle: rgba(132, 204, 22, 0.1);
 
-/* optional: smooth fonts */
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Background Colors */
+  --color-bg-main: #ffffff;
+  --color-bg-dark: #0a0a0a;
+  --color-bg-card: rgba(255, 255, 255, 0.05);
+  --color-cream: #f2f1ed;
+
+  /* Text Colors */
+  --color-text-main: #111111;
+  --color-text-white: #ffffff;
+  --color-text-muted: #666666;
+  --color-text-zinc-400: #a1a1aa;
+  --color-text-zinc-300: #d4d4d8;
+
+  /* Legacy color variables for Team component */
+  --ink: var(--color-text-main);
+  --accent: var(--color-lime-primary);
+  --muted: var(--color-text-muted);
+
+  /* Border Colors */
+  --color-border-light: rgba(255, 255, 255, 0.1);
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+
+  /* Typography */
+  --font-heading: "Fraunces", serif;
+  --font-body: "Space Grotesk", sans-serif;
+
+  /* Premium Polish */
+  --shadow-premium: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px -10px var(--color-lime-glow);
+  --radius-premium: 12px;
+  --radius-large: 2.5rem;
+
+  /* Animation Easing */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Cinemora lime video overlay */
-.hero-video-overlay {
-  background: linear-gradient(
-    135deg,
-    rgba(183, 255, 42, 0.12),
-    rgba(0, 0, 0, 0) 55%,
-    rgba(183, 255, 42, 0.08)
-  );
+/* Hero background (restored) */
+.hero-bg {
+  background: var(--color-bg-dark) url("/images/background_hero_trustedby.jpg") top center / auto repeat;
 }
 
-.hero-video-overlay {
-  background: linear-gradient(
-    135deg,
-    rgba(183, 255, 42, 0.12),
-    rgba(0, 0, 0, 0) 55%,
-    rgba(183, 255, 42, 0.08)
-  );
+/* Ultrawide Monitor Support */
+@media (min-width: 3440px) {
+  .hero-bg {
+    background: var(--color-bg-dark) url("/images/ultra_wide.jpeg") top center / auto repeat;
+  }
 }
 
+/* Ultrawide Fix: Prevent extreme zoom/crop on wide screens */
 
-
-.calendly-inline-widget {
-  overflow: hidden !important;
+/* TrustedBy background matches cream tone behind hero video */
+.trustedby-shell {
+  background: var(--color-cream);
 }
 
-.calendly-horizontal {
-  position: relative;
-  width: 100%;
-  height: 720px;
-  overflow: hidden !important;
+@media (max-width: 640px) {
+
+  html,
+  body {
+    background: var(--color-cream);
+  }
+
+  body {
+    position: relative;
+    z-index: 0;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: clamp(880px, 135vh, 1200px);
+    background: var(--color-bg-dark) url("/images/phone_hero.jpeg") top center / cover no-repeat;
+    z-index: -1;
+  }
+
+  .hero-bg {
+    background: transparent !important;
+  }
+
+  .trustedby-shell {
+    background: transparent !important;
+  }
+
+  /* Solid cream background starts at the 'Is this you?' section */
+  .trustedby-break {
+    position: relative;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    z-index: 1;
+    /* Ensure text sits on top */
+  }
+
+  /* Pseudo-element for full-width bleed */
+  .trustedby-break::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background: var(--color-cream);
+    z-index: -1;
+  }
+
+  .trustedby-stats-shell {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    margin-top: 0.5rem !important;
+    padding: 0.75rem 0.5rem 1.5rem !important;
+    background: var(--color-cream) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+
+  .trustedby-stats-shell::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -28px;
+    height: 28px;
+    background: linear-gradient(180deg,
+        rgba(242, 241, 237, 0) 0%,
+        var(--color-cream) 100%);
+    pointer-events: none;
+  }
+
+
+  .trustedby-shell .atmospheric-glow,
+  .trustedby-shell .noise-overlay {
+    display: none;
+  }
 }
 
-.calendly-horizontal iframe {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  border: 0 !important;
-  display: block !important;
-  overflow: hidden !important;
+/* Typography Utilities */
+.text-lime-primary {
+  color: var(--color-lime-primary);
 }
 
-/* prevent any horizontal page slider */
-html,
-body {
-  overflow-x: hidden;
+.text-lime-light {
+  color: var(--color-lime-light);
 }
 
-@font-face {
-  font-family: "Roba";
-  src: url("/fonts/Roba-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-display: swap;
+.text-lime-dark {
+  color: var(--color-lime-dark);
 }
 
+.bg-lime-primary {
+  background-color: var(--color-lime-primary);
+}
+
+.bg-lime-light {
+  background-color: var(--color-lime-light);
+}
+
+.bg-lime-dark {
+  background-color: var(--color-lime-dark);
+}
+
+.border-lime-primary {
+  border-color: var(--color-lime-primary);
+}
+
+.border-lime-light {
+  border-color: var(--color-lime-light);
+}
+
+/* Premium Animation Utilities */
+.transition-premium {
+  transition: all 0.6s var(--ease-premium);
+}
+
+.transition-smooth {
+  transition: all 0.3s var(--ease-smooth);
+}
+
+/* Hardware Acceleration Utilities */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Performance Optimizations */
+.contain-layout {
+  contain: layout;
+}
+
+.contain-style {
+  contain: style;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-all {
+  contain: layout style paint;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  /* Default thin elegant look */
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Legacy Compat: Map old .font-brand to new Heading */
 .font-brand {
-  font-family: "Roba", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  letter-spacing: 0.1em;
+  font-family: var(--font-heading);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.font-brand-tight {
+  font-family: var(--font-heading);
+  letter-spacing: -0.03em;
 }
 
 /* Background depth system */
->>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2
 .site-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-
-  /* Base: near-black, not pure black */
-  background: #070A0C;
+  background: transparent;
   overflow: hidden;
 }
-<<<<<<< HEAD
 
 
-=======
 
+/* Remove any potential divider lines */
+/* Remove any potential divider lines */
+.hero-bg>*,
+.trustedby-shell>* {
+  border-bottom: none !important;
+}
 
->>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2
+[data-trustedby-section] {
+  border-top: none !important;
+}
+
+/* Remove any lines between hero and trustedby */
+.hero-section::after,
+.hero-section::before,
+[data-trustedby-section]::before,
+[data-trustedby-section]::after,
+.hero-bg::after,
+.hero-bg::before {
+  display: none !important;
+  content: none !important;
+  border: none !important;
+}
+
+/* Ensure no borders on video containers create visible lines */
+.hero-video {
+  border-bottom: none !important;
+}
+
+/* Remove any decorative lines near the trustedby pill */
+[data-trustedby-section] .flex.items-center.justify-center::before,
+[data-trustedby-section] .flex.items-center.justify-center::after,
+[data-trustedby-section]>div::before,
+[data-trustedby-section]>div::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Force no borders on all elements in trustedby section */
+[data-trustedby-section] * {
+  border-top: none !important;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.mask-linear-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
+}

@@ -1,125 +1,1003 @@
-<<<<<<< HEAD
 ---
-const faqs = [
-  {
-    q: "How fast can we see results?",
-    a: "Most clients see clearer positioning and stronger engagement in the first 2–3 weeks. Pipeline results depend on consistency and offer strength."
-  },
-  {
-    q: "Do you only work with LinkedIn?",
-    a: "LinkedIn is the core channel, but we can repurpose into short-form, carousels, and ads once the content system is working."
-  },
-  {
-    q: "What do you need from me to start?",
-    a: "Your offer, target audience, past wins (even small), and 2–3 example creators/brands you like. We’ll handle the system + execution."
-  },
-  {
-    q: "Do you handle posting and scheduling?",
-    a: "Yes—depending on the package. We can write, design, edit, schedule, and optimize."
-  },
-  {
-    q: "What makes Cinemora different?",
-    a: "We don’t do random posting. We build a repeatable inbound system: strategy → creation → proof → iteration → conversion."
-  }
-];
+import faqs from "../data/faqs.json";
 ---
 
-<section class="relative py-24">
-  <div class="mx-auto max-w-4xl px-4">
-    <div class="mb-12 text-center">
-      <p class="mb-3 text-sm uppercase tracking-widest text-lime-400">FAQ</p>
-      <h2 class="text-4xl font-bold text-white">We’ve got answers</h2>
-      <p class="mt-4 text-white/60">Quick answers to the questions clients ask before booking.</p>
-    </div>
+<section class="relative min-h-screen py-24 overflow-hidden flex items-center">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;600;700&display=swap");
 
-    <div class="space-y-4">
-      {faqs.map((item, i) => (
-        <details class="group rounded-2xl border border-white/10 bg-white/5 p-6 open:bg-white/10 transition">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
-            <span class="text-lg font-semibold text-white">{item.q}</span>
+    @keyframes blur-reveal {
+      from {
+        filter: blur(20px);
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+      }
+      to {
+        filter: blur(0);
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
 
-            <span class="grid h-9 w-9 place-items-center rounded-full border border-white/15 bg-black/30">
-              <span class="text-lime-400 text-xl leading-none group-open:rotate-45 transition">+</span>
-            </span>
-          </summary>
+    .reveal-premium {
+      animation: blur-reveal 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    }
 
-          <div class="mt-4 text-white/60 leading-relaxed">
-            {item.a}
-          </div>
-        </details>
-      ))}
-    </div>
+    .headline-premium {
+      font-family: "Playfair Display", serif;
+      letter-spacing: -0.01em;
+    }
 
-    <div class="mt-10 flex justify-center">
-      <a
-        href="#book"
-        class="rounded-xl bg-lime-400 px-6 py-3 font-semibold text-black hover:opacity-90 transition"
+    @keyframes fade-in-right {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+        filter: blur(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes float-breathing {
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-10px) scale(1.01);
+      }
+    }
+
+    @keyframes spring-up {
+      0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+      }
+      60% {
+        transform: translateY(-5px) scale(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes glow-line {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .unified-glow-container {
+      position: relative;
+      background: #0a0a0a;
+      transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    /* Hinter Glow / Background Separation */
+    .unified-glow-container::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      padding: 2px;
+      border-radius: 4rem;
+      background: linear-gradient(
+        135deg,
+        rgba(163, 230, 53, 0.2) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(163, 230, 53, 0.1) 100%
+      );
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      -webkit-mask-composite: destination-out;
+      opacity: 0.5;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+
+    .unified-glow-container::after {
+      content: "";
+      position: absolute;
+      inset: -50px;
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(163, 230, 53, 0.03) 0%,
+        transparent 70%
+      );
+      opacity: 0.8;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .unified-glow-container:hover::before {
+      opacity: 1;
+    }
+
+    .unified-glow-container:hover {
+      box-shadow:
+        0 20px 80px -20px rgba(0, 0, 0, 0.5),
+        0 0 40px -10px rgba(163, 230, 53, 0.05);
+    }
+
+    .shimmer-badge {
+      background: linear-gradient(
+        90deg,
+        rgba(24, 24, 27, 0.5) 0%,
+        rgba(39, 39, 42, 0.6) 50%,
+        rgba(24, 24, 27, 0.5) 100%
+      );
+      background-size: 200% 100%;
+      animation: glow-line 3s linear infinite;
+    }
+
+    .headline-reveal-trigger {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .headline-reveal-trigger.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @keyframes testimonial-border-flow {
+      0% {
+        border-color: rgba(163, 230, 53, 0.1);
+        box-shadow: 0 0 0 rgba(163, 230, 53, 0);
+      }
+      50% {
+        border-color: rgba(163, 230, 53, 0.4);
+        box-shadow: 0 0 30px rgba(163, 230, 53, 0.1);
+      }
+      100% {
+        border-color: rgba(163, 230, 53, 0.1);
+        box-shadow: 0 0 0 rgba(163, 230, 53, 0);
+      }
+    }
+
+    .testimonial-card-premium {
+      transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+      animation: testimonial-border-flow 4s ease-in-out infinite;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .testimonial-card-premium:hover {
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(163, 230, 53, 0.6);
+    }
+
+    .quote-mark-reveal {
+      animation: spring-up 1s ease-out forwards;
+    }
+
+    .animate-text-reveal {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+
+    .animate-text-reveal span {
+      display: inline-block;
+      transform: translateY(110%);
+      animation: text-surge 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    }
+
+    @keyframes text-surge {
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .delay-text-1 {
+      animation-delay: 0.1s;
+    }
+    .delay-text-2 {
+      animation-delay: 0.2s;
+    }
+    .delay-text-3 {
+      animation-delay: 0.3s;
+    }
+
+    /* Mobile timeline enhancements */
+    .mobile-timeline-line {
+      display: none;
+    }
+
+    .mobile-step {
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(14px);
+      transition:
+        opacity 600ms ease,
+        transform 600ms ease;
+    }
+
+    .mobile-step-icon {
+      color: #a1a1aa;
+      transition:
+        color 500ms ease,
+        box-shadow 500ms ease,
+        transform 500ms ease;
+    }
+
+    .mobile-step-svg {
+      transition: filter 500ms ease;
+    }
+
+    .mobile-step-title,
+    .mobile-step-desc,
+    .mobile-step-eyebrow {
+      transition: color 500ms ease;
+    }
+
+    .mobile-step.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-step.is-visible .mobile-step-icon {
+      color: #a3e635;
+      transform: translateY(-2px);
+    }
+
+    .mobile-step.is-visible .mobile-step-svg {
+      filter: drop-shadow(0 0 8px rgba(163, 230, 53, 0.5));
+    }
+
+    .mobile-step.is-visible .mobile-step-title {
+      color: #f4f4f5;
+    }
+
+    .mobile-step.is-visible .mobile-step-desc {
+      color: #d4d4d8;
+    }
+
+    .mobile-step.is-visible .mobile-step-eyebrow {
+      color: #a3e635;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mobile-step,
+      .mobile-step-icon,
+      .mobile-step-svg {
+        transition: none;
+        transform: none;
+      }
+    }
+  </style>
+  <!-- Background Image -->
+  <div class="absolute inset-0 -z-10">
+    <img
+      src="/images/faqs.jpg"
+      alt="Cinemora Studios Agency FAQ Background"
+      class="h-full w-full object-cover object-center"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <div class="mx-auto w-full max-w-[74%] px-4 sm:px-6 relative z-10">
+    <!-- Top Headline -->
+    <div class="mb-20 text-center md:mb-32 px-4">
+      <h2
+        class="mx-auto max-w-7xl text-2xl font-black leading-tight tracking-tighter text-white sm:text-3xl md:text-4xl lg:text-[64px] lg:leading-[1.1] headline-premium reveal-premium"
       >
-        Book a Strategy Call
-      </a>
+        <span class="lg:hidden">
+          <span class="block">
+            Cinemora builds <span class="italic">conversion-first</span>
+          </span>
+          <span class="block">
+            creative for <span class="text-lime-300">real growth.</span>
+          </span>
+        </span>
+        <span class="hidden lg:inline">
+          Cinemora builds <span class="italic font-normal"
+            >conversion-focused</span
+          > creative for brands that <span
+            class="bg-gradient-to-r from-lime-300 via-green-400 to-lime-500 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto] font-extrabold italic"
+            >want real growth.</span
+          >
+        </span>
+      </h2>
+    </div>
+    <!-- Mobile-First Layout -->
+    <div class="lg:hidden mt-10 space-y-12">
+      <!-- Value Prop -->
+      <div class="px-4">
+        <div
+          class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-zinc-900/60 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.3em] text-zinc-200 backdrop-blur-md"
+        >
+          Get Ahead
+        </div>
+        <h3 class="text-3xl font-black leading-[1.1] tracking-tight text-white">
+          We build content systems that
+          <span class="text-lime-300 italic">bring paying clients.</span>
+        </h3>
+        <p class="mt-4 text-base leading-relaxed text-zinc-400">
+          We design high-end brand visuals and performance ad creatives using
+          proven systems. Your brand could be next.
+        </p>
+      </div>
+
+      <!-- Mobile Timeline -->
+      <div class="mobile-timeline relative px-4">
+        <div class="mobile-timeline-line"></div>
+
+        <div class="space-y-8">
+          <div class="mobile-step relative pl-12">
+            <div
+              class="mobile-step-icon absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 border border-white/10"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="mobile-step-svg text-zinc-300"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A4.5 4.5 0 0 0 13.5 3.5 4.5 4.5 0 0 0 9 8c0 1.5.8 2.8 2 3.5.7.8 1.2 1.5 1.4 2.5"
+                ></path><path d="M9 18h6"></path><path d="M10 22h4"></path></svg
+              >
+            </div>
+            <p
+              class="mobile-step-eyebrow text-xs font-bold uppercase tracking-widest text-zinc-500"
+            >
+              Phase 01
+            </p>
+            <p class="mobile-step-title text-lg font-semibold text-white">
+              Ideation & Strategy
+            </p>
+            <p class="mobile-step-desc text-sm text-zinc-400">
+              from ideation to scripting
+            </p>
+          </div>
+
+          <div class="mobile-step relative pl-12">
+            <div
+              class="mobile-step-icon absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 border border-white/10"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="mobile-step-svg text-zinc-300"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path
+                  d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path
+                  d="M2 2l7.5 1.5"></path><path d="M7 11V7h4"></path></svg
+              >
+            </div>
+            <p
+              class="mobile-step-eyebrow text-xs font-bold uppercase tracking-widest text-zinc-500"
+            >
+              Phase 02
+            </p>
+            <p class="mobile-step-title text-lg font-semibold text-white">
+              High-End Production
+            </p>
+            <p class="mobile-step-desc text-sm text-zinc-400">
+              from scripting to editing
+            </p>
+          </div>
+
+          <div class="mobile-step relative pl-12">
+            <div
+              class="mobile-step-icon absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 border border-white/10"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="mobile-step-svg text-zinc-300"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline
+                  points="22 4 12 14.01 9 11.01"></polyline></svg
+              >
+            </div>
+            <p
+              class="mobile-step-eyebrow text-xs font-bold uppercase tracking-widest text-zinc-500"
+            >
+              Phase 03
+            </p>
+            <p class="mobile-step-title text-lg font-semibold text-white">
+              Growth & Conversion
+            </p>
+            <p class="mobile-step-desc text-sm text-zinc-400">
+              from editing to posting and sales
+            </p>
+          </div>
+
+          <div class="mobile-step relative pl-12">
+            <div
+              class="mobile-step-icon absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 border border-white/10"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="mobile-step-svg text-zinc-300"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="m12 3-1.9 5.8a2 2 0 0 1-1.2 1.2L3 12l5.8 1.9a2 2 0 0 1 1.2 1.2L12 21l1.9-5.8a2 2 0 0 1 1.2-1.2L21 12l-5.8-1.9a2 2 0 0 1-1.2-1.2L12 3z"
+                ></path></svg
+              >
+            </div>
+            <p
+              class="mobile-step-eyebrow text-xs font-bold uppercase tracking-widest text-zinc-500"
+            >
+              Phase 04
+            </p>
+            <p class="mobile-step-title text-lg font-semibold text-white">
+              Complete Solution
+            </p>
+            <p
+              class="mobile-step-desc text-sm text-zinc-400 uppercase tracking-tight"
+            >
+              we handle all
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Testimonial -->
+      <div class="px-4">
+        <div
+          class="rounded-2xl border border-white/10 bg-white/5 px-6 py-8 text-center"
+        >
+          <svg
+            class="mx-auto mb-4 h-9 w-9 text-lime-400/70"
+            fill="currentColor"
+            viewBox="0 0 32 32"
+            aria-hidden="true"
+            ><path
+              d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
+            ></path></svg
+          >
+          <p class="text-lg font-light italic text-zinc-100">
+            "Cinemora Studios not only helped us to produce high-quality content
+            but also helped us to grow our business Spoken Wines through CRM,
+            Marketing, and Sales."
+          </p>
+          <div class="mt-6 flex items-center justify-center gap-3">
+            <div
+              class="h-11 w-11 overflow-hidden rounded-full border-2 border-lime-400"
+            >
+              <img
+                src="/images/jan.jpeg"
+                alt="Jan De Weerd profile pic"
+                class="h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="text-left">
+              <div class="text-sm font-bold text-white">Jan De Weerd</div>
+              <div class="text-xs font-semibold uppercase text-lime-400">
+                Founder
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Layout -->
+    <div
+      class="hidden lg:grid mx-auto grid-cols-1 gap-8 xl:grid-cols-[1.22fr_1fr] xl:items-stretch"
+    >
+      <div
+        class="min-h-[620px] sm:min-h-[720px] lg:min-h-[850px] rounded-[2.5rem] sm:rounded-[3.25rem] border border-white/10 bg-[#0a0a0a] overflow-hidden grid grid-cols-1 lg:grid-cols-[55%_45%] unified-glow-container reveal-item"
+      >
+        <!-- Left Section: Value Prop -->
+        <div
+          class="relative flex flex-col justify-between p-5 sm:p-8 md:p-12 lg:p-20 border-b lg:border-b-0 lg:border-r border-white/5 overflow-hidden"
+        >
+          <!-- Ambient Background Glow (Animated) -->
+          <div
+            class="absolute -bottom-32 -right-32 h-[800px] w-[800px] rounded-full bg-lime-500/5 blur-[150px] floating-effect pointer-events-none"
+          >
+          </div>
+          <div class="relative z-10 h-full flex flex-col">
+            <div
+              class="mb-4 inline-block rounded-lg border border-white/10 shimmer-badge px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-zinc-100 backdrop-blur-md sm:mb-6 sm:px-4 sm:py-2 sm:text-xs"
+            >
+              Get Ahead
+            </div>
+            <h3
+              class="mb-6 text-3xl font-black leading-[1.0] tracking-tighter text-white sm:text-4xl md:text-6xl lg:text-[64px] lg:leading-[0.95] headline-reveal-trigger"
+            >
+              We build content systems that <br class="hidden md:block" />
+              <span class="italic text-lime-400">bring paying clients.</span>
+            </h3>
+            <p
+              class="mb-8 text-lg leading-relaxed text-zinc-400 max-w-2xl headline-reveal-trigger delay-1 sm:text-xl md:mb-14 md:text-2xl"
+            >
+              We design high-end brand visuals and performance ad creatives
+              using proven systems. Your brand could be next.
+            </p>
+            <!-- Trust Marquee (Animated) -->
+            <div
+              class="relative mt-auto w-full overflow-hidden mask-linear-fade flex flex-col gap-3"
+            >
+              <!-- Row 1 -->
+              <div class="flex w-max animate-marquee gap-3">
+                <!-- Set 1 -->
+                {
+                  [1, 2, 3, 4].map(() => (
+                    <>
+                      {" "}
+                      <div class="flex items-center gap-3 rounded-lg bg-zinc-800/50 px-3 py-2 pr-4 backdrop-blur-md transition hover:bg-zinc-800/80">
+                        {" "}
+                        <div class="h-8 w-8 overflow-hidden rounded-full">
+                          {" "}
+                          <img
+                            src="https://framerusercontent.com/images/2SG2YtGYMAFSLxtZQdyf06GJeU.png?scale-down-to=512"
+                            class="h-full w-full object-cover"
+                            alt="User"
+                          />{" "}
+                        </div>{" "}
+                        <span class="text-xs font-bold text-zinc-300">
+                          {" "}
+                          Content Ideation to Scriptwriting.{" "}
+                        </span>{" "}
+                      </div>{" "}
+                      <div class="flex items-center gap-3 rounded-lg bg-zinc-800/50 px-3 py-2 pr-4 backdrop-blur-md transition hover:bg-zinc-800/80">
+                        {" "}
+                        <div class="h-8 w-8 overflow-hidden rounded-full">
+                          {" "}
+                          <img
+                            src="https://framerusercontent.com/images/2SG2YtGYMAFSLxtZQdyf06GJeU.png?scale-down-to=512"
+                            class="h-full w-full object-cover"
+                            alt="User"
+                          />{" "}
+                        </div>{" "}
+                        <span class="text-xs font-bold text-zinc-300">
+                          {" "}
+                          Scriptwriting to Production{" "}
+                        </span>{" "}
+                      </div>{" "}
+                      <div class="flex items-center gap-3 rounded-lg bg-zinc-800/50 px-3 py-2 pr-4 backdrop-blur-md transition hover:bg-zinc-800/80">
+                        {" "}
+                        <div class="h-8 w-8 overflow-hidden rounded-full">
+                          {" "}
+                          <img
+                            src="https://framerusercontent.com/images/2SG2YtGYMAFSLxtZQdyf06GJeU.png?scale-down-to=512"
+                            class="h-full w-full object-cover"
+                            alt="User"
+                          />{" "}
+                        </div>{" "}
+                        <span class="text-xs font-bold text-zinc-300">
+                          {" "}
+                          Production to getting sales.{" "}
+                        </span>{" "}
+                      </div>{" "}
+                      <div class="flex items-center gap-3 rounded-lg bg-zinc-800/50 px-3 py-2 pr-4 backdrop-blur-md transition hover:bg-zinc-800/80">
+                        {" "}
+                        <div class="h-8 w-8 overflow-hidden rounded-full">
+                          {" "}
+                          <img
+                            src="https://framerusercontent.com/images/QWzd62JHjGOUwixhRo6epcHpl3I.png?scale-down-to=512"
+                            class="h-full w-full object-cover"
+                            alt="User"
+                          />{" "}
+                        </div>{" "}
+                        <span class="text-xs font-bold text-zinc-300">
+                          {" "}
+                          We handle all.{" "}
+                        </span>{" "}
+                      </div>{" "}
+                    </>
+                  ))
+                }
+              </div>
+              <!-- Row 2 (Reversed) -->
+              <div
+                class="flex w-max animate-marquee gap-3"
+                style="animation-direction: reverse;"
+              >
+                <!-- Set 1 -->
+                {
+                  [1, 2, 3, 4].map(() => (
+                    <>
+                      {" "}
+                      <div class="flex items-center gap-3 rounded-lg bg-zinc-800/50 px-3 py-2 pr-4 backdrop-blur-md transition hover:bg-zinc-800/80">
+                        {" "}
+                        <div class="h-8 w-8 overflow-hidden rounded-full">
+                          {" "}
+                          <img
+                            src="https://framerusercontent.com/images/2SG2YtGYMAFSLxtZQdyf06GJeU.png?scale-down-to=512"
+                            class="h-full w-full object-cover"
+                            alt="User"
+                          />{" "}
+                        </div>{" "}
+                        <span class="text-xs font-bold text-zinc-300">
+                          {" "}
+                          You create idea and we handle all.{" "}
+                        </span>{" "}
+                      </div>{" "}
+                      <div class="flex items-center gap-3 rounded-lg bg-zinc-800/50 px-3 py-2 pr-4 backdrop-blur-md transition hover:bg-zinc-800/80">
+                        {" "}
+                        <div class="h-8 w-8 overflow-hidden rounded-full">
+                          {" "}
+                          <img
+                            src="https://framerusercontent.com/images/MXGhdOCjqMV4qWQWzwqR64ap4CE.png?scale-down-to=512"
+                            class="h-full w-full object-cover"
+                            alt="User"
+                          />{" "}
+                        </div>{" "}
+                        <span class="text-xs font-bold text-zinc-300">
+                          {" "}
+                          Paids Ads.{" "}
+                        </span>{" "}
+                      </div>{" "}
+                      <div class="flex items-center gap-3 rounded-lg bg-zinc-800/50 px-3 py-2 pr-4 backdrop-blur-md transition hover:bg-zinc-800/80">
+                        {" "}
+                        <div class="h-8 w-8 overflow-hidden rounded-full">
+                          {" "}
+                          <img
+                            src="https://framerusercontent.com/images/V0M3J8BygkAJWol7DpZzVLVD3PI.png?scale-down-to=512"
+                            class="h-full w-full object-cover"
+                            alt="User"
+                          />{" "}
+                        </div>{" "}
+                        <span class="text-xs font-bold text-zinc-300">
+                          {" "}
+                          Social Media Management.{" "}
+                        </span>{" "}
+                      </div>{" "}
+                      <div class="flex items-center gap-3 rounded-lg bg-zinc-800/50 px-3 py-2 pr-4 backdrop-blur-md transition hover:bg-zinc-800/80">
+                        {" "}
+                        <div class="h-8 w-8 overflow-hidden rounded-full">
+                          {" "}
+                          <img
+                            src="https://framerusercontent.com/images/QWzd62JHjGOUwixhRo6epcHpl3I.png?scale-down-to=512"
+                            class="h-full w-full object-cover"
+                            alt="User"
+                          />{" "}
+                        </div>{" "}
+                        <span class="text-xs font-bold text-zinc-300">
+                          {" "}
+                          Proven Systems.{" "}
+                        </span>{" "}
+                      </div>{" "}
+                    </>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right Section: Steps List -->
+        <div
+          class="flex flex-col justify-center gap-10 p-8 sm:p-10 md:p-12 bg-white/[0.02]"
+        >
+          <!-- Step 1: Ideation to Scripting -->
+          <div
+            class="group flex items-center gap-5 step-block animate-step"
+            style="animation-delay: 0.2s;"
+          >
+            <div
+              class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-zinc-900 border border-white/5 shadow-lg group-hover:scale-105 transition-transform duration-300"
+            >
+              <div class="relative flex items-center justify-center">
+                <div
+                  class="absolute inset-0 bg-lime-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="relative text-zinc-400 group-hover:text-lime-400 transition-colors duration-300"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path
+                    d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A4.5 4.5 0 0 0 13.5 3.5 4.5 4.5 0 0 0 9 8c0 1.5.8 2.8 2 3.5.7.8 1.2 1.5 1.4 2.5"
+                  ></path><path d="M9 18h6"></path><path d="M10 22h4"
+                  ></path></svg
+                >
+              </div>
+            </div>
+            <div>
+              <h3
+                class="mb-1 text-xs font-bold uppercase tracking-widest text-zinc-500"
+              >
+                Phase 01
+              </h3>
+              <p
+                class="mb-1 text-xl font-bold text-white group-hover:text-lime-300 transition-colors"
+              >
+                Ideation & Strategy
+              </p>
+              <p class="text-base font-medium text-zinc-400">
+                from ideation to scripting
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2: Scripting to Editing -->
+          <div
+            class="group flex items-center gap-5 step-block animate-step"
+            style="animation-delay: 0.4s;"
+          >
+            <div
+              class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-zinc-900 border border-white/5 shadow-lg group-hover:scale-105 transition-transform duration-300"
+            >
+              <div class="relative flex items-center justify-center">
+                <div
+                  class="absolute inset-0 bg-lime-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="relative text-zinc-400 group-hover:text-lime-400 transition-colors duration-300"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path
+                    d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path
+                    d="M2 2l7.5 1.5"></path><path d="M7 11V7h4"></path></svg
+                >
+              </div>
+            </div>
+            <div>
+              <h3
+                class="mb-1 text-xs font-bold uppercase tracking-widest text-zinc-500"
+              >
+                Phase 02
+              </h3>
+              <p
+                class="mb-1 text-xl font-bold text-white group-hover:text-lime-300 transition-colors"
+              >
+                High-End Production
+              </p>
+              <p class="text-base font-medium text-zinc-400">
+                from scripting to editing
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3: Editing to Posting/Sales -->
+          <div
+            class="group flex items-center gap-5 step-block animate-step"
+            style="animation-delay: 0.6s;"
+          >
+            <div
+              class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-zinc-900 border border-white/5 shadow-lg group-hover:scale-105 transition-transform duration-300"
+            >
+              <div class="relative flex items-center justify-center">
+                <div
+                  class="absolute inset-0 bg-lime-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="relative text-zinc-400 group-hover:text-lime-400 transition-colors duration-300"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline
+                    points="22 4 12 14.01 9 11.01"></polyline></svg
+                >
+              </div>
+            </div>
+            <div>
+              <h3
+                class="mb-1 text-xs font-bold uppercase tracking-widest text-zinc-500"
+              >
+                Phase 03
+              </h3>
+              <p
+                class="mb-1 text-xl font-bold text-white group-hover:text-lime-300 transition-colors"
+              >
+                Growth & Conversion
+              </p>
+              <p class="text-base font-medium text-zinc-400">
+                from editing to posting and making sales
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4: We Handle All -->
+          <div
+            class="group flex items-center gap-5 step-block animate-step"
+            style="animation-delay: 0.8s;"
+          >
+            <div
+              class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-zinc-900 border border-white/5 shadow-lg group-hover:scale-105 transition-transform duration-300"
+            >
+              <div class="relative flex items-center justify-center">
+                <div
+                  class="absolute inset-0 bg-lime-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="relative text-zinc-400 group-hover:text-lime-400 transition-colors duration-300"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path
+                    d="m12 3-1.9 5.8a2 2 0 0 1-1.2 1.2L3 12l5.8 1.9a2 2 0 0 1 1.2 1.2L12 21l1.9-5.8a2 2 0 0 1 1.2-1.2L21 12l-5.8-1.9a2 2 0 0 1-1.2-1.2L12 3z"
+                  ></path></svg
+                >
+              </div>
+            </div>
+            <div>
+              <h3
+                class="mb-1 text-xs font-bold uppercase tracking-widest text-zinc-500"
+              >
+                Phase 04
+              </h3>
+              <p
+                class="mb-1 text-xl font-bold text-white group-hover:text-lime-300 transition-colors"
+              >
+                Complete Solution
+              </p>
+              <p
+                class="text-base font-medium text-zinc-400 uppercase tracking-tighter"
+              >
+                we handle all
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Testimonial Block -->
+      <div
+        class="flex flex-col animate-testimonial"
+        style="animation-delay: 0.8s;"
+      >
+        <div
+          class="relative group testimonial-card-premium flex-1 rounded-[2.5rem] border border-white/10 bg-white/5 px-10 py-14 shadow-2xl flex flex-col justify-center text-center overflow-hidden"
+        >
+          <!-- Internal Animated Gradient Background -->
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-lime-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+          >
+          </div>
+
+          <svg
+            class="mx-auto mb-8 h-12 w-12 text-lime-400/50 quote-mark-reveal group-hover:scale-110 group-hover:text-lime-400 transition-all duration-500"
+            fill="currentColor"
+            viewBox="0 0 32 32"
+            aria-hidden="true"
+            ><path
+              d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
+            ></path></svg
+          >
+          <blockquote
+            class="testimonial-quote relative z-10 text-2xl font-light leading-relaxed text-zinc-100 sm:text-3xl italic tracking-tight"
+            style="font-family: 'Playfair Display', serif;"
+          >
+            "Cinemora Studios not only helped us to produce high-quality content
+            but also helped us to grow our business Spoken Wines through CRM,
+            Marketing, and Sales."
+          </blockquote>
+          <div
+            class="mt-10 flex items-center justify-center gap-5 relative z-10 group-hover:translate-y-[-4px] transition-transform duration-500"
+          >
+            <div
+              class="h-14 w-14 overflow-hidden rounded-full border-2 border-lime-400 shadow-[0_0_20px_rgba(163,230,53,0.3)] bg-zinc-800 transition-transform duration-500 group-hover:scale-110"
+            >
+              <img
+                src="/images/jan.jpeg"
+                alt="Jan De Weerd profile pic"
+                class="h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="text-left">
+              <div class="font-bold text-white text-lg tracking-wide">
+                Jan De Weerd
+              </div>
+              <div
+                class="text-sm font-semibold text-lime-400 uppercase tracking-widest"
+              >
+                Founder
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-=======
----
-const faqs = [
-  {
-    q: "How fast can we see results?",
-    a: "Most clients see clearer positioning and stronger engagement in the first 2–3 weeks. Pipeline results depend on consistency and offer strength."
-  },
-  {
-    q: "Do you only work with LinkedIn?",
-    a: "LinkedIn is the core channel, but we can repurpose into short-form, carousels, and ads once the content system is working."
-  },
-  {
-    q: "What do you need from me to start?",
-    a: "Your offer, target audience, past wins (even small), and 2–3 example creators/brands you like. We’ll handle the system + execution."
-  },
-  {
-    q: "Do you handle posting and scheduling?",
-    a: "Yes—depending on the package. We can write, design, edit, schedule, and optimize."
-  },
-  {
-    q: "What makes Cinemora different?",
-    a: "We don’t do random posting. We build a repeatable inbound system: strategy → creation → proof → iteration → conversion."
+
+<script>
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px",
+  };
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, observerOptions);
+
+  document
+    .querySelectorAll(".reveal-item, .headline-reveal-trigger, .reveal-premium")
+    .forEach((item) => {
+      revealObserver.observe(item);
+    });
+
+  const mobileSteps = document.querySelectorAll(".mobile-step");
+  if (mobileSteps.length > 0) {
+    const mobileStepObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          } else {
+            entry.target.classList.remove("is-visible");
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+
+    mobileSteps.forEach((step) => {
+      mobileStepObserver.observe(step);
+    });
   }
-];
----
-
-<section class="relative py-24">
-  <div class="mx-auto max-w-4xl px-4">
-    <div class="mb-12 text-center">
-      <p class="mb-3 text-sm uppercase tracking-widest text-lime-400">FAQ</p>
-      <h2 class="text-4xl font-bold text-white">We’ve got answers</h2>
-      <p class="mt-4 text-white/60">Quick answers to the questions clients ask before booking.</p>
-    </div>
-
-    <div class="space-y-4">
-      {faqs.map((item, i) => (
-        <details class="group rounded-2xl border border-white/10 bg-white/5 p-6 open:bg-white/10 transition">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
-            <span class="text-lg font-semibold text-white">{item.q}</span>
-
-            <span class="grid h-9 w-9 place-items-center rounded-full border border-white/15 bg-black/30">
-              <span class="text-lime-400 text-xl leading-none group-open:rotate-45 transition">+</span>
-            </span>
-          </summary>
-
-          <div class="mt-4 text-white/60 leading-relaxed">
-            {item.a}
-          </div>
-        </details>
-      ))}
-    </div>
-
-    <div class="mt-10 flex justify-center">
-      <a
-        href="#book"
-        class="rounded-xl bg-lime-400 px-6 py-3 font-semibold text-black hover:opacity-90 transition"
-      >
-        Book a Strategy Call
-      </a>
-    </div>
-  </div>
-</section>
->>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2
+</script>

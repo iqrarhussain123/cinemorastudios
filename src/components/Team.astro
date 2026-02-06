@@ -1,0 +1,354 @@
+---
+const teamMembers = [
+    {
+        name: "Iqrar Husain",
+        role: "CEO & Founder",
+        quote: "We don't just edit videos. We engineer attention.",
+        bio: [
+            "Iqrar isn't just a founder; he's the strategic architect behind Cinemora's most viral campaigns. With a background that fuses data-driven marketing with high-end cinematic production, he recognized early on that the future of brand authority lies in video.",
+            "He built Cinemora Studios to bridge the gap between 'aesthetic' and 'effective'. Under his leadership, the agency has helped elite coaches and real estate moguls generate millions in pipeline revenue, proving that premium content is the ultimate leverage in the digital age.",
+        ],
+        stats: [
+            { label: "Revenue Generated", value: "$4M+" },
+            { label: "Views Managed", value: "50M+" },
+        ],
+        image: "/images/ceo image.png",
+        signature: "/images/signature.png",
+    },
+];
+---
+
+<section class="team-section" id="team" data-team>
+    <div class="team-container">
+        {
+            teamMembers.map((member, index) => (
+                <div class="team-grid">
+                    <!-- Left Column: Content -->
+                    <div class="team-content-col">
+                        <header class="team-header reveal-text delay-1">
+                            <span class="team-kicker">Our Creative Force</span>
+                            <h2 class="team-title">
+                                The <span class="team-title-em">Minds</span> Behind Cinemora
+                            </h2>
+                        </header>
+
+                        <div class="team-body">
+                            <blockquote class="team-quote reveal-text delay-2">
+                                "{member.quote}"
+                            </blockquote>
+
+                            <div class="team-bio-wrapper reveal-text delay-3">
+                                {member.bio.map((paragraph) => (
+                                    <p class="team-bio">{paragraph}</p>
+                                ))}
+                            </div>
+
+                            <div class="team-stats reveal-text delay-4">
+                                {member.stats.map((stat) => (
+                                    <div class="team-stat">
+                                        <span class="stat-value">{stat.value}</span>
+                                        <span class="stat-label">{stat.label}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div class="team-actions reveal-text delay-5">
+                                <a href="#contact" class="team-link">
+                                    Work with Iqrar <span class="arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Visual -->
+                    <div class="team-visual-col">
+                        <div class="team-visual reveal-visual">
+                            <img
+                                src={member.image}
+                                alt={member.name}
+                                class="team-photo"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Space+Grotesk:wght@300;400;500&display=swap");
+
+        .team-section {
+            --paper: #f7f5f0;
+            --ink: #111111;
+            --muted: #666666;
+            --accent: #84cc16;
+
+            position: relative;
+            /* FIX: Ensure section has enough height for the split look */
+            padding: 0; /* Remove padding here so image hits top/bottom if desired? */
+            /* Actually, likely keep vertical padding on the TEXT side, but maybe image allows full bleed? 
+               Let's keep section padding but extend image. 
+               SAFE BET: Keep section padding for now, but expand grid. 
+               Wait, "increase height to cover that" -> implies full bleed?
+               Let's stick to standard vertical padding for the SECTION, but stretch the image in the grid. */
+            padding: 8%;
+            background: transparent;
+            color: var(--ink);
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .team-container {
+            width: 100%;
+            max-width: 100%; /* FIX: True full width, no auto margins from max-width */
+            margin: 0;
+            /* FIX: "Finish the margins" -> Zero padding everywhere */
+            padding: 0; 
+        }
+
+        .team-grid {
+            display: grid;
+            gap: 2rem;
+            width: 100%;
+        }
+
+        @media (min-width: 1024px) {
+            .team-grid {
+                grid-template-columns: 1.4fr 0.8fr;
+                gap: 5rem; 
+                align-items: center;
+                margin: 0;
+            }
+            
+            .team-content-col {
+                /* Minimal safe area for text readability */
+                padding-left: 11%; 
+                padding-right: 20%;
+                display: block;
+                padding-top: 2rem; 
+                padding-bottom: 2rem;
+            }
+            
+            .team-visual-col {
+                /* FIX: Zero margin on the right -> Image touches edge */
+                padding-right: 20%;
+                display: flex;
+                justify-content: flex-end; 
+            }
+        }
+
+        /* Content Styling */
+        .team-kicker {
+            font-family: "Space Grotesk", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .team-title {
+            font-family: "Fraunces", serif;
+            font-weight: 300;
+            font-size: clamp(3rem, 6vw, 5rem); 
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            margin-bottom: 2.5rem;
+        }
+
+        .team-title-em {
+            font-style: italic;
+        }
+
+        .team-quote {
+            font-family: "Fraunces", serif;
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem); 
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.3;
+            color: var(--ink);
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .team-bio {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.15rem; 
+            line-height: 1.6;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            max-width: 90%; /* Let it flow */
+            text-align: justify; /* FIX: Justify text for cleaner edges as requested */
+        }
+
+        /* Stats */
+        .team-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .stat-value {
+            font-family: "Fraunces", serif;
+            font-size: 2.25rem;
+            line-height: 1;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+
+        .stat-label {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+        }
+
+        /* Link */
+        .team-link {
+            font-family: "Space Grotesk", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            padding-bottom: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .team-link:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Visual */
+        .team-visual {
+            position: relative;
+            width: 100%;
+            /* FIX: Reduce size and restore aspect ratio */
+            max-width: 550px; 
+            aspect-ratio: 4/5; 
+            height: auto;
+            background: #e5e5e5;
+            overflow: hidden;
+            /* 2. FIX: Remove clip-path hiding to guarantee visibility */
+            /* clip-path: inset(100% 0 0 0); */ 
+            /* FIX: Balanced border radius everywhere since it's floating */
+            border-radius: 12px;
+            /* AESTHETIC UPGRADE: Soft shadow for depth */
+            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.4); 
+        }
+        
+        .team-visual.is-visible {
+            /* clip-path: inset(0 0 0 0); */
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(1);
+            /* transform: scale(1.1); */
+            transition: filter 0.7s ease, transform 0.7s ease;
+        }
+
+        .team-visual:hover .team-photo {
+            filter: grayscale(0) contrast(1.1);
+            transform: scale(1.03);
+        }
+
+        /* Text Reveals */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-text.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delays */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+
+        @media (max-width: 768px) {
+            .team-visual-col {
+                order: 0; 
+                margin-bottom: 2rem;
+                height: 40vh; /* Make sure it has height on mobile too */
+                padding-right: 1.5rem;
+                padding-left: 1.5rem;
+                display: flex; /* FIX: Enable flex for centering */
+                justify-content: center; /* FIX: Center the image horizontally */
+                align-items: center; /* FIX: Center vertically if needed */
+            }
+
+            .team-content-col { /* Corrected from .team-text-col */
+                order: 1;
+                /* Mobile Padding */
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            /* Mobile visual adjustment */
+            .team-visual {
+                max-width: 100%;
+                border-radius: 4px;
+                height: 100%;
+            }
+        }
+
+        /* Tablet-specific sizing - stack layout like mobile but with larger image */
+        /* Includes iPad Air, iPad Pro, and other tablets */
+        @media (min-width: 769px) and (max-width: 1366px) {
+            .team-visual-col {
+                order: 0;
+                margin-bottom: 3rem;
+                height: 60vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .team-content-col {
+                order: 1;
+            }
+        }
+    </style>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    
+                    // Specific logic to trigger visual if content is triggered?
+                    // The CSS handles each element individually if they have the class
+                    // If the parent is triggered, we might want to cascade.
+                    
+                    // Current setup: elements have .reveal-text or .reveal-visual
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal-text, .team-visual').forEach(el => observer.observe(el));
+    </script>
+</section>
