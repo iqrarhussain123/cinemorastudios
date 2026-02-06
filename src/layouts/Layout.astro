@@ -1,43 +1,166 @@
-<<<<<<< HEAD
 ---
 import "../styles/global.css";
 import Background from "../components/Background.astro";
+import WhatsAppFloating from "../components/WhatsAppFloating.astro";
 
-const { title = "Cinemora Studios" } = Astro.props;
+const {
+  title = "Cinemora Studios | Official Video Marketing Agency",
+  description = "Cinemora Studios: The premier video marketing agency for elite coaches and founders. We create strategy-led content. US & Global Operations.",
+  image = "https://cinemorastudios.agency/images/logo.png",
+} = Astro.props;
+
+const siteUrl = "https://cinemorastudios.agency";
 ---
 
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Favicons optimized for Google Search -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <meta name="generator" content={Astro.generator} />
 
-  <body class="min-h-screen text-white">
-    <Background />
-    <slot />
-  </body>
-</html>
-=======
----
-import "../styles/global.css";
-import Background from "../components/Background.astro";
+  <!-- SEO Meta Tags -->
+  <title>{title}</title>
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content={description} />
+  <meta name="author" content="Cinemora Studios" />
+  <meta
+    name="keywords"
+    content="Cinemora Studios, Cinemora Studios Agency, Cinemora Studios UK, Cinemora Studios US, Cinemora Studios Pakistan, video marketing agency"
+  />
+  <link rel="canonical" href={Astro.url} />
 
-const { title = "Cinemora Studios" } = Astro.props;
----
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image.startsWith('http') ? image : `${siteUrl}${image}`} />
+  <meta property="og:site_name" content="Cinemora Studios" />
+  <meta property="og:locale" content="en_US" />
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-  </head>
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={Astro.url} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={image.startsWith('http') ? image : `${siteUrl}${image}`} />
 
-  <body class="min-h-screen text-white">
-    <Background />
-    <slot />
-  </body>
-</html>
->>>>>>> a879ffcc169a2c1d99ffe71415da1c89eb53fdd2
+  <!-- Schema.org JSON-LD for AI & Search Engines -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "MarketingAgency",
+      name: "Cinemora Studios",
+      alternateName: "Cinemora Studios Agency",
+      url: "https://cinemorastudios.agency",
+      logo: "https://cinemorastudios.agency/images/logo.png",
+      description:
+        "The official Cinemora Studios Agency. Helping elite coaches build authority and real estate brands dominate with premium content systems. Registered in US & Pakistan.",
+      disambiguatingDescription:
+        "Cinemora Studios Agency is a global content marketing firm registered in the United States and Pakistan, specializing in video marketing for coaches and real estate.",
+      email: "iqrar@cinemorastudios.agency",
+      telephone: "+923360599017",
+      founder: {
+        "@type": "Person",
+        name: "Iqrar Husain",
+      },
+      areaServed: [
+        "United States",
+        "United Kingdom",
+        "Canada",
+        "Australia",
+        "Pakistan",
+      ],
+      location: [
+        {
+          "@type": "Place",
+          name: "United States Head Office",
+          address: {
+            "@type": "PostalAddress",
+            addressCountry: "US",
+          },
+        },
+        {
+          "@type": "Place",
+          name: "Pakistan Office",
+          address: {
+            "@type": "PostalAddress",
+            addressCountry: "PK",
+          },
+        },
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Marketing Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Video Marketing Strategy",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Short-Form Content Production",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Content Systems for Coaches",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Real Estate Brand Authority",
+            },
+          },
+        ],
+      },
+      priceRange: "$$$",
+    })}
+  />
+
+  <!-- Google Analytics 4 -->
+  {
+    import.meta.env.PUBLIC_GA_ID && (
+      <>
+        <script
+          is:inline
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_ID}`}
+        />
+        <script is:inline define:vars={{ gaId: import.meta.env.PUBLIC_GA_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+          gtag("config", gaId);
+        </script>
+      </>
+    )
+  }
+</head>
+
+<body class="min-h-screen text-white">
+  <Background />
+  <slot />
+  <WhatsAppFloating />
+</body>
