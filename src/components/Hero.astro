@@ -31,7 +31,12 @@ const {
           class="absolute inset-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_closest-side,rgba(0,0,0,0.6)_0%,transparent_100%)] blur-2xl -z-10 pointer-events-none md:hidden"
         >
         </div>
-        <h1
+
+        <!-- SEO-optimized H1 (visually hidden but readable by search engines) -->
+        <h1 class="sr-only">Cinemora Studios - Creative & Digital Agency</h1>
+
+        <!-- Creative headline (using h2 for visual hierarchy) -->
+        <h2
           class="hero-title hero-reveal-2 font-heading font-light leading-[1] tracking-tight text-zinc-50 text-2xl sm:text-5xl md:text-7xl lg:text-8xl"
         >
           {headline.line1}
@@ -42,7 +47,7 @@ const {
           <span class="text-lime-400 italic font-normal"
             >{headline.highlight2}</span
           >
-        </h1>
+        </h2>
 
         <div
           class="hero-sub hero-reveal-3 mx-auto mt-20 w-full max-w-2xl text-left hidden sm:block"
