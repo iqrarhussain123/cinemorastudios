@@ -98,7 +98,7 @@ const teamMembers = [
             background: transparent;
             color: var(--ink);
             overflow: hidden;
-            border-top: 1px solid rgba(0,0,0,0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .team-container {
@@ -186,6 +186,7 @@ const teamMembers = [
             margin-bottom: 1.5rem;
             font-weight: 300;
             max-width: 90%; /* Let it flow */
+            text-align: justify; /* FIX: Justify text for cleaner edges as requested */
         }
 
         /* Stats */
@@ -289,15 +290,19 @@ const teamMembers = [
         .delay-4 { transition-delay: 0.4s; }
         .delay-5 { transition-delay: 0.5s; }
 
-        @media (max-width: 1023px) {
+        @media (max-width: 768px) {
             .team-visual-col {
                 order: 0; 
                 margin-bottom: 2rem;
-                height: 50vh; /* Make sure it has height on mobile too */
+                height: 40vh; /* Make sure it has height on mobile too */
                 padding-right: 1.5rem;
                 padding-left: 1.5rem;
+                display: flex; /* FIX: Enable flex for centering */
+                justify-content: center; /* FIX: Center the image horizontally */
+                align-items: center; /* FIX: Center vertically if needed */
             }
-            .team-content-col {
+
+            .team-content-col { /* Corrected from .team-text-col */
                 order: 1;
                 /* Mobile Padding */
                 padding-left: 1.5rem;
@@ -308,6 +313,23 @@ const teamMembers = [
                 max-width: 100%;
                 border-radius: 4px;
                 height: 100%;
+            }
+        }
+
+        /* Tablet-specific sizing - stack layout like mobile but with larger image */
+        /* Includes iPad Air, iPad Pro, and other tablets */
+        @media (min-width: 769px) and (max-width: 1366px) {
+            .team-visual-col {
+                order: 0;
+                margin-bottom: 3rem;
+                height: 60vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .team-content-col {
+                order: 1;
             }
         }
     </style>

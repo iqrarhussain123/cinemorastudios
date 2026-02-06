@@ -59,33 +59,141 @@ body {
 
 /* Hero background (restored) */
 .hero-bg {
-  background: var(--color-bg-dark) url("/images/background_hero_trustedby.jpg") top center / cover no-repeat;
+  background: var(--color-bg-dark) url("/images/background_hero_trustedby.jpg") top center / auto repeat;
 }
+
+/* Ultrawide Monitor Support */
+@media (min-width: 3440px) {
+  .hero-bg {
+    background: var(--color-bg-dark) url("/images/ultra_wide.jpeg") top center / auto repeat;
+  }
+}
+
+/* Ultrawide Fix: Prevent extreme zoom/crop on wide screens */
 
 /* TrustedBy background matches cream tone behind hero video */
 .trustedby-shell {
   background: var(--color-cream);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
+
+  html,
+  body {
+    background: var(--color-cream);
+  }
+
+  body {
+    position: relative;
+    z-index: 0;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: clamp(880px, 135vh, 1200px);
+    background: var(--color-bg-dark) url("/images/phone_hero.jpeg") top center / cover no-repeat;
+    z-index: -1;
+  }
+
   .hero-bg {
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
+    background: transparent !important;
+  }
+
+  .trustedby-shell {
+    background: transparent !important;
+  }
+
+  /* Solid cream background starts at the 'Is this you?' section */
+  .trustedby-break {
+    position: relative;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    z-index: 1;
+    /* Ensure text sits on top */
+  }
+
+  /* Pseudo-element for full-width bleed */
+  .trustedby-break::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background: var(--color-cream);
+    z-index: -1;
+  }
+
+  .trustedby-stats-shell {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    margin-top: 0.5rem !important;
+    padding: 0.75rem 0.5rem 1.5rem !important;
+    background: var(--color-cream) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+
+  .trustedby-stats-shell::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -28px;
+    height: 28px;
+    background: linear-gradient(180deg,
+        rgba(242, 241, 237, 0) 0%,
+        var(--color-cream) 100%);
+    pointer-events: none;
+  }
+
+
+  .trustedby-shell .atmospheric-glow,
+  .trustedby-shell .noise-overlay {
+    display: none;
   }
 }
 
 /* Typography Utilities */
-.text-lime-primary { color: var(--color-lime-primary); }
-.text-lime-light { color: var(--color-lime-light); }
-.text-lime-dark { color: var(--color-lime-dark); }
+.text-lime-primary {
+  color: var(--color-lime-primary);
+}
 
-.bg-lime-primary { background-color: var(--color-lime-primary); }
-.bg-lime-light { background-color: var(--color-lime-light); }
-.bg-lime-dark { background-color: var(--color-lime-dark); }
+.text-lime-light {
+  color: var(--color-lime-light);
+}
 
-.border-lime-primary { border-color: var(--color-lime-primary); }
-.border-lime-light { border-color: var(--color-lime-light); }
+.text-lime-dark {
+  color: var(--color-lime-dark);
+}
+
+.bg-lime-primary {
+  background-color: var(--color-lime-primary);
+}
+
+.bg-lime-light {
+  background-color: var(--color-lime-light);
+}
+
+.bg-lime-dark {
+  background-color: var(--color-lime-dark);
+}
+
+.border-lime-primary {
+  border-color: var(--color-lime-primary);
+}
+
+.border-lime-light {
+  border-color: var(--color-lime-light);
+}
 
 /* Premium Animation Utilities */
 .transition-premium {
@@ -104,13 +212,25 @@ body {
 }
 
 /* Performance Optimizations */
-.contain-layout { contain: layout; }
-.contain-style { contain: style; }
-.contain-paint { contain: paint; }
-.contain-all { contain: layout style paint; }
+.contain-layout {
+  contain: layout;
+}
+
+.contain-style {
+  contain: style;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-all {
+  contain: layout style paint;
+}
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -120,6 +240,7 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
 .font-heading {
   font-family: var(--font-heading);
   font-weight: 300;
@@ -211,8 +332,8 @@ body {
 }
 
 .mask-linear-fade {
-  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
 @keyframes gradient {

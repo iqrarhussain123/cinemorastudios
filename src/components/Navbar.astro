@@ -11,7 +11,7 @@ const cta = { label: "Book a Strategy Call", href: "#book" };
 <header class="fixed top-0 z-50 w-full overflow-x-clip pt-6 sm:pt-10">
   {/* Floating rounded glass header */}
   <div class="w-full px-4">
-    <div class="relative mx-auto w-full max-w-[95%] md:max-w-[45%]">
+    <div class="relative mx-auto w-full max-w-[98%] sm:max-w-[96%] md:max-w-[92%] lg:max-w-[78%] xl:max-w-[62%] 2xl:max-w-[50%]">
       <div
         class="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/55 backdrop-blur-xl shadow-lg shadow-black/30 [transform:translateZ(0)]"
       >
@@ -39,23 +39,23 @@ const cta = { label: "Book a Strategy Call", href: "#book" };
 
             <div class="leading-tight">
               <span
-                class="text-xs font-semibold text-white font-heading sm:text-sm"
+                class="whitespace-nowrap text-[11px] font-semibold text-white font-heading sm:text-xs md:text-sm"
               >
                 CINEMORA STUDIOS
               </span>
 
-              <div class="text-[10px] text-white/55 sm:text-xs font-body">
+              <div class="hidden text-[9px] text-white/55 sm:text-[10px] md:block md:text-xs font-body">
                 We turn attention into clients.
               </div>
             </div>
           </a>
           {/* Center: Desktop nav */}
-          <nav class="hidden items-center gap-2 md:flex">
+          <nav class="hidden items-center gap-1 sm:flex md:gap-2">
             {
               nav.map((item) => (
                 <a
                   href={item.href}
-                  class="rounded-full px-4 py-2 text-sm font-body font-medium text-white/70 transition hover:bg-white/5 hover:text-white"
+                  class="rounded-full px-2 py-1.5 text-[11px] font-body font-medium text-white/70 transition hover:bg-white/5 hover:text-white sm:px-2.5 md:px-3 md:py-2 md:text-xs lg:px-4 lg:text-sm"
                 >
                   {item.label}
                 </a>
@@ -68,15 +68,16 @@ const cta = { label: "Book a Strategy Call", href: "#book" };
             <a
               href={cta.href}
               onclick="gtag('event', 'contact_click', { 'method': 'navbar_book_call' })"
-              class="hidden rounded-full bg-lime-400 px-5 py-2.5 text-sm font-body font-medium text-zinc-950 shadow-lg shadow-lime-400/20 transition hover:brightness-110 md:inline-flex"
+              class="hidden whitespace-nowrap rounded-full bg-lime-400 px-3 py-1.5 text-[11px] font-body font-medium text-zinc-950 shadow-lg shadow-lime-400/20 transition hover:brightness-110 sm:inline-flex md:px-4 md:py-2 md:text-xs lg:px-5 lg:py-2.5 lg:text-sm"
             >
-              {cta.label}
+              <span class="hidden lg:inline">{cta.label}</span>
+              <span class="lg:hidden">Book a Call</span>
             </a>
 
             {/* Mobile menu button */}
             <button
               id="navToggle"
-              class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10 md:hidden"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10 sm:hidden"
               aria-label="Open menu"
               aria-expanded="false"
               type="button"
@@ -99,7 +100,7 @@ const cta = { label: "Book a Strategy Call", href: "#book" };
         </div>
 
         {/* Mobile dropdown */}
-        <div id="mobileNav" class="hidden md:hidden mt-2">
+        <div id="mobileNav" class="hidden sm:hidden mt-2">
           <div class="px-0 pb-2">
             <div
               class="rounded-2xl border border-white/10 bg-zinc-950/90 p-2 backdrop-blur-xl"

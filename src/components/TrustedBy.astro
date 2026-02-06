@@ -15,8 +15,6 @@ const logos = [
     { src: "/images/logos/SPOKEN-WINES.png", alt: "Spoken Wines" },
     { src: "/images/logos/Success School.png", alt: "Success School" },
 ];
-
-const mobileLogos = logos.slice(3);
 ---
 
 <section
@@ -60,7 +58,7 @@ const mobileLogos = logos.slice(3);
             <div class="w-full px-0 sm:px-[10%] md:px-[12%] lg:px-[14%]">
                 <div class="logo-mask overflow-hidden">
                     <div
-                        class="logo-marquee mx-auto hidden w-max items-center justify-center gap-4 py-2 sm:gap-8 md:gap-10 lg:flex"
+                        class="logo-marquee mx-auto hidden w-max items-center justify-center gap-6 py-2 sm:gap-10 md:gap-12 lg:flex"
                     >
                         {
                             logos.map((logo, index) => (
@@ -97,21 +95,35 @@ const mobileLogos = logos.slice(3);
                         }
                     </div>
                     <div
-                        class="trustedby-logos-static mx-auto flex w-full max-w-md items-center justify-between gap-6 px-3 py-2 lg:hidden"
+                        class="logo-marquee logo-marquee--mobile mx-auto flex w-max items-center justify-center gap-8 py-1 sm:gap-10 lg:hidden"
                     >
                         {
-                            mobileLogos.map((logo) => (
-                                <div class="trustedby-logo-item flex items-center justify-center">
-                                    <img
-                                        src={logo.src}
-                                        alt={logo.alt}
-                                        class="max-h-full max-w-full object-contain"
-                                        loading="eager"
-                                        fetchpriority="high"
-                                        decoding="async"
-                                    />
-                                </div>
-                            ))
+                            [...logos, ...logos, ...logos].map(
+                                (logo, index) => {
+                                    const isDuplicate = index >= logos.length;
+                                    return (
+                                        <div
+                                            class="trustedby-logo-item flex items-center justify-center"
+                                            aria-hidden={
+                                                isDuplicate ? "true" : undefined
+                                            }
+                                        >
+                                            <img
+                                                src={logo.src}
+                                                alt={
+                                                    isDuplicate ? "" : logo.alt
+                                                }
+                                                class="max-h-full max-w-full object-contain opacity-70"
+                                                loading="eager"
+                                                fetchpriority={
+                                                    index < 2 ? "high" : "auto"
+                                                }
+                                                decoding="async"
+                                            />
+                                        </div>
+                                    );
+                                },
+                            )
                         }
                     </div>
                 </div>
@@ -179,7 +191,7 @@ const mobileLogos = logos.slice(3);
                         src="/images/trusted by icons/arrow.png"
                         alt="Decorative arrow pointing to pain points"
                         class="h-32 w-52 object-contain opacity-80"
-                        loading="lazy"
+                        loading="eager"
                         decoding="async"
                     />
                 </div>
@@ -198,22 +210,22 @@ const mobileLogos = logos.slice(3);
                             <!-- Pain Point 2 -->
                             <div class="pp-item" data-index="1">
                                 <span class="pp-arrow">→</span>
-                                <h2 class="pp-text">UNSURE WHAT TO POST</h2>
+                                <h2 class="pp-text">WHAT TO POST?</h2>
                             </div>
                             <!-- Pain Point 3 -->
                             <div class="pp-item" data-index="2">
                                 <span class="pp-arrow">→</span>
-                                <h2 class="pp-text">NOT PREMIUM ENOUGH</h2>
+                                <h2 class="pp-text">LOOKS CHEAP</h2>
                             </div>
                             <!-- Pain Point 4 -->
                             <div class="pp-item" data-index="3">
                                 <span class="pp-arrow">→</span>
-                                <h2 class="pp-text">INCONSISTENT POSTING</h2>
+                                <h2 class="pp-text">POSTING GAPS</h2>
                             </div>
                             <!-- Pain Point 5 -->
                             <div class="pp-item" data-index="4">
                                 <span class="pp-arrow">→</span>
-                                <h2 class="pp-text">CONTRADICTORY ADVICE</h2>
+                                <h2 class="pp-text">BAD ADVICE</h2>
                             </div>
                             <!-- Pain Point 6 -->
                             <div class="pp-item" data-index="5">
@@ -277,9 +289,9 @@ const mobileLogos = logos.slice(3);
                                         stroke="none"></circle>
                                 </svg>
                             </div>
-                            <p class="mobile-pp-text">Unsure what to post</p>
+                            <p class="mobile-pp-text">What to post?</p>
                             <p class="mobile-pp-subtext">
-                                Ideas feel random and low impact.
+                                Content ideas run dry fast.
                             </p>
                         </div>
 
@@ -299,9 +311,9 @@ const mobileLogos = logos.slice(3);
                                     <path d="M18 26h28"></path>
                                 </svg>
                             </div>
-                            <p class="mobile-pp-text">Not premium enough</p>
+                            <p class="mobile-pp-text">Looks cheap</p>
                             <p class="mobile-pp-subtext">
-                                Your brand doesn’t look high-end yet.
+                                Content doesn't reflect your value.
                             </p>
                         </div>
 
@@ -329,7 +341,7 @@ const mobileLogos = logos.slice(3);
                                     <circle cx="36" cy="40" r="2"></circle>
                                 </svg>
                             </div>
-                            <p class="mobile-pp-text">Inconsistent posting</p>
+                            <p class="mobile-pp-text">Posting gaps</p>
                             <p class="mobile-pp-subtext">
                                 The posting rhythm keeps breaking.
                             </p>
@@ -352,7 +364,7 @@ const mobileLogos = logos.slice(3);
                                     <path d="M26 36l-8 6 8 6"></path>
                                 </svg>
                             </div>
-                            <p class="mobile-pp-text">Contradictory advice</p>
+                            <p class="mobile-pp-text">No Strategy</p>
                             <p class="mobile-pp-subtext">
                                 Every expert says the opposite.
                             </p>
@@ -720,7 +732,7 @@ const mobileLogos = logos.slice(3);
     .pp-item {
         position: absolute;
         top: 50%;
-        right: 4%;
+        right: 12%;
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
@@ -1072,7 +1084,7 @@ const mobileLogos = logos.slice(3);
         position: relative;
     }
 
-    .trustedby-logos-static img {
+    .logo-marquee--mobile img {
         opacity: 0.55;
         filter: grayscale(1) contrast(0.6);
     }
@@ -1101,16 +1113,11 @@ const mobileLogos = logos.slice(3);
             -webkit-mask-image: none;
         }
 
-        .trustedby-logos-static {
-            gap: 1.1rem;
-            max-width: 320px;
-        }
-
         .trustedby-logo-item {
-            width: 90px;
-            height: 22px;
-            flex: 1;
-            max-width: 100px;
+            width: 78px;
+            height: 20px;
+            flex: 0 0 auto;
+            margin: 0 4px;
         }
 
         .trustedby-stats-shell {
@@ -1147,8 +1154,9 @@ const mobileLogos = logos.slice(3);
 
     @media (min-width: 640px) and (max-width: 1023px) {
         .trustedby-logo-item {
-            width: 110px;
-            height: 26px;
+            width: 96px;
+            height: 24px;
+            margin: 0 6px;
         }
 
         .stat-count {
@@ -1157,18 +1165,6 @@ const mobileLogos = logos.slice(3);
 
         .stat-label {
             font-size: 0.98rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .trustedby-logos-static {
-            gap: 0.85rem;
-            max-width: 280px;
-        }
-
-        .trustedby-logo-item {
-            width: 78px;
-            height: 20px;
         }
     }
 </style>
@@ -1212,6 +1208,28 @@ const mobileLogos = logos.slice(3);
         animation-play-state: paused;
     }
 
+    .logo-marquee--mobile {
+        animation: marquee-mobile 25s linear infinite;
+        min-width: 300%;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        will-change: transform;
+        transform: translateZ(0);
+    }
+
+    @media (hover: none) {
+        .logo-marquee:hover {
+            animation-play-state: running;
+        }
+
+        /* Ensure smooth scrolling on touch devices */
+        .logo-marquee--mobile {
+            animation-play-state: running !important;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+    }
+
     .logo-mask {
         mask-image: linear-gradient(
             90deg,
@@ -1239,6 +1257,15 @@ const mobileLogos = logos.slice(3);
         }
         100% {
             transform: translateX(-50%) translateZ(0);
+        }
+    }
+
+    @keyframes marquee-mobile {
+        0% {
+            transform: translateX(0) translateZ(0);
+        }
+        100% {
+            transform: translateX(-66.666%) translateZ(0);
         }
     }
 
@@ -1304,267 +1331,270 @@ const mobileLogos = logos.slice(3);
     }
 </style>
 
-<script>
-    // High-Performance Vertical Scroller
-    const verticalScroller = document.querySelector(".vertical-scroller");
-    const items = document.querySelectorAll(".pp-item");
+<script is:inline>
+    // Critical: Immediate execution for high-priority animations
+    (function () {
+        // High-Performance Vertical Scroller
+        const verticalScroller = document.querySelector(".vertical-scroller");
+        const items = document.querySelectorAll(".pp-item");
 
-    if (verticalScroller && items.length > 0) {
-        let currentIndex = 0;
-        let isAnimating = false;
-        let autoPlayInterval: ReturnType<typeof setInterval> | null = null;
-        let isVisible = false;
+        if (verticalScroller && items.length > 0) {
+            let currentIndex = 0;
+            let isAnimating = false;
+            let autoPlayInterval = null;
+            let isVisible = false;
 
-        // Optimized render function - only updates when needed
-        function updateItems(newIndex: number) {
-            if (isAnimating || newIndex === currentIndex) return;
+            // Optimized render function - only updates when needed
+            function updateItems(newIndex) {
+                if (isAnimating || newIndex === currentIndex) return;
 
-            isAnimating = true;
-            currentIndex = newIndex;
+                isAnimating = true;
+                currentIndex = newIndex;
 
-            // Use requestAnimationFrame for smooth updates
-            requestAnimationFrame(() => {
-                items.forEach((item, index) => {
-                    // Remove all state classes
-                    item.classList.remove("active", "previous", "next");
+                // Use requestAnimationFrame for smooth updates
+                requestAnimationFrame(() => {
+                    items.forEach((item, index) => {
+                        // Remove all state classes
+                        item.classList.remove("active", "previous", "next");
 
-                    // Calculate positions
+                        // Calculate positions
+                        const prevIndex =
+                            (currentIndex - 1 + items.length) % items.length;
+                        const nextIndex = (currentIndex + 1) % items.length;
+
+                        // Apply new states
+                        if (index === currentIndex) {
+                            item.classList.add("active");
+                        } else if (index === prevIndex) {
+                            item.classList.add("previous");
+                        } else if (index === nextIndex) {
+                            item.classList.add("next");
+                        }
+                    });
+
+                    // Reset animation flag after transition
+                    setTimeout(() => {
+                        isAnimating = false;
+                    }, 50);
+                });
+            }
+
+            // Auto-play functionality
+            function startAutoPlay() {
+                if (autoPlayInterval) return;
+
+                autoPlayInterval = setInterval(() => {
+                    if (!isVisible) return;
+
+                    const nextIndex = (currentIndex + 1) % items.length;
+                    updateItems(nextIndex);
+                }, 1000); // Super fast 1s interval as requested ("speed of light")
+            }
+
+            function stopAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = null;
+                }
+            }
+
+            // Intersection Observer for performance
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        isVisible = entry.isIntersecting;
+
+                        if (isVisible) {
+                            startAutoPlay();
+                        } else {
+                            stopAutoPlay();
+                        }
+                    });
+                },
+                { threshold: 0.01 }, // Trigger as soon as 1 pixel is visible
+            );
+
+            // Initialize first item synchronously immediately
+            items.forEach((item, index) => {
+                if (index === 0) item.classList.add("active");
+            });
+
+            observer.observe(verticalScroller);
+
+            // Pause on hover
+            verticalScroller.addEventListener("mouseenter", stopAutoPlay);
+            verticalScroller.addEventListener("mouseleave", () => {
+                if (isVisible) startAutoPlay();
+            });
+
+            // Keyboard navigation (accessibility)
+            verticalScroller.addEventListener("keydown", (e) => {
+                const keyEvent = e;
+                if (keyEvent.key === "ArrowUp") {
+                    e.preventDefault();
                     const prevIndex =
                         (currentIndex - 1 + items.length) % items.length;
+                    updateItems(prevIndex);
+                } else if (keyEvent.key === "ArrowDown") {
+                    e.preventDefault();
                     const nextIndex = (currentIndex + 1) % items.length;
-
-                    // Apply new states
-                    if (index === currentIndex) {
-                        item.classList.add("active");
-                    } else if (index === prevIndex) {
-                        item.classList.add("previous");
-                    } else if (index === nextIndex) {
-                        item.classList.add("next");
-                    }
-                });
-
-                // Reset animation flag after transition
-                setTimeout(() => {
-                    isAnimating = false;
-                }, 50);
-            });
-        }
-
-        // Auto-play functionality
-        function startAutoPlay() {
-            if (autoPlayInterval) return;
-
-            autoPlayInterval = setInterval(() => {
-                if (!isVisible) return;
-
-                const nextIndex = (currentIndex + 1) % items.length;
-                updateItems(nextIndex);
-            }, 1000); // Super fast 1s interval as requested ("speed of light")
-        }
-
-        function stopAutoPlay() {
-            if (autoPlayInterval) {
-                clearInterval(autoPlayInterval);
-                autoPlayInterval = null;
-            }
-        }
-
-        // Intersection Observer for performance
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    isVisible = entry.isIntersecting;
-
-                    if (isVisible) {
-                        startAutoPlay();
-                    } else {
-                        stopAutoPlay();
-                    }
-                });
-            },
-            { threshold: 0.01 }, // Trigger as soon as 1 pixel is visible
-        );
-
-        // Initialize first item synchronously immediately
-        items.forEach((item, index) => {
-            if (index === 0) item.classList.add("active");
-        });
-
-        observer.observe(verticalScroller);
-
-        // Pause on hover
-        verticalScroller.addEventListener("mouseenter", stopAutoPlay);
-        verticalScroller.addEventListener("mouseleave", () => {
-            if (isVisible) startAutoPlay();
-        });
-
-        // Keyboard navigation (accessibility)
-        verticalScroller.addEventListener("keydown", (e: Event) => {
-            const keyEvent = e as KeyboardEvent;
-            if (keyEvent.key === "ArrowUp") {
-                e.preventDefault();
-                const prevIndex =
-                    (currentIndex - 1 + items.length) % items.length;
-                updateItems(prevIndex);
-            } else if (keyEvent.key === "ArrowDown") {
-                e.preventDefault();
-                const nextIndex = (currentIndex + 1) % items.length;
-                updateItems(nextIndex);
-            }
-        });
-
-        // Make focusable for keyboard navigation with proper focus styles
-        const scrollerElement = verticalScroller as HTMLElement;
-        scrollerElement.setAttribute("tabindex", "0");
-        scrollerElement.setAttribute("role", "region");
-        scrollerElement.setAttribute(
-            "aria-label",
-            "Pain points scroller - use arrow keys to navigate",
-        );
-
-        // Add focus styles
-        scrollerElement.style.outline = "none";
-        scrollerElement.addEventListener("focus", () => {
-            scrollerElement.style.boxShadow =
-                "0 0 0 2px var(--color-lime-primary)";
-        });
-        scrollerElement.addEventListener("blur", () => {
-            scrollerElement.style.boxShadow = "none";
-        });
-
-        // Cleanup on page unload
-        window.addEventListener("beforeunload", () => {
-            stopAutoPlay();
-            observer.disconnect();
-        });
-
-        // Reduced motion support
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            stopAutoPlay();
-            updateItems(0); // Show first item only
-        }
-    }
-
-    // Typing Animation for "too hard?" - with error handling
-    const headlineEl = document.querySelector(".trustedby-headline");
-    const cursorEl = document.querySelector(".trustedby-cursor");
-    const textToType = headlineEl?.getAttribute("data-text") || "";
-
-    if (headlineEl && textToType && cursorEl) {
-        let charIdx = 0;
-        let hasAnimated = false;
-
-        const typeHeadline = () => {
-            try {
-                if (charIdx < textToType.length) {
-                    headlineEl.textContent += textToType.charAt(charIdx);
-                    charIdx++;
-                    setTimeout(typeHeadline, 100);
+                    updateItems(nextIndex);
                 }
-            } catch (error) {
-                console.warn("Typing animation error:", error);
-                // Fallback: show complete text
-                headlineEl.textContent = textToType;
-            }
-        };
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting && !hasAnimated) {
-                        hasAnimated = true;
-                        setTimeout(typeHeadline, 500);
-                    }
-                });
-            },
-            { threshold: 0.5 },
-        );
-
-        observer.observe(headlineEl);
-    }
-
-    // Stats Counter Animation
-    const statsSection = document.querySelector("[data-trustedby-section]");
-    const statCounts = document.querySelectorAll(".stat-count");
-
-    if (statsSection && statCounts.length > 0) {
-        let hasCounted = false;
-
-        const startCounting = () => {
-            statCounts.forEach((stat, index) => {
-                const target = stat.getAttribute("data-target");
-                const decimals = parseInt(
-                    stat.getAttribute("data-decimals") || "0",
-                );
-                const suffix = stat.getAttribute("data-suffix") || "";
-
-                // Parse target (handle K/M/B suffixes if present in data-target, though likely passed as value)
-                // Assuming data-target is a raw number string based on props
-                let endValue = parseFloat(target || "0");
-
-                // Staggered animation start
-                const delay = index * 200; // 200ms delay between each stat
-
-                setTimeout(() => {
-                    // Simple animation
-                    let startValue = 0;
-                    let duration = 2500; // Slightly longer for more premium feel
-                    let startTime: number | null = null;
-
-                    function step(timestamp: number) {
-                        if (!startTime) startTime = timestamp;
-                        const progress = Math.min(
-                            (timestamp - startTime) / duration,
-                            1,
-                        );
-
-                        // Enhanced easing - elastic out
-                        const ease =
-                            progress === 1
-                                ? 1
-                                : 1 - Math.pow(2, -10 * progress);
-
-                        const current =
-                            startValue + (endValue - startValue) * ease;
-
-                        // Format
-                        let formatted = current.toFixed(decimals);
-
-                        // Add suffix
-                        stat.textContent = formatted + suffix;
-
-                        if (progress < 1) {
-                            window.requestAnimationFrame(step);
-                        }
-                    }
-                    window.requestAnimationFrame(step);
-                }, delay);
             });
-        };
 
-        const statsObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting && !hasCounted) {
-                        hasCounted = true; // Prevent multiple animations
+            // Make focusable for keyboard navigation with proper focus styles
+            const scrollerElement = verticalScroller;
+            scrollerElement.setAttribute("tabindex", "0");
+            scrollerElement.setAttribute("role", "region");
+            scrollerElement.setAttribute(
+                "aria-label",
+                "Pain points scroller - use arrow keys to navigate",
+            );
 
-                        // Reveal items with stagger
-                        document
-                            .querySelectorAll(".stat-item")
-                            .forEach((el, i) => {
-                                setTimeout(() => {
-                                    el.classList.add("is-visible");
-                                }, i * 150); // Staggered reveal
-                            });
+            // Add focus styles
+            scrollerElement.style.outline = "none";
+            scrollerElement.addEventListener("focus", () => {
+                scrollerElement.style.boxShadow =
+                    "0 0 0 2px var(--color-lime-primary)";
+            });
+            scrollerElement.addEventListener("blur", () => {
+                scrollerElement.style.boxShadow = "none";
+            });
 
-                        startCounting();
-                        statsObserver.disconnect(); // Stop observing after first trigger
+            // Cleanup on page unload
+            window.addEventListener("beforeunload", () => {
+                stopAutoPlay();
+                observer.disconnect();
+            });
+
+            // Reduced motion support
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                stopAutoPlay();
+                updateItems(0); // Show first item only
+            }
+        }
+
+        // Typing Animation for "too hard?" - with error handling
+        const headlineEl = document.querySelector(".trustedby-headline");
+        const cursorEl = document.querySelector(".trustedby-cursor");
+        const textToType = headlineEl?.getAttribute("data-text") || "";
+
+        if (headlineEl && textToType && cursorEl) {
+            let charIdx = 0;
+            let hasAnimated = false;
+
+            const typeHeadline = () => {
+                try {
+                    if (charIdx < textToType.length) {
+                        headlineEl.textContent += textToType.charAt(charIdx);
+                        charIdx++;
+                        setTimeout(typeHeadline, 100);
                     }
-                });
-            },
-            { threshold: 0.2 },
-        );
+                } catch (error) {
+                    console.warn("Typing animation error:", error);
+                    // Fallback: show complete text
+                    headlineEl.textContent = textToType;
+                }
+            };
 
-        statsObserver.observe(statsSection);
-    }
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting && !hasAnimated) {
+                            hasAnimated = true;
+                            setTimeout(typeHeadline, 500);
+                        }
+                    });
+                },
+                { threshold: 0.5 },
+            );
+
+            observer.observe(headlineEl);
+        }
+
+        // Stats Counter Animation
+        const statsSection = document.querySelector("[data-trustedby-section]");
+        const statCounts = document.querySelectorAll(".stat-count");
+
+        if (statsSection && statCounts.length > 0) {
+            let hasCounted = false;
+
+            const startCounting = () => {
+                statCounts.forEach((stat, index) => {
+                    const target = stat.getAttribute("data-target");
+                    const decimals = parseInt(
+                        stat.getAttribute("data-decimals") || "0",
+                    );
+                    const suffix = stat.getAttribute("data-suffix") || "";
+
+                    // Parse target (handle K/M/B suffixes if present in data-target, though likely passed as value)
+                    // Assuming data-target is a raw number string based on props
+                    let endValue = parseFloat(target || "0");
+
+                    // Staggered animation start
+                    const delay = index * 200; // 200ms delay between each stat
+
+                    setTimeout(() => {
+                        // Simple animation
+                        let startValue = 0;
+                        let duration = 2500; // Slightly longer for more premium feel
+                        let startTime = null;
+
+                        function step(timestamp) {
+                            if (!startTime) startTime = timestamp;
+                            const progress = Math.min(
+                                (timestamp - startTime) / duration,
+                                1,
+                            );
+
+                            // Enhanced easing - elastic out
+                            const ease =
+                                progress === 1
+                                    ? 1
+                                    : 1 - Math.pow(2, -10 * progress);
+
+                            const current =
+                                startValue + (endValue - startValue) * ease;
+
+                            // Format
+                            let formatted = current.toFixed(decimals);
+
+                            // Add suffix
+                            stat.textContent = formatted + suffix;
+
+                            if (progress < 1) {
+                                window.requestAnimationFrame(step);
+                            }
+                        }
+                        window.requestAnimationFrame(step);
+                    }, delay);
+                });
+            };
+
+            const statsObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting && !hasCounted) {
+                            hasCounted = true; // Prevent multiple animations
+
+                            // Reveal items with stagger
+                            document
+                                .querySelectorAll(".stat-item")
+                                .forEach((el, i) => {
+                                    setTimeout(() => {
+                                        el.classList.add("is-visible");
+                                    }, i * 150); // Staggered reveal
+                                });
+
+                            startCounting();
+                            statsObserver.disconnect(); // Stop observing after first trigger
+                        }
+                    });
+                },
+                { threshold: 0.2 },
+            );
+
+            statsObserver.observe(statsSection);
+        }
+    })(); // End IIFE
 </script>
