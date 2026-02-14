@@ -1,0 +1,473 @@
+---
+/**
+ * CREATIVE SYSTEMS V2.0 - "INSIDE THE MACHINE"
+ * Performance operator proof machine with scroll-reactive animations
+ * - Expandable "How It Works" sections with flow diagrams
+ * - Scroll-reactive GSAP timeline sequences
+ * - 3D hover tilt on device mockups
+ * - Real dashboard backgrounds (faded)
+ * - Timeline animations: Test → Iterate → Scale
+ */
+
+const services = [
+  {
+    id: 'paid-creative',
+    headline: 'We build ad creatives that compound revenue.',
+    metric: '+4.3x ROAS',
+    metricContext: 'across 90 days',
+    includes: [
+      'Creative angle testing framework',
+      'Hook-based short-form scripts',
+      'Data-driven iteration cycles'
+    ],
+    timeline: ['Test', 'Iterate', 'Scale'],
+    videoPlaceholder: '/videos/showreel.mp4',
+    dashboardBg: null, // User will provide: '/images/dashboards/roas-dashboard.png'
+    flowDiagram: null, // User will provide: '/images/flow-diagrams/creative-testing.png'
+    howItWorks: {
+      steps: [
+        { title: 'Angle Research', description: 'Analyze top performers in your niche' },
+        { title: 'Script Variants', description: 'Create 5-10 hook variations per concept' },
+        { title: 'A/B Testing', description: 'Launch systematic tests with $50-100 budgets' },
+        { title: 'Scale Winners', description: 'Double down on top 20% performers' }
+      ]
+    },
+    ctaText: 'See Framework'
+  },
+  {
+    id: 'content-engine',
+    headline: 'Turn one shoot into 90 days of content.',
+    metric: '127 pieces',
+    metricContext: 'from 1 session',
+    includes: [
+      'Multi-platform repurposing system',
+      'Batch production workflow',
+      'Platform-specific optimization'
+    ],
+    timeline: ['Capture', 'Repurpose', 'Distribute'],
+    videoPlaceholder: '/videos/showreel.mp4',
+    dashboardBg: null,
+    flowDiagram: null,
+    howItWorks: {
+      steps: [
+        { title: 'Strategic Shoot', description: '1 session designed for maximum repurposing' },
+        { title: 'Asset Breakdown', description: 'Extract 30+ raw clips and variations' },
+        { title: 'Platform Adaptation', description: 'Optimize for IG, TikTok, YouTube, LinkedIn' },
+        { title: 'Scheduled Distribution', description: '90-day content calendar automated' }
+      ]
+    },
+    ctaText: 'See System'
+  },
+  {
+    id: 'brand-identity',
+    headline: 'Visual systems that convert, not just look pretty.',
+    metric: '+68% brand recall',
+    metricContext: 'in 30 days',
+    includes: [
+      'Strategic color psychology',
+      'Conversion-focused design language',
+      'Cross-platform consistency'
+    ],
+    timeline: ['Research', 'Design', 'Deploy'],
+    videoPlaceholder: '/videos/showreel.mp4',
+    dashboardBg: null,
+    flowDiagram: null,
+    howItWorks: {
+      steps: [
+        { title: 'Competitive Analysis', description: 'Map positioning gaps in your market' },
+        { title: 'Psychology Mapping', description: 'Color, typography, and visual hierarchy' },
+        { title: 'System Creation', description: 'Scalable brand guidelines and assets' },
+        { title: 'Consistency Audit', description: 'Ensure alignment across all touchpoints' }
+      ]
+    },
+    ctaText: 'See Process'
+  },
+  {
+    id: 'landing-pages',
+    headline: 'Pages that turn traffic into pipeline.',
+    metric: '2.8x conversion',
+    metricContext: 'rate improvement',
+    includes: [
+      'Behavioral psychology framework',
+      'A/B testing infrastructure',
+      'Mobile-first optimization'
+    ],
+    timeline: ['Analyze', 'Optimize', 'Convert'],
+    videoPlaceholder: '/videos/showreel.mp4',
+    dashboardBg: null,
+    flowDiagram: null,
+    howItWorks: {
+      steps: [
+        { title: 'Heatmap Analysis', description: 'Identify drop-off points and friction' },
+        { title: 'Psychology Triggers', description: 'Implement proven conversion patterns' },
+        { title: 'Variant Testing', description: 'Systematic A/B tests on key elements' },
+        { title: 'Continuous Iteration', description: 'Monthly optimization cycles' }
+      ]
+    },
+    ctaText: 'See Method'
+  }
+];
+---
+
+<section id="work" class="relative py-32 bg-zinc-950 overflow-hidden">
+  <!-- Cinematic Grain Overlay -->
+  <div class="grain-overlay absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none"></div>
+  
+  <!-- Atmospheric Background -->
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900 via-zinc-950 to-black opacity-60"></div>
+
+  <!-- Content Container -->
+  <div class="w-full pl-[13%] relative z-10">
+    
+    <!-- Header -->
+    <div class="mb-20 pr-[13%]">
+      <div class="inline-flex items-center gap-2 mb-6">
+        <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+        <span class="text-xs font-bold tracking-[0.3em] text-lime-400/80 uppercase font-body">Performance Machine</span>
+      </div>
+      <h2 class="text-6xl md:text-8xl font-heading font-light text-white leading-[0.85] tracking-tight mb-6">
+        Creative Systems <br />
+        <span class="text-lime-400 font-serif italic">In Action.</span>
+      </h2>
+      <p class="max-w-2xl text-zinc-400 font-body text-lg">
+        We don't just make things look good. <br />
+        <span class="text-white font-medium">We build systems that generate measurable results.</span>
+      </p>
+    </div>
+
+    <!-- Service Panels - Vertical Stack -->
+    <div class="services-container space-y-24 pr-[13%]">
+      
+      {services.map((service, index) => (
+        <div 
+          class="service-panel w-full flex flex-col gap-8"
+          data-service-id={service.id}
+          data-index={index}
+        >
+            
+            <!-- Metric (Blur to Sharp) -->
+            <div class="metric-reveal" data-metric>
+              <div class="text-7xl md:text-8xl font-heading font-medium text-lime-400 glow-text leading-none">
+                {service.metric}
+              </div>
+              <div class="text-lg text-zinc-400 font-body mt-2">
+                {service.metricContext}
+              </div>
+            </div>
+
+            <!-- Main Content: Video + Details -->
+            <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
+              
+              <!-- Left: Video Mockup with 3D Tilt -->
+              <div class="video-mockup-wrapper flex-shrink-0 w-full md:w-[320px] lg:w-[380px]" data-tilt-container>
+                <div class="relative aspect-[9/16] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl perspective-1000" data-tilt-element>
+                  
+                  <!-- Dashboard Background (Faded) -->
+                  {service.dashboardBg && (
+                    <div class="dashboard-bg absolute inset-0 opacity-0" data-dashboard>
+                      <img 
+                        src={service.dashboardBg} 
+                        alt="Dashboard" 
+                        class="w-full h-full object-cover opacity-15 blur-sm"
+                      />
+                    </div>
+                  )}
+
+                  <!-- iPhone Mockup Frame -->
+                  <div class="absolute inset-0 z-10 pointer-events-none">
+                    <div class="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-8 bg-black rounded-full"></div>
+                  </div>
+
+                  <!-- Video Element -->
+                  <video 
+                    class="service-video absolute inset-0 w-full h-full object-cover z-[5]"
+                    src={service.videoPlaceholder}
+                    muted
+                    loop
+                    playsinline
+                    data-autoplay="true"
+                  ></video>
+
+                  <!-- Subtle Glow Effect -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-lime-400/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[6]"></div>
+                </div>
+              </div>
+
+              <!-- Right: Content Block -->
+              <div class="flex-1 glassmorphism-card p-8 md:p-10 rounded-2xl border border-white/5 backdrop-blur-sm bg-white/[0.02] relative overflow-hidden">
+                
+                <!-- Headline with Text Mask Reveal -->
+                <h3 class="text-3xl md:text-4xl lg:text-5xl font-heading font-light text-white leading-tight mb-6 headline-reveal" data-headline>
+                  {service.headline}
+                </h3>
+
+                <!-- Timeline Animation: Test → Iterate → Scale -->
+                <div class="mb-8 flex items-center gap-3 timeline-container" data-timeline>
+                  {service.timeline.map((step, i) => (
+                    <>
+                      <div class="timeline-step px-4 py-2 bg-lime-400/10 border border-lime-400/30 rounded-full text-lime-400 font-bold text-sm">
+                        {step}
+                      </div>
+                      {i < service.timeline.length - 1 && (
+                        <svg class="w-6 h-6 text-lime-400/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      )}
+                    </>
+                  ))}
+                </div>
+
+                <!-- Includes List -->
+                <div class="mb-8 space-y-3 bullets-container">
+                  {service.includes.map((item, i) => (
+                    <div class="flex items-start gap-3 bullet-item" data-bullet data-bullet-index={i}>
+                      <svg class="w-5 h-5 text-lime-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span class="text-zinc-300 font-body text-base">{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <!-- Expandable "How It Works" Section -->
+                <div class="how-it-works-section">
+                  <button 
+                    class="how-it-works-toggle group w-full flex items-center justify-between px-6 py-3 bg-transparent border border-lime-400/30 text-lime-400 font-bold text-sm rounded-full hover:border-lime-400 transition-all duration-300"
+                    data-toggle
+                    aria-expanded="false"
+                  >
+                    <span class="flex items-center gap-2">
+                      {service.ctaText}
+                      <svg class="w-4 h-4 transition-transform duration-300" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </span>
+                  </button>
+
+                  <!-- Expandable Content -->
+                  <div class="how-it-works-content overflow-hidden" style="height: 0;" data-content>
+                    <div class="pt-6 space-y-4">
+                      {service.howItWorks.steps.map((step, i) => (
+                        <div class="flex gap-4 items-start">
+                          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-lime-400/20 border border-lime-400/40 flex items-center justify-center text-lime-400 font-bold text-sm">
+                            {i + 1}
+                          </div>
+                          <div>
+                            <h4 class="text-white font-bold text-base mb-1">{step.title}</h4>
+                            <p class="text-zinc-400 text-sm">{step.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                      
+                      {service.flowDiagram && (
+                        <div class="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
+                          <img src={service.flowDiagram} alt="Flow Diagram" class="w-full" />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+      ))}
+
+    </div>
+
+    <!-- Minimal CTA -->
+    <div class="mt-16 flex justify-center px-[13%]">
+      <a href="#book" class="group relative px-8 py-4 bg-lime-400 text-black font-bold text-lg rounded-full overflow-hidden hover:shadow-[0_0_40px_-10px_rgba(132,204,22,0.6)] transition-all duration-300">
+        <span class="relative z-10 group-hover:text-black transition-colors">Let's Build Your System</span>
+        <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]"></div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Grain Overlay */
+  .grain-overlay {
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="4" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+    background-repeat: repeat;
+  }
+
+  /* Glassmorphism Card */
+  .glassmorphism-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  /* Glow Text */
+  .glow-text {
+    text-shadow: 0 0 20px rgba(132, 204, 22, 0.4);
+  }
+
+  /* 3D Perspective */
+  .perspective-1000 {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('astro:page-load', () => {
+    
+    // Scroll-Reactive Timeline Animations (Per Panel)
+    const panels = document.querySelectorAll('.service-panel');
+    
+    panels.forEach((panel) => {
+      const metric = panel.querySelector('[data-metric]');
+      const mockup = panel.querySelector('[data-tilt-element]');
+      const dashboard = panel.querySelector('[data-dashboard]');
+      const headline = panel.querySelector('[data-headline]');
+      const timeline = panel.querySelector('[data-timeline]');
+      const bullets = panel.querySelectorAll('[data-bullet]');
+      
+      // Create timeline for this panel
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: panel,
+          start: 'top 80%',
+          end: 'top 20%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Sequence animations
+      tl.fromTo(metric, 
+        { opacity: 0, filter: 'blur(10px)' },
+        { opacity: 1, filter: 'blur(0px)', duration: 0.6, ease: 'power3.out' }
+      )
+      .fromTo(mockup,
+        { x: -100, rotateY: -15, opacity: 0 },
+        { x: 0, rotateY: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
+        0.2
+      );
+
+      if (dashboard) {
+        tl.to(dashboard, { opacity: 1, duration: 0.4 }, 0.4);
+      }
+
+      tl.fromTo(headline,
+        { clipPath: 'inset(0 100% 0 0)', opacity: 0 },
+        { clipPath: 'inset(0 0 0 0)', opacity: 1, duration: 0.8, ease: 'power3.out' },
+        0.6
+      )
+      .fromTo(timeline,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+        0.8
+      )
+      .fromTo(bullets,
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, ease: 'power2.out' },
+        1.0
+      );
+    });
+
+    // 3D Tilt Effect on Hover
+    const tiltContainers = document.querySelectorAll('[data-tilt-container]');
+    
+    tiltContainers.forEach(container => {
+      const element = container.querySelector('[data-tilt-element]');
+      
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        
+        gsap.to(element, {
+          rotateY: x * 15,
+          rotateX: -y * 15,
+          scale: 1.02,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+
+      container.addEventListener('mouseleave', () => {
+        gsap.to(element, {
+          rotateY: 0,
+          rotateX: 0,
+          scale: 1,
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    // Expandable "How It Works" Sections
+    const toggles = document.querySelectorAll('[data-toggle]');
+    
+    toggles.forEach(toggle => {
+      const content = toggle.parentElement?.querySelector('[data-content]');
+      const chevron = toggle.querySelector('[data-chevron]');
+      
+      if (!content || !chevron) return;
+
+      toggle.addEventListener('click', () => {
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        
+        if (isExpanded) {
+          gsap.to(content, {
+            height: 0,
+            duration: 0.5,
+            ease: 'power3.inOut'
+          });
+          gsap.to(chevron, {
+            rotate: 0,
+            duration: 0.3
+          });
+        } else {
+          gsap.set(content, { height: 'auto' });
+          gsap.from(content, {
+            height: 0,
+            duration: 0.5,
+            ease: 'power3.inOut'
+          });
+          gsap.to(chevron, {
+            rotate: 180,
+            duration: 0.3
+          });
+        }
+        
+        toggle.setAttribute('aria-expanded', String(!isExpanded));
+      });
+    });
+
+    // Video Autoplay on Scroll
+    const videos = document.querySelectorAll('.service-video');
+    
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target as HTMLVideoElement;
+        
+        if (entry.isIntersecting) {
+          video.play().catch(err => console.log('Video autoplay prevented:', err));
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    videos.forEach(video => videoObserver.observe(video));
+
+    // Cleanup
+    document.addEventListener('astro:before-swap', () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      videoObserver.disconnect();
+    });
+
+  });
+</script>

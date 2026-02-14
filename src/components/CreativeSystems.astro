@@ -1,0 +1,374 @@
+---
+/**
+ * CREATIVE SYSTEMS IN ACTION
+ * Premium horizontal scroll showcase of Cinemora's core services
+ * - Metrics-driven storytelling (Problem → System → Result)
+ * - Auto-playing video loops in device mockups
+ * - GSAP ScrollTrigger for smooth horizontal scroll
+ * - Glassmorphism cards with premium animations
+ */
+
+import { ViewTransitions } from 'astro:transitions';
+
+const services = [
+  {
+    id: 'paid-creative',
+    headline: 'We build ad creatives that compound revenue.',
+    metric: '+4.3x ROAS',
+    metricContext: 'across 90 days',
+    includes: [
+      'Creative angle testing framework',
+      'Hook-based short-form scripts',
+      'Data-driven iteration cycles'
+    ],
+    videoPlaceholder: '/videos/showreel.mp4',
+    ctaText: 'See Breakdown'
+  },
+  {
+    id: 'content-engine',
+    headline: 'Turn one shoot into 90 days of content.',
+    metric: '127 pieces',
+    metricContext: 'from 1 session',
+    includes: [
+      'Multi-platform repurposing system',
+      'Batch production workflow',
+      'Platform-specific optimization'
+    ],
+    videoPlaceholder: '/videos/showreel.mp4',
+    ctaText: 'See Breakdown'
+  },
+  {
+    id: 'brand-identity',
+    headline: 'Visual systems that convert, not just look pretty.',
+    metric: '+68% brand recall',
+    metricContext: 'in 30 days',
+    includes: [
+      'Strategic color psychology',
+      'Conversion-focused design language',
+      'Cross-platform consistency'
+    ],
+    videoPlaceholder: '/videos/showreel.mp4',
+    ctaText: 'See Breakdown'
+  },
+  {
+    id: 'landing-pages',
+    headline: 'Pages that turn traffic into pipeline.',
+    metric: '2.8x conversion',
+    metricContext: 'rate improvement',
+    includes: [
+      'Behavioral psychology framework',
+      'A/B testing infrastructure',
+      'Mobile-first optimization'
+    ],
+    videoPlaceholder: '/videos/showreel.mp4',
+    ctaText: 'See Breakdown'
+  },
+  {
+    id: 'creative-testing',
+    headline: 'Data-driven creative iteration at scale.',
+    metric: '5-10 winners',
+    metricContext: 'per month',
+    includes: [
+      'Systematic testing methodology',
+      'Performance analytics dashboard',
+      'Rapid iteration cycles'
+    ],
+    videoPlaceholder: '/videos/showreel.mp4',
+    ctaText: 'See Breakdown'
+  }
+];
+---
+
+<section id="work" class="relative py-32 bg-zinc-950 overflow-hidden">
+  <!-- Cinematic Grain Overlay -->
+  <div class="grain-overlay absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none"></div>
+  
+  <!-- Atmospheric Background -->
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900 via-zinc-950 to-black opacity-60"></div>
+
+  <!-- Content Container -->
+  <div class="w-full pl-[13%] relative z-10">
+    
+    <!-- Header -->
+    <div class="mb-20">
+      <div class="inline-flex items-center gap-2 mb-6">
+        <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+        <span class="text-xs font-bold tracking-[0.3em] text-lime-400/80 uppercase font-body">Performance Machine</span>
+      </div>
+      <h2 class="text-6xl md:text-8xl font-heading font-light text-white leading-[0.85] tracking-tight mb-6">
+        Creative Systems <br />
+        <span class="text-lime-400 font-serif italic">In Action.</span>
+      </h2>
+      <p class="max-w-2xl text-zinc-400 font-body text-lg">
+        We don't just make things look good. <br />
+        <span class="text-white font-medium">We build systems that generate measurable results.</span>
+      </p>
+    </div>
+
+    <!-- Horizontal Scroll Container -->
+    <div class="horizontal-scroll-wrapper" data-scroll-section>
+      <div class="horizontal-scroll-container flex gap-8 pb-8 pr-[13%]">
+        
+        {services.map((service, index) => (
+          <div 
+            class="service-panel flex-shrink-0 w-[80vw] md:w-[70vw] lg:w-[60vw] xl:w-[50vw] flex flex-col md:flex-row gap-8 md:gap-12 items-center"
+            data-service-id={service.id}
+            data-index={index}
+          >
+            
+            <!-- Left: Video Mockup -->
+            <div class="video-mockup-container flex-shrink-0 w-full md:w-[320px] lg:w-[380px]">
+              <div class="relative aspect-[9/16] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl">
+                
+                <!-- iPhone Mockup Frame -->
+                <div class="absolute inset-0 z-10 pointer-events-none">
+                  <!-- Dynamic Island -->
+                  <div class="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-8 bg-black rounded-full"></div>
+                </div>
+
+                <!-- Video Element -->
+                <video 
+                  class="service-video absolute inset-0 w-full h-full object-cover"
+                  src={service.videoPlaceholder}
+                  muted
+                  loop
+                  playsinline
+                  data-autoplay="true"
+                ></video>
+
+                <!-- Subtle Glow Effect -->
+                <div class="absolute inset-0 bg-gradient-to-t from-lime-400/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
+
+            <!-- Right: Content Block -->
+            <div class="flex-1 glassmorphism-card p-8 md:p-10 rounded-2xl border border-white/5 backdrop-blur-sm bg-white/[0.02]">
+              
+              <!-- Headline with Text Mask Reveal -->
+              <h3 class="text-3xl md:text-4xl lg:text-5xl font-heading font-light text-white leading-tight mb-6 text-mask-reveal">
+                {service.headline}
+              </h3>
+
+              <!-- Metric Highlight -->
+              <div class="mb-8 inline-block">
+                <div class="flex items-baseline gap-3">
+                  <span class="text-5xl md:text-6xl font-heading font-medium text-lime-400 glow-text">
+                    {service.metric}
+                  </span>
+                  <span class="text-lg text-zinc-400 font-body">
+                    {service.metricContext}
+                  </span>
+                </div>
+                <div class="h-[2px] w-full bg-gradient-to-r from-lime-400 via-lime-400/50 to-transparent mt-2"></div>
+              </div>
+
+              <!-- Includes List -->
+              <div class="mb-8 space-y-3">
+                {service.includes.map((item) => (
+                  <div class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-lime-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-zinc-300 font-body text-base">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Micro CTA -->
+              <button class="group relative px-6 py-3 bg-transparent border border-lime-400/30 text-lime-400 font-bold text-sm rounded-full overflow-hidden hover:border-lime-400 transition-all duration-300 glow-pulse-cta">
+                <span class="relative z-10 flex items-center gap-2">
+                  {service.ctaText}
+                  <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+                <div class="absolute inset-0 bg-lime-400/10 translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
+              </button>
+
+            </div>
+
+          </div>
+        ))}
+
+      </div>
+    </div>
+
+    <!-- Minimal CTA -->
+    <div class="mt-16 flex justify-center px-[13%]">
+      <a href="#book" class="group relative px-8 py-4 bg-lime-400 text-black font-bold text-lg rounded-full overflow-hidden hover:shadow-[0_0_40px_-10px_rgba(132,204,22,0.6)] transition-all duration-300">
+        <span class="relative z-10 group-hover:text-black transition-colors">Let's Build Your System</span>
+        <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]"></div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Grain Overlay */
+  .grain-overlay {
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="4" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+    background-repeat: repeat;
+  }
+
+  /* Glassmorphism Card */
+  .glassmorphism-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  /* Text Mask Reveal Animation */
+  .text-mask-reveal {
+    animation: textMaskReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-play-state: paused;
+  }
+
+  .service-panel.in-view .text-mask-reveal {
+    animation-play-state: running;
+  }
+
+  @keyframes textMaskReveal {
+    0% {
+      clip-path: inset(0 100% 0 0);
+      opacity: 0;
+    }
+    100% {
+      clip-path: inset(0 0 0 0);
+      opacity: 1;
+    }
+  }
+
+  /* Glow Text */
+  .glow-text {
+    text-shadow: 0 0 20px rgba(132, 204, 22, 0.4);
+  }
+
+  /* Glow Pulse CTA */
+  .glow-pulse-cta {
+    animation: glowPulse 4s ease-in-out infinite;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow: 0 0 0 rgba(132, 204, 22, 0);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(132, 204, 22, 0.3);
+    }
+  }
+
+  /* Horizontal Scroll Container */
+  .horizontal-scroll-container {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Micro Hover Physics */
+  .service-panel {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .service-panel:hover {
+    transform: translateY(-6px);
+  }
+
+  /* Video Performance Optimization */
+  .service-video {
+    will-change: opacity;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .horizontal-scroll-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .horizontal-scroll-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .horizontal-scroll-container {
+      display: flex;
+      padding-bottom: 2rem;
+    }
+
+    .service-panel {
+      flex-direction: column;
+    }
+
+    .video-mockup-container {
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Wait for DOM to be ready
+  document.addEventListener('astro:page-load', () => {
+    
+    // Horizontal Scroll Setup (Desktop Only)
+    if (window.innerWidth >= 768) {
+      const scrollSection = document.querySelector('[data-scroll-section]');
+      const scrollContainer = document.querySelector('.horizontal-scroll-container');
+      
+      if (scrollSection && scrollContainer) {
+        const scrollWidth = scrollContainer.scrollWidth - window.innerWidth + (window.innerWidth * 0.26); // Account for padding
+        
+        gsap.to(scrollContainer, {
+          x: -scrollWidth,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: scrollSection,
+            start: 'top top',
+            end: () => `+=${scrollWidth}`,
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true
+          }
+        });
+      }
+    }
+
+    // Video Autoplay on Scroll (Intersection Observer)
+    const videos = document.querySelectorAll('.service-video');
+    
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target as HTMLVideoElement;
+        const panel = video.closest('.service-panel');
+        
+        if (entry.isIntersecting) {
+          video.play().catch(err => console.log('Video autoplay prevented:', err));
+          panel?.classList.add('in-view');
+        } else {
+          video.pause();
+          panel?.classList.remove('in-view');
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    videos.forEach(video => videoObserver.observe(video));
+
+    // Cleanup on page unload
+    document.addEventListener('astro:before-swap', () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      videoObserver.disconnect();
+    });
+
+  });
+</script>

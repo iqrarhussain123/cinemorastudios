@@ -1,0 +1,952 @@
+---
+/**
+ * WORK VAULT - Premium Editorial Portfolio
+ * Luxury magazine-style layout
+ * Asymmetric design, large typography, generous whitespace
+ */
+
+// Video data structure
+const videos = [
+  {
+    id: 'featured-coach-reels',
+    title: 'Personal Brand Reels System',
+    industry: 'coach',
+    format: 'short_form',
+    platform: 'instagram',
+    thumbnailUrl: '/images/work/coach-reels-thumb.jpg',
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    isFeatured: true,
+    results: [
+      { metric: '127 pieces from 1 session' },
+      { metric: 'Delivered in 7 days' },
+      { metric: '12 reels/month ongoing' }
+    ],
+    tags: ['Scriptwriting', 'Editing', 'Posting', 'Repurposing'],
+    primaryOffer: 'Personal Brand Reels System (Coaches)'
+  },
+  {
+    id: 'coach-short-1',
+    title: 'High-Ticket Coach Content',
+    industry: 'coach',
+    format: 'short_form',
+    platform: 'tiktok',
+    thumbnailUrl: '/images/work/coach-short-1.jpg',
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    isFeatured: false,
+    results: [
+      { metric: '4.3x ROAS across 90 days' },
+      { metric: '50+ creative angles tested' },
+      { metric: 'Hook-driven scripts' }
+    ],
+    tags: ['Creative Testing', 'Scripting', 'Ads'],
+    primaryOffer: 'Paid Creative System (Coaches)'
+  },
+  {
+    id: 'real-estate-1',
+    title: 'Luxury Real Estate Showcase',
+    industry: 'real_estate',
+    format: 'short_form',
+    platform: 'instagram',
+    thumbnailUrl: '/images/work/real-estate-1.jpg',
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    isFeatured: false,
+    results: [
+      { metric: '2.8x conversion rate lift' },
+      { metric: 'Premium property tours' },
+      { metric: '15 listings/month' }
+    ],
+    tags: ['Property Tours', 'Editing', 'Brand'],
+    primaryOffer: 'Real Estate Content System'
+  },
+  {
+    id: 'coach-long-1',
+    title: 'YouTube Brand Series',
+    industry: 'coach',
+    format: 'long_form',
+    platform: 'youtube',
+    thumbnailUrl: '/images/work/coach-long-1.jpg',
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    isFeatured: false,
+    results: [
+      { metric: '68% brand recall increase' },
+      { metric: '8-12 min episodes' },
+      { metric: 'Weekly publishing' }
+    ],
+    tags: ['YouTube', 'Brand', 'Scripting', 'Editing'],
+    primaryOffer: 'Long-Form Content System'
+  },
+  {
+    id: 'real-estate-2',
+    title: 'Agent Personal Brand',
+    industry: 'real_estate',
+    format: 'short_form',
+    platform: 'instagram',
+    thumbnailUrl: '/images/work/real-estate-2.jpg',
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    isFeatured: false,
+    results: [
+      { metric: '90-day content calendar' },
+      { metric: 'Multi-platform repurposing' },
+      { metric: 'Batch production workflow' }
+    ],
+    tags: ['Reels', 'Content Calendar', 'Repurposing'],
+    primaryOffer: 'Content Repurposing System'
+  },
+  {
+    id: 'coach-short-2',
+    title: 'Fitness Coach Ads',
+    industry: 'coach',
+    format: 'short_form',
+    platform: 'instagram',
+    thumbnailUrl: '/images/work/coach-short-2.jpg',
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    isFeatured: false,
+    results: [
+      { metric: 'A/B testing infrastructure' },
+      { metric: 'Mobile-first optimization' },
+      { metric: 'Behavioral psychology hooks' }
+    ],
+    tags: ['Ads', 'Testing', 'Optimization'],
+    primaryOffer: 'Conversion Creative System'
+  }
+];
+
+// Filter categories
+const filters = [
+  { id: 'all', label: 'All Work' },
+  { id: 'coach', label: 'Coaches' },
+  { id: 'real_estate', label: 'Real Estate' },
+  { id: 'long_form', label: 'Long-form' }
+];
+---
+
+<section id="work" class="work-vault-premium">
+  
+  <!-- Header -->
+  <div class="vault-header">
+    <div class="header-content">
+      <span class="kicker">Selected Work</span>
+      <h2 class="vault-title">
+        Real Systems.<br/>
+        <span class="title-accent">Real Results.</span>
+      </h2>
+      <p class="vault-subtitle">
+        Curated portfolio of performance-driven creative systems built for coaches and real estate brands.
+      </p>
+    </div>
+
+    <!-- Filter Pills -->
+    <div class="filter-container" data-filters>
+      {filters.map((filter, index) => (
+        <button 
+          class:list={[
+            'filter-btn',
+            filter.id === 'all' ? 'active' : ''
+          ]}
+          data-filter={filter.id}
+        >
+          {filter.label}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Featured Project (Hero) -->
+  {videos.filter(v => v.isFeatured).map(video => (
+    <div class="featured-project" data-spotlight data-video-id={video.id}>
+      <div class="featured-grid">
+        <!-- Image -->
+        <div class="featured-visual">
+          <div class="featured-image-wrapper">
+            <img 
+              src={video.thumbnailUrl}
+              alt={video.title}
+              class="featured-image"
+              onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%221200%22 height=%22800%22%3E%3Crect fill=%22%23e5e5e5%22 width=%221200%22 height=%22800%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2248%22 fill=%22%23999%22%3EFeatured Work%3C/text%3E%3C/svg%3E'"
+            />
+            <div class="featured-overlay">
+              <div class="play-icon-large">
+                <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="featured-content">
+          <div class="featured-meta">
+            <span class="meta-badge">{video.industry === 'coach' ? 'Coach' : 'Real Estate'}</span>
+            <span class="meta-divider">/</span>
+            <span class="meta-text">Featured</span>
+          </div>
+          <h3 class="featured-title">{video.title}</h3>
+          <p class="featured-description">{video.primaryOffer}</p>
+          <div class="featured-stats">
+            {video.results.slice(0, 2).map(result => (
+              <div class="stat-item">
+                <span class="stat-value">{result.metric}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  <!-- Projects Grid (Asymmetric) -->
+  <div class="projects-grid" data-video-grid>
+    {videos.filter(v => !v.isFeatured).map((video, index) => (
+      <article 
+        class:list={[
+          'project-card',
+          `card-${index + 1}`
+        ]}
+        data-video-id={video.id}
+        data-industry={video.industry}
+        data-format={video.format}
+      >
+        <div class="card-image-wrapper">
+          <img 
+            src={video.thumbnailUrl}
+            alt={video.title}
+            class="card-image"
+            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22750%22%3E%3Crect fill=%22%23e5e5e5%22 width=%22600%22 height=%22750%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2224%22 fill=%22%23999%22%3EProject%3C/text%3E%3C/svg%3E'"
+          />
+          <div class="card-overlay">
+            <div class="play-icon-small">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span class="meta-tag">{video.industry === 'coach' ? 'Coach' : video.industry === 'real_estate' ? 'Real Estate' : 'Other'}</span>
+          </div>
+          <h4 class="card-title">{video.title}</h4>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state hidden" data-empty-state>
+    <p class="empty-text">No projects match this filter.</p>
+  </div>
+
+  <!-- Modal -->
+  <div id="video-modal" class="modal hidden" data-modal>
+    <div class="modal-backdrop" data-modal-close></div>
+    <div class="modal-container" data-modal-content>
+      <button class="modal-close" data-modal-close>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <div class="modal-video" data-video-container></div>
+
+      <div class="modal-info">
+        <h3 class="modal-title" data-modal-title></h3>
+        <p class="modal-offer" data-modal-offer></p>
+        <div class="modal-results" data-modal-results></div>
+        <div class="modal-tags" data-modal-tags></div>
+        <a href="#book" class="modal-cta">Book a Strategy Call</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Space+Grotesk:wght@300;400;500;600&display=swap');
+
+  .work-vault-premium {
+    --paper: #faf8f3;
+    --paper-dark: #f5f2eb;
+    --ink: #0a0a0a;
+    --muted: #6b6b6b;
+    --accent: #84cc16;
+    
+    position: relative;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 10% 8%;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
+
+  /* Subtle Noise Texture */
+  .work-vault-premium::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+    opacity: 0.015;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  /* Subtle Gradient Overlay */
+  .work-vault-premium::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top, rgba(132, 204, 22, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Header */
+  .vault-header {
+    max-width: 1400px;
+    margin: 0 auto 8rem;
+  }
+
+  .header-content {
+    margin-bottom: 4rem;
+  }
+
+  .kicker {
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .vault-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+  }
+
+  .title-accent {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .vault-subtitle {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 600px;
+    font-weight: 300;
+  }
+
+  /* Filters */
+  .filter-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0;
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  /* Featured Project */
+  .featured-project {
+    max-width: 1400px;
+    margin: 0 auto 8rem;
+    cursor: pointer;
+    position: relative;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: all 0.5s ease;
+  }
+
+  .featured-project:hover {
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.08);
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .featured-image-wrapper {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e8e6e1;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
+  }
+
+  .featured-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+    transition: filter 0.7s ease, transform 0.7s ease;
+  }
+
+  .featured-project:hover .featured-image {
+    filter: grayscale(0);
+    transform: scale(1.03);
+  }
+
+  .featured-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .featured-project:hover .featured-overlay {
+    opacity: 1;
+  }
+
+  .play-icon-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.9);
+    transition: transform 0.4s ease;
+  }
+
+  .featured-project:hover .play-icon-large {
+    transform: scale(1);
+  }
+
+  .featured-content {
+    padding: 2rem 0;
+  }
+
+  .featured-meta {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+    color: var(--muted);
+  }
+
+  .meta-badge {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .meta-divider {
+    margin: 0 0.75rem;
+  }
+
+  .featured-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .featured-description {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .featured-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* Projects Grid (Asymmetric) */
+  .projects-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+  }
+
+  .project-card {
+    cursor: pointer;
+    transition: transform 0.4s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+  }
+
+  /* Asymmetric Layout */
+  .card-1 { grid-column: 1 / 6; }
+  .card-2 { grid-column: 6 / 10; }
+  .card-3 { grid-column: 10 / 13; }
+  .card-4 { grid-column: 1 / 5; }
+  .card-5 { grid-column: 5 / 9; }
+  .card-6 { grid-column: 9 / 13; }
+
+  .card-image-wrapper {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    background: #e8e6e1;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.4s ease;
+  }
+
+  .project-card:hover .card-image-wrapper {
+    box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.18);
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+    transition: filter 0.6s ease, transform 0.6s ease;
+  }
+
+  .project-card:hover .card-image {
+    filter: grayscale(0);
+    transform: scale(1.05);
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .project-card:hover .card-overlay {
+    opacity: 1;
+  }
+
+  .play-icon-small {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-content {
+    padding: 0 0.5rem;
+  }
+
+  .card-meta {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
+  }
+
+  .meta-tag {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  /* Empty State */
+  .empty-state {
+    text-align: center;
+    padding: 6rem 0;
+  }
+
+  .empty-text {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--muted);
+    font-size: 1.125rem;
+  }
+
+  /* Modal */
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .modal.hidden {
+    display: none;
+  }
+
+  .modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+  }
+
+  .modal-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    background: var(--paper);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+  }
+
+  .modal-close:hover {
+    background: var(--ink);
+  }
+
+  .modal-video {
+    aspect-ratio: 16/9;
+    background: #000;
+  }
+
+  .modal-video iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal-info {
+    padding: 3rem;
+  }
+
+  .modal-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .modal-offer {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.875rem;
+    margin-bottom: 2rem;
+  }
+
+  .modal-results {
+    margin-bottom: 2rem;
+  }
+
+  .modal-results > div {
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    color: var(--ink);
+  }
+
+  .modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .modal-tags span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  .modal-cta {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.875rem;
+    padding: 1rem 2.5rem;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .modal-cta:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .featured-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-1, .card-2, .card-3, .card-4, .card-5, .card-6 {
+      grid-column: span 1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .work-vault-premium {
+      padding: 15% 6%;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .modal-info {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  document.addEventListener('astro:page-load', () => {
+    
+    // Video data
+    const videoData = {
+      'featured-coach-reels': {
+        title: 'Personal Brand Reels System',
+        primaryOffer: 'Personal Brand Reels System (Coaches)',
+        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        results: ['127 pieces from 1 session', 'Delivered in 7 days', '12 reels/month ongoing'],
+        tags: ['Scriptwriting', 'Editing', 'Posting', 'Repurposing']
+      },
+      'coach-short-1': {
+        title: 'High-Ticket Coach Content',
+        primaryOffer: 'Paid Creative System (Coaches)',
+        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        results: ['4.3x ROAS across 90 days', '50+ creative angles tested', 'Hook-driven scripts'],
+        tags: ['Creative Testing', 'Scripting', 'Ads']
+      },
+      'real-estate-1': {
+        title: 'Luxury Real Estate Showcase',
+        primaryOffer: 'Real Estate Content System',
+        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        results: ['2.8x conversion rate lift', 'Premium property tours', '15 listings/month'],
+        tags: ['Property Tours', 'Editing', 'Brand']
+      },
+      'coach-long-1': {
+        title: 'YouTube Brand Series',
+        primaryOffer: 'Long-Form Content System',
+        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        results: ['68% brand recall increase', '8-12 min episodes', 'Weekly publishing'],
+        tags: ['YouTube', 'Brand', 'Scripting', 'Editing']
+      },
+      'real-estate-2': {
+        title: 'Agent Personal Brand',
+        primaryOffer: 'Content Repurposing System',
+        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        results: ['90-day content calendar', 'Multi-platform repurposing', 'Batch production workflow'],
+        tags: ['Reels', 'Content Calendar', 'Repurposing']
+      },
+      'coach-short-2': {
+        title: 'Fitness Coach Ads',
+        primaryOffer: 'Conversion Creative System',
+        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        results: ['A/B testing infrastructure', 'Mobile-first optimization', 'Behavioral psychology hooks'],
+        tags: ['Ads', 'Testing', 'Optimization']
+      }
+    };
+
+    // Filter Logic
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const projectCards = document.querySelectorAll('.project-card');
+    const emptyState = document.querySelector('[data-empty-state]');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        
+        // Update active state
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        // Filter cards
+        let visibleCount = 0;
+        projectCards.forEach(card => {
+          const industry = card.getAttribute('data-industry');
+          const format = card.getAttribute('data-format');
+          
+          let shouldShow = false;
+          if (filter === 'all') {
+            shouldShow = true;
+          } else if (filter === 'long_form') {
+            shouldShow = format === 'long_form';
+          } else {
+            shouldShow = industry === filter;
+          }
+
+          if (shouldShow) {
+            card.style.display = 'block';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Show/hide empty state
+        if (visibleCount === 0) {
+          emptyState?.classList.remove('hidden');
+        } else {
+          emptyState?.classList.add('hidden');
+        }
+      });
+    });
+
+    // Modal Logic
+    const modal = document.querySelector('[data-modal]');
+    const modalContent = document.querySelector('[data-modal-content]');
+    const modalClose = document.querySelectorAll('[data-modal-close]');
+    const videoContainer = document.querySelector('[data-video-container]');
+    const modalTitle = document.querySelector('[data-modal-title]');
+    const modalOffer = document.querySelector('[data-modal-offer]');
+    const modalResults = document.querySelector('[data-modal-results]');
+    const modalTags = document.querySelector('[data-modal-tags]');
+
+    // Open modal
+    const allVideoCards = [...document.querySelectorAll('.project-card'), ...document.querySelectorAll('[data-spotlight]')];
+    
+    allVideoCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const videoId = card.getAttribute('data-video-id');
+        const video = videoData[videoId];
+        
+        if (!video) return;
+
+        // Populate modal
+        modalTitle.textContent = video.title;
+        modalOffer.textContent = video.primaryOffer;
+        
+        videoContainer.innerHTML = `
+          <iframe 
+            width="100%" 
+            height="100%" 
+            src="${video.videoUrl}?autoplay=1" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+          ></iframe>
+        `;
+
+        modalResults.innerHTML = video.results.map(result => `
+          <div>${result}</div>
+        `).join('');
+
+        modalTags.innerHTML = video.tags.map(tag => `
+          <span>${tag}</span>
+        `).join('');
+
+        // Show modal
+        modal.classList.remove('hidden');
+        gsap.fromTo(modalContent,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }
+        );
+      });
+    });
+
+    // Close modal
+    const closeModal = () => {
+      gsap.to(modalContent, {
+        opacity: 0,
+        y: 30,
+        duration: 0.3,
+        ease: 'power3.in',
+        onComplete: () => {
+          modal.classList.add('hidden');
+          videoContainer.innerHTML = '';
+        }
+      });
+    };
+
+    modalClose.forEach(btn => btn.addEventListener('click', closeModal));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+
+  });
+</script>

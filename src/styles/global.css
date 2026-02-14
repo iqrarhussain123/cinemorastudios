@@ -366,3 +366,26 @@ body {
 .animate-gradient {
   animation: gradient 3s ease infinite;
 }
+
+/* Creative Systems Showcase Utilities */
+.scroll-blur-sharpen {
+  filter: blur(4px);
+  opacity: 0.6;
+  transition: filter 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-blur-sharpen.in-view {
+  filter: blur(0px);
+  opacity: 1;
+}
+
+/* Smooth Scroll for Horizontal Sections */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
