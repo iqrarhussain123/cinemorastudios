@@ -84,7 +84,7 @@ const logos = [
                                 >
                                     <img
                                         src={logo.src}
-                                        alt=""
+                                        alt={logo.alt}
                                         class="max-h-full max-w-full object-contain opacity-70 transition duration-300 hover:opacity-100 hover:scale-105"
                                         loading="lazy"
                                         fetchpriority="low"
@@ -110,9 +110,7 @@ const logos = [
                                         >
                                             <img
                                                 src={logo.src}
-                                                alt={
-                                                    isDuplicate ? "" : logo.alt
-                                                }
+                                                alt={logo.alt}
                                                 class="max-h-full max-w-full object-contain opacity-70"
                                                 loading="eager"
                                                 fetchpriority={
