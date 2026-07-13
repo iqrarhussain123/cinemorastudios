@@ -12,6 +12,7 @@ type LazyVideoProps = Omit<
   "onCanPlay" | "onLoadedData" | "preload" | "src"
 > & {
   lazyRootMargin?: string;
+  loadImmediately?: boolean;
   preload?: VideoHTMLAttributes<HTMLVideoElement>["preload"];
   restartOnHover?: boolean;
   src: string;
@@ -19,6 +20,7 @@ type LazyVideoProps = Omit<
 
 export function LazyVideo({
   lazyRootMargin = "0px",
+  loadImmediately = false,
   preload = "metadata",
   restartOnHover = false,
   src,
@@ -26,12 +28,12 @@ export function LazyVideo({
 }: LazyVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isNearViewport, setIsNearViewport] = useState(false);
+  const [isNearViewport, setIsNearViewport] = useState(loadImmediately);
 
   useEffect(() => {
     const video = videoRef.current;
 
-    if (!video) {
+    if (!video || loadImmediately) {
       return;
     }
 
@@ -55,7 +57,7 @@ export function LazyVideo({
     observer.observe(video);
 
     return () => observer.disconnect();
-  }, [lazyRootMargin]);
+  }, [lazyRootMargin, loadImmediately]);
 
   useEffect(() => {
     const video = videoRef.current;
