@@ -13,10 +13,32 @@ const heroSlides = [
   "https://res.cloudinary.com/l7fgvttd/image/upload/v1783966424/cinemora/images/hero/slides/slide8.png",
 ];
 
-const showcaseBrands = Array.from({ length: 6 }, () => ({
-  name: "Cinemora Studios",
-  logo: "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963296/cinemora/images/branding/cinemora-logo.png",
-}));
+const showcaseBrands = [
+  {
+    name: "Nasdaq",
+    logo: "/images/logos/nasdaq.png",
+  },
+  {
+    name: "Ray White",
+    logo: "/images/logos/ray-white-new.png",
+  },
+  {
+    name: "S Five Real Estate",
+    logo: "/images/logos/S FIVE REAL ESTATE.png",
+  },
+  {
+    name: "Spoken Wines",
+    logo: "/images/logos/SPOKEN-WINES.png",
+  },
+  {
+    name: "Success School",
+    logo: "/images/logos/Success School.png",
+  },
+  {
+    name: "Zendor Properties",
+    logo: "/images/logos/zendorproperties_logo.png",
+  },
+];
 
 export function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
@@ -131,7 +153,6 @@ export function HeroSection() {
                       width={300}
                       height={300}
                     />
-                    <span>{brand.name}</span>
                   </div>
                 ))}
               </div>

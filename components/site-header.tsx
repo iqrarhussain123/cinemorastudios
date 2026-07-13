@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RollingLink } from "@/components/rolling-link";
 
 const navigation = [
@@ -14,6 +14,7 @@ const navigation = [
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     let frameId = 0;
@@ -45,8 +46,30 @@ export function SiteHeader() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return;
+    }
+
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      const header = headerRef.current;
+
+      if (header?.contains(event.target as Node)) {
+        return;
+      }
+
+      setIsMenuOpen(false);
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsidePointer);
+
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsidePointer);
+    };
+  }, [isMenuOpen]);
+
   return (
-    <header className={`site-header ${isPastHero ? "is-hidden" : ""}`}>
+    <header className={`site-header ${isPastHero ? "is-hidden" : ""}`} ref={headerRef}>
       <div className="site-header-inner">
         <a className="brand" href="#top" aria-label="Cinemora Studios home">
           <Image

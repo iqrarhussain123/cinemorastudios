@@ -183,10 +183,12 @@ export default function Home() {
                 className="vsl-video"
                 autoPlay
                 loop
+                muteOnExit
                 muted
                 playsInline
                 preload="metadata"
                 src="https://res.cloudinary.com/l7fgvttd/video/upload/v1783963886/cinemora/videos/vsl/vsl-video.mp4"
+                toggleMuteOnClick
               />
             </div>
           </div>
@@ -231,9 +233,6 @@ export default function Home() {
             <div className="about-image-placeholder" role="img" aria-label="About Cinemora visual">
               <span>About Cinemora</span>
             </div>
-            <blockquote>
-              “We don&apos;t just edit videos. We engineer attention.”
-            </blockquote>
             <p>
               Iqrar isn&apos;t just a founder; he&apos;s the strategic architect
               behind Cinemora&apos;s most viral campaigns. With a background that
@@ -259,10 +258,6 @@ export default function Home() {
                 <span>Views Managed</span>
               </div>
             </div>
-
-            <a className="text-link" href="mailto:hello@cinemorastudios.com">
-              Work with Iqrar <span aria-hidden="true">→</span>
-            </a>
           </div>
 
         </div>
