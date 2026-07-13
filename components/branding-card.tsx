@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { LoadableImage } from "@/components/loadable-image";
 
 export interface BrandingService {
   date: string;
@@ -27,11 +27,12 @@ export function BrandingCard({ service, isFeatured = false }: BrandingCardProps)
       <p>{service.description}</p>
       <div className="card-image-placeholder" aria-hidden="true">
         {service.imageSrc ? (
-          <Image
+          <LoadableImage
             className="card-image"
             src={service.imageSrc}
             alt=""
             fill
+            placeholderLabel="Loading image"
             sizes="(max-width: 760px) 100vw, 25vw"
           />
         ) : null}

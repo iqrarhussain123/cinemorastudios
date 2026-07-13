@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import type { CSSProperties } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { LazyVideo } from "@/components/lazy-video";
 
 const projects = [
   {
@@ -17,7 +18,7 @@ const projects = [
     ],
     color: "#0f3f3a",
     accent: "#d9e8cf",
-    videoSrc: "/videos/apex-outreach.mp4",
+    videoSrc: "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963327/cinemora/videos/apex-outreach.mp4",
   },
   {
     title: "GradeWise AI",
@@ -32,7 +33,7 @@ const projects = [
     ],
     color: "#d7b9c8",
     accent: "#6f2d52",
-    videoSrc: "/videos/video-project-4.mp4",
+    videoSrc: "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963870/cinemora/videos/video-project-4.mp4",
   },
   {
     title: "Spoken Wines",
@@ -47,7 +48,7 @@ const projects = [
     ],
     color: "#b8c9df",
     accent: "#12385f",
-    videoSrc: "/videos/spoken-wines.mp4",
+    videoSrc: "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963867/cinemora/videos/spoken-wines.mp4",
   },
   {
     title: "Collegare Studio",
@@ -62,7 +63,7 @@ const projects = [
     ],
     color: "#f0d7a6",
     accent: "#714616",
-    videoSrc: "/videos/collegare.mp4",
+    videoSrc: "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963331/cinemora/videos/collegare.mp4",
   },
 ];
 
@@ -87,99 +88,56 @@ const carouselVideo = (src: string, title: string): WorkCarouselItem => ({ src, 
 const workCarouselProjects: Record<WorkCategory, WorkCarouselItem[]> = {
   reels: [
     carouselVideo(
-      "/videos/reels/Let me start with the truth.  For 25 years I built brands and experiences for other people.   The UK government. Amazon. ABB. Good work, behind the scenes, never my name on the door.  Then I became the investor .mp4",
+      "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963557/cinemora/videos/reels/let-me-start-with-the-truth-for-25-years-i-built-brands-and-experiences-for-other-people-the-uk-government-amazon-abb-good-work-behind-the-scenes-never-my-name-on-the-door-then-i-became-the-investor.mp4",
       "Let me start with the truth",
     ),
-    carouselVideo("/videos/reels/Recent work.mp4", "Recent work"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963603/cinemora/videos/reels/recent-work.mp4", "Recent work"),
     carouselVideo(
-      "/videos/reels/Reacting To A Female Entrepreneur Doing Millions.mp4",
+      "https://res.cloudinary.com/l7fgvttd/video/upload/v1783966660/cinemora/videos/reels/reacting-to-a-female-entrepreneur-doing-millions.mp4",
       "Female entrepreneur reaction",
     ),
-    carouselVideo("/videos/reels/Gym_s V02.mp4", "Gym's V02"),
-    carouselVideo("/videos/reels/2.mp4", "Reel 2"),
-    carouselVideo("/videos/reels/1.mp4", "Reel 1"),
-    carouselVideo("/videos/reels/P2 V02.mp4", "P2 V02"),
-    carouselVideo("/videos/reels/😊.mp4", "Smiling reel"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783966635/cinemora/videos/reels/gym-s-v02.mp4", "Gym's V02"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963524/cinemora/videos/reels/2.mp4", "Reel 2"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963519/cinemora/videos/reels/1.mp4", "Reel 1"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963567/cinemora/videos/reels/p2-v02.mp4", "P2 V02"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783966665/cinemora/videos/reels/smiling-reel.mp4", "Smiling reel"),
   ],
   "long-form": [
-    carouselVideo("/videos/long_form/d7rovsisfex299xgtllq.mp4", "Long form edit"),
-    carouselVideo("/videos/long_form/Husband-Wife dynamic horizontal.mp4", "Husband-wife dynamic"),
-    carouselVideo("/videos/long_form/Rate this video out of 10.mp4", "Rate this video out of 10"),
-    carouselVideo("/videos/long_form/trial inal.mp4", "Trial final"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963333/cinemora/videos/long_form/d7rovsisfex299xgtllq.mp4", "Long form edit"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783966444/cinemora/videos/long_form/husband-wife-dynamic-horizontal.mp4", "Husband-wife dynamic"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963365/cinemora/videos/long_form/rate-this-video-out-of-10.mp4", "Rate this video out of 10"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963377/cinemora/videos/long_form/trial-inal.mp4", "Trial final"),
   ],
   "real-estate": [
-    carouselVideo("/videos/real_estate/$800k House.mp4", "$800k House"),
-    carouselVideo("/videos/real_estate/2-11 William St, Shellharbour.mp4", "2-11 William St, Shellharbour"),
-    carouselVideo("/videos/real_estate/36 Carr Parade, Unanderra.mp4", "36 Carr Parade, Unanderra"),
-    carouselVideo("/videos/real_estate/60A Princes Hwy, Thirroul.mp4", "60A Princes Hwy, Thirroul"),
-    carouselVideo("/videos/real_estate/Coastal Love.mp4", "Coastal Love"),
-    carouselVideo("/videos/real_estate/SHELLHARBOUR COMING SOON.mp4", "Shellharbour coming soon"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963382/cinemora/videos/real_estate/800k-house.mp4", "$800k House"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963412/cinemora/videos/real_estate/2-11-william-st-shellharbour.mp4", "2-11 William St, Shellharbour"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783966503/cinemora/videos/real_estate/36-carr-parade-unanderra.mp4", "36 Carr Parade, Unanderra"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783966523/cinemora/videos/real_estate/60a-princes-hwy-thirroul.mp4", "60A Princes Hwy, Thirroul"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963481/cinemora/videos/real_estate/coastal-love.mp4", "Coastal Love"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963510/cinemora/videos/real_estate/shellharbour-coming-soon.mp4", "Shellharbour coming soon"),
   ],
   "social-media-ads": [
-    carouselVideo("/videos/socia_media_ads/Basic Video 3 .mp4", "Basic Video 3"),
-    carouselVideo("/videos/socia_media_ads/DIMO Macaron.mp4", "DIMO Macaron"),
-    carouselVideo("/videos/socia_media_ads/Final Draft V1.mp4", "Final Draft V1"),
-    carouselVideo("/videos/socia_media_ads/Final Draft Vid 2.mp4", "Final Draft Vid 2"),
-    carouselVideo("/videos/socia_media_ads/oou7hd9etqlty5qujjfc.mp4", "Social media ad"),
-    carouselVideo("/videos/socia_media_ads/TONEFACE.mp4", "TONEFACE"),
-    carouselVideo("/videos/socia_media_ads/ybbslwc0a0hn6gpqq7ea.mp4", "Social ad edit"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783966673/cinemora/videos/socia_media_ads/basic-video-3.mp4", "Basic Video 3"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963654/cinemora/videos/socia_media_ads/dimo-macaron.mp4", "DIMO Macaron"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783966709/cinemora/videos/socia_media_ads/final-draft-v1.mp4", "Final Draft V1"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783966723/cinemora/videos/socia_media_ads/final-draft-vid-2.mp4", "Final Draft Vid 2"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963743/cinemora/videos/socia_media_ads/oou7hd9etqlty5qujjfc.mp4", "Social media ad"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783966742/cinemora/videos/socia_media_ads/toneface.mp4", "TONEFACE"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963862/cinemora/videos/socia_media_ads/ybbslwc0a0hn6gpqq7ea.mp4", "Social ad edit"),
   ],
 };
 
 function CarouselVideo({ item }: { item: WorkCarouselItem }) {
-  const mediaRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const media = mediaRef.current;
-    const video = videoRef.current;
-
-    if (!media || !video) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          void video.play();
-        } else {
-          video.pause();
-        }
-      },
-      { rootMargin: "240px", threshold: 0.08 },
-    );
-
-    observer.observe(media);
-
-    return () => observer.disconnect();
-  }, []);
-
-  const restartVideo = () => {
-    const video = videoRef.current;
-
-    if (!video) {
-      return;
-    }
-
-    video.currentTime = 0;
-    void video.play();
-  };
-
   return (
-    <div
-      className="work-card-media work-card-media-drive"
-      ref={mediaRef}
-      onFocus={restartVideo}
-      onMouseEnter={restartVideo}
-    >
-      <video
+    <div className="work-card-media work-card-media-drive">
+      <LazyVideo
         aria-label={item.title}
         autoPlay
         loop
         muted
         playsInline
         preload="metadata"
-        ref={videoRef}
+        restartOnHover
         src={item.src}
       />
     </div>
@@ -298,12 +256,13 @@ export function ProjectShowcase() {
                     }
                   >
                     {activeProject.videoSrc ? (
-                      <video
+                      <LazyVideo
                         aria-label={`${activeProject.title} website preview video`}
                         autoPlay
                         loop
                         muted
                         playsInline
+                        preload="metadata"
                         src={activeProject.videoSrc}
                       />
                     ) : (

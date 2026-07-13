@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { LoadableImage } from "@/components/loadable-image";
 
 const questions = [
   {
@@ -39,11 +39,12 @@ export function FaqSection() {
       <div className="section-inner faq-inner">
         <div className="faq-media-column">
           <div className="faq-image-placeholder">
-            <Image
+            <LoadableImage
               alt="Cinemora founder portrait"
               fill
+              placeholderLabel="Loading image"
               sizes="(max-width: 760px) 100vw, 240px"
-              src="/images/team/iqrar_hussain.png"
+              src="https://res.cloudinary.com/l7fgvttd/image/upload/v1783963324/cinemora/images/team/iqrar-hussain.png"
             />
           </div>
           <a href="#contact">Book a call with Cinemora</a>
