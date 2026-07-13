@@ -1904,7 +1904,7 @@ img[data-loaded="true"] {
   opacity: 0.78;
 }
 
-.website-preview-placeholder span {
+.website-preview-placeholder > span {
   position: relative;
   z-index: 1;
   display: grid;
