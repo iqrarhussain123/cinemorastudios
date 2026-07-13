@@ -5,17 +5,17 @@ import type { CSSProperties } from "react";
 import { useEffect, useRef } from "react";
 
 const heroSlides = [
-  "/images/hero/slides/slide3.png",
-  "/images/hero/slides/slide4.png",
-  "/images/hero/slides/slide5.png",
-  "/images/hero/slides/slide6.png",
-  "/images/hero/slides/slide7.png",
-  "/images/hero/slides/slide8.png",
+  "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963301/cinemora/images/hero/slides/slide3.png",
+  "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963302/cinemora/images/hero/slides/slide4.png",
+  "https://res.cloudinary.com/l7fgvttd/image/upload/v1783966417/cinemora/images/hero/slides/slide5.png",
+  "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963309/cinemora/images/hero/slides/slide6.png",
+  "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963311/cinemora/images/hero/slides/slide7.png",
+  "https://res.cloudinary.com/l7fgvttd/image/upload/v1783966424/cinemora/images/hero/slides/slide8.png",
 ];
 
 const showcaseBrands = Array.from({ length: 6 }, () => ({
   name: "Cinemora Studios",
-  logo: "/images/branding/cinemora-logo.png",
+  logo: "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963296/cinemora/images/branding/cinemora-logo.png",
 }));
 
 export function HeroSection() {

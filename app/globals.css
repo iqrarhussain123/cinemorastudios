@@ -614,8 +614,10 @@ nav {
 }
 
 .vsl-video-frame {
+  position: relative;
   display: grid;
   width: 100vw;
+  aspect-ratio: 16 / 9;
   max-height: 100vh;
   margin: 0 calc(50% - 50vw);
   overflow: hidden;
@@ -628,10 +630,76 @@ nav {
 .vsl-video {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   max-height: 100vh;
   background: #061714;
   object-fit: cover;
+}
+
+.video-loading-screen {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.85rem;
+  padding: 1rem;
+  background: var(--deep-green);
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.video-loading-spinner {
+  width: 34px;
+  aspect-ratio: 1;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-top-color: rgba(255, 255, 255, 0.88);
+  border-radius: 50%;
+  animation: video-loading-spin 850ms linear infinite;
+}
+
+video[data-loaded="false"] {
+  opacity: 0;
+}
+
+video[data-loaded="true"] {
+  opacity: 1;
+  transition: opacity 260ms ease;
+}
+
+.image-loading-text {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  color: rgba(9, 46, 43, 0.48);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+img[data-loaded="false"] {
+  opacity: 0;
+}
+
+img[data-loaded="true"] {
+  opacity: 1;
+  transition: opacity 220ms ease;
+}
+
+@keyframes video-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .branding-section {
@@ -959,6 +1027,16 @@ nav {
   background: var(--deep-green);
   color: white;
   font-weight: 600;
+  box-shadow: 0 14px 30px rgba(9, 46, 43, 0.16);
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.book-button:hover,
+.book-button:focus-visible {
+  box-shadow: 0 22px 42px rgba(9, 46, 43, 0.24);
+  transform: translateY(-4px);
 }
 
 .branding-section .book-button {

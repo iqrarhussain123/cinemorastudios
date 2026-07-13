@@ -1,0 +1,290 @@
+[
+  {
+    "localPath": "images\\branding\\cinemora-logo.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963296/cinemora/images/branding/cinemora-logo.png",
+    "publicId": "cinemora/images/branding/cinemora-logo",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\branding\\menu-lines.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963297/cinemora/images/branding/menu-lines.png",
+    "publicId": "cinemora/images/branding/menu-lines",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\decorative\\impact-bg.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963298/cinemora/images/decorative/impact-bg.jpg",
+    "publicId": "cinemora/images/decorative/impact-bg",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\decorative\\vector-curve.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963299/cinemora/images/decorative/vector-curve.png",
+    "publicId": "cinemora/images/decorative/vector-curve",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\hero\\slides\\slide3.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963301/cinemora/images/hero/slides/slide3.png",
+    "publicId": "cinemora/images/hero/slides/slide3",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\hero\\slides\\slide4.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963302/cinemora/images/hero/slides/slide4.png",
+    "publicId": "cinemora/images/hero/slides/slide4",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\hero\\slides\\slide5.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783966417/cinemora/images/hero/slides/slide5.png",
+    "publicId": "cinemora/images/hero/slides/slide5",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\hero\\slides\\slide6.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963309/cinemora/images/hero/slides/slide6.png",
+    "publicId": "cinemora/images/hero/slides/slide6",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\hero\\slides\\slide7.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963311/cinemora/images/hero/slides/slide7.png",
+    "publicId": "cinemora/images/hero/slides/slide7",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\hero\\slides\\slide8.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783966424/cinemora/images/hero/slides/slide8.png",
+    "publicId": "cinemora/images/hero/slides/slide8",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\logos\\nasdaq.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963317/cinemora/images/logos/nasdaq.png",
+    "publicId": "cinemora/images/logos/nasdaq",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\logos\\ray-white-new.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963318/cinemora/images/logos/ray-white-new.png",
+    "publicId": "cinemora/images/logos/ray-white-new",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\logos\\S FIVE REAL ESTATE.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963319/cinemora/images/logos/s-five-real-estate.png",
+    "publicId": "cinemora/images/logos/s-five-real-estate",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\logos\\SPOKEN-WINES.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963319/cinemora/images/logos/spoken-wines.png",
+    "publicId": "cinemora/images/logos/spoken-wines",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\logos\\Success School.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963320/cinemora/images/logos/success-school.png",
+    "publicId": "cinemora/images/logos/success-school",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\logos\\zendorproperties_logo.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963321/cinemora/images/logos/zendorproperties-logo.png",
+    "publicId": "cinemora/images/logos/zendorproperties-logo",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\team\\asfar_butt.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963323/cinemora/images/team/asfar-butt.png",
+    "publicId": "cinemora/images/team/asfar-butt",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\team\\iqrar_hussain.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963324/cinemora/images/team/iqrar-hussain.png",
+    "publicId": "cinemora/images/team/iqrar-hussain",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "videos\\apex-outreach.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963327/cinemora/videos/apex-outreach.mp4",
+    "publicId": "cinemora/videos/apex-outreach",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\collegare.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963331/cinemora/videos/collegare.mp4",
+    "publicId": "cinemora/videos/collegare",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\long_form\\d7rovsisfex299xgtllq.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963333/cinemora/videos/long_form/d7rovsisfex299xgtllq.mp4",
+    "publicId": "cinemora/videos/long_form/d7rovsisfex299xgtllq",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\long_form\\Husband-Wife dynamic horizontal.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783966444/cinemora/videos/long_form/husband-wife-dynamic-horizontal.mp4",
+    "publicId": "cinemora/videos/long_form/husband-wife-dynamic-horizontal",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\long_form\\Rate this video out of 10.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963365/cinemora/videos/long_form/rate-this-video-out-of-10.mp4",
+    "publicId": "cinemora/videos/long_form/rate-this-video-out-of-10",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\long_form\\trial inal.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963377/cinemora/videos/long_form/trial-inal.mp4",
+    "publicId": "cinemora/videos/long_form/trial-inal",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\real_estate\\$800k House.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963382/cinemora/videos/real_estate/800k-house.mp4",
+    "publicId": "cinemora/videos/real_estate/800k-house",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\real_estate\\2-11 William St, Shellharbour.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963412/cinemora/videos/real_estate/2-11-william-st-shellharbour.mp4",
+    "publicId": "cinemora/videos/real_estate/2-11-william-st-shellharbour",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\real_estate\\36 Carr Parade, Unanderra.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783966503/cinemora/videos/real_estate/36-carr-parade-unanderra.mp4",
+    "publicId": "cinemora/videos/real_estate/36-carr-parade-unanderra",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\real_estate\\60A Princes Hwy, Thirroul.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783966523/cinemora/videos/real_estate/60a-princes-hwy-thirroul.mp4",
+    "publicId": "cinemora/videos/real_estate/60a-princes-hwy-thirroul",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\real_estate\\Coastal Love.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963481/cinemora/videos/real_estate/coastal-love.mp4",
+    "publicId": "cinemora/videos/real_estate/coastal-love",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\real_estate\\SHELLHARBOUR COMING SOON.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963510/cinemora/videos/real_estate/shellharbour-coming-soon.mp4",
+    "publicId": "cinemora/videos/real_estate/shellharbour-coming-soon",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\reels\\1.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963519/cinemora/videos/reels/1.mp4",
+    "publicId": "cinemora/videos/reels/1",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\reels\\2.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963524/cinemora/videos/reels/2.mp4",
+    "publicId": "cinemora/videos/reels/2",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\reels\\Gym_s V02.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783966635/cinemora/videos/reels/gym-s-v02.mp4",
+    "publicId": "cinemora/videos/reels/gym-s-v02",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\reels\\Let me start with the truth.  For 25 years I built brands and experiences for other people.   The UK government. Amazon. ABB. Good work, behind the scenes, never my name on the door.  Then I became the investor .mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963557/cinemora/videos/reels/let-me-start-with-the-truth-for-25-years-i-built-brands-and-experiences-for-other-people-the-uk-government-amazon-abb-good-work-behind-the-scenes-never-my-name-on-the-door-then-i-became-the-investor.mp4",
+    "publicId": "cinemora/videos/reels/let-me-start-with-the-truth-for-25-years-i-built-brands-and-experiences-for-other-people-the-uk-government-amazon-abb-good-work-behind-the-scenes-never-my-name-on-the-door-then-i-became-the-investor",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\reels\\P2 V02.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963567/cinemora/videos/reels/p2-v02.mp4",
+    "publicId": "cinemora/videos/reels/p2-v02",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\reels\\Reacting To A Female Entrepreneur Doing Millions.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783966660/cinemora/videos/reels/reacting-to-a-female-entrepreneur-doing-millions.mp4",
+    "publicId": "cinemora/videos/reels/reacting-to-a-female-entrepreneur-doing-millions",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\reels\\Recent work.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963603/cinemora/videos/reels/recent-work.mp4",
+    "publicId": "cinemora/videos/reels/recent-work",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\reels\\smiling-reel.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783966665/cinemora/videos/reels/smiling-reel.mp4",
+    "publicId": "cinemora/videos/reels/smiling-reel",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\socia_media_ads\\Basic Video 3 .mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783966673/cinemora/videos/socia_media_ads/basic-video-3.mp4",
+    "publicId": "cinemora/videos/socia_media_ads/basic-video-3",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\socia_media_ads\\DIMO Macaron.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963654/cinemora/videos/socia_media_ads/dimo-macaron.mp4",
+    "publicId": "cinemora/videos/socia_media_ads/dimo-macaron",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\socia_media_ads\\Final Draft V1.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783966709/cinemora/videos/socia_media_ads/final-draft-v1.mp4",
+    "publicId": "cinemora/videos/socia_media_ads/final-draft-v1",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\socia_media_ads\\Final Draft Vid 2.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783966723/cinemora/videos/socia_media_ads/final-draft-vid-2.mp4",
+    "publicId": "cinemora/videos/socia_media_ads/final-draft-vid-2",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\socia_media_ads\\oou7hd9etqlty5qujjfc.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963743/cinemora/videos/socia_media_ads/oou7hd9etqlty5qujjfc.mp4",
+    "publicId": "cinemora/videos/socia_media_ads/oou7hd9etqlty5qujjfc",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\socia_media_ads\\TONEFACE.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783966742/cinemora/videos/socia_media_ads/toneface.mp4",
+    "publicId": "cinemora/videos/socia_media_ads/toneface",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\socia_media_ads\\ybbslwc0a0hn6gpqq7ea.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963862/cinemora/videos/socia_media_ads/ybbslwc0a0hn6gpqq7ea.mp4",
+    "publicId": "cinemora/videos/socia_media_ads/ybbslwc0a0hn6gpqq7ea",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\spoken-wines.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963867/cinemora/videos/spoken-wines.mp4",
+    "publicId": "cinemora/videos/spoken-wines",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\video-project-4.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963870/cinemora/videos/video-project-4.mp4",
+    "publicId": "cinemora/videos/video-project-4",
+    "resourceType": "video"
+  },
+  {
+    "localPath": "videos\\vsl\\VSL_Video.mp4",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963886/cinemora/videos/vsl/vsl-video.mp4",
+    "publicId": "cinemora/videos/vsl/vsl-video",
+    "resourceType": "video"
+  }
+]

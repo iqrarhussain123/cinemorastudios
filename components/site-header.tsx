@@ -51,7 +51,7 @@ export function SiteHeader() {
         <a className="brand" href="#top" aria-label="Cinemora Studios home">
           <Image
             className="brand-mark"
-            src="/images/branding/cinemora-logo.png"
+            src="https://res.cloudinary.com/l7fgvttd/image/upload/v1783963296/cinemora/images/branding/cinemora-logo.png"
             alt=""
             width={300}
             height={300}
@@ -73,7 +73,7 @@ export function SiteHeader() {
         >
           <Image
             className="menu-icon"
-            src="/images/branding/menu-lines.png"
+            src="https://res.cloudinary.com/l7fgvttd/image/upload/v1783963297/cinemora/images/branding/menu-lines.png"
             alt=""
             width={96}
             height={96}
