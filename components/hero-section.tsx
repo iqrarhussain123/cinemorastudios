@@ -1,0 +1,144 @@
+"use client";
+
+import Image from "next/image";
+import type { CSSProperties } from "react";
+import { useEffect, useRef } from "react";
+
+const heroSlides = [
+  "/images/hero/slides/slide3.png",
+  "/images/hero/slides/slide4.png",
+  "/images/hero/slides/slide5.png",
+  "/images/hero/slides/slide6.png",
+  "/images/hero/slides/slide7.png",
+  "/images/hero/slides/slide8.png",
+];
+
+const showcaseBrands = Array.from({ length: 6 }, () => ({
+  name: "Cinemora Studios",
+  logo: "/images/branding/cinemora-logo.png",
+}));
+
+export function HeroSection() {
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+
+    if (!hero || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    let frameId = 0;
+
+    const updateParallax = () => {
+      frameId = 0;
+      const bounds = hero.getBoundingClientRect();
+
+      if (bounds.bottom < 0 || bounds.top > window.innerHeight) {
+        return;
+      }
+
+      const shift = Math.max(-35, Math.min(95, -bounds.top * 0.13));
+      hero.style.setProperty("--hero-shift", `${shift}px`);
+    };
+
+    const queueParallaxUpdate = () => {
+      if (!frameId) {
+        frameId = window.requestAnimationFrame(updateParallax);
+      }
+    };
+
+    updateParallax();
+    window.addEventListener("scroll", queueParallaxUpdate, { passive: true });
+    window.addEventListener("resize", queueParallaxUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", queueParallaxUpdate);
+      window.removeEventListener("resize", queueParallaxUpdate);
+      window.cancelAnimationFrame(frameId);
+    };
+  }, []);
+
+  const carouselBrands = [...showcaseBrands, ...showcaseBrands];
+
+  return (
+    <section
+      className="hero hero-reference"
+      id="top"
+      aria-labelledby="hero-title"
+      ref={heroRef}
+    >
+      <div className="hero-slideshow" aria-hidden="true">
+        {heroSlides.map((slide, index) => (
+          <Image
+            className="hero-slide"
+            src={slide}
+            alt=""
+            fill
+            sizes="100vw"
+            style={{ "--slide-index": index } as CSSProperties}
+            priority={index === 0}
+            key={slide}
+          />
+        ))}
+      </div>
+
+      <div className="hero-reference-layout">
+        <div className="hero-reference-title">
+          <div className="hero-proof" aria-label="Client review rating">
+            <span className="hero-proof-avatars" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+            <span className="hero-proof-stars">*****</span>
+            <strong>4.9/5</strong>
+            <small>based on 180 verified reviews</small>
+          </div>
+
+          <h1 className="hero-statement" id="hero-title">
+            <span>Brands </span>
+            <span>That Lead</span>
+          </h1>
+
+          <div className="hero-project-actions">
+            <a className="hero-project-link hero-project-link-primary" href="#contact">
+              <span>Start Your Brand</span>
+            </a>
+            <a className="hero-project-link hero-project-link-secondary" href="#work">
+              <span>See our Work</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="hero-reference-copy">
+          <p>
+            We build personal brands and AI systems that turn attention into
+            clients.
+          </p>
+          <div className="brand-showcase" aria-label="Brands showcase">
+            <div className="brand-carousel">
+              <div className="brand-track">
+                {carouselBrands.map((brand, index) => (
+                  <div
+                    className="showcase-brand"
+                    aria-hidden={index >= showcaseBrands.length}
+                    key={`${brand.name}-${index}`}
+                  >
+                    <Image
+                      src={brand.logo}
+                      alt={index < showcaseBrands.length ? brand.name : ""}
+                      width={300}
+                      height={300}
+                    />
+                    <span>{brand.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
