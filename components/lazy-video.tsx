@@ -34,6 +34,7 @@ export function LazyVideo({
   const [isNearViewport, setIsNearViewport] = useState(false);
   const [isMuted, setIsMuted] = useState(Boolean(muted));
   const [muteFeedback, setMuteFeedback] = useState<"muted" | "unmuted" | null>(null);
+  const effectiveMuted = toggleMuteOnClick ? isMuted : Boolean(muted);
 
   useEffect(() => {
     if (!muteFeedback) {
@@ -89,8 +90,8 @@ export function LazyVideo({
       return;
     }
 
-    video.muted = isMuted;
-  }, [isMuted]);
+    video.muted = effectiveMuted;
+  }, [effectiveMuted]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -141,12 +142,12 @@ export function LazyVideo({
         onFocus={restartOnHover ? restartVideo : videoProps.onFocus}
         preload={isNearViewport ? preload : "none"}
         ref={videoRef}
-        muted={isMuted}
+        muted={effectiveMuted}
         src={isNearViewport ? src : undefined}
       />
       {toggleMuteOnClick ? (
         <button
-          aria-label={isMuted ? "Unmute video" : "Mute video"}
+          aria-label={effectiveMuted ? "Unmute video" : "Mute video"}
           className="video-mute-toggle"
           onClick={toggleMuted}
           type="button"

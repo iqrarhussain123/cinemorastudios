@@ -13,6 +13,21 @@ const footerColumns = [
   },
 ];
 
+const contactLinks = [
+  {
+    href: "mailto:iqrar@cinemorastudios.agency",
+    label: "iqrar@cinemorastudios.agency",
+  },
+  {
+    href: "mailto:iqrarworksatcinemora@gmail.com",
+    label: "iqrarworksatcinemora@gmail.com",
+  },
+  {
+    href: "tel:+923360599017",
+    label: "+92 3360599017",
+  },
+];
+
 export function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -31,6 +46,14 @@ export function SiteFooter() {
                 ))}
               </div>
             ))}
+            <div className="footer-column footer-contact">
+              <h3>Contact</h3>
+              {contactLinks.map((link) => (
+                <a href={link.href} key={link.href}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </div>
 
           <div className="footer-cta">

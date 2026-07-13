@@ -232,16 +232,6 @@ export default function Home() {
             <h2>
               The <em>Minds</em> Behind Cinemora
             </h2>
-            <div className="about-image-placeholder" role="img" aria-label="About Cinemora visual">
-              <LoadableImage
-                alt="Podcast studio set with lighting, microphones, and chairs"
-                className="about-image"
-                fill
-                placeholderLabel="Loading image"
-                sizes="(max-width: 760px) 100vw, 88rem"
-                src={cloudinaryImages.aboutStudio}
-              />
-            </div>
             <p>
               Iqrar isn&apos;t just a founder; he&apos;s the strategic architect
               behind Cinemora&apos;s most viral campaigns. With a background that
@@ -269,6 +259,16 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="about-image-placeholder" role="img" aria-label="About Cinemora visual">
+            <LoadableImage
+              alt="Podcast studio set with lighting, microphones, and chairs"
+              className="about-image"
+              fill
+              placeholderLabel="Loading image"
+              sizes="(max-width: 760px) 100vw, 44rem"
+              src={cloudinaryImages.aboutStudio}
+            />
+          </div>
         </div>
       </section>
 
