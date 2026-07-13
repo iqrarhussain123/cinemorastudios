@@ -12,6 +12,8 @@ import { TestimonialsSection } from "@/components/testimonials-section";
 import { ProjectShowcase, WorkCarousel } from "@/components/work-showcase";
 
 const cloudinaryImages = {
+  aboutStudio:
+    "https://res.cloudinary.com/l7fgvttd/image/upload/v1783975059/cinemora/images/about/minds-behind-cinemora-studio.png",
   cinemoraLogo:
     "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963296/cinemora/images/branding/cinemora-logo.png",
   team: {
@@ -231,7 +233,14 @@ export default function Home() {
               The <em>Minds</em> Behind Cinemora
             </h2>
             <div className="about-image-placeholder" role="img" aria-label="About Cinemora visual">
-              <span>About Cinemora</span>
+              <LoadableImage
+                alt="Podcast studio set with lighting, microphones, and chairs"
+                className="about-image"
+                fill
+                placeholderLabel="Loading image"
+                sizes="(max-width: 760px) 100vw, 88rem"
+                src={cloudinaryImages.aboutStudio}
+              />
             </div>
             <p>
               Iqrar isn&apos;t just a founder; he&apos;s the strategic architect

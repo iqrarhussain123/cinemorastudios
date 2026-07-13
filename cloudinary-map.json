@@ -286,5 +286,11 @@
     "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963886/cinemora/videos/vsl/vsl-video.mp4",
     "publicId": "cinemora/videos/vsl/vsl-video",
     "resourceType": "video"
+  },
+  {
+    "localPath": "images\\Gemini_Generated_Image_72780m72780m7278.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783975059/cinemora/images/about/minds-behind-cinemora-studio.png",
+    "publicId": "cinemora/images/about/minds-behind-cinemora-studio",
+    "resourceType": "image"
   }
 ]
