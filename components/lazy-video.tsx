@@ -12,7 +12,6 @@ type LazyVideoProps = Omit<
   "onCanPlay" | "onLoadedData" | "preload" | "src"
 > & {
   lazyRootMargin?: string;
-  loadImmediately?: boolean;
   preload?: VideoHTMLAttributes<HTMLVideoElement>["preload"];
   restartOnHover?: boolean;
   src: string;
@@ -20,7 +19,6 @@ type LazyVideoProps = Omit<
 
 export function LazyVideo({
   lazyRootMargin = "0px",
-  loadImmediately = false,
   preload = "metadata",
   restartOnHover = false,
   src,
@@ -28,14 +26,16 @@ export function LazyVideo({
 }: LazyVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isNearViewport, setIsNearViewport] = useState(loadImmediately);
+  const [isNearViewport, setIsNearViewport] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
 
-    if (!video || loadImmediately) {
+    if (!video) {
       return;
     }
+
+    const target = video.parentElement ?? video;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -54,10 +54,10 @@ export function LazyVideo({
       { rootMargin: lazyRootMargin, threshold: 0.15 },
     );
 
-    observer.observe(video);
+    observer.observe(target);
 
     return () => observer.disconnect();
-  }, [lazyRootMargin, loadImmediately]);
+  }, [lazyRootMargin]);
 
   useEffect(() => {
     const video = videoRef.current;

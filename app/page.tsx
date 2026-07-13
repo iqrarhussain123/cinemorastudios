@@ -182,7 +182,6 @@ export default function Home() {
               <LazyVideo
                 className="vsl-video"
                 autoPlay
-                loadImmediately
                 loop
                 muted
                 playsInline
