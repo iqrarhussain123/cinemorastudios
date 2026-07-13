@@ -133,7 +133,6 @@ function CarouselVideo({ item }: { item: WorkCarouselItem }) {
       <LazyVideo
         aria-label={item.title}
         autoPlay
-        lazyRootMargin="360px"
         loop
         muted
         playsInline
@@ -260,7 +259,6 @@ export function ProjectShowcase() {
                       <LazyVideo
                         aria-label={`${activeProject.title} website preview video`}
                         autoPlay
-                        lazyRootMargin="520px"
                         loop
                         muted
                         playsInline

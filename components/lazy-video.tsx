@@ -18,7 +18,7 @@ type LazyVideoProps = Omit<
 };
 
 export function LazyVideo({
-  lazyRootMargin = "420px",
+  lazyRootMargin = "0px",
   preload = "metadata",
   restartOnHover = false,
   src,
@@ -49,7 +49,7 @@ export function LazyVideo({
           void video.play();
         }
       },
-      { rootMargin: lazyRootMargin, threshold: 0.05 },
+      { rootMargin: lazyRootMargin, threshold: 0.15 },
     );
 
     observer.observe(video);
