@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #bed0b6;
+  --accent-ink: #0b2522;
+  --surface-page: #081714;
+  --surface-card: #0b2522;
+  --surface-hover: #12332f;
+  --ink-primary: #f3f6ef;
+  --ink-secondary: #b9c7b4;
+  --ink-muted: #7e9088;
+  --line-hairline: #1e3a35;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --surface-page: #f4f7f1;
+    --surface-card: #ffffff;
+    --surface-hover: #eaf0e6;
+    --ink-primary: #0b2522;
+    --ink-secondary: #3e534c;
+    --ink-muted: #7e9088;
+    --line-hairline: #dce6d8;
+  }
+}
+
+body {
+  background: var(--surface-page);
+  color: var(--ink-primary);
+}
+
+/* Thin, brand-colored scrollbar for scrollable sections (e.g. the time-slot list). */
+.themed-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+.themed-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.themed-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.themed-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 9999px;
+}
+
+.themed-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ink-secondary);
+}
