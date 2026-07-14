@@ -57,7 +57,7 @@ export function SiteFooter() {
           </div>
 
           <div className="footer-cta">
-            <a href="#contact" aria-label="Start a project">
+            <a href="/booking" aria-label="Start a project">
               +
             </a>
             <p>

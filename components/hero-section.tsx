@@ -124,7 +124,7 @@ export function HeroSection() {
           </h1>
 
           <div className="hero-project-actions">
-            <a className="hero-project-link hero-project-link-primary" href="#contact">
+            <a className="hero-project-link hero-project-link-primary" href="/booking">
               <span>Start Your Brand</span>
             </a>
             <a className="hero-project-link hero-project-link-secondary" href="#work">

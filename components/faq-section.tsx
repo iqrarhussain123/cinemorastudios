@@ -47,7 +47,7 @@ export function FaqSection() {
               src="https://res.cloudinary.com/l7fgvttd/image/upload/v1783963324/cinemora/images/team/iqrar-hussain.png"
             />
           </div>
-          <a href="#contact">Book a call with Cinemora</a>
+          <a href="/booking">Book a call with Cinemora</a>
         </div>
 
         <div className="faq-content">

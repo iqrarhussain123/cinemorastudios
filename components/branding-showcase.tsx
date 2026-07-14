@@ -86,7 +86,7 @@ export function BrandingShowcase({ services }: BrandingShowcaseProps) {
       </div>
 
       <div className="branding-actions">
-        <a className="book-button" href="#contact">
+        <a className="book-button" href="/booking">
           Book a Call <span aria-hidden="true">&rarr;</span>
         </a>
       </div>

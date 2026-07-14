@@ -8,7 +8,7 @@ const navigation = [
   { href: "#top", label: "Home" },
   { href: "#services", label: "Services" },
   { href: "#case-studies", label: "Case Studies" },
-  { href: "#contact", label: "Contact Us" },
+  { href: "/booking", label: "Contact Us" },
 ];
 
 export function SiteHeader() {
@@ -109,7 +109,7 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <a className="header-contact-link" href="#contact">
+        <a className="header-contact-link" href="/booking">
           Contact Us
         </a>
 
