@@ -1,0 +1,22 @@
+{
+  "name": "Cinemora Studios",
+  "short_name": "Cinemora",
+  "description": "We turn attention into clients.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#08251f",
+  "theme_color": "#08251f",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
