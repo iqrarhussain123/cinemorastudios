@@ -5,24 +5,24 @@
 :root {
   --accent: #bed0b6;
   --accent-ink: #0b2522;
-  --surface-page: #0e2c1a;
-  --surface-card: #123a21;
-  --surface-hover: #1b4a2c;
+  --surface-page: #081714;
+  --surface-card: #0b2522;
+  --surface-hover: #12332f;
   --ink-primary: #f3f6ef;
   --ink-secondary: #b9c7b4;
   --ink-muted: #7e9088;
-  --line-hairline: #23522f;
+  --line-hairline: #1e3a35;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --surface-page: #f4f7f1;
-    --surface-card: #ffffff;
-    --surface-hover: #eaf0e6;
+    --surface-page: #dfe8d3;
+    --surface-card: #f4f8f0;
+    --surface-hover: #cddec2;
     --ink-primary: #0b2522;
     --ink-secondary: #3e534c;
     --ink-muted: #7e9088;
-    --line-hairline: #dce6d8;
+    --line-hairline: #c3d4b7;
   }
 }
 
