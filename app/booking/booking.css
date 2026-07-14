@@ -16,7 +16,7 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --surface-page: #dfe8d3;
+    --surface-page: #081714;
     --surface-card: #f4f8f0;
     --surface-hover: #cddec2;
     --ink-primary: #0b2522;
@@ -31,6 +31,17 @@ body {
   color: var(--ink-primary);
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   scrollbar-width: auto;
+}
+
+html,
+body,
+.booking-page {
+  min-height: 100%;
+  background: var(--surface-page);
+}
+
+.booking-page {
+  width: 100%;
 }
 
 body::-webkit-scrollbar {
