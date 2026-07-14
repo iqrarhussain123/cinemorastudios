@@ -34,14 +34,16 @@ body {
 }
 
 html,
-body,
-.booking-page {
+body {
   min-height: 100%;
   background: var(--surface-page);
 }
 
 .booking-page {
+  min-height: 100vh;
+  min-height: 100svh;
   width: 100%;
+  background: var(--surface-page);
 }
 
 body::-webkit-scrollbar {
