@@ -5,13 +5,13 @@
 :root {
   --accent: #bed0b6;
   --accent-ink: #0b2522;
-  --surface-page: #081714;
-  --surface-card: #0b2522;
-  --surface-hover: #12332f;
+  --surface-page: #0e2c1a;
+  --surface-card: #123a21;
+  --surface-hover: #1b4a2c;
   --ink-primary: #f3f6ef;
   --ink-secondary: #b9c7b4;
   --ink-muted: #7e9088;
-  --line-hairline: #1e3a35;
+  --line-hairline: #23522f;
 }
 
 @media (prefers-color-scheme: light) {
