@@ -110,7 +110,7 @@ export function HeroSection() {
           <Image
             className="hero-slide"
             src={slide}
-            alt=""
+            alt={`Cinemora Studios creative production showcase ${index + 1}`}
             fill
             sizes="100vw"
             style={{ "--slide-index": index } as CSSProperties}
@@ -125,10 +125,10 @@ export function HeroSection() {
         <div className="hero-reference-title">
           <div className="hero-proof" aria-label="Cinemora delivery model">
             <span className="hero-proof-avatars" aria-hidden="true">
-              <span><Image src="/images/clients/Tim Frey.png" alt="" width={36} height={36} /></span>
-              <span><Image src="/images/clients/Jan De Weerd.jpg" alt="" width={36} height={36} /></span>
-              <span><Image src="/images/clients/Alycia.jpg" alt="" width={36} height={36} /></span>
-              <span><Image src="/images/clients/Skylar-Alexis.jpg" alt="" width={36} height={36} /></span>
+              <span><Image src="/images/clients/Tim Frey.png" alt="Tim Frey, Cinemora Studios client" width={36} height={36} /></span>
+              <span><Image src="/images/clients/Jan De Weerd.jpg" alt="Jan De Weerd, Cinemora Studios client" width={36} height={36} /></span>
+              <span><Image src="/images/clients/Alycia.jpg" alt="Alycia Chapman, Cinemora Studios client" width={36} height={36} /></span>
+              <span><Image src="/images/clients/Skylar-Alexis.jpg" alt="Skyler Alexis, Cinemora Studios client" width={36} height={36} /></span>
             </span>
             <span className="hero-proof-stars">Founder-led</span>
             <strong>Global delivery</strong>
@@ -170,7 +170,7 @@ export function HeroSection() {
                     key={`${brand.name}-${index}`}
                   >
                     {brand.logo ? (
-                      <Image src={brand.logo} alt={index < showcaseBrands.length ? `${brand.name} official website` : ""} width={300} height={300} />
+                      <Image src={brand.logo} alt={`${brand.name} brand logo`} width={300} height={300} />
                     ) : (
                       <strong>{brand.name}</strong>
                     )}

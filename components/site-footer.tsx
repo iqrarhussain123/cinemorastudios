@@ -121,7 +121,7 @@ export function SiteFooter() {
                   <div className="footer-map-brand">
                     <Image
                       src="/apple-touch-icon.png"
-                      alt=""
+                      alt="Cinemora Studios location"
                       width={28}
                       height={28}
                     />
