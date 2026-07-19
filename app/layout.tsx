@@ -95,6 +95,60 @@ const structuredData = {
         "AI Automation",
       ],
     },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.cinemorastudios.agency/#faqs",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Who will actually be working on our project?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Cinemora leads strategy and creative direction directly, with selected specialists supporting production, design, and delivery when the project scope needs it.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How do you communicate and manage work?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We use clear milestones, regular check-ins, and one shared communication channel so decisions, feedback, and progress stay visible.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What do you need to start working together?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A clear goal, access to relevant brand materials, and an initial discovery conversation are enough to shape the first plan.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What happens after launch?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We can support refinement, optimization, and ongoing creative work after the first launch or campaign goes live.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can you handle branding, design and development?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. Engagements can cover strategy, branding, design, content, and implementation as one connected process.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is the project investment?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Investment depends on scope, timeline, and support level. We provide a clear proposal before work begins.",
+          },
+        },
+      ],
+    },
   ],
 };
 
