@@ -1,7 +1,6 @@
 "use client";
 
-import type { CSSProperties } from "react";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState, type CSSProperties } from "react";
 import { ScrollCounter } from "@/components/scroll-counter";
 import { RollingText } from "@/components/rolling-link";
 
@@ -11,64 +10,117 @@ const impactStats = [
   ["Years of Experience", "10+"],
 ];
 
-const impactStatementLines = [
-  "We combine creativity, technology, and marketing",
-  "to help ambitious brands grow and build authority.",
-  "Then lead their category.",
+const workflow = [
+  {
+    name: "Attention",
+    icon: "◎",
+    label: "Get seen",
+    title: "Earn the right attention.",
+    description: "Positioning, creative direction, and platform-native content put the brand in front of the people most likely to buy.",
+    output: "Qualified visibility",
+  },
+  {
+    name: "Authority",
+    icon: "✦",
+    label: "Build trust",
+    title: "Turn visibility into belief.",
+    description: "Consistent ideas, proof, and premium execution make the brand easier to trust, remember, and recommend.",
+    output: "Category credibility",
+  },
+  {
+    name: "Demand",
+    icon: "↗",
+    label: "Create intent",
+    title: "Make the market want more.",
+    description: "Offers, campaigns, and conversion journeys connect the brand story to a clear commercial reason to act.",
+    output: "Buyer intent",
+  },
+  {
+    name: "Pipeline",
+    icon: "◆",
+    label: "Capture growth",
+    title: "Convert demand into pipeline.",
+    description: "Web products, outreach, automation, and AI operations capture interest and move qualified buyers toward a conversation.",
+    output: "Measurable opportunities",
+  },
 ];
 
 export function ImpactSection() {
-  const statementRef = useRef<HTMLHeadingElement>(null);
-  const [isStatementVisible, setIsStatementVisible] = useState(false);
+  const [activeStage, setActiveStage] = useState(0);
+  const canvasRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const statement = statementRef.current;
-    if (!statement) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    let frameId = 0;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsStatementVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 },
-    );
+    const updateFlow = () => {
+      frameId = 0;
+      const bounds = canvas.getBoundingClientRect();
+      const travel = Math.max(bounds.height * 0.8, 1);
+      const progress = Math.min(1, Math.max(0, (window.innerHeight * 0.82 - bounds.top) / travel));
+      canvas.style.setProperty("--workflow-progress", progress.toFixed(3));
+      setActiveStage(Math.min(workflow.length - 1, Math.floor((progress * (workflow.length - 1)) + 0.001)));
+    };
+    const queueUpdate = () => {
+      if (!frameId) frameId = window.requestAnimationFrame(updateFlow);
+    };
 
-    observer.observe(statement);
-    return () => observer.disconnect();
+    updateFlow();
+    window.addEventListener("scroll", queueUpdate, { passive: true });
+    window.addEventListener("resize", queueUpdate);
+    return () => {
+      window.removeEventListener("scroll", queueUpdate);
+      window.removeEventListener("resize", queueUpdate);
+      window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   return (
-    <section className="impact-section" aria-labelledby="impact-title">
+    <section className="impact-section" id="services" aria-labelledby="impact-title">
       <div className="impact-bg-placeholder">
         <div className="section-inner impact-inner">
           <div className="impact-intro">
-            <h2
-              className={isStatementVisible ? "is-filled" : ""}
-              id="impact-title"
-              ref={statementRef}
-            >
-              {impactStatementLines.map((line, lineIndex) => {
-                const precedingWords = impactStatementLines
-                  .slice(0, lineIndex)
-                  .reduce((total, item) => total + item.split(" ").length, 0);
+            <p className="eyebrow">Brand, Content, Web &amp; AI Systems</p>
+            <div className="growth-workflow">
+              <div className="workflow-toolbar">
+                <div>
+                  <span className="workflow-status"><i /> Live growth system</span>
+                  <h2 id="impact-title">From attention to pipeline.</h2>
+                </div>
+                <p>Select a node to inspect how the system moves buyers forward.</p>
+              </div>
 
-                return (
-                  <span className="impact-line" key={line}>
-                    {line.split(" ").map((word, wordIndex) => (
-                      <span
-                        className="impact-word"
-                        key={`${word}-${wordIndex}`}
-                        style={{ "--word-index": precedingWords + wordIndex } as CSSProperties}
+              <div className="workflow-canvas" ref={canvasRef}>
+                <div className="workflow-nodes" role="tablist" aria-label="Cinemora growth workflow">
+                  {workflow.map((item, index) => (
+                    <Fragment key={item.name}>
+                      <button
+                        aria-selected={activeStage === index}
+                        className={`workflow-node${activeStage === index ? " is-active" : ""}`}
+                        onClick={() => setActiveStage(index)}
+                        onFocus={() => setActiveStage(index)}
+                        role="tab"
+                        type="button"
                       >
-                        {word}{" "}
-                      </span>
-                    ))}
-                  </span>
-                );
-              })}
-            </h2>
+                        <span className="workflow-node-icon" aria-hidden="true">{item.icon}</span>
+                        <span className="workflow-node-copy">
+                          <small>{String(index + 1).padStart(2, "0")} / {item.label}</small>
+                          <strong>{item.name}</strong>
+                        </span>
+                      </button>
+                      {index < workflow.length - 1 && (
+                        <span
+                          className="workflow-connector"
+                          style={{ "--connector-index": index } as CSSProperties}
+                          aria-hidden="true"
+                        />
+                      )}
+                    </Fragment>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="impact-stats">

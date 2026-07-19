@@ -4,7 +4,12 @@ import { RollingText } from "@/components/rolling-link";
 const footerColumns = [
   {
     title: "Company",
-    links: ["About us", "Careers", "Blog", "Contact"],
+    links: [
+      { href: "#services", label: "Services" },
+      { href: "#case-studies", label: "Selected Work" },
+      { href: "#contact", label: "About the Founder" },
+      { href: "/booking", label: "Book a Call" },
+    ],
   },
 ];
 
@@ -58,8 +63,8 @@ export function SiteFooter() {
               <div className="footer-column" key={column.title}>
                 <h3>{column.title}</h3>
                 {column.links.map((link) => (
-                  <a className="rolling-trigger" href="#top" key={link} aria-label={link}>
-                    <RollingText label={link} />
+                  <a className="rolling-trigger" href={link.href} key={link.href} aria-label={link.label}>
+                    <RollingText label={link.label} />
                   </a>
                 ))}
               </div>
@@ -91,7 +96,7 @@ export function SiteFooter() {
                 <div className="footer-map-preview" aria-hidden="true">
                   <div className="footer-map-brand">
                     <Image
-                      src="https://res.cloudinary.com/l7fgvttd/image/upload/v1783963296/cinemora/images/branding/cinemora-logo.png"
+                      src="/apple-touch-icon.png"
                       alt=""
                       width={28}
                       height={28}
@@ -119,19 +124,19 @@ export function SiteFooter() {
               +
             </a>
             <p>
-              Cinemora creates brands,
+              Strategy, creative, and systems
               <br />
-              videos, and digital systems
+              built to earn attention
               <br />
-              turning clicks into clients.
+              and convert it into demand.
             </p>
           </div>
         </div>
 
         <div className="footer-legal">
-          <a className="rolling-trigger" href="#top" aria-label="Privacy Policy"><RollingText label="Privacy Policy" /></a>
-          <a className="rolling-trigger" href="#top" aria-label="Cookie Policy"><RollingText label="Cookie Policy" /></a>
-          <a className="rolling-trigger" href="#top" aria-label="Terms & Conditions"><RollingText label="Terms & Conditions" /></a>
+          <span>© {new Date().getFullYear()} Cinemora Studios</span>
+          <a className="rolling-trigger" href="https://www.linkedin.com/company/cinemora-studios" target="_blank" rel="noopener noreferrer" aria-label="Cinemora Studios on LinkedIn"><RollingText label="LinkedIn" /></a>
+          <a className="rolling-trigger" href={mapsUrl} target="_blank" rel="noopener noreferrer" aria-label="Cinemora Studios on Google Maps"><RollingText label="Google Maps" /></a>
         </div>
       </div>
     </footer>

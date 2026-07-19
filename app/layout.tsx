@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import { ScrollProgress } from "@/components/scroll-progress";
+import { SectionReveal } from "@/components/section-reveal";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -58,6 +59,17 @@ const structuredData = {
         "Web development",
         "AI business systems",
       ],
+      mentions: [
+        { "@type": "Organization", name: "Ray White", url: "https://www.raywhite.com/" },
+        { "@type": "Organization", name: "ThriveWorks360", url: "https://thriveworks360.com/home", sameAs: "https://www.linkedin.com/company/thriveworks360" },
+        { "@type": "Organization", name: "Success School", url: "https://www.successschool.io/home" },
+        { "@type": "Person", name: "Tim Frey", sameAs: "https://www.linkedin.com/in/timfrey", worksFor: { "@type": "Organization", name: "Success School" } },
+        { "@type": "Organization", name: "Spoken Wines", url: "https://spokenwines.com/" },
+        { "@type": "Organization", name: "Zendor Properties", url: "https://www.zendorproperties.ae/", sameAs: "https://www.linkedin.com/company/zendorproperties" },
+        { "@type": "Person", name: "Skylar Alexis", sameAs: "https://www.linkedin.com/in/skylaralexis" },
+        { "@type": "Organization", name: "Hodder Borg", url: "https://hodderborg.com.au/" },
+        { "@type": "Organization", name: "Otis Pottery", url: "https://otispottery.net/" },
+      ],
     },
     {
       "@type": "Person",
@@ -89,11 +101,11 @@ const structuredData = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.cinemorastudios.agency"),
   title: {
-    default: "Cinemora Studios",
+    default: "Cinemora Studios | Brand, Content, Web & AI Growth Systems",
     template: "%s | Cinemora Studios",
   },
   description:
-    "Cinemora Studios builds personal brands, content systems, websites, and AI operations that turn attention into qualified clients.",
+    "Cinemora Studios is a founder-led growth studio building authority, demand, and qualified pipeline through brand strategy, content, web products, and AI systems.",
   keywords: [
     "Cinemora Studios",
     "Cinemora Studio",
@@ -128,8 +140,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "Cinemora Studios",
-    title: "Cinemora Studios",
-    description: "We turn attention into clients.",
+    title: "Cinemora Studios | Build Authority. Create Demand.",
+    description: "Founder-led brand, content, web, and AI systems engineered to turn attention into qualified pipeline.",
     images: [
       {
         url: "/cinemora-social-card.png",
@@ -141,8 +153,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cinemora Studios",
-    description: "We turn attention into clients.",
+    title: "Cinemora Studios | Build Authority. Create Demand.",
+    description: "Founder-led brand, content, web, and AI systems engineered to turn attention into qualified pipeline.",
     images: ["/cinemora-social-card.png"],
   },
   robots: {
@@ -173,6 +185,7 @@ export default function RootLayout({
           }}
         />
         <ScrollProgress />
+        <SectionReveal />
         {children}
       </body>
     </html>

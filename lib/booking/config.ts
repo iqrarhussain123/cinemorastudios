@@ -38,17 +38,17 @@ export const bookingConfig: BookingConfig = {
   hostName: "Iqrar Hussain",
   companyName: "Cinemora Studios",
   logoUrl: "/logo.jpg",
-  meetingTitle: "Intro call",
-  meetingDescription: "A quick 30-minute call to see if we're a good fit.",
+  meetingTitle: "Growth Strategy Call",
+  meetingDescription: "A focused 30-minute conversation about your growth goal, current bottleneck, and the system required to close the gap.",
   durationMinutes: 30,
   testimonials: [
     {
-      quote: "A super passionate team that truly understands us.",
-      author: "Jane Doe, Acme Inc",
+      quote: "Cinemora helped us grow from 1,000 to 10,000 YouTube subscribers, with short-form content reaching 220,000 views.",
+      author: "Jan de Weerd, Spoken Wines",
     },
     {
-      quote: "Incredible quality work. Always genuinely caring.",
-      author: "John Smith, Example Co",
+      quote: "Over 18 months, Success School grew from around $10K–$20K per month to reaching $100K months.",
+      author: "Tim Frey, Success School",
     },
   ],
   accentColor: "#bed0b6",

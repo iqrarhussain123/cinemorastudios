@@ -7,8 +7,8 @@ import { RollingLink, RollingText } from "@/components/rolling-link";
 const navigation = [
   { href: "#top", label: "Home" },
   { href: "#services", label: "Services" },
-  { href: "#work", label: "Case Studies" },
-  { href: "/booking", label: "Contact Us" },
+  { href: "#case-studies", label: "Case Studies" },
+  { href: "/booking", label: "Book a Call" },
 ];
 
 export function SiteHeader() {
@@ -18,27 +18,17 @@ export function SiteHeader() {
 
   useEffect(() => {
     let frameId = 0;
-
-    const updateHeaderState = () => {
+    const updateHeader = () => {
       frameId = 0;
-      const pastHero = window.scrollY >= window.innerHeight * 0.92;
-      setIsPastHero(pastHero);
-
-      if (pastHero) {
-        setIsMenuOpen(false);
-      }
+      setIsPastHero(window.scrollY > window.innerHeight * 0.82);
     };
-
     const queueUpdate = () => {
-      if (!frameId) {
-        frameId = window.requestAnimationFrame(updateHeaderState);
-      }
+      if (!frameId) frameId = window.requestAnimationFrame(updateHeader);
     };
 
-    updateHeaderState();
+    updateHeader();
     window.addEventListener("scroll", queueUpdate, { passive: true });
     window.addEventListener("resize", queueUpdate);
-
     return () => {
       window.removeEventListener("scroll", queueUpdate);
       window.removeEventListener("resize", queueUpdate);
@@ -69,7 +59,8 @@ export function SiteHeader() {
   }, [isMenuOpen]);
 
   return (
-    <header className={`site-header ${isPastHero ? "is-hidden" : ""}`} ref={headerRef}>
+    <header className={`site-header ${isPastHero ? "is-past-hero" : ""}`} ref={headerRef}>
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <div className="site-header-inner">
         <a className="brand" href="#top" aria-label="Cinemora Studios home">
           <Image
@@ -109,8 +100,8 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <a className="header-contact-link rolling-trigger" href="/booking" aria-label="Contact Us">
-          <RollingText label="Contact Us" />
+        <a className="header-contact-link rolling-trigger" href="/booking" aria-label="Book a strategy call">
+          <RollingText label="Book a Call" />
         </a>
 
         <div

@@ -19,10 +19,12 @@ const showcaseBrands = [
   {
     name: "Nasdaq",
     logo: "/images/logos/nasdaq.png",
+    url: "https://www.nasdaq.com/",
   },
   {
     name: "Ray White",
     logo: "/images/logos/ray-white-new.png",
+    url: "https://www.raywhite.com/",
   },
   {
     name: "S Five Real Estate",
@@ -31,14 +33,21 @@ const showcaseBrands = [
   {
     name: "Spoken Wines",
     logo: "/images/logos/SPOKEN-WINES.png",
+    url: "https://spokenwines.com/",
   },
   {
     name: "Success School",
     logo: "/images/logos/Success School.png",
+    url: "https://www.successschool.io/home",
   },
   {
     name: "Zendor Properties",
     logo: "/images/logos/zendorproperties_logo.png",
+    url: "https://www.zendorproperties.ae/",
+  },
+  {
+    name: "ThriveWorks360",
+    url: "https://thriveworks360.com/home",
   },
 ];
 
@@ -114,53 +123,58 @@ export function HeroSection() {
 
       <div className="hero-reference-layout">
         <div className="hero-reference-title">
-          <div className="hero-proof" aria-label="Client review rating">
+          <div className="hero-proof" aria-label="Cinemora delivery model">
             <span className="hero-proof-avatars" aria-hidden="true">
-              <span />
-              <span />
-              <span />
+              <span><Image src="/images/clients/Tim Frey.png" alt="" width={36} height={36} /></span>
+              <span><Image src="/images/clients/Jan De Weerd.jpg" alt="" width={36} height={36} /></span>
+              <span><Image src="/images/clients/Alycia.jpg" alt="" width={36} height={36} /></span>
+              <span><Image src="/images/clients/Skylar-Alexis.jpg" alt="" width={36} height={36} /></span>
             </span>
-            <span className="hero-proof-stars">*****</span>
-            <strong>4.9/5</strong>
-            <small>based on 180 verified reviews</small>
+            <span className="hero-proof-stars">Founder-led</span>
+            <strong>Global delivery</strong>
+            <small>strategy through execution</small>
           </div>
 
           <h1 className="hero-statement" id="hero-title">
-            <span>Brands </span>
-            <span>That Lead</span>
+            <span>VISIBILITY</span>
+            <span>THAT SELLS.</span>
           </h1>
 
           <div className="hero-project-actions">
             <a className="hero-project-link hero-project-link-primary rolling-trigger" href="/booking" aria-label="Start Your Brand">
               <RollingText label="Start Your Brand" />
             </a>
-            <a className="hero-project-link hero-project-link-secondary rolling-trigger" href="#work" aria-label="See our Work">
-              <RollingText label="See our Work" />
+            <a className="hero-project-link hero-project-link-secondary rolling-trigger" href="#case-studies" aria-label="See selected work">
+              <RollingText label="See the Work" />
             </a>
           </div>
         </div>
 
         <div className="hero-reference-copy">
           <p>
-            We build personal brands and AI systems that turn attention into
-            clients.
+            <span className="hero-copy-line">Brand, content, web, and AI systems</span>
+            <span className="hero-copy-line">built to turn attention into demand.</span>
           </p>
           <div className="brand-showcase" aria-label="Brands showcase">
             <div className="brand-carousel">
               <div className="brand-track">
                 {carouselBrands.map((brand, index) => (
-                  <div
+                  <a
                     className="showcase-brand"
                     aria-hidden={index >= showcaseBrands.length}
+                    aria-label={`Visit ${brand.name}`}
+                    href={brand.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    tabIndex={index >= showcaseBrands.length ? -1 : 0}
                     key={`${brand.name}-${index}`}
                   >
-                    <Image
-                      src={brand.logo}
-                      alt={index < showcaseBrands.length ? brand.name : ""}
-                      width={300}
-                      height={300}
-                    />
-                  </div>
+                    {brand.logo ? (
+                      <Image src={brand.logo} alt={index < showcaseBrands.length ? `${brand.name} official website` : ""} width={300} height={300} />
+                    ) : (
+                      <strong>{brand.name}</strong>
+                    )}
+                  </a>
                 ))}
               </div>
             </div>

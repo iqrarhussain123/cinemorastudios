@@ -184,8 +184,15 @@ export function WorkCarousel() {
   }, [activeCardId]);
 
   return (
-    <section className="work-showcase" aria-labelledby="work-carousel-title">
+    <section className="work-showcase work-showcase-stack" id="case-studies" aria-labelledby="work-carousel-title">
       <div className="section-inner">
+        <div className="section-intro work-section-intro">
+          <div>
+            <p className="eyebrow">Selected Work</p>
+            <h2 id="work-carousel-title">Attention, engineered.</h2>
+          </div>
+          <p className="intro-copy">Film / Social / Property / Paid</p>
+        </div>
         <div className="work-filters" aria-label="Work filters">
           {workTabs.map((tab) => (
             <button
@@ -198,7 +205,7 @@ export function WorkCarousel() {
               }}
               type="button"
             >
-              {tab.label}
+              <span>{tab.label}</span>
             </button>
           ))}
         </div>
