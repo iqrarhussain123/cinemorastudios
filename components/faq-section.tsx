@@ -1,4 +1,5 @@
-import { LoadableImage } from "@/components/loadable-image";
+import Image from "next/image";
+import { RollingText } from "@/components/rolling-link";
 
 const questions = [
   {
@@ -39,21 +40,24 @@ export function FaqSection() {
       <div className="section-inner faq-inner">
         <div className="faq-media-column">
           <div className="faq-image-placeholder">
-            <LoadableImage
-              alt="Cinemora founder portrait"
-              fill
-              placeholderLabel="Loading image"
-              sizes="(max-width: 760px) 100vw, 240px"
-              src="https://res.cloudinary.com/l7fgvttd/image/upload/v1783963324/cinemora/images/team/iqrar-hussain.png"
+            <Image
+              alt="Cinemora logo"
+              className="faq-brand-mark"
+              height={180}
+              src="/apple-touch-icon.png"
+              width={180}
             />
           </div>
-          <a href="/booking">Book a call with Cinemora</a>
+          <a className="rolling-trigger" href="/booking" aria-label="Book a call with Cinemora">
+            <RollingText label="Book a call with Cinemora" />
+          </a>
         </div>
 
         <div className="faq-content">
           <p className="eyebrow">FAQs</p>
           <h2 id="faq-title">
-            Here&apos;s what you need to consider before partnering with us.
+            <span>What you need to know</span>
+            <span>before working with us.</span>
           </h2>
 
           <div className="faq-list">

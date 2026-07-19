@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { useEffect, useRef } from "react";
+import { RollingText } from "@/components/rolling-link";
 
 const heroSlides = [
   "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963301/cinemora/images/hero/slides/slide3.png",
@@ -11,6 +12,7 @@ const heroSlides = [
   "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963309/cinemora/images/hero/slides/slide6.png",
   "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963311/cinemora/images/hero/slides/slide7.png",
   "https://res.cloudinary.com/l7fgvttd/image/upload/v1783966424/cinemora/images/hero/slides/slide8.png",
+  "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420054/cinemora/images/hero/slides/iqrar-studios.png",
 ];
 
 const showcaseBrands = [
@@ -90,7 +92,11 @@ export function HeroSection() {
       aria-labelledby="hero-title"
       ref={heroRef}
     >
-      <div className="hero-slideshow" aria-hidden="true">
+      <div
+        className="hero-slideshow"
+        aria-hidden="true"
+        style={{ "--hero-slide-duration": `${heroSlides.length * 4}s` } as CSSProperties}
+      >
         {heroSlides.map((slide, index) => (
           <Image
             className="hero-slide"
@@ -100,6 +106,7 @@ export function HeroSection() {
             sizes="100vw"
             style={{ "--slide-index": index } as CSSProperties}
             priority={index === 0}
+            loading={index === 0 ? "eager" : "lazy"}
             key={slide}
           />
         ))}
@@ -124,11 +131,11 @@ export function HeroSection() {
           </h1>
 
           <div className="hero-project-actions">
-            <a className="hero-project-link hero-project-link-primary" href="/booking">
-              <span>Start Your Brand</span>
+            <a className="hero-project-link hero-project-link-primary rolling-trigger" href="/booking" aria-label="Start Your Brand">
+              <RollingText label="Start Your Brand" />
             </a>
-            <a className="hero-project-link hero-project-link-secondary" href="#work">
-              <span>See our Work</span>
+            <a className="hero-project-link hero-project-link-secondary rolling-trigger" href="#work" aria-label="See our Work">
+              <RollingText label="See our Work" />
             </a>
           </div>
         </div>

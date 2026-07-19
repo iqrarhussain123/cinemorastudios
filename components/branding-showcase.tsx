@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { BrandingCard, type BrandingService } from "@/components/branding-card";
+import { RollingText } from "@/components/rolling-link";
 
 interface BrandingShowcaseProps {
   services: BrandingService[];
@@ -86,8 +87,8 @@ export function BrandingShowcase({ services }: BrandingShowcaseProps) {
       </div>
 
       <div className="branding-actions">
-        <a className="book-button" href="/booking">
-          Book a Call <span aria-hidden="true">&rarr;</span>
+        <a className="book-button rolling-trigger" href="/booking" aria-label="Book a Call">
+          <RollingText label="Book a Call" /> <span className="book-button-arrow" aria-hidden="true">&rarr;</span>
         </a>
       </div>
     </>

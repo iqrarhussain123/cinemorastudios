@@ -27,30 +27,39 @@ export function TimeSlotList({
   timezone: string;
   onSelectSlot: (iso: string) => void;
 }) {
-  const [slots, setSlots] = useState<string[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [availability, setAvailability] = useState<{
+    date: string;
+    slots: string[];
+    error: string | null;
+  }>({ date: "", slots: [], error: null });
   const [use24h, setUse24h] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
-    setSlots(null);
-    setError(null);
-
     fetch(`/api/availability?date=${date}`)
       .then((res) => res.json())
       .then((data) => {
         if (cancelled) return;
-        if (data.error) setError(data.error);
-        else setSlots(data.slots ?? []);
+        setAvailability({
+          date,
+          slots: data.error ? [] : (data.slots ?? []),
+          error: data.error ?? null,
+        });
       })
       .catch(() => {
-        if (!cancelled) setError("Could not load availability right now.");
+        if (!cancelled) {
+          setAvailability({ date, slots: [], error: "Could not load availability right now." });
+        }
       });
 
     return () => {
       cancelled = true;
     };
   }, [date]);
+
+  const isLoading = availability.date !== date;
+  const slots = isLoading ? null : availability.slots;
+  const error = isLoading ? null : availability.error;
 
   return (
     <div className="flex h-full min-h-0 w-full flex-col gap-4 p-6 sm:w-64">
