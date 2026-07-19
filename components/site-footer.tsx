@@ -22,11 +22,10 @@ const contactLinks = [
     href: "mailto:iqrarworksatcinemora@gmail.com",
     label: "iqrarworksatcinemora@gmail.com",
   },
-  {
-    href: "tel:+923360599017",
-    label: "+92 3360599017",
-  },
 ];
+
+const whatsAppUrl =
+  "https://wa.me/923360599017?text=Hey%20Iqrar%2C%20I%20need%20help%20with%20your%20services.";
 
 const mapsUrl =
   "https://maps.app.goo.gl/9iioJQzHgsBy5DeS9?g_st=awb";
@@ -73,10 +72,35 @@ export function SiteFooter() {
               <h3>Contact</h3>
               {contactLinks.map((link) => (
                 <a className="footer-contact-link" href={link.href} key={link.href}>
-                  <ContactIcon type={link.href.startsWith("tel:") ? "phone" : "email"} />
+                  <ContactIcon type="email" />
                   <span>{link.label}</span>
                 </a>
               ))}
+              <div className="footer-whatsapp-wrap">
+                <a
+                  className="footer-contact-link footer-whatsapp-link"
+                  href={whatsAppUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Message Iqrar on WhatsApp at +92 3360599017"
+                >
+                  <ContactIcon type="phone" />
+                  <span>+92 3360599017</span>
+                </a>
+                <div className="footer-whatsapp-preview" aria-hidden="true">
+                  <div className="footer-whatsapp-brand">
+                    <span>WA</span>
+                    <div>
+                      <strong>Chat with Iqrar</strong>
+                      <small>Typically replies on WhatsApp</small>
+                    </div>
+                  </div>
+                  <div className="footer-whatsapp-message">
+                    Hey Iqrar, I need help with your services.
+                  </div>
+                  <span className="footer-whatsapp-action">Continue in WhatsApp &rarr;</span>
+                </div>
+              </div>
               <div className="footer-address-wrap">
                 <a
                   className="footer-address-link"
@@ -116,6 +140,36 @@ export function SiteFooter() {
                   <span>Open location on Google Maps ↗</span>
                 </div>
               </div>
+              <div className="footer-social-links" aria-label="Cinemora social profiles">
+                <a className="footer-social-item" href="https://www.linkedin.com/company/cinemora-studios" target="_blank" rel="noopener noreferrer" aria-label="Cinemora Studios on LinkedIn">
+                  <span className="footer-linkedin-mark" aria-hidden="true">in</span>
+                  <span className="footer-social-preview" aria-hidden="true">
+                    <strong>LinkedIn</strong>
+                    <small>Cinemora Studios</small>
+                    <em>View company profile &rarr;</em>
+                  </span>
+                </a>
+                <a className="footer-social-item" href="https://www.instagram.com/cinemorastudios/" target="_blank" rel="noopener noreferrer" aria-label="Cinemora Studios on Instagram">
+                  <svg aria-hidden="true" viewBox="0 0 24 24">
+                    <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle className="footer-social-dot" cx="17.4" cy="6.7" r="0.8" />
+                  </svg>
+                  <span className="footer-social-preview" aria-hidden="true">
+                    <strong>Instagram</strong>
+                    <small>@cinemorastudios</small>
+                    <em>View studio profile &rarr;</em>
+                  </span>
+                </a>
+                <a className="footer-social-item" href="https://x.com/IqrarHussa16285" target="_blank" rel="noopener noreferrer" aria-label="Iqrar Hussain on X">
+                  <span className="footer-x-mark" aria-hidden="true">X</span>
+                  <span className="footer-social-preview" aria-hidden="true">
+                    <strong>X</strong>
+                    <small>@IqrarHussa16285</small>
+                    <em>View Iqrar on X &rarr;</em>
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -136,6 +190,8 @@ export function SiteFooter() {
         <div className="footer-legal">
           <span>© {new Date().getFullYear()} Cinemora Studios</span>
           <a className="rolling-trigger" href="https://www.linkedin.com/company/cinemora-studios" target="_blank" rel="noopener noreferrer" aria-label="Cinemora Studios on LinkedIn"><RollingText label="LinkedIn" /></a>
+          <a className="rolling-trigger" href="https://www.instagram.com/cinemorastudios/" target="_blank" rel="noopener noreferrer" aria-label="Cinemora Studios on Instagram"><RollingText label="Instagram" /></a>
+          <a className="rolling-trigger" href="https://x.com/IqrarHussa16285" target="_blank" rel="noopener noreferrer" aria-label="Iqrar Hussain on X"><RollingText label="X" /></a>
           <a className="rolling-trigger" href={mapsUrl} target="_blank" rel="noopener noreferrer" aria-label="Cinemora Studios on Google Maps"><RollingText label="Google Maps" /></a>
         </div>
       </div>

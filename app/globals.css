@@ -3507,32 +3507,73 @@ blockquote {
   font-weight: 650;
 }
 
-.about-image-caption > a {
+.about-social-links {
   display: inline-flex;
-  min-height: 38px;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.55rem 0.75rem;
-  border: 1px solid rgba(223, 232, 211, 0.24);
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.04);
-  color: #edf3e8;
-  font-size: 0.68rem;
-  font-weight: 700;
-  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  gap: 0.9rem;
+}
+
+.about-social-links a {
+  display: grid;
+  width: 1.35rem;
+  height: 1.35rem;
+  place-items: center;
+  color: var(--pale-green);
+  transition: color 180ms ease, opacity 180ms ease, transform 180ms ease;
 }
 
 .about-image-caption .linkedin-mark {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 850;
   letter-spacing: -0.06em;
 }
 
-.about-image-caption > a:hover,
-.about-image-caption > a:focus-visible {
-  transform: translateY(-2px) scale(1.05);
-  background: #edf3e8;
+.about-linkedin-link {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(223, 232, 211, 0.28);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--pale-green);
+  font-size: 0.68rem;
+  font-weight: 700;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.about-linkedin-link:hover,
+.about-linkedin-link:focus-visible {
+  border-color: var(--pale-green);
+  background: var(--pale-green);
   color: var(--deep-green);
+  transform: translateY(-2px);
+}
+
+.about-social-links svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+
+.about-social-links .social-icon-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.about-social-links .x-mark {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.about-social-links a:hover,
+.about-social-links a:focus-visible {
+  color: white;
+  opacity: 1;
+  transform: translateY(-2px) scale(1.12);
 }
 
 .team-section {
@@ -3775,6 +3816,94 @@ blockquote {
   transform: translateX(2px);
 }
 
+.footer-whatsapp-wrap {
+  position: relative;
+  width: fit-content;
+}
+
+.footer-whatsapp-link {
+  width: fit-content;
+}
+
+.footer-whatsapp-preview {
+  position: absolute;
+  z-index: 21;
+  bottom: calc(100% + 0.65rem);
+  left: 0;
+  width: min(20rem, 36vw);
+  padding: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  background: rgba(5, 25, 22, 0.98);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px) scale(0.88) rotate(-1.5deg);
+  transform-origin: bottom left;
+  transition:
+    opacity 180ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-whatsapp-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.35rem 0.35rem 0.7rem;
+}
+
+.footer-whatsapp-brand > span {
+  display: grid;
+  width: 2rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: #25d366;
+  color: #05211d;
+  font-size: 0.58rem;
+  font-weight: 900;
+}
+
+.footer-whatsapp-brand div {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.footer-whatsapp-brand strong {
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 650;
+}
+
+.footer-whatsapp-brand small {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.6rem;
+}
+
+.footer-whatsapp-message {
+  margin-left: 1.75rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.8rem 0.8rem 0.2rem 0.8rem;
+  background: #dff6d8;
+  color: #082a27;
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.footer-whatsapp-action {
+  display: block;
+  padding: 0.75rem 0.45rem 0.25rem;
+  color: #8be5a6;
+  font-size: 0.68rem;
+  font-weight: 650;
+}
+
+.footer-whatsapp-wrap:hover .footer-whatsapp-preview,
+.footer-whatsapp-wrap:focus-within .footer-whatsapp-preview {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0);
+}
+
 .footer-address-wrap {
   position: relative;
   width: fit-content;
@@ -3889,6 +4018,145 @@ blockquote {
 .footer-address-wrap:focus-within .footer-map-preview {
   opacity: 1;
   transform: translateY(0) scale(1) rotate(0);
+}
+
+.footer-social-links {
+  display: flex !important;
+  min-height: 1.5rem;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.7rem;
+  visibility: visible;
+}
+
+.footer-social-links a {
+  display: grid;
+  width: 1.35rem;
+  height: 1.35rem;
+  place-items: center;
+  color: rgba(223, 232, 211, 0.84);
+  opacity: 1;
+  transition: color 180ms ease, opacity 180ms ease, transform 180ms ease;
+}
+
+.footer-social-links svg {
+  width: 1.18rem;
+  height: 1.18rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+}
+
+.footer-social-links .footer-social-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footer-linkedin-mark {
+  font-size: 1.08rem;
+  font-weight: 850;
+  letter-spacing: -0.06em;
+}
+
+.footer-x-mark {
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.footer-social-links a:hover,
+.footer-social-links a:focus-visible {
+  color: white;
+  opacity: 1;
+  transform: translateY(-2px) scale(1.12);
+}
+
+.footer-social-item {
+  position: relative;
+}
+
+.footer-social-preview {
+  position: absolute;
+  z-index: 22;
+  bottom: calc(100% + 0.75rem);
+  left: 50%;
+  display: grid;
+  width: 11.5rem;
+  gap: 0.22rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(223, 232, 211, 0.22);
+  border-radius: 0.8rem;
+  background: rgba(5, 25, 22, 0.98);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.46);
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px) scale(0.86) rotate(-1deg);
+  transform-origin: bottom center;
+  transition:
+    opacity 170ms ease,
+    transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-social-preview::after {
+  position: absolute;
+  bottom: -5px;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid rgba(223, 232, 211, 0.18);
+  border-bottom: 1px solid rgba(223, 232, 211, 0.18);
+  background: rgba(5, 25, 22, 0.98);
+  content: "";
+  transform: rotate(45deg);
+}
+
+.footer-social-preview strong {
+  color: var(--pale-green);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 750;
+}
+
+.footer-social-preview small {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.64rem;
+}
+
+.footer-social-preview em {
+  margin-top: 0.35rem;
+  color: var(--soft-green);
+  font-size: 0.6rem;
+  font-style: normal;
+  font-weight: 650;
+}
+
+.footer-social-item:hover .footer-social-preview,
+.footer-social-item:focus-visible .footer-social-preview {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1) rotate(0);
+}
+
+.footer-social-item:first-child .footer-social-preview {
+  left: 0;
+  transform: translate(0, 12px) scale(0.86) rotate(-1deg);
+  transform-origin: bottom left;
+}
+
+.footer-social-item:first-child:hover .footer-social-preview,
+.footer-social-item:first-child:focus-visible .footer-social-preview {
+  transform: translate(0, 0) scale(1) rotate(0);
+}
+
+.footer-social-item:last-child .footer-social-preview {
+  right: 0;
+  left: auto;
+  transform: translate(0, 12px) scale(0.86) rotate(1deg);
+  transform-origin: bottom right;
+}
+
+.footer-social-item:last-child:hover .footer-social-preview,
+.footer-social-item:last-child:focus-visible .footer-social-preview {
+  transform: translate(0, 0) scale(1) rotate(0);
 }
 
 .footer-legal {
@@ -5917,6 +6185,10 @@ blockquote {
   .footer-address-link {
     max-width: 100%;
     white-space: normal;
+  }
+
+  .footer-whatsapp-preview {
+    width: min(20rem, calc(100vw - 2.5rem));
   }
 }
 

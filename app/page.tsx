@@ -146,6 +146,7 @@ export default function Home() {
                 <strong>Iqrar Hussain</strong>
               </div>
               <a
+                className="about-linkedin-link"
                 aria-label="View Iqrar Hussain on LinkedIn"
                 href="https://www.linkedin.com/in/cinemorastudios"
                 rel="noreferrer"
