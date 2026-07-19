@@ -66,7 +66,7 @@ export function SiteHeader() {
           <Image
             className="brand-mark"
             src="https://res.cloudinary.com/l7fgvttd/image/upload/v1783963296/cinemora/images/branding/cinemora-logo.png"
-            alt=""
+            alt="Cinemora Studios"
             width={300}
             height={300}
             priority
@@ -88,7 +88,7 @@ export function SiteHeader() {
           <Image
             className="menu-icon"
             src="https://res.cloudinary.com/l7fgvttd/image/upload/v1783963297/cinemora/images/branding/menu-lines.png"
-            alt=""
+            alt="Open navigation menu"
             width={96}
             height={96}
           />
