@@ -50,6 +50,8 @@ const structuredData = {
         mapsUrl,
         "https://www.linkedin.com/in/cinemorastudios",
         "https://www.linkedin.com/company/cinemora-studios",
+        "https://www.instagram.com/cinemorastudios/",
+        "https://x.com/IqrarHussa16285",
       ],
       knowsAbout: [
         "Personal branding",
@@ -79,7 +81,11 @@ const structuredData = {
       worksFor: { "@id": "https://www.cinemorastudios.agency/#business" },
       url: "https://www.cinemorastudios.agency/#contact",
       image: "https://www.cinemorastudios.agency/logo.jpg",
-      sameAs: ["https://www.linkedin.com/in/cinemorastudios"],
+      sameAs: [
+        "https://www.linkedin.com/in/cinemorastudios",
+        "https://www.instagram.com/cinemorastudios/",
+        "https://x.com/IqrarHussa16285",
+      ],
     },
     {
       "@type": "Service",
