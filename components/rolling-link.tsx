@@ -23,13 +23,21 @@ function LetterRow({ label }: { label: string }) {
 
 export function RollingLink({ href, label }: RollingLinkProps) {
   return (
-    <a className="rolling-link" href={href} aria-label={label}>
+    <a className="rolling-trigger" href={href} aria-label={label}>
+      <RollingText label={label} />
+    </a>
+  );
+}
+
+export function RollingText({ label }: { label: string }) {
+  return (
+    <span className="rolling-link" aria-hidden="true">
       <span className="rolling-line rolling-line-current" aria-hidden="true">
         <LetterRow label={label} />
       </span>
       <span className="rolling-line rolling-line-next" aria-hidden="true">
         <LetterRow label={label} />
       </span>
-    </a>
+    </span>
   );
 }

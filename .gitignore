@@ -27,8 +27,8 @@ Thumbs.db
 
 # large media assets (hosted externally, not in repo)
 /public/videos/
+/public/images/hero/slides/Iqrar Studios.png
 
 # local tool settings and logs
 .claude/settings.local.json
 .codex/*.log
-

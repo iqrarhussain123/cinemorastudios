@@ -15,6 +15,7 @@ type LazyVideoProps = Omit<
   muteOnExit?: boolean;
   preload?: VideoHTMLAttributes<HTMLVideoElement>["preload"];
   restartOnHover?: boolean;
+  deliveryWidth?: number;
   src: string;
   toggleMuteOnClick?: boolean;
 };
@@ -25,6 +26,7 @@ export function LazyVideo({
   muteOnExit = false,
   preload = "metadata",
   restartOnHover = false,
+  deliveryWidth = 720,
   src,
   toggleMuteOnClick = false,
   ...videoProps
@@ -35,6 +37,8 @@ export function LazyVideo({
   const [isMuted, setIsMuted] = useState(Boolean(muted));
   const [muteFeedback, setMuteFeedback] = useState<"muted" | "unmuted" | null>(null);
   const effectiveMuted = toggleMuteOnClick ? isMuted : Boolean(muted);
+  const deliverySrc = optimizeVideoUrl(src, deliveryWidth);
+  const posterSrc = getVideoPosterUrl(src, deliveryWidth);
 
   useEffect(() => {
     if (!muteFeedback) {
@@ -101,7 +105,7 @@ export function LazyVideo({
     }
 
     void video.play();
-  }, [isNearViewport, src]);
+  }, [isNearViewport, deliverySrc]);
 
   const restartVideo = () => {
     const video = videoRef.current;
@@ -143,7 +147,8 @@ export function LazyVideo({
         preload={isNearViewport ? preload : "none"}
         ref={videoRef}
         muted={effectiveMuted}
-        src={isNearViewport ? src : undefined}
+        poster={isNearViewport ? posterSrc : undefined}
+        src={isNearViewport ? deliverySrc : undefined}
       />
       {toggleMuteOnClick ? (
         <button
@@ -161,4 +166,28 @@ export function LazyVideo({
       ) : null}
     </>
   );
+}
+
+function optimizeVideoUrl(src: string, width: number) {
+  if (!src.includes("res.cloudinary.com") || !src.includes("/video/upload/")) {
+    return src;
+  }
+
+  return src.replace(
+    "/video/upload/",
+    `/video/upload/f_auto,q_auto:eco,vc_auto,w_${width}/`,
+  );
+}
+
+function getVideoPosterUrl(src: string, width: number) {
+  if (!src.includes("res.cloudinary.com") || !src.includes("/video/upload/")) {
+    return undefined;
+  }
+
+  return src
+    .replace(
+      "/video/upload/",
+      `/video/upload/so_0,f_webp,q_auto:eco,w_${width}/`,
+    )
+    .replace(/\.mp4(?:\?.*)?$/i, ".webp");
 }

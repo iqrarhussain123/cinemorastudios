@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { RollingLink } from "@/components/rolling-link";
+import { RollingLink, RollingText } from "@/components/rolling-link";
 
 const navigation = [
   { href: "#top", label: "Home" },
   { href: "#services", label: "Services" },
-  { href: "#case-studies", label: "Case Studies" },
+  { href: "#work", label: "Case Studies" },
   { href: "/booking", label: "Contact Us" },
 ];
 
@@ -109,8 +109,8 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <a className="header-contact-link" href="/booking">
-          Contact Us
+        <a className="header-contact-link rolling-trigger" href="/booking" aria-label="Contact Us">
+          <RollingText label="Contact Us" />
         </a>
 
         <div
@@ -119,11 +119,13 @@ export function SiteHeader() {
         >
           {navigation.map((item) => (
             <a
+              className="rolling-trigger"
               href={item.href}
               key={item.href}
+              aria-label={item.label}
               onClick={() => setIsMenuOpen(false)}
             >
-              {item.label}
+              <RollingText label={item.label} />
             </a>
           ))}
         </div>

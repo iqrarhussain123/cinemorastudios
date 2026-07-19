@@ -159,6 +159,7 @@ function CarouselVideo({
 
 export function WorkCarousel() {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<WorkCategory>("reels");
 
   useEffect(() => {
     if (!activeCardId) {
@@ -185,51 +186,45 @@ export function WorkCarousel() {
   return (
     <section className="work-showcase" aria-labelledby="work-carousel-title">
       <div className="section-inner">
-        {workTabs.map((tab, index) => (
-          <input
-            className={`work-tab-input work-category-${tab.id}`}
-            defaultChecked={index === 0}
-            id={`work-tab-${tab.id}`}
-            key={tab.id}
-            name="work-category"
-            type="radio"
-          />
-        ))}
-
         <div className="work-filters" aria-label="Work filters">
           {workTabs.map((tab) => (
-            <label
-              className="work-filter-label"
-              htmlFor={`work-tab-${tab.id}`}
+            <button
+              className={`work-filter-label ${activeTab === tab.id ? "is-active" : ""}`}
+              aria-pressed={activeTab === tab.id}
               key={tab.id}
+              onClick={() => {
+                setActiveTab(tab.id);
+                setActiveCardId(null);
+              }}
+              type="button"
             >
               {tab.label}
-            </label>
+            </button>
           ))}
         </div>
 
-        {workTabs.map((tab) => {
+        {(() => {
           const carouselTrack = [
-            ...workCarouselProjects[tab.id],
-            ...workCarouselProjects[tab.id],
+            ...workCarouselProjects[activeTab],
+            ...workCarouselProjects[activeTab],
           ];
-          const isZooming = activeCardId?.startsWith(`${tab.id}-`);
+          const isZooming = activeCardId?.startsWith(`${activeTab}-`);
 
           return (
             <div
-              className={`work-carousel work-carousel-panel work-carousel-${tab.id} ${isZooming ? "is-zooming" : ""}`}
-              aria-label={`${tab.label} videos`}
-              key={tab.id}
+              className={`work-carousel work-carousel-panel work-carousel-${activeTab} ${isZooming ? "is-zooming" : ""}`}
+              aria-label={`${workTabs.find((tab) => tab.id === activeTab)?.label} videos`}
+              key={activeTab}
             >
               <div className="work-carousel-track">
                 {carouselTrack.map((item, index) => {
-                  const cardId = `${tab.id}-${index}`;
+                  const cardId = `${activeTab}-${index}`;
                   const isActive = activeCardId === cardId;
 
                   return (
                     <article
                       aria-pressed={isActive}
-                      className={`work-carousel-card work-carousel-card-${tab.id} ${isActive ? "is-click-active" : ""}`}
+                      className={`work-carousel-card work-carousel-card-${activeTab} ${isActive ? "is-click-active" : ""}`}
                       key={`${item.src}-${index}`}
                       onClick={() => setActiveCardId((current) => (current === cardId ? null : cardId))}
                       onKeyDown={(event) => {
@@ -248,7 +243,7 @@ export function WorkCarousel() {
               </div>
             </div>
           );
-        })}
+        })()}
           </div>
     </section>
   );

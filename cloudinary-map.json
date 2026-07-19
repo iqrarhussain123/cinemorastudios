@@ -1,5 +1,47 @@
 [
   {
+    "localPath": "android-chrome-192x192.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420031/cinemora/android-chrome-192x192.png",
+    "publicId": "cinemora/android-chrome-192x192",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "android-chrome-512x512.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420032/cinemora/android-chrome-512x512.png",
+    "publicId": "cinemora/android-chrome-512x512",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "apple-touch-icon.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420039/cinemora/apple-touch-icon.png",
+    "publicId": "cinemora/apple-touch-icon",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "cinemora-logo-background.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420040/cinemora/cinemora-logo-background.jpg",
+    "publicId": "cinemora/cinemora-logo-background",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "cinemora-social-card.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420041/cinemora/cinemora-social-card.png",
+    "publicId": "cinemora/cinemora-social-card",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "favicon-16x16.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420041/cinemora/favicon-16x16.png",
+    "publicId": "cinemora/favicon-16x16",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "favicon-32x32.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420042/cinemora/favicon-32x32.png",
+    "publicId": "cinemora/favicon-32x32",
+    "resourceType": "image"
+  },
+  {
     "localPath": "images\\branding\\cinemora-logo.png",
     "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963296/cinemora/images/branding/cinemora-logo.png",
     "publicId": "cinemora/images/branding/cinemora-logo",
@@ -12,6 +54,60 @@
     "resourceType": "image"
   },
   {
+    "localPath": "images\\clients\\Alycia.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420043/cinemora/images/clients/alycia.webp",
+    "publicId": "cinemora/images/clients/alycia",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\clients\\GradeWise-AI.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420044/cinemora/images/clients/gradewise-ai.png",
+    "publicId": "cinemora/images/clients/gradewise-ai",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\clients\\GradeWise-Owl-Cinemora.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420045/cinemora/images/clients/gradewise-owl-cinemora.png",
+    "publicId": "cinemora/images/clients/gradewise-owl-cinemora",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\clients\\GradeWise-Owl.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420046/cinemora/images/clients/gradewise-owl.png",
+    "publicId": "cinemora/images/clients/gradewise-owl",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\clients\\Hodderborg.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420047/cinemora/images/clients/hodderborg.png",
+    "publicId": "cinemora/images/clients/hodderborg",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\clients\\Jan De Weerd.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420048/cinemora/images/clients/jan-de-weerd.jpg",
+    "publicId": "cinemora/images/clients/jan-de-weerd",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\clients\\Otis-Pottery.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420049/cinemora/images/clients/otis-pottery.png",
+    "publicId": "cinemora/images/clients/otis-pottery",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\clients\\Skylar-Alexis.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420050/cinemora/images/clients/skylar-alexis.jpg",
+    "publicId": "cinemora/images/clients/skylar-alexis",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\clients\\Tim Frey.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420051/cinemora/images/clients/tim-frey.png",
+    "publicId": "cinemora/images/clients/tim-frey",
+    "resourceType": "image"
+  },
+  {
     "localPath": "images\\decorative\\impact-bg.png",
     "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963298/cinemora/images/decorative/impact-bg.jpg",
     "publicId": "cinemora/images/decorative/impact-bg",
@@ -21,6 +117,18 @@
     "localPath": "images\\decorative\\vector-curve.png",
     "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963299/cinemora/images/decorative/vector-curve.png",
     "publicId": "cinemora/images/decorative/vector-curve",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\Gemini_Generated_Image_72780m72780m7278.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420053/cinemora/images/gemini-generated-image-72780m72780m7278.png",
+    "publicId": "cinemora/images/gemini-generated-image-72780m72780m7278",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "images\\hero\\slides\\Iqrar Studios.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420054/cinemora/images/hero/slides/iqrar-studios.png",
+    "publicId": "cinemora/images/hero/slides/iqrar-studios",
     "resourceType": "image"
   },
   {
@@ -39,12 +147,6 @@
     "localPath": "images\\hero\\slides\\slide5.png",
     "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783966417/cinemora/images/hero/slides/slide5.png",
     "publicId": "cinemora/images/hero/slides/slide5",
-    "resourceType": "image"
-  },
-  {
-    "localPath": "images\\hero\\slides\\slide6.png",
-    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963309/cinemora/images/hero/slides/slide6.png",
-    "publicId": "cinemora/images/hero/slides/slide6",
     "resourceType": "image"
   },
   {
@@ -105,6 +207,12 @@
     "localPath": "images\\team\\iqrar_hussain.png",
     "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963324/cinemora/images/team/iqrar-hussain.png",
     "publicId": "cinemora/images/team/iqrar-hussain",
+    "resourceType": "image"
+  },
+  {
+    "localPath": "logo.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420065/cinemora/logo.jpg",
+    "publicId": "cinemora/logo",
     "resourceType": "image"
   },
   {
@@ -286,11 +394,5 @@
     "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963886/cinemora/videos/vsl/vsl-video.mp4",
     "publicId": "cinemora/videos/vsl/vsl-video",
     "resourceType": "video"
-  },
-  {
-    "localPath": "images\\Gemini_Generated_Image_72780m72780m7278.png",
-    "cloudinaryUrl": "https://res.cloudinary.com/l7fgvttd/image/upload/v1783975059/cinemora/images/about/minds-behind-cinemora-studio.png",
-    "publicId": "cinemora/images/about/minds-behind-cinemora-studio",
-    "resourceType": "image"
   }
 ]
