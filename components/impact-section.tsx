@@ -77,11 +77,16 @@ export function ImpactSection() {
   }, []);
 
   return (
-    <section className="impact-section" id="services" aria-labelledby="impact-title">
+    <section className="impact-section" id="services" aria-label="Cinemora growth system">
       <div className="impact-bg-placeholder">
         <div className="section-inner impact-inner">
           <div className="impact-intro">
             <p className="eyebrow">Brand, Content, Web &amp; AI Systems</p>
+            <div className="impact-mobile-summary">
+              <span>Attention. Authority. Demand.</span>
+              <h2 id="impact-mobile-title">We turn visibility into qualified pipeline.</h2>
+              <p>Strategy earns attention. Content builds trust. Web and AI systems convert that trust into measurable growth.</p>
+            </div>
             <div className="growth-workflow">
               <div className="workflow-toolbar">
                 <div>
