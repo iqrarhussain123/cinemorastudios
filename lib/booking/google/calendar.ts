@@ -88,6 +88,14 @@ export interface CreateBookingResult {
 export async function createBookingEvent(params: CreateBookingParams): Promise<CreateBookingResult> {
   const start = DateTime.fromISO(params.startISO);
   if (!start.isValid) throw new Error("Invalid start time");
+  const hostDate = start.setZone(bookingConfig.hostTimezone).toISODate();
+  if (!hostDate) throw new Error("Invalid start time");
+
+  const availableSlots = await computeAvailableSlots(hostDate);
+  const requestedStart = start.toUTC().toISO();
+  if (!requestedStart || !availableSlots.includes(requestedStart)) {
+    throw new Error("That time is not available. Please choose another slot.");
+  }
   const end = start.plus({ minutes: bookingConfig.durationMinutes });
 
   const busy = await getBusyIntervals(start.toUTC().toISO()!, end.toUTC().toISO()!);

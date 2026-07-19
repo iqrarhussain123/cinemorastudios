@@ -35,7 +35,7 @@ const teamMembers = [
 
 export default function Home() {
   return (
-    <main>
+    <main id="main-content">
       <SiteHeader />
 
       <div className="hero-overlap-stack">
@@ -45,7 +45,9 @@ export default function Home() {
 
         <section className="video-section" id="work">
           <div className="video-heading-band">
-            <h2>Is this you ?</h2>
+            <div className="video-heading-inner">
+              <h2>See how attention becomes demand.</h2>
+            </div>
           </div>
           <div className="section-inner">
             <div className="vsl-video-frame">
@@ -66,10 +68,31 @@ export default function Home() {
         </section>
       </div>
 
-      <ImpactSection />
-      <WorkCarousel />
+      <div className="selected-work-stack-scope">
+        <ImpactSection />
+        <WorkCarousel />
+      </div>
       <TestimonialsSection />
       <ProjectShowcase />
+
+      <section className="conversion-cta" aria-labelledby="conversion-title">
+        <div className="section-inner conversion-cta-inner">
+          <p className="eyebrow">Ready for the next stage?</p>
+          <h2 id="conversion-title">
+            Views don&rsquo;t pay bills.
+            <span> Community does.</span>
+          </h2>
+          <div className="conversion-cta-action">
+            <p>We build the positioning, content, and systems that turn passive reach into community—and community into demand.</p>
+            <a className="conversion-button" href="/booking">
+              <span>Book a growth strategy call</span>
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h13M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
 
       <FaqSection />
 
@@ -81,15 +104,16 @@ export default function Home() {
               The <em>mind</em> behind Cinemora.
             </h2>
             <p className="about-lead">
-              Iqrar builds growth architecture for coaches, founders, and real
-              estate brands—connecting positioning, content, lead generation,
-              and AI-powered systems so attention becomes qualified
-              conversations.
+              Iqrar designs growth systems for founders, expert-led businesses,
+              and real estate brands—connecting positioning, content, digital
+              products, and AI operations so visibility becomes qualified
+              pipeline.
             </p>
             <p>
-              Cinemora brings creative strategy and buyer-focused systems under
-              one roof. The result is work designed to build authority, create
-              demand, and move the right people toward action.
+              Every engagement connects strategy to execution. The result is a
+              brand that looks credible, communicates clearly, and has the
+              infrastructure to turn attention into measurable commercial
+              outcomes.
             </p>
 
             <div className="about-pillars" aria-label="Cinemora approach">
@@ -141,8 +165,8 @@ export default function Home() {
             <p className="eyebrow">Team</p>
             <h2 id="team-title">The faces behind Cinemora</h2>
             <p>
-              There are no layers here. The people who understand your brand are
-              the people building it, start to finish.
+              Senior attention, direct communication, and clear ownership from
+              strategy through delivery.
             </p>
           </div>
 

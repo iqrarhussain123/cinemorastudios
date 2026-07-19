@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import "./booking.css";
 
 export const metadata: Metadata = {
-  title: "Book a Strategy Call",
+  title: "Book a Growth Strategy Call",
   description:
-    "Book a strategy call with Cinemora Studios to discuss personal branding, content systems, web development, or AI automation.",
+    "Book a focused 30-minute growth strategy call with Iqrar Hussain, founder of Cinemora Studios.",
   alternates: { canonical: "/booking" },
   openGraph: {
-    title: "Book a Strategy Call | Cinemora Studios",
-    description: "Choose a time to discuss your brand, growth system, or digital product with Cinemora Studios.",
+    title: "Book a Growth Strategy Call | Cinemora Studios",
+    description: "Choose a time to discuss the positioning, content, web, or AI system required to reach your next growth goal.",
     url: "/booking",
   },
 };

@@ -12,6 +12,8 @@ type Testimonial = {
   imageAlt?: string;
   imageVariant?: "photo" | "logo" | "logoLight" | "brandFill" | "wordmark";
   brandText?: string;
+  websiteUrl?: string;
+  linkedInUrl?: string;
 };
 
 const testimonials: Testimonial[] = [
@@ -23,6 +25,8 @@ const testimonials: Testimonial[] = [
     description: "Personal branding · Content strategy · Audience growth",
     imageSrc: "/images/clients/Tim Frey.png",
     imageAlt: "Tim Frey, founder of Success School",
+    websiteUrl: "https://www.successschool.io/home",
+    linkedInUrl: "https://www.linkedin.com/in/timfrey",
   },
   {
     quote:
@@ -41,6 +45,7 @@ const testimonials: Testimonial[] = [
     description: "Web development · Media commerce · Content ecosystem",
     imageSrc: "/images/clients/Jan De Weerd.jpg",
     imageAlt: "Jan De Weerd, founder of Spoken Wines",
+    websiteUrl: "https://spokenwines.com/",
   },
   {
     quote:
@@ -51,6 +56,7 @@ const testimonials: Testimonial[] = [
     imageSrc: "/images/clients/Hodderborg.png",
     imageAlt: "Hodderborg",
     imageVariant: "logo",
+    websiteUrl: "https://hodderborg.com.au/",
   },
   {
     quote:
@@ -68,6 +74,8 @@ const testimonials: Testimonial[] = [
     description: "Web development · Talent platform · Creator systems",
     imageSrc: "/images/clients/Skylar-Alexis.jpg",
     imageAlt: "Skylar Alexis, co-founder of Collegare Talent",
+    websiteUrl: "https://linktr.ee/collegaretalent",
+    linkedInUrl: "https://www.linkedin.com/in/skylaralexis",
   },
   {
     quote:
@@ -78,6 +86,7 @@ const testimonials: Testimonial[] = [
     imageSrc: "/images/clients/Otis-Pottery.png",
     imageAlt: "Otis Pottery studio and logo",
     imageVariant: "brandFill",
+    websiteUrl: "https://otispottery.net/",
   },
   {
     quote:
@@ -179,6 +188,12 @@ export function TestimonialsSection() {
                       <strong>{testimonial.name}</strong>
                       <span>{testimonial.role}</span>
                       <small>{testimonial.description}</small>
+                      {(testimonial.websiteUrl || testimonial.linkedInUrl) && (
+                        <div className="testimonial-links" aria-label={`${testimonial.name} links`}>
+                          {testimonial.websiteUrl && <a href={testimonial.websiteUrl} target="_blank" rel="noopener noreferrer">Website</a>}
+                          {testimonial.linkedInUrl && <a href={testimonial.linkedInUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </article>

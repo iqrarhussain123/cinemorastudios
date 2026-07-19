@@ -25,6 +25,9 @@ export async function POST(req: NextRequest) {
   if (!EMAIL_RE.test(email)) {
     return NextResponse.json({ error: "That doesn't look like a valid email address." }, { status: 400 });
   }
+  if (name.trim().length > 100 || email.trim().length > 254 || (notes?.length ?? 0) > 2000) {
+    return NextResponse.json({ error: "One or more fields are too long." }, { status: 400 });
+  }
 
   try {
     const result = await createBookingEvent({
