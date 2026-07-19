@@ -6,13 +6,13 @@ import { useEffect, useRef } from "react";
 import { RollingText } from "@/components/rolling-link";
 
 const heroSlides = [
+  "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420054/cinemora/images/hero/slides/iqrar-studios.png",
   "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963301/cinemora/images/hero/slides/slide3.png",
   "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963302/cinemora/images/hero/slides/slide4.png",
   "https://res.cloudinary.com/l7fgvttd/image/upload/v1783966417/cinemora/images/hero/slides/slide5.png",
   "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963309/cinemora/images/hero/slides/slide6.png",
   "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963311/cinemora/images/hero/slides/slide7.png",
   "https://res.cloudinary.com/l7fgvttd/image/upload/v1783966424/cinemora/images/hero/slides/slide8.png",
-  "https://res.cloudinary.com/l7fgvttd/image/upload/v1784420054/cinemora/images/hero/slides/iqrar-studios.png",
 ];
 
 const showcaseBrands = [

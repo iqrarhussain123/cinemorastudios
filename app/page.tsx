@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { type BrandingService } from "@/components/branding-card";
-import { BrandingShowcase } from "@/components/branding-showcase";
 import { HeroSection } from "@/components/hero-section";
 import { FaqSection } from "@/components/faq-section";
 import { ImpactSection } from "@/components/impact-section";
@@ -20,151 +18,7 @@ const cloudinaryImages = {
     asfarButt:
       "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963323/cinemora/images/team/asfar-butt.png",
   },
-  heroSlides: {
-    slide3:
-      "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963301/cinemora/images/hero/slides/slide3.png",
-    slide4:
-      "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963302/cinemora/images/hero/slides/slide4.png",
-    slide5:
-      "https://res.cloudinary.com/l7fgvttd/image/upload/v1783966417/cinemora/images/hero/slides/slide5.png",
-    slide6:
-      "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963309/cinemora/images/hero/slides/slide6.png",
-    slide7:
-      "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963311/cinemora/images/hero/slides/slide7.png",
-    slide8:
-      "https://res.cloudinary.com/l7fgvttd/image/upload/v1783966424/cinemora/images/hero/slides/slide8.png",
-  },
 };
-
-const brandingServices: BrandingService[] = [
-  {
-    date: "15/08/2024",
-    title: "Brand Discovery Session",
-    symbol: "◉",
-    description:
-      "Gain clarity on your strengths, values, and brand positioning.",
-    imageSrc: cloudinaryImages.heroSlides.slide8,
-  },
-  {
-    date: "19/12/2024",
-    title: "Brand Coaching Program",
-    symbol: "✦",
-    description:
-      "A deep-dive program to shape your story, image, and online presence.",
-    imageSrc: cloudinaryImages.heroSlides.slide5,
-  },
-  {
-    date: "30/12/2024",
-    title: "LinkedIn & Social Profile Makeover",
-    symbol: "@",
-    description: "Optimize your digital footprint for visibility and impact.",
-    imageSrc: cloudinaryImages.heroSlides.slide4,
-  },
-  {
-    date: "27/04/2024",
-    title: "Content Strategy & Visibility Coaching",
-    symbol: "◌",
-    description:
-      "Learn how to create content that builds authority and trust.",
-    imageSrc: cloudinaryImages.heroSlides.slide3,
-  },
-  {
-    date: "04/05/2024",
-    title: "Executive Thought Leadership",
-    symbol: "◆",
-    description:
-      "Shape sharper points of view for founders, coaches, and consultants.",
-    imageSrc: cloudinaryImages.heroSlides.slide7,
-  },
-  {
-    date: "11/05/2024",
-    title: "Podcast Growth Sprint",
-    symbol: "◍",
-    description:
-      "Turn long-form conversations into short clips that build demand.",
-    imageSrc: cloudinaryImages.heroSlides.slide8,
-  },
-  {
-    date: "18/05/2024",
-    title: "Founder Content System",
-    symbol: "⌘",
-    description:
-      "Build a repeatable workflow for ideas, scripting, posting, and review.",
-    imageSrc: cloudinaryImages.heroSlides.slide5,
-  },
-  {
-    date: "25/05/2024",
-    title: "Authority Positioning Audit",
-    symbol: "◎",
-    description:
-      "Clarify your offer, audience, proof, and message before scaling content.",
-    imageSrc: cloudinaryImages.heroSlides.slide6,
-  },
-  {
-    date: "01/06/2024",
-    title: "Short-Form Content Engine",
-    symbol: "▶",
-    description:
-      "Create a weekly clip pipeline for Instagram, TikTok, YouTube, and LinkedIn.",
-    imageSrc: cloudinaryImages.heroSlides.slide8,
-  },
-  {
-    date: "08/06/2024",
-    title: "LinkedIn Authority Builder",
-    symbol: "in",
-    description:
-      "Improve profile clarity, posting cadence, and conversion-focused content.",
-    imageSrc: cloudinaryImages.heroSlides.slide5,
-  },
-  {
-    date: "15/06/2024",
-    title: "Offer Messaging Workshop",
-    symbol: "◇",
-    description:
-      "Translate expertise into clear offers people can understand and buy.",
-    imageSrc: cloudinaryImages.heroSlides.slide4,
-  },
-  {
-    date: "22/06/2024",
-    title: "Audience Research Sprint",
-    symbol: "⌖",
-    description:
-      "Map audience pains, buying triggers, objections, and content angles.",
-    imageSrc: cloudinaryImages.heroSlides.slide3,
-  },
-  {
-    date: "29/06/2024",
-    title: "Personal Brand Visual Kit",
-    symbol: "✣",
-    description:
-      "Set the visual direction for thumbnails, posts, reels, and lead magnets.",
-    imageSrc: cloudinaryImages.heroSlides.slide7,
-  },
-  {
-    date: "06/07/2024",
-    title: "Launch Content Plan",
-    symbol: "↗",
-    description:
-      "Plan launch content that builds attention before the offer goes live.",
-    imageSrc: cloudinaryImages.heroSlides.slide8,
-  },
-  {
-    date: "13/07/2024",
-    title: "Client Conversion Funnel",
-    symbol: "⇄",
-    description:
-      "Connect content, calls-to-action, lead capture, and follow-up into one flow.",
-    imageSrc: cloudinaryImages.heroSlides.slide5,
-  },
-  {
-    date: "20/07/2024",
-    title: "Retention Content Strategy",
-    symbol: "∞",
-    description:
-      "Keep clients engaged with proof, education, updates, and authority signals.",
-    imageSrc: cloudinaryImages.heroSlides.slide6,
-  },
-];
 
 const teamMembers = [
   {
@@ -211,28 +65,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-
-      <section className="branding-section" id="case-studies">
-        <div className="branding-inner">
-          <div className="section-intro">
-            <div>
-              <p className="eyebrow">Our Services</p>
-              <h2>
-                Personal <span>Branding Services</span>
-                <br />
-                Tailored for You
-              </h2>
-            </div>
-            <p className="intro-copy">
-              A range of 1:1 and group coaching packages to help you elevate
-              your personal brand.
-            </p>
-          </div>
-
-          <BrandingShowcase services={brandingServices} />
-
-        </div>
-      </section>
 
       <ImpactSection />
       <WorkCarousel />

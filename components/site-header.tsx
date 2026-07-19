@@ -7,7 +7,7 @@ import { RollingLink, RollingText } from "@/components/rolling-link";
 const navigation = [
   { href: "#top", label: "Home" },
   { href: "#services", label: "Services" },
-  { href: "#case-studies", label: "Case Studies" },
+  { href: "#work", label: "Case Studies" },
   { href: "/booking", label: "Contact Us" },
 ];
 
