@@ -7,7 +7,7 @@ import { RollingText } from "@/components/rolling-link";
 const impactStats = [
   ["Successful Projects", "200+"],
   ["Client Satisfaction", "95%"],
-  ["Years of Experience", "10+"],
+  ["Years of Experience", "4+"],
 ];
 
 const workflow = [
