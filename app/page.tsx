@@ -1,37 +1,14 @@
-import Image from "next/image";
 import { HeroSection } from "@/components/hero-section";
 import { FaqSection } from "@/components/faq-section";
 import { ImpactSection } from "@/components/impact-section";
 import { LazyVideo } from "@/components/lazy-video";
 import { LoadableImage } from "@/components/loadable-image";
+import { BookingWidget } from "@/components/booking/BookingWidget";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { ProjectShowcase, WorkCarousel } from "@/components/work-showcase";
-
-const cloudinaryImages = {
-  cinemoraLogo:
-    "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963296/cinemora/images/branding/cinemora-logo.png",
-  team: {
-    iqrarHussain:
-      "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963324/cinemora/images/team/iqrar-hussain.png",
-    asfarButt:
-      "https://res.cloudinary.com/l7fgvttd/image/upload/v1783963323/cinemora/images/team/asfar-butt.png",
-  },
-};
-
-const teamMembers = [
-  {
-    name: "Iqrar Hussain",
-    role: "Founder & CEO",
-    imageSrc: cloudinaryImages.team.iqrarHussain,
-  },
-  {
-    name: "Asfar Butt",
-    role: "Project Manager",
-    imageSrc: cloudinaryImages.team.asfarButt,
-  },
-];
+import { bookingConfig } from "@/lib/booking/config";
 
 export default function Home() {
   return (
@@ -160,32 +137,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="team-section" aria-labelledby="team-title">
+      <section className="team-section booking-widget-section" aria-labelledby="booking-widget-title">
         <div className="section-inner">
           <div className="team-heading">
-            <p className="eyebrow">Team</p>
-            <h2 id="team-title">The faces behind Cinemora</h2>
+            <p className="eyebrow">Book a Call</p>
+            <h2 id="booking-widget-title">Find a time that works.</h2>
             <p>
-              Senior attention, direct communication, and clear ownership from
-              strategy through delivery.
+              Pick a slot for a focused growth strategy call and we will map
+              the clearest path from visibility to qualified demand.
             </p>
           </div>
 
-          <div className="team-grid">
-            {teamMembers.map(({ name, role, imageSrc }) => (
-              <article className="team-card" key={name}>
-                <div className="team-image-placeholder" aria-hidden="true" style={{ position: "relative", overflow: "hidden" }}>
-                  <LoadableImage src={imageSrc} alt={name} fill style={{ objectFit: "cover" }} className="team-member-img" />
-                  <div className="team-logo-overlay">
-                    <Image src={cloudinaryImages.cinemoraLogo} alt="Cinemora Logo" width={88} height={88} className="team-overlay-img" />
-                  </div>
-                </div>
-                <div>
-                  <strong>{name}</strong>
-                  <span>{role}</span>
-                </div>
-              </article>
-            ))}
+          <div className="homepage-booking-widget">
+            <BookingWidget config={bookingConfig} />
           </div>
         </div>
       </section>

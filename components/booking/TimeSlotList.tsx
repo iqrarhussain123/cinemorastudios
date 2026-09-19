@@ -83,7 +83,12 @@ export function TimeSlotList({
         </div>
       </div>
 
-      <div className="themed-scroll flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto pr-1">
+      <div
+        className={[
+          "themed-scroll flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto pr-1",
+          slots && slots.length > 0 ? "" : "items-center justify-center text-center",
+        ].join(" ")}
+      >
         {error && <p className="text-sm text-ink-secondary">{error}</p>}
         {!error && slots === null && <p className="text-sm text-ink-muted">Loading times…</p>}
         {!error && slots !== null && slots.length === 0 && (

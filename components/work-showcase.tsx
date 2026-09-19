@@ -140,8 +140,12 @@ function CarouselVideo({
   return (
     <div
       className="work-card-media work-card-media-drive"
-      onPointerEnter={() => setIsHovered(true)}
-      onPointerLeave={() => setIsHovered(false)}
+      onPointerEnter={(e) => {
+        if (e.pointerType === "mouse") setIsHovered(true);
+      }}
+      onPointerLeave={(e) => {
+        if (e.pointerType === "mouse") setIsHovered(false);
+      }}
     >
       <LazyVideo
         aria-label={item.title}

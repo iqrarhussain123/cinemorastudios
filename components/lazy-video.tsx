@@ -36,9 +36,16 @@ export function LazyVideo({
   const [isNearViewport, setIsNearViewport] = useState(false);
   const [isMuted, setIsMuted] = useState(Boolean(muted));
   const [muteFeedback, setMuteFeedback] = useState<"muted" | "unmuted" | null>(null);
+  const [showIntroHint, setShowIntroHint] = useState(false);
+  const isMutedRef = useRef(isMuted);
+  const hasShownIntroHintRef = useRef(false);
   const effectiveMuted = toggleMuteOnClick ? isMuted : Boolean(muted);
   const deliverySrc = optimizeVideoUrl(src, deliveryWidth);
   const posterSrc = getVideoPosterUrl(src, deliveryWidth);
+
+  useEffect(() => {
+    isMutedRef.current = isMuted;
+  }, [isMuted]);
 
   useEffect(() => {
     if (!muteFeedback) {
@@ -51,6 +58,18 @@ export function LazyVideo({
 
     return () => window.clearTimeout(timer);
   }, [muteFeedback]);
+
+  useEffect(() => {
+    if (!showIntroHint) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setShowIntroHint(false);
+    }, 8000);
+
+    return () => window.clearTimeout(timer);
+  }, [showIntroHint]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -75,6 +94,11 @@ export function LazyVideo({
           return;
         }
 
+        if (toggleMuteOnClick && isMutedRef.current && !hasShownIntroHintRef.current) {
+          hasShownIntroHintRef.current = true;
+          setShowIntroHint(true);
+        }
+
         if (video.src) {
           void video.play();
         }
@@ -85,7 +109,7 @@ export function LazyVideo({
     observer.observe(target);
 
     return () => observer.disconnect();
-  }, [lazyRootMargin, muteOnExit]);
+  }, [lazyRootMargin, muteOnExit, toggleMuteOnClick]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -124,6 +148,7 @@ export function LazyVideo({
 
     setIsMuted(nextMuted);
     setMuteFeedback(nextMuted ? "muted" : "unmuted");
+    setShowIntroHint(false);
 
     if (video?.src) {
       void video.play();
@@ -162,6 +187,12 @@ export function LazyVideo({
         <div className="video-mute-feedback" aria-live="polite">
           <span aria-hidden="true">{muteFeedback === "muted" ? "M" : "U"}</span>
           <strong>{muteFeedback === "muted" ? "Muted" : "Unmuted"}</strong>
+        </div>
+      ) : null}
+      {showIntroHint ? (
+        <div className="video-mute-feedback video-mute-hint" aria-live="polite">
+          <span aria-hidden="true">M</span>
+          <strong>Tap to unmute</strong>
         </div>
       ) : null}
     </>

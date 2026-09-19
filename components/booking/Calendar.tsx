@@ -100,6 +100,7 @@ export function Calendar({
           const isWorkingDay = workingDays.includes(weekday);
           const isDisabled = isPast || isTooFar || !isWorkingDay;
           const isSelected = cell.dateKey === selectedDate;
+          const isToday = cellDate.getTime() === today.getTime();
 
           return (
             <button
@@ -108,12 +109,13 @@ export function Calendar({
               disabled={isDisabled}
               onClick={() => onSelectDate(cell.dateKey)}
               className={[
-                "aspect-square rounded-lg text-sm font-medium transition-colors",
+                "aspect-square rounded-lg text-sm font-medium transition-all",
                 isDisabled
                   ? "cursor-not-allowed text-ink-muted"
                   : isSelected
                     ? "bg-accent text-accent-ink"
-                    : "bg-surface-hover text-ink-primary hover:bg-accent/20",
+                    : "bg-surface-hover text-ink-primary hover:-translate-y-0.5 hover:bg-accent/20",
+                isToday && !isSelected ? "ring-2 ring-inset ring-accent/70" : "",
               ].join(" ")}
             >
               {cell.day}

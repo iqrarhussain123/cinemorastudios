@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 const siteUrl = "https://www.cinemorastudios.agency";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-07-19");
+  const lastModified = new Date();
 
   return [
     {
@@ -17,6 +17,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/privacy-policy`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
+    {
+      url: `${siteUrl}/terms-of-service`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.4,
     },
   ];
 }

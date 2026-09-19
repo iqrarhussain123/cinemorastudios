@@ -16,7 +16,7 @@ export function BrandPanel({
   const initial = config.hostName.trim().charAt(0).toUpperCase() || "?";
 
   return (
-    <div className="themed-scroll flex h-full min-h-0 w-full flex-col gap-5 overflow-y-auto p-6 sm:w-64">
+    <div className="booking-brand-panel themed-scroll flex h-full min-h-0 w-full flex-col gap-5 overflow-y-auto p-6 sm:w-64">
       <div className="flex items-center gap-3">
         {config.logoUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -50,7 +50,7 @@ export function BrandPanel({
         <div className="space-y-3 border-t border-line-hairline pt-4">
           <div className="text-xs font-medium text-ink-muted">From our partners:</div>
           {config.testimonials.map((t, i) => (
-            <p key={i} className="text-sm italic text-ink-secondary">
+            <p key={i} className="booking-testimonial text-sm italic text-ink-secondary">
               &ldquo;{t.quote}&rdquo; <span className="not-italic text-ink-muted">— {t.author}</span>
             </p>
           ))}

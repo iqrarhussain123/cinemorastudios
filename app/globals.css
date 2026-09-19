@@ -1,3 +1,5 @@
+@tailwind utilities;
+
 :root {
   --ink: #092e2b;
   --deep-green: #0f3834;
@@ -914,6 +916,28 @@ video[data-loaded="true"] {
 
   18%,
   62% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.98);
+  }
+}
+
+.video-mute-hint {
+  animation: video-mute-hint 8000ms ease both;
+}
+
+@keyframes video-mute-hint {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.94);
+  }
+
+  4%,
+  90% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
@@ -3581,6 +3605,23 @@ blockquote {
   color: var(--ink);
 }
 
+.booking-widget-section {
+  --accent: #bed0b6;
+  --accent-ink: #0b2522;
+  --surface-page: #081714;
+  --surface-card: #0b2522;
+  --surface-hover: #12332f;
+  --ink-primary: #f3f6ef;
+  --ink-secondary: #b9c7b4;
+  --ink-muted: #7e9088;
+  --line-hairline: #1e3a35;
+}
+
+.booking-widget-section>.section-inner {
+  width: min(100%, 92vw);
+  padding-block: clamp(2rem, 3.5vw, 4rem);
+}
+
 .team-section>.section-inner {
   padding-block: clamp(5rem, 9vw, 10rem);
 }
@@ -3603,6 +3644,189 @@ blockquote {
   color: rgba(9, 46, 43, 0.65);
   font-size: 0.82rem;
   line-height: 1.65;
+}
+
+.booking-widget-section .team-heading {
+  margin-bottom: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+.homepage-booking-widget {
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.homepage-booking-widget > div {
+  width: 100%;
+  max-width: 96rem;
+  min-height: clamp(680px, 42vw, 820px);
+  border-color: rgba(190, 208, 182, 0.28);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(190, 208, 182, 0.12), transparent 26rem),
+    linear-gradient(135deg, #0b2522, #071c19 58%, #09241f);
+  box-shadow: 0 3rem 5rem rgba(8, 23, 20, 0.22);
+}
+
+.booking-widget-section .themed-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.booking-widget-section .themed-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.booking-widget-section .booking-brand-panel {
+  flex: 0 0 clamp(21rem, 23vw, 32rem);
+  width: clamp(21rem, 23vw, 32rem);
+  overflow: hidden;
+}
+
+.booking-widget-section .booking-brand-panel img {
+  box-shadow: 0 0 0 3px rgba(190, 208, 182, 0.18);
+}
+
+.booking-widget-section .booking-testimonial:nth-of-type(n + 2) {
+  display: none;
+}
+
+.booking-widget-section .booking-brand-panel,
+.booking-widget-section .booking-brand-panel + div,
+.booking-widget-section .booking-brand-panel + div + div {
+  padding: clamp(1.8rem, 2.4vw, 3rem);
+}
+
+.booking-widget-section .booking-brand-panel + div {
+  flex: 1 1 auto;
+}
+
+.booking-widget-section .booking-brand-panel + div + div {
+  flex: 0 0 clamp(20rem, 19vw, 28rem);
+  width: clamp(20rem, 19vw, 28rem);
+}
+
+.booking-widget-section .booking-brand-panel + div .grid-cols-7 {
+  gap: clamp(0.55rem, 0.65vw, 0.9rem);
+}
+
+.booking-widget-section .booking-brand-panel + div button[class*="aspect-square"] {
+  border-radius: clamp(0.6rem, 0.6vw, 0.85rem);
+  font-size: clamp(0.9rem, 0.75vw, 1.05rem);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 6px 14px rgba(3, 15, 13, 0.22);
+}
+
+.booking-widget-section .booking-brand-panel + div button[class*="aspect-square"]:disabled {
+  box-shadow: none;
+}
+
+.booking-widget-section .booking-brand-panel + div button[class*="aspect-square"]:not(:disabled):hover {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 10px 18px rgba(3, 15, 13, 0.3);
+}
+
+.booking-widget-section button,
+.booking-widget-section select,
+.booking-widget-section input,
+.booking-widget-section textarea {
+  border-color: rgba(190, 208, 182, 0.22);
+}
+
+.booking-widget-section button {
+  background: rgba(190, 208, 182, 0.1);
+  color: var(--ink-secondary);
+  box-shadow: inset 0 0 0 1px rgba(190, 208, 182, 0.14);
+}
+
+.booking-widget-section button:hover:not(:disabled),
+.booking-widget-section button:focus-visible:not(:disabled) {
+  background: rgba(190, 208, 182, 0.18);
+  color: var(--ink-primary);
+}
+
+.booking-widget-section button:disabled {
+  background: rgba(190, 208, 182, 0.07);
+  color: rgba(185, 199, 180, 0.38);
+  box-shadow: inset 0 0 0 1px rgba(190, 208, 182, 0.08);
+}
+
+.booking-widget-section button[class*="bg-accent"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.booking-widget-section select {
+  background-color: rgba(190, 208, 182, 0.08);
+}
+
+.booking-widget-section select,
+.booking-widget-section input,
+.booking-widget-section textarea {
+  color-scheme: dark;
+}
+
+@media (max-width: 640px) {
+  .booking-widget-section>.section-inner {
+    padding-block: 2.5rem;
+  }
+
+  .homepage-booking-widget > div {
+    min-height: 0;
+    height: auto;
+    border-radius: 1.05rem;
+  }
+
+  .booking-widget-section .booking-brand-panel,
+  .booking-widget-section .booking-brand-panel + div,
+  .booking-widget-section .booking-brand-panel + div + div {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    padding: 1.4rem;
+  }
+
+  .booking-widget-section .booking-brand-panel {
+    gap: 1.2rem;
+  }
+
+  .booking-widget-section .booking-brand-panel .space-y-3 {
+    padding-top: 1.1rem;
+  }
+
+  .booking-widget-section .booking-brand-panel .space-y-2\.5 {
+    padding-top: 1.1rem;
+  }
+
+  .booking-widget-section .booking-brand-panel + div {
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid var(--line-hairline);
+    border-bottom: 1px solid var(--line-hairline);
+  }
+
+  .booking-widget-section .booking-brand-panel + div .grid-cols-7 {
+    gap: 0.35rem;
+  }
+
+  .booking-widget-section .booking-brand-panel + div button[class*="aspect-square"] {
+    border-radius: 0.65rem;
+    min-height: 2.8rem;
+  }
+
+  .booking-widget-section .booking-brand-panel + div + div {
+    gap: 1.1rem;
+  }
+
+  .booking-widget-section .booking-brand-panel + div + div > div:first-child {
+    align-items: center;
+  }
+
+  .booking-widget-section .booking-brand-panel + div + div button {
+    border-radius: 0.65rem;
+  }
 }
 
 .team-grid {
@@ -4159,11 +4383,68 @@ blockquote {
   transform: translate(0, 0) scale(1) rotate(0);
 }
 
-.footer-legal {
+.post-footer-legal {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: center;
+  gap: clamp(3rem, 9vw, 10rem);
+  margin-top: clamp(2.5rem, 6vw, 6rem);
+  padding-block: 1rem;
+  min-height: 74px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.72rem;
+  font-weight: 400;
+  text-align: left;
+  background: transparent;
+}
+
+.post-footer-legal nav {
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: clamp(3rem, 8vw, 8rem);
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.post-footer-legal-primary {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.55fr) minmax(18rem, 1.45fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  text-align: left;
+}
+
+.post-footer-legal-right {
+  justify-self: end;
+}
+
+.post-footer-legal a {
+  color: rgba(255, 255, 255, 0.58);
+  font-weight: 400;
+  transition: color 0.16s;
+}
+
+.post-footer-legal a:hover,
+.post-footer-legal a:focus-visible {
+  color: rgb(255, 255, 255);
+}
+
+@media (max-width: 760px) {
+  .post-footer-legal {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .post-footer-legal-primary {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    text-align: center;
+  }
+
+  .post-footer-legal-right {
+    justify-self: center;
+    text-align: center;
+  }
 }
 
 @keyframes content-pop {
@@ -4857,10 +5138,6 @@ blockquote {
     transform-origin: bottom left;
   }
 
-  .footer-legal {
-    flex-direction: column;
-  }
-
   .team-grid {
     grid-template-columns: 1fr;
   }
@@ -5082,6 +5359,7 @@ blockquote {
 
 .hero-reference .hero-slide:first-child {
   opacity: 1;
+  animation-name: hero-carousel-lead;
 }
 
 @keyframes hero-carousel {
@@ -5100,6 +5378,32 @@ blockquote {
   100% {
     opacity: 1;
     transform: scale(1.04);
+  }
+}
+
+/*
+ * The opening portrait is width-constrained under object-fit: cover on wide desktop
+ * viewports (the image is fully visible edge-to-edge with no horizontal crop left to
+ * pan via object-position), so this shifts the subject with a translateX instead —
+ * keeps the nose aligned under the "Services" nav link. Scale is bumped from 1.04 to
+ * 1.07 to keep enough overflow margin that the shift never exposes the frame's edge.
+ */
+@keyframes hero-carousel-lead {
+  0%,
+  13% {
+    opacity: 1;
+    transform: translateX(-3.24%) scale(1.07);
+  }
+
+  17%,
+  96% {
+    opacity: 0;
+    transform: translateX(-3.24%) scale(1.13);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-3.24%) scale(1.07);
   }
 }
 
@@ -5747,7 +6051,7 @@ blockquote {
   }
 
   .hero-reference .hero-slide:first-child {
-    object-position: 56% center;
+    object-position: 53% center;
   }
 
   .hero-reference::after {
@@ -6189,6 +6493,165 @@ blockquote {
 
   .footer-whatsapp-preview {
     width: min(20rem, calc(100vw - 2.5rem));
+  }
+}
+
+.legal-page {
+  min-height: 100svh;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(189, 207, 182, 0.45), transparent 28rem),
+    linear-gradient(180deg, var(--pale-green) 0%, #f7faf1 48%, var(--paper) 100%);
+  color: var(--ink);
+}
+
+.legal-header {
+  display: flex;
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 1rem 0 clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.legal-brand {
+  letter-spacing: -0.02em;
+}
+
+.legal-home-link {
+  color: rgba(9, 46, 43, 0.64);
+  transition: color 180ms ease;
+}
+
+.legal-home-link:hover {
+  color: var(--ink);
+}
+
+.legal-document {
+  width: min(100%, 980px);
+  margin: 0 auto clamp(3rem, 7vw, 6rem);
+  padding: clamp(1.35rem, 4vw, 4rem);
+  border: 1px solid rgba(9, 46, 43, 0.12);
+  border-radius: 0.5rem;
+  background: rgba(253, 253, 253, 0.82);
+  box-shadow: 0 2rem 5rem rgba(9, 46, 43, 0.12);
+}
+
+.legal-footer {
+  width: min(100%, 980px);
+  margin: 0 auto clamp(3rem, 7vw, 6rem);
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 1px solid rgba(9, 46, 43, 0.12);
+}
+
+.legal-footer,
+.legal-footer .post-footer-legal-primary span {
+  color: rgba(9, 46, 43, 0.62);
+}
+
+.legal-footer a {
+  color: var(--deep-green);
+  font-weight: 700;
+}
+
+.legal-footer a:hover {
+  text-decoration: underline;
+}
+
+.legal-eyebrow {
+  margin: 0 0 0.85rem;
+  color: rgba(9, 46, 43, 0.58);
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.legal-document h1 {
+  max-width: 760px;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(3rem, 8vw, 6.6rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 0.88;
+}
+
+.legal-updated {
+  margin: 1.25rem 0 0;
+  color: var(--deep-green);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.legal-intro {
+  max-width: 760px;
+  margin: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(2rem, 5vw, 3.5rem);
+  color: rgba(9, 46, 43, 0.72);
+  font-size: clamp(1rem, 1.45vw, 1.3rem);
+  line-height: 1.65;
+}
+
+.legal-document section {
+  display: grid;
+  gap: 0.75rem;
+  padding-block: clamp(1.25rem, 3vw, 2rem);
+  border-top: 1px solid rgba(9, 46, 43, 0.12);
+}
+
+.legal-document h2 {
+  margin: 0;
+  color: var(--deep-green);
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  font-weight: 850;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.legal-document p,
+.legal-document li,
+.legal-document address {
+  margin: 0;
+  color: rgba(9, 46, 43, 0.74);
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-style: normal;
+  line-height: 1.75;
+}
+
+.legal-document ul {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.legal-document a {
+  color: var(--deep-green);
+  font-weight: 850;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+@media (max-width: 640px) {
+  .legal-page {
+    padding: 0.85rem;
+  }
+
+  .legal-header {
+    padding-bottom: 1.5rem;
+  }
+
+  .legal-document {
+    padding: 1.1rem;
+    box-shadow: 0 1.2rem 3.5rem rgba(9, 46, 43, 0.1);
+  }
+
+  .legal-document h1 {
+    font-size: clamp(2.35rem, 15vw, 3.2rem);
   }
 }
 

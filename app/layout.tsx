@@ -10,7 +10,9 @@ const manrope = Manrope({
   variable: "--font-manrope",
 });
 
-const mapsUrl = "https://maps.app.goo.gl/9iioJQzHgsBy5DeS9?g_st=awb";
+const rawalpindiMapsUrl = "https://maps.app.goo.gl/9iioJQzHgsBy5DeS9?g_st=awb";
+const dallasMapsUrl =
+  "https://www.google.com/maps/search/?api=1&query=2105%20Commerce%20St%2C%20Dallas%2C%20TX%2075201%2C%20United%20States";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -37,17 +39,45 @@ const structuredData = {
       founder: { "@id": "https://www.cinemorastudios.agency/#iqrar-hussain" },
       email: "iqrar@cinemorastudios.agency",
       telephone: "+92-336-0599017",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Office No. 203, 2nd Floor, Jenan Abn Ul Fazl Plaza, Shamsabad",
-        addressLocality: "Rawalpindi",
-        postalCode: "46000",
-        addressCountry: "PK",
-      },
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          telephone: "+92-336-0599017",
+          email: "iqrar@cinemorastudios.agency",
+          areaServed: "PK",
+          availableLanguage: ["English", "Urdu"],
+        },
+        {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          telephone: "+1-928-393-6284",
+          areaServed: "US",
+          availableLanguage: "English",
+        },
+      ],
+      address: [
+        {
+          "@type": "PostalAddress",
+          streetAddress: "Office No. 203, 2nd Floor, Jenan Abn Ul Fazl Plaza, Shamsabad",
+          addressLocality: "Rawalpindi",
+          postalCode: "46000",
+          addressCountry: "PK",
+        },
+        {
+          "@type": "PostalAddress",
+          streetAddress: "2105 Commerce St",
+          addressLocality: "Dallas",
+          addressRegion: "TX",
+          postalCode: "75201",
+          addressCountry: "US",
+        },
+      ],
       areaServed: ["Pakistan", "United States", "Worldwide"],
-      hasMap: mapsUrl,
+      hasMap: [rawalpindiMapsUrl, dallasMapsUrl],
       sameAs: [
-        mapsUrl,
+        rawalpindiMapsUrl,
+        dallasMapsUrl,
         "https://www.linkedin.com/in/cinemorastudios",
         "https://www.linkedin.com/company/cinemora-studios",
         "https://www.instagram.com/cinemorastudios/",
@@ -173,8 +203,11 @@ export const metadata: Metadata = {
     "personal branding agency",
     "content strategy agency",
     "video production Rawalpindi",
+    "video production Dallas",
     "AI automation agency",
     "web development agency",
+    "growth studio Dallas Texas",
+    "growth studio Pakistan",
   ],
   authors: [{ name: "Iqrar Hussain", url: "https://www.linkedin.com/in/cinemorastudios" }],
   creator: "Iqrar Hussain",
@@ -213,6 +246,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@IqrarHussa16285",
+    creator: "@IqrarHussa16285",
     title: "Cinemora Studios | Build Authority. Create Demand.",
     description: "Founder-led brand, content, web, and AI systems engineered to turn attention into qualified pipeline.",
     images: ["/cinemora-social-card.png"],

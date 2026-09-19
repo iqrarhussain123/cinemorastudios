@@ -15,7 +15,13 @@ function todayKey(): string {
   return `${y}-${m}-${day}`;
 }
 
-export function BookingWidget({ config }: { config: BookingConfig }) {
+export function BookingWidget({
+  config,
+  className = "",
+}: {
+  config: BookingConfig;
+  className?: string;
+}) {
   const [selectedDate, setSelectedDate] = useState(todayKey());
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [timezone, setTimezone] = useState(
@@ -27,7 +33,7 @@ export function BookingWidget({ config }: { config: BookingConfig }) {
   return (
     <div
       style={style}
-      className="flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-line-hairline bg-surface-card shadow-2xl sm:h-[620px] sm:flex-row"
+      className={`flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-line-hairline bg-surface-card shadow-2xl sm:h-[620px] sm:flex-row ${className}`}
     >
       <BrandPanel config={config} timezone={timezone} onTimezoneChange={setTimezone} />
       <Calendar

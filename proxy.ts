@@ -3,8 +3,9 @@ import { NextResponse } from "next/server";
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const publicRoutes = ["/", "/booking", "/privacy-policy", "/privacypolicy", "/terms-of-service", "/termsofservice"];
 
-  if (pathname === "/" || pathname.startsWith("/booking") || pathname.startsWith("/api/")) {
+  if (publicRoutes.some((route) => pathname === route || pathname.startsWith(`${route}/`)) || pathname.startsWith("/api/")) {
     return NextResponse.next();
   }
 

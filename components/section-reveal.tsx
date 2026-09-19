@@ -22,6 +22,7 @@ const revealSelector = [
   ".about-image-placeholder",
   ".team-heading > *",
   ".team-card",
+  ".homepage-booking-widget",
   ".footer-wordmark",
   ".footer-main > *",
   ".footer-legal > *",

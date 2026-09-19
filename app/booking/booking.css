@@ -59,3 +59,14 @@ body::-webkit-scrollbar {
 .themed-scroll::-webkit-scrollbar {
   display: none;
 }
+
+.booking-legal {
+  width: 100%;
+  max-width: 64rem;
+  margin-top: 0;
+  font-size: 0.72rem;
+}
+
+.booking-widget-wide {
+  max-width: 64rem;
+}
