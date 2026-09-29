@@ -6,21 +6,6 @@ import { LazyVideo } from "@/components/lazy-video";
 
 const projects = [
   {
-    title: "Apex Outreach",
-    meta: "SaaS Product · Web Dev · AI Systems",
-    description:
-      "A full-stack SaaS platform that automates B2B outbound sales — from audience targeting to booked calls — without manual prospecting.",
-    features: [
-      "AI-powered outreach sequences that run autonomously end-to-end",
-      "Smart audience builder with filter-based ICP targeting",
-      "Multi-account connection for scaled sending across profiles",
-      "Conversion-optimized landing page built for SaaS sign-up flow",
-    ],
-    color: "#0f3f3a",
-    accent: "#d9e8cf",
-    videoSrc: "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963327/cinemora/videos/apex-outreach.mp4",
-  },
-  {
     title: "GradeWise AI",
     meta: "SaaS Product · EdTech · AI Systems",
     description:
@@ -67,7 +52,7 @@ const projects = [
   },
 ];
 
-const featuredProjects = [projects[1], projects[0], projects[2], projects[3]];
+const featuredProjects = [projects[0], projects[1], projects[2]];
 
 type WorkCategory = "reels" | "long-form" | "real-estate" | "social-media-ads";
 

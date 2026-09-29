@@ -60,14 +60,6 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Cinemora built an end-to-end cold outreach system that manages targeting, sequencing, follow-up, and deliverability without letting opportunities fall through the cracks. The system keeps campaigns from being flagged and has produced conversion rates ranging from 20% to 45%.",
-    name: "Apex Outreach",
-    role: "AI Outreach Platform",
-    description: "AI systems · Cold outreach automation · Lead conversion",
-    brandText: "A\nAPEX OUTREACH",
-  },
-  {
-    quote:
       "Cinemora built Collegare Talent into a polished digital platform for our relationship-first talent management model. The experience gives creators, managers, and brand partners a clear way to understand our approach and connect with the right opportunities.",
     name: "Skylar Alexis",
     role: "Co-Founder, Collegare Talent",
