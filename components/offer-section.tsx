@@ -79,16 +79,35 @@ export function OfferSection() {
           <div className="offer-problem-grid">
             <div className="offer-problem-card offer-reveal">
               <span className="offer-problem-number" aria-hidden="true">01</span>
+              <svg className="offer-problem-icon" aria-hidden="true" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="18" width="4" height="10" rx="1.5" fill="currentColor" opacity="0.25"/>
+                <rect x="11" y="12" width="4" height="16" rx="1.5" fill="currentColor" opacity="0.5"/>
+                <rect x="18" y="7" width="4" height="21" rx="1.5" fill="currentColor" opacity="0.75"/>
+                <rect x="25" y="3" width="4" height="25" rx="1.5" fill="currentColor"/>
+                <path d="M5 20L12 14L19 9L26 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
               <strong className="offer-problem-label">The Visibility Tax</strong>
               <p>You're spending on content that earns impressions, not pipeline. Followers without architecture cost you money every month.</p>
             </div>
             <div className="offer-problem-card offer-reveal">
               <span className="offer-problem-number" aria-hidden="true">02</span>
+              <svg className="offer-problem-icon" aria-hidden="true" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="11" stroke="currentColor" strokeWidth="1.8"/>
+                <path d="M16 10v6l4 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M8 8l16 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.35"/>
+              </svg>
               <strong className="offer-problem-label">The Credibility Gap</strong>
               <p>Great content without positioning strategy still fails to convert. Attention without trust infrastructure goes to waste.</p>
             </div>
             <div className="offer-problem-card offer-reveal">
               <span className="offer-problem-number" aria-hidden="true">03</span>
+              <svg className="offer-problem-icon" aria-hidden="true" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 24C4 24 7 14 13 12C19 10 20 18 26 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M22 10l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="8" cy="22" r="2" fill="currentColor" opacity="0.4"/>
+                <circle cx="16" cy="15" r="2" fill="currentColor" opacity="0.6"/>
+                <circle cx="24" cy="12" r="2.5" fill="currentColor"/>
+              </svg>
               <strong className="offer-problem-label">The Compounding Edge</strong>
               <p>Brands with integrated content-to-pipeline systems outperform those without. The gap widens every quarter you wait.</p>
             </div>

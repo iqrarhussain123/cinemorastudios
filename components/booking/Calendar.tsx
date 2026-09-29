@@ -59,7 +59,7 @@ export function Calendar({
   });
 
   return (
-    <div className="themed-scroll h-full min-h-0 w-full flex-1 overflow-y-auto border-x border-line-hairline p-6">
+    <div className="themed-scroll h-full min-h-0 w-full flex-1 overflow-y-auto border-x border-line-hairline px-8 py-6">
       <div className="mb-5 flex items-center justify-between">
         <div className="text-base font-semibold text-ink-primary">{monthLabel}</div>
         <div className="flex gap-1">
@@ -82,7 +82,7 @@ export function Calendar({
         </div>
       </div>
 
-      <div className="grid grid-cols-7 gap-4 text-center text-xs font-medium text-ink-muted">
+      <div className="grid grid-cols-7 gap-5 text-center text-xs font-medium text-ink-muted">
         {WEEKDAY_LABELS.map((w) => (
           <div key={w} className="py-1">
             {w}
@@ -90,7 +90,7 @@ export function Calendar({
         ))}
       </div>
 
-      <div className="mt-2 grid grid-cols-7 gap-4">
+      <div className="mt-2 grid grid-cols-7 gap-5">
         {cells.map((cell, i) => {
           if (!cell) return <div key={`blank-${i}`} />;
           const cellDate = startOfDay(new Date(`${cell.dateKey}T00:00:00`));
