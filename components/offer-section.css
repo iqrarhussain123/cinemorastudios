@@ -245,9 +245,21 @@
   color: var(--pale-green);
 }
 
-@media (max-width: 600px) {
-  .offer-path-selector { width: 100%; }
-  .offer-path-tab { flex: 1; text-align: center; }
+@media (max-width: 640px) {
+  .offer-path-selector {
+    width: 100%;
+    flex-direction: column;
+  }
+  .offer-path-tab {
+    width: 100%;
+    text-align: center;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    white-space: normal;
+  }
+  .offer-path-tab:last-child {
+    border-bottom: none;
+  }
 }
 
 /* Tier grid */
