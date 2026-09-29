@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { ProjectShowcase, WorkCarousel } from "@/components/work-showcase";
+import { OfferSection } from "@/components/offer-section";
 import { bookingConfig } from "@/lib/booking/config";
 
 export default function Home() {
@@ -51,6 +52,7 @@ export default function Home() {
       </div>
       <TestimonialsSection />
       <ProjectShowcase />
+      <OfferSection />
 
       <section className="conversion-cta" aria-labelledby="conversion-title">
         <div className="section-inner conversion-cta-inner">
