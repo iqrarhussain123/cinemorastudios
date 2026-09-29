@@ -69,8 +69,13 @@ export function OfferSection() {
       <div className="offer-problem">
         <div className="section-inner">
           <div className="offer-section-intro offer-reveal">
-            <p className="eyebrow">The Real Cost of Getting This Wrong</p>
-            <h2 id="offer-title">Most brands invest in content.<br />Few invest in the system behind it.</h2>
+            <div className="offer-problem-intro-left">
+              <p className="eyebrow">The Real Cost of Getting This Wrong</p>
+              <h2 id="offer-title">Most brands invest in content. Few invest in the system behind it.</h2>
+            </div>
+            <div className="offer-problem-intro-right">
+              <p>The gap between brands that grow and those that plateau isn't talent or budget — it's infrastructure. Content without a pipeline system is just noise. We build the system.</p>
+            </div>
           </div>
 
           <div className="offer-problem-grid">
