@@ -213,52 +213,6 @@ export function OfferSection() {
         </div>
       </div>
 
-      {/* ── 4. Close ── */}
-      <div className="offer-close">
-        <div className="section-inner offer-close-inner">
-          <div className="offer-close-copy offer-reveal">
-            <p className="eyebrow">Risk Reversal</p>
-            <h2>No lock-ins. No guesswork. Just results.</h2>
-            <p>Every engagement begins with a strategy call. If the fit isn't right, you'll know before any money changes hands. Month-to-month on retainer. Full asset ownership on project builds.</p>
-          </div>
-
-          <div className="offer-close-right">
-            <div className="offer-slots offer-reveal" aria-label="Available slots">
-              <div className="offer-slots-bar" aria-hidden="true">
-                <span className="offer-slots-fill" style={{ width: "40%" }} />
-              </div>
-              <p className="offer-slots-label">
-                <strong>2 of 5</strong> spots taken this quarter
-              </p>
-              <p className="offer-slots-sub">Taking on 3 new clients before end of quarter.</p>
-            </div>
-
-            <div className="offer-close-actions offer-reveal">
-              <a
-                className="conversion-button"
-                href="/booking"
-                onClick={() => trackClick("close-book-call")}
-              >
-                <span>Book a growth strategy call</span>
-                <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <path d="M5 12h13M13 6l6 6-6 6" />
-                </svg>
-              </a>
-              <a
-                className="offer-close-secondary lemonsqueezy-button"
-                href="https://YOUR-STORE.lemonsqueezy.com/buy/PRODUCT-ID"
-                onClick={() => trackClick("close-checkout")}
-              >
-                Skip the call — start directly
-                <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
-                  <path d="M5 12h13M13 6l6 6-6 6" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </section>
   );
 }
