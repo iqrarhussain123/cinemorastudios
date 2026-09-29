@@ -1,13 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import "./offer-section.css";
-
-type OfferTab = "brand" | "ai";
 
 export function OfferSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeTab, setActiveTab] = useState<OfferTab>("brand");
 
   // Local reveal observer scoped to this section
   useEffect(() => {
@@ -153,42 +150,10 @@ export function OfferSection() {
             <h2>Two ways to work together.</h2>
           </div>
 
-          {/* Tab selector */}
-          <div className="offer-path-selector offer-reveal" role="tablist" aria-label="Service paths">
-            <button
-              role="tab"
-              aria-selected={activeTab === "brand"}
-              aria-controls="panel-brand"
-              id="tab-brand"
-              type="button"
-              className={`offer-path-tab ${activeTab === "brand" ? "is-active" : ""}`}
-              onClick={() => setActiveTab("brand")}
-            >
-              Build my personal brand
-            </button>
-            <button
-              role="tab"
-              aria-selected={activeTab === "ai"}
-              aria-controls="panel-ai"
-              id="tab-ai"
-              type="button"
-              className={`offer-path-tab ${activeTab === "ai" ? "is-active" : ""}`}
-              onClick={() => setActiveTab("ai")}
-            >
-              Automate my business with AI
-            </button>
-          </div>
-
-          {/* Brand panel — 3-tier grid */}
-          <div
-            id="panel-brand"
-            role="tabpanel"
-            aria-labelledby="tab-brand"
-            hidden={activeTab !== "brand"}
-            className="tier-grid"
-          >
+          {/* 4-column grid: 3 brand tiers + AI card */}
+          <div className="tier-grid offer-reveal">
             {/* Tier 1 */}
-            <article className="tier-card offer-reveal" aria-label="Authority Starter plan">
+            <article className="tier-card" aria-label="Authority Starter plan">
               <div className="tier-card-header">
                 <span className="tier-badge">Starter</span>
                 <h3>Authority Starter</h3>
@@ -222,7 +187,7 @@ export function OfferSection() {
             </article>
 
             {/* Tier 2 */}
-            <article className="tier-card tier-card-featured offer-reveal" aria-label="Brand Authority plan">
+            <article className="tier-card tier-card-featured" aria-label="Brand Authority plan">
               <div className="tier-card-header">
                 <span className="tier-badge tier-badge-featured">Most Popular</span>
                 <h3>Brand Authority</h3>
@@ -257,7 +222,7 @@ export function OfferSection() {
             </article>
 
             {/* Tier 3 */}
-            <article className="tier-card offer-reveal" aria-label="Full-Scale Operation plan">
+            <article className="tier-card" aria-label="Full-Scale Operation plan">
               <div className="tier-card-header">
                 <span className="tier-badge">Full Scale</span>
                 <h3>Full-Scale Operation</h3>
@@ -278,7 +243,7 @@ export function OfferSection() {
               </ul>
               <div className="tier-actions">
                 <a
-                  className="conversion-button tier-cta btn-primary"
+                  className="conversion-button tier-cta"
                   href="/booking"
                   onClick={() => track("full-scale-call", "booking")}
                 >
@@ -287,41 +252,41 @@ export function OfferSection() {
                 </a>
               </div>
             </article>
-          </div>
 
-          {/* AI panel — dark full-width */}
-          <div
-            id="panel-ai"
-            role="tabpanel"
-            aria-labelledby="tab-ai"
-            hidden={activeTab !== "ai"}
-            className="offer-ai-panel offer-reveal"
-          >
-            <div className="offer-ai-copy">
-              <span className="offer-ai-tag">Custom Build</span>
-              <h3>AI &amp; Automation Systems</h3>
-              <p className="offer-ai-pitch">Every AI engagement is custom-scoped to your exact growth constraint — built once, runs forever. No templates, no shortcuts.</p>
-              <ul className="offer-ai-features">
-                <li>End-to-end cold outreach and lead qualification automation</li>
-                <li>SaaS product or internal AI tooling built from scratch</li>
-                <li>Conversion-optimised web platform with integrated analytics</li>
-                <li>CRM, calendar, and existing tool stack integration</li>
-                <li>30-day post-launch support and iteration cycle</li>
-                <li>Full asset and source code ownership on handover</li>
+            {/* AI card — dark vertical */}
+            <article className="tier-card tier-card-ai" aria-label="AI and Automation Systems">
+              <div className="tier-card-header">
+                <span className="tier-badge tier-badge-ai">Custom Build</span>
+                <h3>AI &amp; Automation</h3>
+                <div className="tier-price">
+                  <span className="tier-from">from</span>
+                  <strong>$3,000</strong>
+                  <span className="tier-per">/project</span>
+                </div>
+                <p className="tier-pitch">Custom-scoped to your exact growth constraint — built once, runs forever. No templates, no shortcuts.</p>
+              </div>
+              <ul className="tier-features">
+                <li>Cold outreach &amp; lead qualification automation</li>
+                <li>SaaS product or internal AI tooling</li>
+                <li>Conversion-optimised web platform</li>
+                <li>CRM &amp; tool stack integration</li>
+                <li>30-day post-launch support cycle</li>
+                <li>Full source code ownership</li>
               </ul>
-            </div>
-            <div className="offer-ai-action">
-              <p className="offer-ai-price-note">Engagements typically start at <strong>$3,000</strong> — scoped per project.</p>
-              <a
-                className="conversion-button btn-primary-dark"
-                href="/booking"
-                onClick={() => track("ai-scoping-call", "booking")}
-              >
-                <span>Book a scoping call</span>
-                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
-              </a>
-              <p className="offer-ai-note">Every engagement starts with a strategy call — no commitment until we agree on scope and fit.</p>
-            </div>
+              <div className="tier-actions">
+                <a
+                  className="conversion-button tier-cta btn-primary-dark"
+                  href="/booking"
+                  onClick={() => track("ai-scoping-call", "booking")}
+                >
+                  <span>Book a scoping call</span>
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+                </a>
+                <span className="tier-secondary" style={{ cursor: "default", textDecoration: "none" }}>
+                  No commitment until we agree on scope
+                </span>
+              </div>
+            </article>
           </div>
         </div>
       </div>

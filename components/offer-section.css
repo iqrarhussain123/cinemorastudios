@@ -269,11 +269,11 @@
   }
 }
 
-/* Tier grid */
+/* Tier grid — 4 columns */
 .tier-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1rem, 1.8vw, 1.5rem);
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.85rem, 1.4vw, 1.25rem);
 }
 
 .tier-card {
@@ -448,9 +448,47 @@
 
 .tier-secondary:hover { color: var(--ink); }
 
-@media (max-width: 900px) {
-  .tier-grid { grid-template-columns: 1fr; }
+/* AI card — dark variant */
+.tier-card-ai {
+  background: linear-gradient(160deg, var(--dark-section-start) 0%, var(--dark-section-mid) 100%);
+  border-color: transparent;
+  color: var(--pale-green);
+}
+
+.tier-badge-ai {
+  background: rgba(189, 207, 182, 0.15) !important;
+  color: var(--soft-green) !important;
+}
+
+.tier-card-ai h3 { color: var(--pale-green); }
+
+.tier-card-ai .tier-from,
+.tier-card-ai .tier-per { color: var(--soft-green); opacity: 0.55; }
+
+.tier-card-ai .tier-price strong { color: var(--pale-green); }
+
+.tier-card-ai .tier-pitch { color: var(--soft-green); opacity: 0.65; }
+
+.tier-card-ai .tier-features { border-top-color: rgba(189, 207, 182, 0.15); }
+
+.tier-card-ai .tier-features li { color: var(--soft-green); opacity: 0.78; }
+
+.tier-card-ai .tier-features li::before { background: var(--soft-green); opacity: 0.4; }
+
+.tier-card-ai .tier-secondary {
+  color: var(--soft-green);
+  opacity: 0.45;
+  font-size: 0.73rem;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .tier-grid { grid-template-columns: repeat(2, 1fr); }
   .tier-card-featured { order: -1; }
+}
+
+@media (max-width: 600px) {
+  .tier-grid { grid-template-columns: 1fr; }
 }
 
 /* AI panel */
