@@ -116,7 +116,7 @@ function TimezoneSelect({
         <div
           role="listbox"
           aria-label="Select timezone"
-          className="absolute bottom-full left-0 z-50 mb-1 w-56 overflow-hidden rounded-xl border border-line-hairline bg-surface-card shadow-2xl"
+          className="absolute top-full left-0 z-50 mt-1 w-56 overflow-hidden rounded-xl border border-line-hairline bg-surface-card shadow-2xl"
         >
           {/* Search */}
           <div className="border-b border-line-hairline p-2">
