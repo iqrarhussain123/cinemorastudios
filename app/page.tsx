@@ -62,7 +62,7 @@ export default function Home() {
             <span> Community does.</span>
           </h2>
           <div className="conversion-cta-action">
-            <p>We build the positioning, content, and systems that turn passive reach into community—and community into demand.</p>
+            <p>We build the positioning, content, and systems that turn passive reach into community, and community into demand.</p>
             <a className="conversion-button" href="/booking">
               <span>Book a growth strategy call</span>
               <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -84,7 +84,7 @@ export default function Home() {
             </h2>
             <p className="about-lead">
               Iqrar designs growth systems for founders, expert-led businesses,
-              and real estate brands—connecting positioning, content, digital
+              and real estate brands, connecting positioning, content, digital
               products, and AI operations so visibility becomes qualified
               pipeline.
             </p>

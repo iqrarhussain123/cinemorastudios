@@ -225,7 +225,7 @@ export function BrandPanel({
           <div className="text-xs font-medium text-ink-muted">From our partners:</div>
           {config.testimonials.map((t, i) => (
             <p key={i} className="booking-testimonial text-sm italic text-ink-secondary">
-              &ldquo;{t.quote}&rdquo; <span className="not-italic text-ink-muted">— {t.author}</span>
+              &ldquo;{t.quote}&rdquo; <span className="not-italic text-ink-muted">{t.author}</span>
             </p>
           ))}
         </div>

@@ -52,7 +52,7 @@ const SERVICE_OPTIONS = [
   "AI Custom Solutions",
   "Web Development",
   "Video Production & Editing",
-  "Not sure yet — need a strategy call",
+  "Not sure yet, need a strategy call",
 ];
 
 const SOURCE_OPTIONS = [

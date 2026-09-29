@@ -39,7 +39,7 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Working with Cinemora helped us grow the Spoken Wines YouTube channel from 1,000 to 10,000 subscribers. Our long-form videos reached 30,000 views, while short-form content hit 220,000 views—giving the brand real momentum and strengthening our PR efforts.",
+      "Working with Cinemora helped us grow the Spoken Wines YouTube channel from 1,000 to 10,000 subscribers. Our long-form videos reached 30,000 views, while short-form content hit 220,000 views, giving the brand real momentum and strengthening our PR efforts.",
     name: "Jan",
     role: "Founder, Spoken Wines",
     description: "Web development · Media commerce · Content ecosystem",

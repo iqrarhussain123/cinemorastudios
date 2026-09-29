@@ -74,7 +74,7 @@ export function OfferSection() {
               <h2 id="offer-title">Most brands invest in content. Few invest in the system behind it.</h2>
             </div>
             <div className="offer-problem-intro-right">
-              <p>The gap between brands that grow and those that plateau isn't talent or budget — it's infrastructure. Content without a pipeline system is just noise. We build the system.</p>
+              <p>The gap between brands that grow and those that plateau isn't talent or budget. It's infrastructure. Content without a pipeline system is just noise. We build the system.</p>
             </div>
           </div>
 
@@ -127,21 +127,21 @@ export function OfferSection() {
               <span className="offer-roi-x">×</span>
             </div>
             <p className="offer-roi-label">Average client ROI within 12 months</p>
-            <p className="offer-roi-sub">Across positioning, content systems, and AI-powered pipeline — measured against retainer cost.</p>
+            <p className="offer-roi-sub">Across positioning, content systems, and AI-powered pipeline, measured against retainer cost.</p>
           </div>
 
           <div className="offer-roi-stats">
             <div className="offer-stat-tile offer-reveal">
               <strong>$10K → $100K/mo</strong>
-              <span>Tim Frey — Success School grew monthly revenue 10× in 18 months through brand positioning and content systems.</span>
+              <span>Tim Frey: Success School grew monthly revenue 10× in 18 months through brand positioning and content systems.</span>
             </div>
             <div className="offer-stat-tile offer-reveal">
               <strong>1K → 10K subscribers</strong>
-              <span>Spoken Wines — YouTube channel grew 10× with long-form hitting 30,000 views and short-form reaching 220,000.</span>
+              <span>Spoken Wines: YouTube channel grew 10× with long-form hitting 30,000 views and short-form reaching 220,000.</span>
             </div>
             <div className="offer-stat-tile offer-reveal">
               <strong>$10K ARR</strong>
-              <span>GradeWise AI — SaaS product built end-to-end from zero, live and generating recurring revenue within the engagement.</span>
+              <span>GradeWise AI: SaaS product built end-to-end from zero, live and generating recurring revenue within the engagement.</span>
             </div>
           </div>
         </div>
@@ -201,7 +201,7 @@ export function OfferSection() {
                   <strong>$3,000</strong>
                   <span className="tier-per">/mo</span>
                 </div>
-                <p className="tier-pitch">Full-stack brand system — positioning, multi-channel content, and community that converts to pipeline.</p>
+                <p className="tier-pitch">Full-stack brand system: positioning, multi-channel content, and community that converts to pipeline.</p>
               </div>
               <ul className="tier-features">
                 <li>Positioning strategy and messaging framework</li>
@@ -236,7 +236,7 @@ export function OfferSection() {
                   <strong>$5,000</strong>
                   <span className="tier-per">/mo</span>
                 </div>
-                <p className="tier-pitch">Entire growth infrastructure — brand, content, digital product, and AI-powered demand generation running together.</p>
+                <p className="tier-pitch">Entire growth infrastructure: brand, content, digital product, and AI-powered demand generation running together.</p>
               </div>
               <ul className="tier-features">
                 <li>Everything in Brand Authority</li>
@@ -268,7 +268,7 @@ export function OfferSection() {
                   <strong>$3,000</strong>
                   <span className="tier-per">/project</span>
                 </div>
-                <p className="tier-pitch">Custom-scoped to your exact growth constraint — built once, runs forever. No templates, no shortcuts.</p>
+                <p className="tier-pitch">Custom-scoped to your exact growth constraint. Built once, runs forever. No templates, no shortcuts.</p>
               </div>
               <ul className="tier-features">
                 <li>Cold outreach &amp; lead qualification automation</li>

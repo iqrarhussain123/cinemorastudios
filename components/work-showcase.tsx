@@ -9,7 +9,7 @@ const projects = [
     title: "GradeWise AI",
     meta: "SaaS Product · EdTech · AI Systems",
     description:
-      "An AI grading and feedback platform built for university students — predicts grades, delivers rubric-based analysis, and flags plagiarism before submission.",
+      "An AI grading and feedback platform built for university students. Predicts grades, delivers rubric-based analysis, and flags plagiarism before submission.",
     features: [
       "Instant AI grade prediction from assignment uploads",
       "Rubric-aware feedback engine aligned to academic standards",
