@@ -82,7 +82,7 @@ export function Calendar({
         </div>
       </div>
 
-      <div className="grid grid-cols-7 gap-3 text-center text-xs font-medium text-ink-muted">
+      <div className="grid grid-cols-7 gap-4 text-center text-xs font-medium text-ink-muted">
         {WEEKDAY_LABELS.map((w) => (
           <div key={w} className="py-1">
             {w}
@@ -90,7 +90,7 @@ export function Calendar({
         ))}
       </div>
 
-      <div className="mt-2 grid grid-cols-7 gap-3">
+      <div className="mt-2 grid grid-cols-7 gap-4">
         {cells.map((cell, i) => {
           if (!cell) return <div key={`blank-${i}`} />;
           const cellDate = startOfDay(new Date(`${cell.dateKey}T00:00:00`));
@@ -109,7 +109,7 @@ export function Calendar({
               disabled={isDisabled}
               onClick={() => onSelectDate(cell.dateKey)}
               className={[
-                "flex aspect-square items-center justify-center rounded-lg text-sm font-medium transition-all",
+                "flex aspect-square items-center justify-center rounded-lg p-1 text-sm font-medium transition-all",
                 isDisabled
                   ? "cursor-not-allowed text-ink-muted"
                   : isSelected
