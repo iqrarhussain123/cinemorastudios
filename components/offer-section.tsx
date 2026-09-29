@@ -1,16 +1,18 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./offer-section.css";
+
+type OfferTab = "brand" | "ai";
 
 export function OfferSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [activeTab, setActiveTab] = useState<OfferTab>("brand");
 
   // Local reveal observer scoped to this section
   useEffect(() => {
     const root = sectionRef.current;
     if (!root) return;
-
     const elements = Array.from(root.querySelectorAll<HTMLElement>(".offer-reveal"));
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -49,26 +51,29 @@ export function OfferSection() {
     document.body.appendChild(script);
   }, []);
 
-  const trackClick = (label: string) => {
-    // Plausible
-    if (typeof window !== "undefined" && (window as any).plausible) {
-      (window as any).plausible("Offer CTA Click", { props: { label } });
-    }
-    // GA4
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      (window as any).gtag("event", "offer_cta_click", { label });
+  const track = (label: string, ctaType: "checkout" | "booking" | "general" = "general") => {
+    if (typeof window !== "undefined") {
+      if ((window as any).posthog) {
+        (window as any).posthog.capture("offer_cta_clicked", { label, cta_type: ctaType });
+      }
+      if ((window as any).plausible) {
+        (window as any).plausible("Offer CTA Click", { props: { label } });
+      }
+      if ((window as any).gtag) {
+        (window as any).gtag("event", "offer_cta_clicked", { label, cta_type: ctaType });
+      }
     }
   };
 
   return (
-    <section className="offer-section" id="pricing" aria-labelledby="offer-section-title" ref={sectionRef}>
+    <section className="offer-section" id="pricing" aria-labelledby="offer-title" ref={sectionRef}>
 
       {/* ── 1. Problem hook ── */}
       <div className="offer-problem">
         <div className="section-inner">
           <div className="offer-section-intro offer-reveal">
             <p className="eyebrow">The Real Cost of Getting This Wrong</p>
-            <h2 id="offer-section-title">Most brands invest in content.<br />Few invest in the system behind it.</h2>
+            <h2 id="offer-title">Most brands invest in content.<br />Few invest in the system behind it.</h2>
           </div>
 
           <div className="offer-problem-grid">
@@ -111,7 +116,7 @@ export function OfferSection() {
             </div>
             <div className="offer-stat-tile offer-reveal">
               <strong>1K → 10K subscribers</strong>
-              <span>Spoken Wines — YouTube channel grew 10× with long-form content hitting 30,000 views and short-form reaching 220,000.</span>
+              <span>Spoken Wines — YouTube channel grew 10× with long-form hitting 30,000 views and short-form reaching 220,000.</span>
             </div>
             <div className="offer-stat-tile offer-reveal">
               <strong>$10K ARR</strong>
@@ -121,94 +126,227 @@ export function OfferSection() {
         </div>
       </div>
 
-      {/* ── 3. Offer tracks ── */}
+      {/* ── 3. Offer tracks — tab-based ── */}
       <div className="offer-tracks">
         <div className="section-inner">
           <div className="offer-tracks-intro offer-reveal">
-            <p className="eyebrow">Choose Your Track</p>
+            <p className="eyebrow">Choose Your Path</p>
             <h2>Two ways to work together.</h2>
           </div>
 
-          <div className="offer-tracks-grid">
-            {/* Track A */}
-            <article className="offer-track-card offer-reveal" aria-label="Personal Brand Management track">
-              <div className="offer-track-header">
-                <span className="offer-track-tag">Most Popular</span>
-                <h3>Personal Brand Management</h3>
-                <div className="offer-track-price">
+          {/* Tab selector */}
+          <div className="offer-path-selector offer-reveal" role="tablist" aria-label="Service paths">
+            <button
+              role="tab"
+              aria-selected={activeTab === "brand"}
+              aria-controls="panel-brand"
+              id="tab-brand"
+              type="button"
+              className={`offer-path-tab ${activeTab === "brand" ? "is-active" : ""}`}
+              onClick={() => setActiveTab("brand")}
+            >
+              Build my personal brand
+            </button>
+            <button
+              role="tab"
+              aria-selected={activeTab === "ai"}
+              aria-controls="panel-ai"
+              id="tab-ai"
+              type="button"
+              className={`offer-path-tab ${activeTab === "ai" ? "is-active" : ""}`}
+              onClick={() => setActiveTab("ai")}
+            >
+              Automate my business with AI
+            </button>
+          </div>
+
+          {/* Brand panel — 3-tier grid */}
+          <div
+            id="panel-brand"
+            role="tabpanel"
+            aria-labelledby="tab-brand"
+            hidden={activeTab !== "brand"}
+            className="tier-grid"
+          >
+            {/* Tier 1 */}
+            <article className="tier-card offer-reveal" aria-label="Authority Starter plan">
+              <div className="tier-card-header">
+                <span className="tier-badge">Starter</span>
+                <h3>Authority Starter</h3>
+                <div className="tier-price">
+                  <span className="tier-from">from</span>
                   <strong>$1,500</strong>
-                  <span>/mo</span>
+                  <span className="tier-per">/mo</span>
                 </div>
-                <p className="offer-track-pitch">Full-stack content and positioning engine. We build, run, and iterate the entire system for you.</p>
+                <p className="tier-pitch">Consistent content engine to establish presence and start building qualified audience.</p>
               </div>
-              <ul className="offer-track-features" aria-label="Included in Personal Brand Management">
-                <li>Monthly content strategy and editorial calendar</li>
-                <li>Platform-native video production and editing</li>
-                <li>Short-form and long-form publishing across channels</li>
-                <li>Audience growth and community engagement systems</li>
-                <li>Monthly performance review and strategy iteration</li>
-                <li>Dedicated Slack channel and async support</li>
+              <ul className="tier-features">
+                <li>Monthly content strategy and calendar</li>
+                <li>Platform-native short-form video editing</li>
+                <li>2–3 posts per week across one channel</li>
+                <li>Monthly performance review</li>
+                <li>Async Slack support</li>
               </ul>
-              <div className="offer-track-actions">
+              <div className="tier-actions">
                 <a
-                  className="conversion-button offer-track-primary lemonsqueezy-button"
+                  className="conversion-button tier-cta lemonsqueezy-button"
                   href="https://YOUR-STORE.lemonsqueezy.com/buy/PRODUCT-ID"
-                  onClick={() => trackClick("personal-brand-checkout")}
+                  onClick={() => track("authority-starter-checkout", "checkout")}
                 >
-                  <span>Get started — $1,500/mo</span>
-                  <svg aria-hidden="true" viewBox="0 0 24 24">
-                    <path d="M5 12h13M13 6l6 6-6 6" />
-                  </svg>
+                  <span>Get started</span>
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
                 </a>
-                <a
-                  className="offer-track-secondary"
-                  href="/booking"
-                  onClick={() => trackClick("personal-brand-call")}
-                >
-                  Or book a call first
+                <a className="tier-secondary" href="/booking" onClick={() => track("authority-starter-call", "booking")}>
+                  Book a call first
                 </a>
               </div>
             </article>
 
-            {/* Track B */}
-            <article className="offer-track-card offer-track-card-alt offer-reveal" aria-label="AI Custom Solutions track">
-              <div className="offer-track-header">
-                <span className="offer-track-tag offer-track-tag-alt">Custom Build</span>
-                <h3>AI Custom Solutions</h3>
-                <div className="offer-track-price">
+            {/* Tier 2 */}
+            <article className="tier-card tier-card-featured offer-reveal" aria-label="Brand Authority plan">
+              <div className="tier-card-header">
+                <span className="tier-badge tier-badge-featured">Most Popular</span>
+                <h3>Brand Authority</h3>
+                <div className="tier-price">
+                  <span className="tier-from">from</span>
                   <strong>$3,000</strong>
-                  <span>+</span>
+                  <span className="tier-per">/mo</span>
                 </div>
-                <p className="offer-track-pitch">End-to-end AI and web systems scoped to your exact growth constraint — built once, runs forever.</p>
+                <p className="tier-pitch">Full-stack brand system — positioning, multi-channel content, and community that converts to pipeline.</p>
               </div>
-              <ul className="offer-track-features" aria-label="Included in AI Custom Solutions">
-                <li>Custom scoping call and systems architecture</li>
-                <li>AI-powered outreach, automation, or SaaS product build</li>
-                <li>Conversion-optimised landing page or web platform</li>
-                <li>Integration with existing tools and CRM stack</li>
-                <li>30-day post-launch support and iteration cycle</li>
-                <li>Ownership of all assets and source code</li>
+              <ul className="tier-features">
+                <li>Positioning strategy and messaging framework</li>
+                <li>Short-form and long-form video production</li>
+                <li>Multi-channel publishing (YouTube, IG, LinkedIn)</li>
+                <li>Community engagement and audience growth</li>
+                <li>Bi-weekly strategy calls</li>
+                <li>Priority async support</li>
               </ul>
-              <div className="offer-track-actions">
+              <div className="tier-actions">
                 <a
-                  className="conversion-button offer-track-primary lemonsqueezy-button"
+                  className="conversion-button tier-cta lemonsqueezy-button"
                   href="https://YOUR-STORE.lemonsqueezy.com/buy/PRODUCT-ID"
-                  onClick={() => trackClick("ai-solutions-checkout")}
+                  onClick={() => track("brand-authority-checkout", "checkout")}
                 >
-                  <span>Start your build — $3,000+</span>
-                  <svg aria-hidden="true" viewBox="0 0 24 24">
-                    <path d="M5 12h13M13 6l6 6-6 6" />
-                  </svg>
+                  <span>Get started</span>
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
                 </a>
-                <a
-                  className="offer-track-secondary"
-                  href="/booking"
-                  onClick={() => trackClick("ai-solutions-call")}
-                >
-                  Or book a scoping call
+                <a className="tier-secondary" href="/booking" onClick={() => track("brand-authority-call", "booking")}>
+                  Book a call first
                 </a>
               </div>
             </article>
+
+            {/* Tier 3 */}
+            <article className="tier-card offer-reveal" aria-label="Full-Scale Operation plan">
+              <div className="tier-card-header">
+                <span className="tier-badge">Full Scale</span>
+                <h3>Full-Scale Operation</h3>
+                <div className="tier-price">
+                  <span className="tier-from">from</span>
+                  <strong>$5,000</strong>
+                  <span className="tier-per">/mo</span>
+                </div>
+                <p className="tier-pitch">Entire growth infrastructure — brand, content, digital product, and AI-powered demand generation running together.</p>
+              </div>
+              <ul className="tier-features">
+                <li>Everything in Brand Authority</li>
+                <li>Web platform or digital product build</li>
+                <li>AI-powered lead generation or outreach system</li>
+                <li>Paid media strategy and creative</li>
+                <li>Weekly strategy sessions</li>
+                <li>Dedicated account management</li>
+              </ul>
+              <div className="tier-actions">
+                <a
+                  className="conversion-button tier-cta btn-primary"
+                  href="/booking"
+                  onClick={() => track("full-scale-call", "booking")}
+                >
+                  <span>Book a strategy call</span>
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          {/* AI panel — dark full-width */}
+          <div
+            id="panel-ai"
+            role="tabpanel"
+            aria-labelledby="tab-ai"
+            hidden={activeTab !== "ai"}
+            className="offer-ai-panel offer-reveal"
+          >
+            <div className="offer-ai-copy">
+              <span className="offer-ai-tag">Custom Build</span>
+              <h3>AI &amp; Automation Systems</h3>
+              <p className="offer-ai-pitch">Every AI engagement is custom-scoped to your exact growth constraint — built once, runs forever. No templates, no shortcuts.</p>
+              <ul className="offer-ai-features">
+                <li>End-to-end cold outreach and lead qualification automation</li>
+                <li>SaaS product or internal AI tooling built from scratch</li>
+                <li>Conversion-optimised web platform with integrated analytics</li>
+                <li>CRM, calendar, and existing tool stack integration</li>
+                <li>30-day post-launch support and iteration cycle</li>
+                <li>Full asset and source code ownership on handover</li>
+              </ul>
+            </div>
+            <div className="offer-ai-action">
+              <p className="offer-ai-price-note">Engagements typically start at <strong>$3,000</strong> — scoped per project.</p>
+              <a
+                className="conversion-button btn-primary-dark"
+                href="/booking"
+                onClick={() => track("ai-scoping-call", "booking")}
+              >
+                <span>Book a scoping call</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+              </a>
+              <p className="offer-ai-note">Every engagement starts with a strategy call — no commitment until we agree on scope and fit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── 4. Close ── */}
+      <div className="offer-close">
+        <div className="section-inner offer-close-inner">
+          <div className="offer-close-copy offer-reveal">
+            <p className="eyebrow">Risk Reversal</p>
+            <h2>No lock-ins. No guesswork. Just results.</h2>
+            <p>Every engagement begins with a strategy call. If the fit isn't right, you'll know before any money changes hands. Month-to-month on retainer. Full asset ownership on project builds.</p>
+          </div>
+
+          <div className="offer-close-right">
+            <div className="offer-slots offer-reveal" aria-label="Available client slots">
+              <div className="offer-slots-bar" aria-hidden="true">
+                <span className="offer-slots-fill" style={{ width: "40%" }} />
+              </div>
+              <p className="offer-slots-label">
+                <strong>2 of 5</strong> spots taken this quarter
+              </p>
+              <p className="offer-slots-sub">Taking on 3 new clients before end of quarter.</p>
+            </div>
+
+            <div className="offer-close-actions offer-reveal">
+              <a
+                className="conversion-button"
+                href="/booking"
+                onClick={() => track("close-book-call", "booking")}
+              >
+                <span>Book a growth strategy call</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+              </a>
+              <a
+                className="offer-close-secondary lemonsqueezy-button"
+                href="https://YOUR-STORE.lemonsqueezy.com/buy/PRODUCT-ID"
+                onClick={() => track("close-deposit", "checkout")}
+              >
+                Skip the call — pay deposit to start
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M5 12h13M13 6l6 6-6 6" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>

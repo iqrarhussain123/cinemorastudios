@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const MOBILE_SLOT_LIMIT = 4;
 
@@ -37,7 +37,6 @@ export function TimeSlotList({
   const [use24h, setUse24h] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showPicker, setShowPicker] = useState(false);
-  const selectRef = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 640);
@@ -46,19 +45,9 @@ export function TimeSlotList({
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  // Reset picker when date changes
   useEffect(() => {
     setShowPicker(false);
   }, [date]);
-
-  // Auto-open native picker on mobile when user taps "More times"
-  useEffect(() => {
-    if (showPicker && selectRef.current) {
-      selectRef.current.focus();
-      // Trigger native picker on mobile
-      try { selectRef.current.click(); } catch { /* noop */ }
-    }
-  }, [showPicker]);
 
   useEffect(() => {
     let cancelled = false;
@@ -77,10 +66,7 @@ export function TimeSlotList({
           setAvailability({ date, slots: [], error: "Could not load availability right now." });
         }
       });
-
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, [date]);
 
   const isLoading = availability.date !== date;
@@ -125,7 +111,7 @@ export function TimeSlotList({
           <p className="text-sm text-ink-muted">No times available this day.</p>
         )}
 
-        {/* First N slots always shown as buttons */}
+        {/* First N slots */}
         {visibleSlots.map((iso) => (
           <button
             key={iso}
@@ -137,7 +123,7 @@ export function TimeSlotList({
           </button>
         ))}
 
-        {/* Mobile: overflow selector */}
+        {/* Mobile: "N more times" toggle */}
         {isMobile && hasOverflow && !showPicker && (
           <button
             type="button"
@@ -161,37 +147,32 @@ export function TimeSlotList({
           </button>
         )}
 
-        {/* Mobile: native select picker for overflow slots */}
+        {/* Mobile: custom dark-themed overflow list */}
         {isMobile && hasOverflow && showPicker && (
-          <div className="mt-1 flex flex-col gap-1.5">
-            <label className="text-xs font-medium text-ink-secondary" htmlFor="slot-overflow-select">
-              Pick a time
-            </label>
-            <select
-              id="slot-overflow-select"
-              ref={selectRef}
-              defaultValue=""
-              onChange={(e) => {
-                if (e.target.value) onSelectSlot(e.target.value);
-              }}
-              className="w-full rounded-lg border border-accent bg-surface-card px-3 py-2.5 text-sm font-medium text-ink-primary outline-none focus:ring-2 focus:ring-accent/40"
-            >
-              <option value="" disabled>
-                Select a time…
-              </option>
+          <div className="mt-1 flex flex-col gap-0 overflow-hidden rounded-xl border border-line-hairline bg-surface-card">
+            <div className="flex items-center justify-between border-b border-line-hairline px-4 py-2.5">
+              <span className="text-xs font-semibold text-ink-secondary">Pick a time</span>
+              <button
+                type="button"
+                onClick={() => setShowPicker(false)}
+                className="text-xs text-ink-muted hover:text-ink-secondary"
+                aria-label="Back to top times"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="themed-scroll flex max-h-56 flex-col overflow-y-auto">
               {overflowSlots.map((iso) => (
-                <option key={iso} value={iso}>
+                <button
+                  key={iso}
+                  type="button"
+                  onClick={() => onSelectSlot(iso)}
+                  className="shrink-0 border-b border-line-hairline px-4 py-2.5 text-left text-sm font-medium text-ink-primary transition-colors last:border-b-0 hover:bg-accent/10 active:bg-accent/20"
+                >
                   {formatSlotTime(iso, timezone, use24h)}
-                </option>
+                </button>
               ))}
-            </select>
-            <button
-              type="button"
-              onClick={() => setShowPicker(false)}
-              className="self-start text-xs text-ink-muted hover:text-ink-secondary"
-            >
-              ‹ Back to top times
-            </button>
+            </div>
           </div>
         )}
       </div>

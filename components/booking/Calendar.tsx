@@ -82,7 +82,7 @@ export function Calendar({
         </div>
       </div>
 
-      <div className="grid grid-cols-7 gap-2 text-center text-xs font-medium text-ink-muted">
+      <div className="grid grid-cols-7 gap-3 text-center text-xs font-medium text-ink-muted">
         {WEEKDAY_LABELS.map((w) => (
           <div key={w} className="py-1">
             {w}
@@ -90,7 +90,7 @@ export function Calendar({
         ))}
       </div>
 
-      <div className="mt-1 grid grid-cols-7 gap-2">
+      <div className="mt-2 grid grid-cols-7 gap-3">
         {cells.map((cell, i) => {
           if (!cell) return <div key={`blank-${i}`} />;
           const cellDate = startOfDay(new Date(`${cell.dateKey}T00:00:00`));
