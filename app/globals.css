@@ -2524,7 +2524,7 @@ img[data-loaded="true"] {
 .impact-inner {
   display: grid;
   gap: clamp(1.75rem, 2.8vw, 3rem);
-  padding-block: clamp(3.5rem, 5vw, 5.5rem);
+  padding-block: clamp(5rem, 9vw, 10rem);
   padding-inline: clamp(1.25rem, 4vw, 5rem);
 }
 
@@ -5781,7 +5781,7 @@ blockquote {
 
 .impact-inner {
   width: min(var(--section-frame-width), var(--section-frame-max-width));
-  padding-block: clamp(5rem, 8vw, 8rem);
+  padding-block: clamp(5rem, 9vw, 10rem);
   padding-inline: clamp(1.25rem, 4vw, 5rem);
 }
 
