@@ -108,8 +108,8 @@ export default function TermsOfServicePage() {
           <h2>9. Changes and governing law</h2>
           <p>
             We may update these terms by posting a revised version here. Continued use after an update means you accept
-            the revised terms. These terms are governed by the laws of Pakistan, and disputes will be subject to the
-            competent courts of Rawalpindi, Pakistan, unless applicable consumer law requires otherwise.
+            the revised terms. These terms are governed by the laws of the State of Texas, United States, and disputes
+            will be subject to the competent courts of Dallas, Texas, unless applicable consumer law requires otherwise.
           </p>
         </section>
 
@@ -118,9 +118,7 @@ export default function TermsOfServicePage() {
           <address>
             Cinemora Studios
             <br />
-            Office 203, Jenan Abn Ul Fazl Plaza, Shamsabad
-            <br />
-            Rawalpindi 46000, Pakistan
+            2105 Commerce St, Dallas, TX 75201
             <br />
             <a href="mailto:iqrar@cinemorastudios.agency">iqrar@cinemorastudios.agency</a>
           </address>

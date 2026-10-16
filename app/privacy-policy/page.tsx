@@ -101,9 +101,8 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2>7. International processing and children</h2>
           <p>
-            We operate from Pakistan and serve clients internationally, so information may be processed in countries
-            other than your own. Our services are intended for businesses and adults and are not directed to children
-            under 13.
+            We serve clients internationally, so information may be processed in countries other than your own. Our
+            services are intended for businesses and adults and are not directed to children under 13.
           </p>
         </section>
 
@@ -120,9 +119,7 @@ export default function PrivacyPolicyPage() {
           <address>
             Cinemora Studios
             <br />
-            Office 203, Jenan Abn Ul Fazl Plaza, Shamsabad
-            <br />
-            Rawalpindi 46000, Pakistan
+            2105 Commerce St, Dallas, TX 75201
             <br />
             <a href="mailto:iqrar@cinemorastudios.agency">iqrar@cinemorastudios.agency</a>
           </address>

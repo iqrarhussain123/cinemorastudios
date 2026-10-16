@@ -26,22 +26,11 @@ const contactLinks = [
 
 const phoneNumbers = [
   {
-    display: "+92 3360599017",
-    whatsAppUrl:
-      "https://wa.me/923360599017?text=Hey%20Iqrar%2C%20I%20need%20help%20with%20your%20services.",
-  },
-  {
     display: "+1 928 393 6284",
     whatsAppUrl:
       "https://wa.me/19283936284?text=Hey%20Iqrar%2C%20I%20need%20help%20with%20your%20services.",
   },
 ];
-
-const rawalpindiMapsUrl =
-  "https://maps.app.goo.gl/9iioJQzHgsBy5DeS9?g_st=awb";
-
-const rawalpindiMapsEmbedUrl =
-  "https://www.google.com/maps?q=Office%20No.%20203%2C%202nd%20Floor%2C%20Jenan%20Abn%20Ul%20Fazl%20Plaza%2C%20Shamsabad%2C%20Rawalpindi%2046000%2C%20Pakistan&output=embed";
 
 const dallasMapsUrl =
   "https://www.google.com/maps/search/?api=1&query=2105%20Commerce%20St%2C%20Dallas%2C%20TX%2075201%2C%20United%20States";
@@ -50,14 +39,6 @@ const dallasMapsEmbedUrl =
   "https://www.google.com/maps?q=2105%20Commerce%20St%2C%20Dallas%2C%20TX%2075201%2C%20United%20States&output=embed";
 
 const locations = [
-  {
-    href: rawalpindiMapsUrl,
-    embedUrl: rawalpindiMapsEmbedUrl,
-    ariaLabel:
-      "Office No. 203, 2nd Floor, Jenan Abn Ul Fazl Plaza, Shamsabad, Rawalpindi. View on Google Maps",
-    label: "Office 203, Jenan Abn Ul Fazl Plaza, Shamsabad",
-    preview: "Shamsabad, Rawalpindi",
-  },
   {
     href: dallasMapsUrl,
     embedUrl: dallasMapsEmbedUrl,
