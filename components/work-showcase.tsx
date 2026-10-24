@@ -76,7 +76,7 @@ const workCarouselProjects: Record<WorkCategory, WorkCarouselItem[]> = {
       "https://res.cloudinary.com/l7fgvttd/video/upload/v1783963557/cinemora/videos/reels/let-me-start-with-the-truth-for-25-years-i-built-brands-and-experiences-for-other-people-the-uk-government-amazon-abb-good-work-behind-the-scenes-never-my-name-on-the-door-then-i-became-the-investor.mp4",
       "Let me start with the truth",
     ),
-    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963603/cinemora/videos/reels/recent-work.mp4", "Recent work"),
+
     carouselVideo(
       "https://res.cloudinary.com/l7fgvttd/video/upload/v1783966660/cinemora/videos/reels/reacting-to-a-female-entrepreneur-doing-millions.mp4",
       "Female entrepreneur reaction",
