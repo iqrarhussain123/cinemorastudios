@@ -85,7 +85,7 @@ const workCarouselProjects: Record<WorkCategory, WorkCarouselItem[]> = {
     carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963524/cinemora/videos/reels/2.mp4", "Reel 2"),
     carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963519/cinemora/videos/reels/1.mp4", "Reel 1"),
     carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963567/cinemora/videos/reels/p2-v02.mp4", "P2 V02"),
-    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783966665/cinemora/videos/reels/smiling-reel.mp4", "Smiling reel"),
+
   ],
   "long-form": [
     carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963333/cinemora/videos/long_form/d7rovsisfex299xgtllq.mp4", "Long form edit"),
