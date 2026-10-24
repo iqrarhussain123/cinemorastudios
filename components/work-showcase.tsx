@@ -54,7 +54,7 @@ const projects = [
 
 const featuredProjects = [projects[0], projects[1], projects[2]];
 
-type WorkCategory = "reels" | "long-form" | "real-estate" | "social-media-ads";
+type WorkCategory = "reels" | "long-form" | "real-estate" | "social-media-ads" | "talking-head";
 
 type WorkCarouselItem = {
   src: string;
@@ -66,6 +66,7 @@ const workTabs: Array<{ id: WorkCategory; label: string }> = [
   { id: "long-form", label: "Long Form" },
   { id: "real-estate", label: "Real Estate" },
   { id: "social-media-ads", label: "Social Media Ads" },
+  { id: "talking-head", label: "Talking Head" },
 ];
 
 const carouselVideo = (src: string, title: string): WorkCarouselItem => ({ src, title });
@@ -109,6 +110,13 @@ const workCarouselProjects: Record<WorkCategory, WorkCarouselItem[]> = {
     carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963743/cinemora/videos/socia_media_ads/oou7hd9etqlty5qujjfc.mp4", "Social media ad"),
     carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783966742/cinemora/videos/socia_media_ads/toneface.mp4", "TONEFACE"),
     carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1783963862/cinemora/videos/socia_media_ads/ybbslwc0a0hn6gpqq7ea.mp4", "Social ad edit"),
+  ],
+  "talking-head": [
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1792822876/cinemora/videos/talking_head/sales-master-class.mp4", "Sales Master Class"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1792822945/cinemora/videos/talking_head/find-clients-who-need-your-service.mp4", "Find Clients Who Need Your Service"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1792823705/cinemora/videos/talking_head/digital-product-18k-monthly.mp4", "Digital Product Making $18k/Month"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1792823743/cinemora/videos/talking_head/how-to-get-clients-linkedin-2026.mp4", "How to Get Clients on LinkedIn in 2026"),
+    carouselVideo("https://res.cloudinary.com/l7fgvttd/video/upload/v1792823768/cinemora/videos/talking_head/how-to-get-clients-linkedin-masterclass.mp4", "How To Get Clients On LinkedIn (Full Masterclass)"),
   ],
 };
 
