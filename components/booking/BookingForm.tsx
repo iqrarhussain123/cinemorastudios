@@ -99,7 +99,7 @@ export function BookingForm({
       const res = await fetch("/api/book", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ startISO: slotISO, name, email, notes }),
+        body: JSON.stringify({ startISO: slotISO, name, email, notes, attendeeTimezone: timezone }),
       });
       const data = await res.json();
       if (!res.ok) {

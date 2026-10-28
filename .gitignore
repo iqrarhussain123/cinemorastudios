@@ -32,3 +32,4 @@ Thumbs.db
 # local tool settings and logs
 .claude/settings.local.json
 .codex/*.log
+.vercel

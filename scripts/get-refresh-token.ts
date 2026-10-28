@@ -41,7 +41,11 @@ async function main() {
   const authUrl = client.generateAuthUrl({
     access_type: "offline",
     prompt: "consent", // forces a refresh_token even if this account authorized before
-    scope: ["https://www.googleapis.com/auth/calendar"],
+    scope: [
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/gmail.send",
+      "https://www.googleapis.com/auth/gmail.modify",
+    ],
   });
 
   console.log("\nOpen this URL, sign in with the Google account whose calendar should be used, and approve access:\n");

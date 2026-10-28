@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createBookingEvent } from "@/lib/booking/google/calendar";
+import { sendBookingNotificationEmail } from "@/lib/booking/alert";
 
 interface BookRequestBody {
   startISO?: string;
   name?: string;
   email?: string;
   notes?: string;
+  attendeeTimezone?: string;
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -18,7 +20,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { startISO, name, email, notes } = body;
+  const { startISO, name, email, notes, attendeeTimezone } = body;
   if (!startISO || !name?.trim() || !email?.trim()) {
     return NextResponse.json({ error: "startISO, name, and email are required." }, { status: 400 });
   }
@@ -36,6 +38,17 @@ export async function POST(req: NextRequest) {
       attendeeEmail: email.trim(),
       notes: notes?.trim(),
     });
+
+    sendBookingNotificationEmail({
+      eventId: result.eventId,
+      attendeeName: name.trim(),
+      attendeeEmail: email.trim(),
+      startISO,
+      meetLink: result.meetLink,
+      notes: notes?.trim(),
+      attendeeTimezone,
+    }).catch((err) => console.error("booking notification email failed", err));
+
     return NextResponse.json({ meetLink: result.meetLink, eventId: result.eventId });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Could not create the booking.";
@@ -43,3 +56,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: message }, { status: 409 });
   }
 }
+
