@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
       notes: notes?.trim(),
     });
 
-    sendBookingNotificationEmail({
+    const notificationPayload = {
       eventId: result.eventId,
       attendeeName: name.trim(),
       attendeeEmail: email.trim(),
@@ -47,7 +47,14 @@ export async function POST(req: NextRequest) {
       meetLink: result.meetLink,
       notes: notes?.trim(),
       attendeeTimezone,
-    }).catch((err) => console.error("booking notification email failed", err));
+    };
+
+    // Await notification email so Vercel serverless function delivers it reliably
+    try {
+      await sendBookingNotificationEmail(notificationPayload);
+    } catch (err) {
+      console.error("Booking notification email failed:", err);
+    }
 
     return NextResponse.json({ meetLink: result.meetLink, eventId: result.eventId });
   } catch (err) {

@@ -87,8 +87,7 @@ function buildBookingMessage(params: {
   return Buffer.from(parts.join("\r\n")).toString("base64url");
 }
 
-/** Best-effort: marks a self-sent message Important + Starred. Requires the gmail.modify scope —
- * silently no-ops until GMAIL_REFRESH_TOKEN is regenerated with that scope granted. */
+/** Best-effort: marks a self-sent message Important + Starred. */
 async function markImportant(gmail: ReturnType<typeof google.gmail>, messageId: string | null | undefined): Promise<void> {
   if (!messageId) return;
   try {
@@ -98,7 +97,7 @@ async function markImportant(gmail: ReturnType<typeof google.gmail>, messageId: 
       requestBody: { addLabelIds: ["IMPORTANT", "STARRED"] },
     });
   } catch (err) {
-    console.error("could not mark message important (gmail.modify scope may not be granted yet)", err);
+    console.error("could not mark message important", err);
   }
 }
 
@@ -215,7 +214,7 @@ function buildHtmlEmail(params: {
     : row("When", params.hostWhen);
 
   return `
-<div style="background:${surfaceCard};font-family:Arial,Helvetica,sans-serif;width:100%;max-width:600px;margin:0 auto;border-radius:12px;overflow:hidden;">
+<div style="background:${surfaceCard};font-family:Arial,Helvetica,sans-serif;width:100%;">
   <div style="background:${accent};color:${accentInk};padding:28px 40px;font-size:17px;font-weight:700;letter-spacing:0.2px;">
     Cinemora Studios
   </div>
@@ -229,7 +228,7 @@ function buildHtmlEmail(params: {
     </table>
     ${
       params.meetLink
-        ? `<a href="${params.meetLink}" style="display:inline-block;margin-top:36px;background:${accent};color:${accentInk};text-decoration:none;font-size:16px;font-weight:700;padding:18px 32px;border-radius:10px;">Join Google Meet</a>`
+        ? `<a href="${params.meetLink}" target="_blank" style="display:inline-block;margin-top:36px;background:${accent};color:${accentInk};text-decoration:none;font-size:16px;font-weight:700;padding:18px 32px;border-radius:10px;">Join Google Meet</a>`
         : `<p style="margin-top:36px;color:${inkSecondary};font-size:14px;">A calendar invite is on its way to the attendee's email.</p>`
     }
   </div>
